@@ -1,0 +1,15 @@
+LJ vs HJ: 4bet=12.2%, bluff_share=6.7%
+LJ vs CO: 4bet=12.2%, bluff_share=6.7%
+LJ vs BTN: 4bet=12.4%, bluff_share=8.0%
+LJ vs SB: 4bet=11.9%, bluff_share=6.9%
+LJ vs BB: 4bet=11.9%, bluff_share=6.9%
+HJ vs CO: 4bet=9.8%, bluff_share=6.7%
+HJ vs BTN: 4bet=9.9%, bluff_share=8.0%
+HJ vs SB: 4bet=10.0%, bluff_share=11.8%
+HJ vs BB: 4bet=10.0%, bluff_share=11.8%
+CO vs BTN: 4bet=8.9%, bluff_share=10.2%
+CO vs SB: 4bet=8.6%, bluff_share=10.6%
+CO vs BB: 4bet=8.6%, bluff_share=10.6%
+BTN vs SB: 4bet=6.2%, bluff_share=19.3%
+BTN vs BB: 4bet=6.2%, bluff_share=19.3%
+SB vs BB: 4bet=7.8%, bluff_share=18.7%
