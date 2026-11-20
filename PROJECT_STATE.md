@@ -1,5 +1,5 @@
 # Estado atual — Heuristic6max
-**Data:** 20/11/2026 | **Checkpoint:** auditoria v0.10 sobre v0.6.1 G2-a | **Estado estratégico:** HOLD / não operacional.
+**Data:** 20/11/2026 | **Checkpoint:** auditoria v0.11 de fontes sobre v0.10 sobre v0.6.1 G2-a | **Estado estratégico:** HOLD / não operacional.
 
 ## Evidências concluídas
 - G0: arquitetura e contratos.
@@ -49,3 +49,10 @@ G2-a permanece aberto: auditar a composição exata dos oito confrontos com prem
 - A fonte privada fornecida tinha 1.624.350 confrontos físicos ordenados, cobertura/reciprocidade conferidas; licença/autoria não documentadas, portanto **não publicar o bruto**. SHA-256 da fonte e método presentes no README da auditoria. Motor MC em Python stdlib pode reestimar sem a fonte original.
 - Ex.: AQo 41,3101%, AJo 35,6951%, KJo 32,3099%, TT 44,0217% de **equidade bruta de showdown** contra a política 3bet do CO. Isso NÃO determina EV de call fora de posição, nem prova que folds existentes estão errados.
 - 10 testes novos; total acumulado previsto **163 (124+7+11+11+10)**. Todos os ranges e o snapshot v0.6.1 permanecem intactos; G1 aberto, G2-a HOLD, G2-b bloqueado.
+
+## Auditoria v0.11 — admissibilidade de fontes e fronteira da linguagem
+- [Relatório e fontes](audits/g2a_v0_11/README.md), 11 testes incrementais, total acumulado **174 testes locais** (124+7+11+11+10+11).
+- ART/GTO HJ RFI publicado para abertura 2 BB, não equivale ao nó HJ RFI 2,5 BB enfrentando CO 3-bet para 8 BB. Simple GTO anuncia 2,5 BB e 3,4x IP (8,5 BB inferido, não verificado naquele nó); GTO Wizard não teve rake/sizing/nó exatos confirmados. **Três fontes: zero substituições diretas autorizadas pelo gate**.
+- Direitos de incorporação/reprodução, rake e cap do ambiente-alvo seguem não comprovados. Ausência NÃO equivale a rake zero.
+- **Python atual; OpenPPL não implementado**. G6 PENDENTE; não existe estratégia OpenPPL jogável.
+- **Stop rule:** não repetir simulações de EV baseadas apenas em EQR/rake arbitrários. Próxima evidência necessária: rake/cap/sizings reais, chart compatível e utilizável ou replays reais de teste (G1). Ranges DRAFT intactos, G2-a HOLD, G2-b bloqueado.

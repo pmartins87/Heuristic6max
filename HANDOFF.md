@@ -68,3 +68,14 @@ Primeiro leia [auditoria v0.10](audits/g2a_v0_10/README.md) e [ADR-014](DECISION
     cd audits/g2a_v0_10 && sha256sum -c AUDIT_SHA256SUMS.txt
 
 Dados 169 classes derivados de PreFlopEquities.zip privado (SHA no README, origem/licença não certificadas); ZIP bruto propositalmente ausente no GitHub. Para reproduzir os valores exatos da referência, recuperar cópia autorizada com hash idêntico; para reestimar a partir apenas do GitHub, usar Monte Carlo stdlib. São 10 testes adicionais (163 total esperado); não operar bot nem editar ranges. Próximo passo: EV de call/4bet, realização e rake reais ou cenários com incerteza, antes de qualquer decisão. **A integração GitHub permite atualizações diretas, sem upload manual do usuário.**
+
+## Auditoria incremental v0.11 — charts e status de OpenPPL
+
+    python -m unittest discover -s audits/g2a_v0_11 -p 'test_*.py' -q
+    python audits/g2a_v0_11/source_gate.py
+    cd audits/g2a_v0_11 && sha256sum -c AUDIT_SHA256SUMS.txt
+
+- [Método e registro de fontes](audits/g2a_v0_11/README.md): 11 testes, **174 totais**; três fontes classificadas REFERENCE_ONLY. Não importar arquivos licenciados nem frequências incompatíveis.
+- **Estado da linguagem:** motor e estratégia em Python. Nenhum OpenPPL operacional no repositório; etapa G6 ainda não iniciada.
+- **Critério de parada:** não ampliar indefinidamente os cenários hipotéticos HJ/CO sem rake, cap, sizing, fonte comparável ou replay real. Próximo gate orientado por evidência G1/G2-a.
+- Usuário não precisa enviar arquivos ao GitHub: manter integração direta, docs vivos e CI verificada.

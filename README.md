@@ -2,7 +2,16 @@
 
 Estratégia **heurística** de No-Limit Hold'em cash 6-max baseada em fundamentos de GTO, com contratos, ranges auditáveis e testes reprodutíveis. **Não é um solver; não é um bot operacional validado; não há comprovação de EV ou winrate.**
 
-**Checkpoint ativo: auditoria v0.10 (20/11/2026), sobre motor/ranges v0.6.1 preservados** — G0 aprovado; G1 aberto; G2-a em auditoria/HOLD; G3–G7 pendentes. RFI, VS_OPEN e VS_3BET continuam DRAFT.
+**Checkpoint ativo: auditoria v0.11 de fontes, sobre v0.10 (20/11/2026), sobre motor/ranges v0.6.1 preservados** — G0 aprovado; G1 aberto; G2-a em auditoria/HOLD; G3–G7 pendentes. RFI, VS_OPEN e VS_3BET continuam DRAFT.
+
+## Auditoria v0.11 — charts públicas, sem substituir ranges
+- [Método, fontes e critérios](audits/g2a_v0_11/README.md)
+- [Fontes e premissas registradas](audits/g2a_v0_11/source_candidates.json)
+- [Vereditos reproduzíveis](audits/g2a_v0_11/SOURCE_APPLICABILITY_v0_11.csv)
+- Três fontes examinadas; **nenhuma apta à substituição direta** no cenário HJ abre 2,5 BB e CO 3-bet para 8 BB. Rake/cap alvo não documentados.
+- **174 testes locais aprovados**, 11 novos na auditoria; nenhuma estratégia modificada.
+- **Linguagem:** motor Python. OpenPPL/OpenHoldem permanece G6 pendente, sem código executável.
+- **Critério de parada:** não prolongar toy-EV/EQR de parâmetros não calibrados sem nova evidência.
 
 ## Retomada em novo chat ou IA
 Leia, nesta ordem:

@@ -1,4 +1,4 @@
-# Roadmap vivo — 20/11/2026 (auditoria v0.10 / estratégia v0.6.1)
+# Roadmap vivo — 20/11/2026 (auditoria v0.11 de fontes / estratégia v0.6.1)
 
 | Gate | Estado | Critério de avanço |
 |---|---|---|
@@ -48,3 +48,9 @@ Revisar os oito nós (SB–BB, HJ–CO, LJ–CO, CO–BTN, HJ–BTN, LJ–HJ, BT
 - 10 testes novos; total acumulado previsto **163 (124+7+11+11+10)**. Todos os ranges e o snapshot v0.6.1 permanecem intactos; G1 aberto, G2-a HOLD, G2-b bloqueado.
 
 **Próximo gate:** comparar equidade *realizada* e custo/rake da plataforma em cenários HJ OOP, inclusive possíveis ações de jogadores restantes, antes de alterar qualquer mão. Não confundir showdown equity e call EV.
+
+## G2-a / v0.11 — validação de referências e parada de compute especulativo
+- [Gate de fontes](audits/g2a_v0_11/README.md): três fornecedores analisados, nenhum verificado como substituição exata para HJ/CO (100 BB, open 2,5 BB, 3bet 8 BB, rake/cap não documentados).
+- Mantidas a arquitetura e a estratégia Python v0.6.1; nenhuma transcrição OpenPPL antecipada.
+- **Parada técnica:** novas auditorias ilustrativas de EV/EQR só com novas evidências que possam alterar a conclusão; priorizar rake/cap e sizings do ambiente-alvo, correspondência da chart e/ou replays reais de G1.
+- G2-a continua HOLD, G2-b continua BLOQUEADO, G6 é FUTURO.

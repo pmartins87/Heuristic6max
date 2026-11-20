@@ -48,3 +48,12 @@ jobs:
         run: git diff --exit-code -- audits/g2a_v0_10/HJ_CO_EQUITY_15_MONTE_CARLO_v0_10.csv
       - name: Verify v0.10 SHA-256 manifest
         run: cd audits/g2a_v0_10 && sha256sum -c AUDIT_SHA256SUMS.txt
+
+      - name: Run source admissibility tests v0.11
+        run: python -m unittest discover -s audits/g2a_v0_11 -p 'test_*.py' -q
+      - name: Recompute v0.11 source applicability report
+        run: python audits/g2a_v0_11/source_gate.py
+      - name: Verify v0.11 report determinism
+        run: git diff --exit-code -- audits/g2a_v0_11/SOURCE_APPLICABILITY_v0_11.csv
+      - name: Verify v0.11 SHA256 manifest
+        run: cd audits/g2a_v0_11 && sha256sum -c AUDIT_SHA256SUMS.txt

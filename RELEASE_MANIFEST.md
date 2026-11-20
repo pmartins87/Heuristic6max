@@ -36,3 +36,8 @@ Localização versionada: [audits/g2a_v0_7/](audits/g2a_v0_7/). Contém script, 
 - Diretório GitHub: [audits/g2a_v0_10](audits/g2a_v0_10/), sete arquivos (motor, 10 testes, 169 equities derivadas, 15 checks MC, docs, hash-manifesto).
 - SHA-256 do input externo PreFlopEquities.zip: 52a0a87174b0d7cabd5b16fe43387b0807a6abd036e5a61c1aafbc008ecf50c2. SHA-256 de PreFlopEquities.txt: 9dd539e2720010684d0006981207489e4f753b1d628f7e0443003b2c7f3e6c9f. O input bruto não é hospedado (licenciamento não estabelecido); somente cálculos derivados e método/fallback MC stdlib.
 - CI esperada: 124+7+11+11+10=163 testes, CSV Monte Carlo regenerado de modo determinístico e manifesto verificado. Ranges v0.6.1 intocados, G2-a HOLD.
+
+## Auditoria incremental v0.11 — gate de fontes, não operacional
+- [audits/g2a_v0_11/](audits/g2a_v0_11/) inclui 7 arquivos: código, testes, registry JSON, CSV derivado, README, decisão, manifesto SHA256.
+- Depende de baseline imutável v0.6.1 (100 BB, HJ 2,5 BB, CO 3bet 8 BB); não inclui charts proprietárias, nem fonte OpenPPL executável.
+- CI esperada: **174 testes (124+7+11+11+10+11)**, CSV reproduzido sem diff e SHA256 validado. G2-a HOLD, G6 pendente.
