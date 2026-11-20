@@ -1,0 +1,4 @@
+Source,Verdict,ReferenceOnly,UnresolvedMismatches
+ART_GTO_HJ_RFI_100BB,REFERENCE_ONLY,1,aggressor:UNKNOWN;node:MISMATCH;open_to_bb:MISMATCH;rake_cap_bb:UNKNOWN;rake_id:UNKNOWN;rights:UNVERIFIED;threebet_to_bb:UNKNOWN
+SIMPLE_GTO_CASH_100BB_PRODUCT_TREE,REFERENCE_ONLY,1,frequencies:UNAVAILABLE;node_evidence:UNVERIFIED;rake_cap_bb:UNKNOWN;rake_id:UNKNOWN;rights:UNVERIFIED;threebet_to_bb:MISMATCH
+GTO_WIZARD_PUBLIC_VIEWER,REFERENCE_ONLY,1,frequencies:UNAVAILABLE;node_evidence:UNVERIFIED;open_to_bb:UNKNOWN;rake_cap_bb:UNKNOWN;rake_id:UNKNOWN;rights:UNVERIFIED;threebet_to_bb:UNKNOWN
