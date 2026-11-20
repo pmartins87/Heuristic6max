@@ -62,3 +62,12 @@ jobs:
         run: python -m unittest discover -s portability -p 'test_*.py' -q
       - name: PORT-0 parser smoke check
         run: python portability/oppl_probe.py
+
+      - name: PORT-1 LJ RFI OPPL source-parity tests
+        run: python -m unittest discover -s portability/port1 -p 'test_*.py' -q
+      - name: Rebuild PORT-1 mapping from frozen reference
+        run: python portability/port1/generate_port1.py
+      - name: Ensure deterministic PORT-1 OPPL and hand mapping
+        run: git diff --exit-code -- portability/port1/lj_rfi_pure_port1.oppl portability/port1/PORT1_LJ_169_MAPPING.csv
+      - name: Verify PORT-1 SHA256 snapshot
+        run: cd portability/port1 && sha256sum -c PORT1_SHA256SUMS.txt

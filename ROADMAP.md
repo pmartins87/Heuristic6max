@@ -62,3 +62,8 @@ Revisar os oito nós (SB–BB, HJ–CO, LJ–CO, CO–BTN, HJ–BTN, LJ–HJ, BT
 - PORT-2: bloqueado para mixes até verificação de aleatoriedade estável e memória; SHA256 Python difere de Random OPPL.
 - PORT-3 (G6): exigir teste com OpenHoldem alvo em replays sem apostas, conferindo ação final e fallback. G1/G2 mantêm seus gates anteriores.
 Ver [PORTABILITY_CONTRACT.md](PORTABILITY_CONTRACT.md).
+
+## PORT-1 parcial — árvore de RFI LJ
+- Representar apenas o subdomínio de 168 mãos puras da LJ, com guardas de seis jogadores, stacks, posição, pot e RFI, usando texto OpenPPL. KJo (40% raise) NÃO pode ser arredondado.
+- **Próximo gate:** provar mistura estável do KJo; validar todos os símbolos, NoMatch/fallback e ação final na versão instalada de OH por replays sem apostas. Sem isso PORT-1 não está aprovado e G6 não é liberado.
+- 15 testes novos. Não alterar G2-a HOLD, ranges v0.6.1, G1 ou G6.

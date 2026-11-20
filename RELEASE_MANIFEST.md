@@ -45,3 +45,7 @@ Localização versionada: [audits/g2a_v0_7/](audits/g2a_v0_7/). Contém script, 
 
 ## PORT-0 — checkpoint de portabilidade sem release operacional
 [PORTABILITY_CONTRACT.md](PORTABILITY_CONTRACT.md), [portability/](portability/). Duas regras OPPL BTN RFI, sete testes em 3.042 estados; CI esperado 181 testes (174+7). Não altera snapshots estratégicos nem códigos anteriores. Não é compilação, integração ou teste do OpenHoldem.
+
+## PORT-1 — checkpoint incremental, não release de bot
+- [portability/port1](portability/port1/): sete arquivos com regras OpenPPL, interpretador de testes, gerador offline, 169 linhas de mapping, README, testes e manifesto SHA256.
+- 15 testes incrementais; total esperado 196 (174+7+15). Teste de compatibilidade ainda estático; KJo permanece sem regra. Fonte estratégica v0.6.1 DRAFT não alterada; hashes históricos preservados.

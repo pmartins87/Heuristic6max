@@ -44,3 +44,8 @@ Fonte: anexo `OpenHoldem e OPPL Manuais e Library.zip` → `OpenPPL Manual.pdf` 
 - **PORT-3 / G6**: OpenHoldem real, replays, legalidade, fail-closed, regressão paritária; bloqueado até G2 estratégico e G1 exigirem avanço.
 
 A cada nova implementação estratégica, consultar este contrato e atualizar `DECISIONS.md`, `PROJECT_STATE.md`, `ROADMAP.md`, `HANDOFF.md`, `README.md`, `CHANGELOG.md`, `RELEASE_MANIFEST.md`. **Não modificar os ranges RFI/VS_OPEN/VS_3BET neste checkpoint.**
+
+## PORT-1 parcial — evidência de compatibilidade estática (ADR-017, 20/11/2026)
+- [portability/port1/README.md](portability/port1/README.md) apresenta o subconjunto LJ RFI com 43 pure raises, 125 pure folds, KJo 40% raise não implementado; 15 testes e fonte única OpenPPL.
+- Guardas sob verificação: IsPreflop, nplayersdealt=6, InUTG, Raises, Calls, StillToAct, PotSize, AmountToCall, StackUnknown, StackSize, MinOpponentStackSize e MaxOpponentStackSize. A documentação fornecida descreve esses símbolos, mas seus valores no OH-alvo não foram verificados.
+- **PORT-1 continua ABERTO.** Interpretador Python None em regra ausente não assegura fallback seguro no OpenHoldem; ainda exige mistura KJo estável 40/60, OH real, legalidade, sizing, snapshots e replays de teste.

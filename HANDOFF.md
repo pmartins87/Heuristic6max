@@ -86,3 +86,17 @@ Leia [PORTABILITY_CONTRACT.md](PORTABILITY_CONTRACT.md). Cada decisão exportáv
 - python -m unittest discover -s portability -p 'test_*.py' -q
 - python portability/oppl_probe.py
 São 7 testes novos e 3.042 estados simulados; OpenHoldem NÃO validado. No-match, raise ilegal, source_quality HIGH e mixed com SHA256 continuam não mapeados. G1/G2/G6 preservados. Não solicitar upload manual ao usuário.
+
+## PORT-1 parcial — fonte OpenPPL LJ RFI
+
+Na raiz do repositório, execute:
+
+    python -m unittest discover -s portability/port1 -p 'test_*.py' -q
+    python portability/port1/generate_port1.py
+    git diff --exit-code -- portability/port1/lj_rfi_pure_port1.oppl portability/port1/PORT1_LJ_169_MAPPING.csv
+    cd portability/port1 && sha256sum -c PORT1_SHA256SUMS.txt
+
+- 15 testes novos; total esperado 196 (174 auditorias +7 PORT-0 +15 PORT-1).
+- 168/169 classes LJ com ações puras, KJo 40% RFI não mapeado, sem fail-closed assegurado no OH.
+- Ler [PORTABILITY_CONTRACT.md](PORTABILITY_CONTRACT.md) e [README PORT-1](portability/port1/README.md) antes de modificar qualquer lógica. Nem OpenPPL nem interpretador são bot operacional; portar só após validação em OH.
+- Nunca pedir upload manual: o GitHub deve ser atualizado pela conexão. Consultar G1/G2-a/HOLD e preservar os sete documentos vivos.

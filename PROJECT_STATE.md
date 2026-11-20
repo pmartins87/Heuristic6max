@@ -62,3 +62,12 @@ G2-a permanece aberto: auditar a composição exata dos oito confrontos com prem
 A partir do ADR-016, regras novas de decisão executável devem nascer em OpenPPL ou representação restrita única; Python não terá uma segunda implementação independente da estratégia. [Contrato](PORTABILITY_CONTRACT.md).
 Prova estática BTN RFI AA/KK: duas linhas OpenPPL, sete testes e 3.042 estados. Total esperado 181 testes com as suítes anteriores (174+7). NÃO demonstra funcionamento no OpenHoldem real, nem garante fallback seguro.
 Python de importação de charts, análise, Monte Carlo, testes e reconstrução offline segue sem limitação artificial. Nenhuma ação/range histórico foi alterado. G1 aberto, G2-a HOLD, G6 pendente.
+
+## PORT-1 parcial — RFI LJ (20/11/2026)
+
+- [Código OpenPPL, testes e fonte única](portability/port1/README.md), [cobertura das 169 classes](portability/port1/PORT1_LJ_169_MAPPING.csv).
+- 43 RAISE puros e 125 FOLD puros representados em duas listas/regras OpenPPL; **KJo (40% raise/60% fold) permanece NÃO MAPEADO** para não quebrar a estratégia mista.
+- 15 testes incrementais em Python interpretam as regras OpenPPL diretamente, sem estratégia paralela. Contagem total esperada 174+7+15 = **196 testes**.
+- **PORT-1 permanece ABERTO**, pois símbolos, sorteio estável, ação ilegal e fallback ainda precisam de teste no OpenHoldem real. Nenhum range estratégico mudou.
+
+**Estado:** G1 e G2-a ainda abertos; G6 pendente. A prova é somente estática e não operacional.

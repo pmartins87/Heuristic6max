@@ -4,6 +4,13 @@ Estratégia **heurística** de No-Limit Hold'em cash 6-max baseada em fundamento
 
 **Checkpoint ativo: auditoria v0.11 de fontes, sobre v0.10 (20/11/2026), sobre motor/ranges v0.6.1 preservados** — G0 aprovado; G1 aberto; G2-a em auditoria/HOLD; G3–G7 pendentes. RFI, VS_OPEN e VS_3BET continuam DRAFT.
 
+## PORT-1 parcial — RFI LJ (20/11/2026)
+
+- [Código OpenPPL, testes e fonte única](portability/port1/README.md), [cobertura das 169 classes](portability/port1/PORT1_LJ_169_MAPPING.csv).
+- 43 RAISE puros e 125 FOLD puros representados em duas listas/regras OpenPPL; **KJo (40% raise/60% fold) permanece NÃO MAPEADO** para não quebrar a estratégia mista.
+- 15 testes incrementais em Python interpretam as regras OpenPPL diretamente, sem estratégia paralela. Contagem total esperada 174+7+15 = **196 testes**.
+- **PORT-1 permanece ABERTO**, pois símbolos, sorteio estável, ação ilegal e fallback ainda precisam de teste no OpenHoldem real. Nenhum range estratégico mudou.
+
 ## Auditoria v0.11 — charts públicas, sem substituir ranges
 - [Método, fontes e critérios](audits/g2a_v0_11/README.md)
 - [Fontes e premissas registradas](audits/g2a_v0_11/source_candidates.json)

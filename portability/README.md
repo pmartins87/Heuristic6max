@@ -14,3 +14,7 @@ python portability/oppl_probe.py
 ```
 
 **Não declarar paridade final:** falta verificação por motor OpenPPL real, incluindo resposta quando nenhuma regra corresponde, mapeamento de qualidade de observação, estabilidade de mix, estado de histórico, 6-max e legalidade. A semântica `None` do simulador de testes não garante que o OpenHoldem não faça uma ação por fallback.
+
+## PORT-1 parcial (LJ RFI)
+
+[port1/README.md](port1/README.md): 168 classes puras fielmente espelhadas em handlists/regras OpenPPL (43 RaiseTo, 125 Fold), 15 novos testes; KJo 40% RFI foi bloqueado. **Não carregar como bot:** falta evidência da paridade OpenHoldem-alvo.
