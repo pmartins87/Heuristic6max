@@ -5,3 +5,5 @@
 - **Preservar:** v0.6.1 e v0.7, inclusive CSVs e decisões; G1 aberto; G2-a HOLD; G2-b bloqueado. DeepCrusher/CrusherTBP intocados.
 - **Mudaria com:** premissas de rake/cap e sizing da plataforma-alvo + análise de equidade/realização por classes + replays de teste, justificando mudança **por mão** e prova de regressão, não pela comparação de percentuais agregados.
 - **Escopo da v0.8:** relatórios, teste e diagnóstico; não produz um bot jogável nem EV real.
+
+- **Errata CI v0.8:** tie-break determinístico em massas iguais até 12 casas. Não altera pesos, ranges ou EV; 11 testes incrementais.

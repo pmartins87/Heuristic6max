@@ -29,7 +29,7 @@ Revisar os oito nós (SB–BB, HJ–CO, LJ–CO, CO–BTN, HJ–BTN, LJ–HJ, BT
 - Revisar **defesa combinada (4bet+call) e fold vs preço**, priorizando HJ-CO, HJ-BTN, LJ-HJ, LJ-CO, LJ-BTN, CO-BTN. Testar alternativas condicionais a rake/cap e sizing antes de alterar ranges. Nenhuma mudança G2-b autorizada.
 
 ## Atualização G2-a / v0.8
-- Auditoria de 169 classes com posterior por RFI+3bet e card removal; quatro CSVs, 10 testes adicionais.
+- Auditoria de 169 classes com posterior por RFI+3bet e card removal; quatro CSVs, 11 testes adicionais.
 - Falhas de defesa devem ser investigadas em **conjunto com o ancestral RFI**, não resolvidas transferindo mãos para CALL indiscriminadamente.
 - Novo gate de revisão por mão: documentar premissa de rake/cap/sizing e matriz de EV (call, fold, 4bet) sob modelo explícito do adversário, com incerteza; só então mudar frequências individuais.
 - Variações de cold action demonstram fragilidade do contrafactual v0.7 em nós com jogadores atrás; sem alegar subdefesa GTO comprovada.

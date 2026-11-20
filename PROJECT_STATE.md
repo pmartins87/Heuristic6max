@@ -29,8 +29,10 @@ G2-a permanece aberto: auditar a composição exata dos oito confrontos com prem
 - Sem estimar EV verdadeiro: há ações de outros jogadores, rake não calibrado e decisões futuras. Nenhum range RFI/VS_OPEN/VS_3BET foi alterado. G2-a HOLD; G2-b bloqueado.
 
 ## Auditoria v0.8 — checkpoint incremental (20/11/2026)
-- Código e relatórios: [audits/g2a_v0_8/](audits/g2a_v0_8/), nove arquivos incluindo manifesto SHA-256; **10 testes novos**, total local 141 (124+7+10).
+- Código e relatórios: [audits/g2a_v0_8/](audits/g2a_v0_8/), nove arquivos incluindo manifesto SHA-256; **11 testes novos**, total local 142 (124+7+11).
 - Massa condicional por mão/família sob RFI+3bet com exclusão de cartas; os totais coincidem com a v0.6.1 nos 15 nós.
 - HJ vs CO: 23,2205 pp de folds da família suited-other, 11,2818 pp de pares 22–66, 9,2929 pp de broadways offsuit sem A, 14,3167 pp de Ax offsuit; somados 58,1119 pp dos 77,5377% de fold.
 - Análise das ações dos jogadores posteriores: sob o modelo zero-equidade da v0.7 e hipótese adicional de independência, o spot BTN vs SB exige P(nenhum cold action)≥99,51% para EV hipotético não negativo. Não existe medição empírica dessa probabilidade.
 - Nenhum range, ação, sizing ou módulo estratégico modificado. Ações de possíveis cold callers, EV verdadeiro, rake/cap e equidade/realização continuam sem validação. Gate G2-a HOLD.
+
+**Errata de reprodutibilidade v0.8:** primeiro CI acusou somente ordem de linhas em classes empatadas (Python 3.11 vs 3.13); script agora usa desempate determinístico. Nenhum cálculo estratégico mudou. Testes incrementais v0.8: 11.

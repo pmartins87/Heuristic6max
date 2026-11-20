@@ -54,7 +54,9 @@ def exact_hero_class_weights(opener: str, threebettor: str):
 def class_rows(opener: str, threebettor: str):
     weights = exact_hero_class_weights(opener, threebettor)
     rows = p.HERO[(opener, threebettor)]
-    for h, w in sorted(weights.items(), key=lambda x: (-x[1], x[0])):
+    # Quantize only the sorting key: tiny FP roundoff differs between Python builds.
+    # Preserve full-precision weights for all mass and probability calculations.
+    for h, w in sorted(weights.items(), key=lambda x: (-round(x[1], 12), x[0])):
         if not w: continue
         r = rows[h]
         yield {
@@ -148,7 +150,7 @@ def report_data():
     top_folds = []
     for pair in p.KEY_PAIRS:
         rows = sorted((r for r in class_rows(*pair) if r['FoldContribution_pp']>0),
-                       key=lambda x: (-x['FoldContribution_pp'],x['HeroHand']))
+                       key=lambda x: (-round(x['FoldContribution_pp'],12),x['HeroHand']))
         for rank, r in enumerate(rows[:12], 1):
             top_folds.append({'RankWithinNode':rank,**r,'ReviewFlag':'HIGH_MASS_FOLD_NOT_AUTO_CALL'})
     return classes, families, sensitivities, top_folds

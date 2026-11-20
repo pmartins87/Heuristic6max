@@ -1,6 +1,6 @@
 # G2-a v0.8 — composição de defesa VS_3BET e sensibilidade a terceiros
 
-**Data: 20/11/2026. Auditoria incremental, sem editar nenhuma política de pôquer.** Base: `gto6_heuristic_v0_6_1` (124 testes), v0.7 (7 testes), e 10 testes novos (v0.8). Portanto, 141 testes independentes executados localmente. **Isto não demonstra EV, GTO ou lucratividade.**
+**Data: 20/11/2026. Auditoria incremental, sem editar nenhuma política de pôquer.** Base: `gto6_heuristic_v0_6_1` (124 testes), v0.7 (7 testes), e 11 testes novos (v0.8). Portanto, 142 testes independentes executados localmente. **Isto não demonstra EV, GTO ou lucratividade.**
 
 ## O que foi calculado
 
@@ -58,8 +58,12 @@ python -m unittest discover -s audits/g2a_v0_8 -p 'test_*.py' -q
 python audits/g2a_v0_8/defense_composition.py
 ```
 
-Confirmar que os quatro CSVs regenerados não diferem dos arquivos rastreados no Git. **10 testes novos**, incluindo conservação exata de massa, coincidência com agregados da v0.6.1, classificação, pot odds, contagem de terceiros, sinais do contrafactual, cobertura dos oito nós e imutabilidade dos três CSVs estratégicos.
+Confirmar que os quatro CSVs regenerados não diferem dos arquivos rastreados no Git. **11 testes novos**, incluindo conservação exata de massa, coincidência com agregados da v0.6.1, classificação, pot odds, contagem de terceiros, sinais do contrafactual, cobertura dos oito nós e imutabilidade dos três CSVs estratégicos.
 
 ## Decisão / gate
 
 **Manter G2-a HOLD.** O principal suspeito agora é a combinação de RFI relativamente amplo com resposta estreita às 3-bets em determinadas classes; não há evidência suficiente para transferir essas mãos de FOLD para CALL ou 4BET. Priorizar auditoria econômica RFI-versus-3bet (rake/cap e sizings), comparação individual de mãos em árvores equivalentes, e replays reais em ambiente sem apostas. **Não iniciar VS_4BET/G2-b nem editar os três ranges-base.**
+
+## Nota de reprodução e correção CI
+
+Uma primeira execução CI (Python 3.11) identificou ordem distinta nas linhas de classes de massa praticamente idêntica à gerada no Python 3.13. **Não houve mudança no cálculo nem nas decisões**: os arquivos passaram a usar ordenação por chave de massa arredondada em 12 casas, seguida pelo identificador da mão. Acrescentado teste de desempate determinístico. Este ajuste mantém 15/15 agregados e permite reproduzir CSVs entre versões de Python.

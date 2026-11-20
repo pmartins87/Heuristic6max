@@ -73,6 +73,13 @@ class AuditV08(unittest.TestCase):
         p=t*spot.model_fold_pct/100
         self.assertAlmostEqual(p*spot.pot_before_bb-(1-p)*spot.invested_bb,0,places=9)
 
+    def test_deterministic_tie_order_by_hand(self):
+        # Tied weights at 12-digit resolution must be sorted lexicographically.
+        for pair in d.p.KEY_PAIRS:
+            rows=list(d.class_rows(*pair))
+            expected=sorted(rows,key=lambda r:(-round(r['HeroShareGivenRFIAnd3bet_pct']/100,12),r['HeroHand']))
+            self.assertEqual([r['HeroHand'] for r in rows],[r['HeroHand'] for r in expected])
+
     def test_class_contributions_sorted(self):
         for pair in d.p.KEY_PAIRS:
             rows=list(d.class_rows(*pair))

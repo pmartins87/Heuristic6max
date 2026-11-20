@@ -45,4 +45,6 @@ Revisar por classe os oito MAJOR_REVIEW com comparações rake/sizings equivalen
     python audits/g2a_v0_8/defense_composition.py
     cd audits/g2a_v0_8 && sha256sum -c AUDIT_SHA256SUMS.txt
 
-A auditoria v0.8 agrega 10 testes aos 131 da v0.7/base: **141 testes locais**. Fonte: [README v0.8](audits/g2a_v0_8/README.md). O CI confere determinismo dos quatro CSVs versionados. **Não usar o ranking de folds como recomendação de call.** Nenhuma política foi alterada; próxima etapa é análise EV por mão/rake/sizing e replays de teste. Lembre-se de rever os sete documentos vivos antes de qualquer nova implementação.
+A auditoria v0.8 agrega 11 testes aos 131 da v0.7/base: **142 testes locais**. Fonte: [README v0.8](audits/g2a_v0_8/README.md). O CI confere determinismo dos quatro CSVs versionados. **Não usar o ranking de folds como recomendação de call.** Nenhuma política foi alterada; próxima etapa é análise EV por mão/rake/sizing e replays de teste. Lembre-se de rever os sete documentos vivos antes de qualquer nova implementação.
+
+**Atenção CI:** v0.8 passou por um ajuste de desempate estável (Python 3.11/3.13). Execute os testes + regeneração dos quatro CSVs + `git diff` + `sha256sum -c AUDIT_SHA256SUMS.txt`. Não comparar ordenação de floats sem chave estável.

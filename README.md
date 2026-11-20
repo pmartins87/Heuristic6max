@@ -18,9 +18,9 @@ Leia, nesta ordem:
 - [Mãos de maior contribuição aos folds](audits/g2a_v0_8/TOP_FOLD_CLASSES_8_v0_8.csv)
 - [Famílias em 15 nós](audits/g2a_v0_8/DEFENSE_FAMILIES_15_v0_8.csv)
 - [Sensibilidade a cold actions](audits/g2a_v0_8/COLD_ACTION_SENSITIVITY_15_v0_8.csv)
-- [Código e 10 testes v0.8](audits/g2a_v0_8/defense_composition.py)
+- [Código e 11 testes v0.8](audits/g2a_v0_8/defense_composition.py)
 
-**141 testes locais** (124+7+10). Exemplo HJ-CO: **58,1119 pontos percentuais dos folds** vêm de quatro famílias (suited-outras, pares 22–66, broadways offsuit sem A e Ax offsuit). Isto NÃO significa que essas mãos deveriam dar call. Em BTN-SB, a pressão isolada anterior (+0,048 BB) desaparece sob pequena interferência hipotética do BB (~0,49%). Sem simulação de EV real; G2-a permanece HOLD.
+**142 testes locais** (124+7+11). Exemplo HJ-CO: **58,1119 pontos percentuais dos folds** vêm de quatro famílias (suited-outras, pares 22–66, broadways offsuit sem A e Ax offsuit). Isto NÃO significa que essas mãos deveriam dar call. Em BTN-SB, a pressão isolada anterior (+0,048 BB) desaparece sob pequena interferência hipotética do BB (~0,49%). Sem simulação de EV real; G2-a permanece HOLD.
 
 ## Auditoria G2-a v0.7 (sem alterar ranges)
 - [Método e conclusões](audits/g2a_v0_7/README.md)
