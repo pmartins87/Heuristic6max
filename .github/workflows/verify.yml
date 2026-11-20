@@ -1,0 +1,17 @@
+name: Verify snapshots and tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate manifests, ancestors and v0.6 tests
+        run: python scripts/check_repository.py
