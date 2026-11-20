@@ -1,0 +1,6 @@
+// PORTABILITY PROBE ONLY. NOT AN OPERATIONAL BOT. NEVER LOAD IN LIVE PLAY.
+// Rules intentionally limited to two pure BTN RFI branches of v0.6.1.
+// No fallback: unmatched situations in OpenHoldem are NOT equivalent to Python None.
+##f$preflop##
+WHEN (InButton AND Raises = 0 AND Calls = 0 AND hand$AA) RaiseTo 2.5 FORCE
+WHEN (InButton AND Raises = 0 AND Calls = 0 AND hand$KK) RaiseTo 2.5 FORCE

@@ -1,0 +1,9 @@
+Component,CurrentPythonFeature,OpenPPLNativeEquivalent,RuntimePortabilityStatus,NextEvidence
+RFI_pure_AA_KK_BTN,dict-built range and policy wrapper,InButton/Raises/Calls/hand$AA/hand$KK/RaiseTo 2.5,STATIC_PILOT_ONLY,Confirm OpenHoldem runtime behavior
+RFI_mixed,sha256(hand_id...) deterministic sampler,Random or memory symbols NOT semantically equivalent,BLOCKED,Stable per-node random in OH and test
+VS_OPEN_all,15x169 matrix+ledger guards,WHEN/handlists/pot+position symbols partial,UNMAPPED,Symbol-by-symbol legal state mapping
+VS_3BET_all,15x169 matrix+4bet+observation,WHEN/RaiseTo partial,UNMAPPED,Verified 3bet history and legal bet sizing
+Unreachable_undefined,None fail closed,OH implicit zero and action fallback differ,BLOCKED,No-action semantics verified in runtime
+Scrape_quality,source_quality HIGH flag,No direct verified one-line equivalent,BLOCKED,Stable snapshots/action history OH mapping
+G1_offline_ledger,dataclasses loops and event replay,Not required for live OpenPPL decision,OFFLINE_ONLY,Use to validate OH logs
+Equity_and_MonteCarlo,loops tables and card evaluator,Not needed in live OPPL when precomputed,OFFLINE_ONLY,Export only verified thresholds/handlists
