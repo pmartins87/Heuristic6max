@@ -49,3 +49,10 @@ A cada nova implementação estratégica, consultar este contrato e atualizar `D
 - [portability/port1/README.md](portability/port1/README.md) apresenta o subconjunto LJ RFI com 43 pure raises, 125 pure folds, KJo 40% raise não implementado; 15 testes e fonte única OpenPPL.
 - Guardas sob verificação: IsPreflop, nplayersdealt=6, InUTG, Raises, Calls, StillToAct, PotSize, AmountToCall, StackUnknown, StackSize, MinOpponentStackSize e MaxOpponentStackSize. A documentação fornecida descreve esses símbolos, mas seus valores no OH-alvo não foram verificados.
 - **PORT-1 continua ABERTO.** Interpretador Python None em regra ausente não assegura fallback seguro no OpenHoldem; ainda exige mistura KJo estável 40/60, OH real, legalidade, sizing, snapshots e replays de teste.
+
+## PORT-2 — atualização específica da exigência de mistura (ADR-018)
+- A documentação local OpenPPL/OH confirma `randomhand` no intervalo [0,1), gerado uma vez por mão. **Preferir `randomhand` a `Random` por avaliação** para mistura estável no mesmo nó (sem afirmar independência entre múltiplos nós).
+- [portability/port2/](portability/port2/) é a prova estática de 169 mãos LJ; KJo fica em lista exclusiva com dois ramos complementares `< 0.40`/ `>= 0.40`, ordenados, e o interpretador recebe `randomhand` como observação de teste.
+- **Novo critério PORT-2a (satisfeito estaticamente):** expressar KJo misto sem hash nem memória própria, preservar 169 classes, não duplicar lógica e cobrir testes de limiar e reavaliações.
+- **Critério PORT-2b (ABERTO):** comprovar no executável OH-alvo os símbolos, estabilidade/mudança entre mãos, final action, falsos positivos na detecção, fallback, legalidade de RaiseTo e ausência de desvio em replay sem apostas. Não declarar PORT-2 concluído operacionalmente.
+- Os trechos históricos de PORT-1 que citam KJo bloqueado continuam válidos para o ARTEFATO PORT-1, mas foram superados na prova PORT-2. Nenhum range mudou.

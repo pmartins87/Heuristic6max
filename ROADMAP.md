@@ -67,3 +67,8 @@ Ver [PORTABILITY_CONTRACT.md](PORTABILITY_CONTRACT.md).
 - Representar apenas o subdomínio de 168 mãos puras da LJ, com guardas de seis jogadores, stacks, posição, pot e RFI, usando texto OpenPPL. KJo (40% raise) NÃO pode ser arredondado.
 - **Próximo gate:** provar mistura estável do KJo; validar todos os símbolos, NoMatch/fallback e ação final na versão instalada de OH por replays sem apostas. Sem isso PORT-1 não está aprovado e G6 não é liberado.
 - 15 testes novos. Não alterar G2-a HOLD, ranges v0.6.1, G1 ou G6.
+
+## PORT-2 — atualização transversal de portabilidade
+- **Novo dado técnico:** OpenPPL/OH documenta `randomhand` em [0,1), fixo por mão. KJo 40/60 da LJ agora tem 2 regras explícitas complementares no mesmo arquivo OpenPPL; 19 novos testes estáticos.
+- **PORT-1/2 estático:** a lacuna de expressabilidade da mistura KJo foi eliminada; o gate operacional continua aberto. Não alterar gates G1, G2-a, G2-b, G6 nem os 3 ranges.
+- **Próximo gate mensurável:** OH-alvo instalado e versão identificada → replays sem dinheiro → confirmar amostras de `randomhand`, estabilidade por mão, 0.40, escopo correto da posição/stack, sizing final `RaiseTo`, e comportamento de no-match/fallback. Sem esses resultados, não autorizar exportação operacional.

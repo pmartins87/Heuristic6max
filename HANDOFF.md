@@ -100,3 +100,8 @@ Na raiz do repositório, execute:
 - 168/169 classes LJ com ações puras, KJo 40% RFI não mapeado, sem fail-closed assegurado no OH.
 - Ler [PORTABILITY_CONTRACT.md](PORTABILITY_CONTRACT.md) e [README PORT-1](portability/port1/README.md) antes de modificar qualquer lógica. Nem OpenPPL nem interpretador são bot operacional; portar só após validação em OH.
 - Nunca pedir upload manual: o GitHub deve ser atualizado pela conexão. Consultar G1/G2-a/HOLD e preservar os sete documentos vivos.
+
+## PORT-2 — mix nativo `randomhand`, checkpoint 20/11/2026
+- Ler primeiro [portability/port2/README.md](portability/port2/README.md) e [PORTABILITY_CONTRACT.md](PORTABILITY_CONTRACT.md); PORT-1 foi preservado como histórico, mas a lacuna KJo 40/60 de expressabilidade estática está coberta.
+- Rodar da raiz: `python -m unittest discover -s portability/port2 -p 'test_*.py' -q`, depois `python portability/port2/generate_port2.py`; verificar `git diff --exit-code -- portability/port2/*.oppl portability/port2/*.csv` e `(cd portability/port2 && sha256sum -c PORT2_SHA256SUMS.txt)`.
+- 19 novos testes, 215 no total previsto. Não executar o .oppl em dinheiro real; no-match em Python não equivale a falha segura de OpenHoldem. **Próximo gate:** replay real de teste, observação de `randomhand`, action final/size e fallback. Somente passar a outro nó misto após resolver correlação e mecanismos por nó.

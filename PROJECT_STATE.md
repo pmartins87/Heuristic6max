@@ -71,3 +71,8 @@ Python de importação de charts, análise, Monte Carlo, testes e reconstrução
 - **PORT-1 permanece ABERTO**, pois símbolos, sorteio estável, ação ilegal e fallback ainda precisam de teste no OpenHoldem real. Nenhum range estratégico mudou.
 
 **Estado:** G1 e G2-a ainda abertos; G6 pendente. A prova é somente estática e não operacional.
+
+## PORT-2 — 20/11/2026: mistura KJo compatível em fonte, sem promoção
+- `portability/port2/`: 169/169 classes LJ RFI representadas em OpenPPL (43 RAISE puro, 125 FOLD puro, KJo misto 40/60 por `randomhand`), derivadas da v0.6.1 imutável.
+- 19 novos testes locais de interpretador estático, distribuição em 10.000 limiares, estabilidade com input constante, fronteira 0,40 e rejeição de regras inseguras. Total esperado no CI: 215.
+- A **implementação real de randomhand** e ação final OpenHoldem NÃO foram verificadas. `None` em Python não prova fail-closed OH. PORT-2 não aprova G6; G1 aberto, G2-a HOLD e G2-b bloqueado.

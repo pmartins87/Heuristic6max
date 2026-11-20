@@ -1,5 +1,11 @@
 # Heuristic6max — fonte de verdade
 
+## PORT-2: mix nativo OpenPPL com `randomhand` (estático, NÃO operacional)
+- [Fonte única OpenPPL, interpretador e 19 testes](portability/port2/README.md); [mapeamento das 169 classes LJ](portability/port2/PORT2_LJ_169_MAPPING.csv).
+- KJo: raise 40% quando `randomhand < 0.40` e fold 60% caso contrário; 43 classes com raise puro, 125 com fold puro, **nenhuma mudança na baseline v0.6.1**.
+- 19 testes incrementais; total de **215 testes esperados no CI** (196 anteriores + 19). São testes de fonte estática, **não testam o OpenHoldem real**.
+- PORT-2 **parcial**, sem promoção operacional: estabilidade/valor do símbolo no OH instalado, fallback, scraping e sizing final seguem exigindo replay em ambiente sem apostas.
+
 Estratégia **heurística** de No-Limit Hold'em cash 6-max baseada em fundamentos de GTO, com contratos, ranges auditáveis e testes reprodutíveis. **Não é um solver; não é um bot operacional validado; não há comprovação de EV ou winrate.**
 
 **Checkpoint ativo: auditoria v0.11 de fontes, sobre v0.10 (20/11/2026), sobre motor/ranges v0.6.1 preservados** — G0 aprovado; G1 aberto; G2-a em auditoria/HOLD; G3–G7 pendentes. RFI, VS_OPEN e VS_3BET continuam DRAFT.

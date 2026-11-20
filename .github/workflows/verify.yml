@@ -71,3 +71,12 @@ jobs:
         run: git diff --exit-code -- portability/port1/lj_rfi_pure_port1.oppl portability/port1/PORT1_LJ_169_MAPPING.csv
       - name: Verify PORT-1 SHA256 snapshot
         run: cd portability/port1 && sha256sum -c PORT1_SHA256SUMS.txt
+
+      - name: Run PORT-2 hand-stable OpenPPL mixture tests
+        run: python -m unittest discover -s portability/port2 -p 'test_*.py' -q
+      - name: Regenerate PORT-2 mixed LJ RFI source and 169-class mapping
+        run: python portability/port2/generate_port2.py
+      - name: Verify PORT-2 generated rules have no drift
+        run: git diff --exit-code -- portability/port2/lj_rfi_mixed_port2.oppl portability/port2/PORT2_LJ_169_MAPPING.csv
+      - name: Verify PORT-2 SHA256 manifest
+        run: cd portability/port2 && sha256sum -c PORT2_SHA256SUMS.txt

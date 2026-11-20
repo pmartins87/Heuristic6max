@@ -49,3 +49,8 @@ Localização versionada: [audits/g2a_v0_7/](audits/g2a_v0_7/). Contém script, 
 ## PORT-1 — checkpoint incremental, não release de bot
 - [portability/port1](portability/port1/): sete arquivos com regras OpenPPL, interpretador de testes, gerador offline, 169 linhas de mapping, README, testes e manifesto SHA256.
 - 15 testes incrementais; total esperado 196 (174+7+15). Teste de compatibilidade ainda estático; KJo permanece sem regra. Fonte estratégica v0.6.1 DRAFT não alterada; hashes históricos preservados.
+
+## PORT-2 — artefato incremental de portabilidade estática (sem release operacional)
+- [portability/port2/](portability/port2/): 7 arquivos versionados com fonte OpenPPL, interpretador, gerador, 19 testes, mapeamento, README e `PORT2_SHA256SUMS.txt` (hashes dos outros seis).
+- Baseline imutável: v0.6.1, 66 arquivos. KJo RFI LJ 40/60 representado via `randomhand`, não convertido em ação pura.
+- Reproduzir: gerador determinístico + `git diff`, 19 testes e `sha256sum -c PORT2_SHA256SUMS.txt`. Total CI esperado **215 = 196 + 19**. Não há teste OpenHoldem, não autoriza execução operacional.

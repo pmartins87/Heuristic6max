@@ -27,3 +27,5 @@ Consulte [DECISIONS.md](DECISIONS.md) para justificativas e [RELEASE_MANIFEST.md
 - **PORT-0 / ADR-016 (20/11/2026):** introduzido contrato de paridade OpenPPL obrigatória para novas decisões executáveis, prova com 2 regras BTN RFI nativas no arquivo .oppl e intérprete de testes Python da mesma fonte; 7 testes, 3.042 estados; total CI esperado 181. Estratégia/ranges intactos; não foi executado no OpenHoldem real. [Contrato](PORTABILITY_CONTRACT.md).
 
 - **PORT-1 parcial (20/11/2026):** 168/169 mãos LJ RFI puras portadas como duas listas+regras nativas OpenPPL (43 raise, 125 fold); KJo 40% raise ficou BLOQUEADO. 15 testes de paridade estática e manifesto SHA256; nenhuma tabela estratégica alterada. Total esperado 196 testes. Gate não aprovado e execução OH real pendente. [Fonte](portability/port1/README.md).
+
+- **PORT-2 (20/11/2026):** adição de 7 arquivos em `portability/port2/`, 19 testes estáticos para 169 classes LJ, KJo misto 40/60 com símbolo OpenHoldem `randomhand` fixo por mão, testes de limite e não-correspondência. Total esperado CI 215 testes. Sem alteração de RFI/VS_OPEN/VS_3BET ou snapshots; não operacional. [Detalhes](portability/port2/README.md).
