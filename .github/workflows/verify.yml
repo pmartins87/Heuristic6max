@@ -89,3 +89,12 @@ jobs:
         run: git diff --exit-code -- portability/port3/SYNTHETIC_REPLAY_REPORT.csv
       - name: Verify PORT-3 SHA256 manifest
         run: cd portability/port3 && sha256sum -c PORT3_SHA256SUMS.txt
+
+      - name: Verify five-position first-in OpenPPL module (12 tests)
+        run: python -m unittest discover -s portability/rfi_mvp -p 'test_*.py' -q
+      - name: Rebuild first-in OpenPPL and 845-class RFI map
+        run: python portability/rfi_mvp/generate_rfi_mvp.py
+      - name: Confirm first-in OpenPPL and mapped ranges do not drift
+        run: git diff --exit-code -- portability/rfi_mvp/rfi_6max_mvp.oppl portability/rfi_mvp/RFI_6MAX_845_MAPPING.csv
+      - name: Check RFI-MVP SHA256 manifest
+        run: cd portability/rfi_mvp && sha256sum -c RFI_MVP_SHA256SUMS.txt

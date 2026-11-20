@@ -59,3 +59,8 @@ Localização versionada: [audits/g2a_v0_7/](audits/g2a_v0_7/). Contém script, 
 - [portability/port3/](portability/port3/) 7 arquivos (auditor, 27 testes, input e output sintéticos, README, .gitignore, `PORT3_SHA256SUMS.txt`).
 - Base de decisão: `portability/port2/lj_rfi_mixed_port2.oppl` inalterada, v0.6.1 imutável. Nenhuma execução OpenHoldem reportada.
 - CI: 215 testes anteriores + 27 = **242** previstos; reproduzir CSV sintético e hashes. Níveis de resultado NÃO incluem PASS operacional. G1 aberto, G2-a HOLD, G6 pendente.
+
+## RFI-MVP 6-max — componente OpenPPL parcial, NÃO release operacional
+- [portability/rfi_mvp/](portability/rfi_mvp/): 7 arquivos rastreados (OPPL 21 regras, gerador, interpretador, 12 testes, 845 linhas CSV, README e `RFI_MVP_SHA256SUMS.txt` sobre 6 arquivos).
+- Depende de `gto6_heuristic_v0_6_1/` (66 arquivos, snapshot e políticas intactos). Há 5 mixes e limp da SB; não há dados novos de GTO/EV.
+- CI esperada: **254 testes = 242 históricos + 12**, regeneração e diff nulo de OPPL/CSV, SHA256 dos artefatos. VS_OPEN/VS_3BET, fallback e OpenHoldem real ainda pendentes.

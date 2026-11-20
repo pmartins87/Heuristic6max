@@ -62,3 +62,9 @@ A cada nova implementação estratégica, consultar este contrato e atualizar `D
 - [Auditor offline](portability/port3/README.md) detecta drift da fórmula, alteração do número aleatório dentro da mão, no-match/fallback, discrepâncias de ação e sizing, prova ausente ou adulterada. **`READY_FOR_MANUAL_REVIEW` exige inspeção humana da evidência e não aprova G6**.
 - **PORT-3a PREPARADO:** 27 testes sintéticos, 5 STATIC_ONLY, 1 BLOCKED_NO_MATCH. **PORT-3b BLOQUEADO:** sem OH-alvo, sem frame real, sem observação de ação final.
 - Não redistribuir logs/frames com dados sensíveis nem conectar autoplayer a mesas reais para experimentar. Preservar G1/G2/G6, snapshots e ranges sem alterações.
+
+## RFI-MVP — implementar decisões com uma só fonte OpenPPL (ADR-020)
+- O requisito OpenPPL-first agora cobre **cinco posições RFI**, 845 pares e 5 mixes (inclui SB limp). [Fonte, guardas e validações](portability/rfi_mvp/README.md).
+- **Python autorizado exclusivamente para ferramentas offline** de compilação, inspeção, teste e relatório; a fonte da ação final simulada é o arquivo `rfi_6max_mvp.oppl`.
+- Estratégia continua DRAFT: o módulo OPPL não define fallback seguro em cenários fora de domínio; um `default.bot` pode agir onde nenhuma regra encontra correspondência. OPPL completo + replays de OH antes de uso.
+- Metas de qualidade pragmáticas: validade de sintaxe simbólica/ações, cobertura de linhas, comportamento estável das misturas, não regressão; **não exigir prova científica de GTO/EV para continuar a autoria DRAFT**.

@@ -111,3 +111,9 @@ Na raiz do repositório, execute:
 - Testar: `python -m unittest discover -s portability/port3 -p 'test_*.py' -q`; `python portability/port3/replay_audit.py`; `git diff --exit-code -- portability/port3/SYNTHETIC_REPLAY_REPORT.csv`; `cd portability/port3 && sha256sum -c PORT3_SHA256SUMS.txt`.
 - **Esperado:** 27 testes e 5 STATIC_ONLY + 1 BLOCKED_NO_MATCH; 242 testes totais previstos. `READY_FOR_MANUAL_REVIEW` não prova autenticidade, parsing por OH nem segurança. O runtime OH permanece **sem teste**.
 - Evidências reais futuras DEVEM ser capturadas em OHReplay/ManualMode offline e mantidas fora do GitHub público. Confrontar `Best action` com `Action taken` e verificar guardas/randomhand antes de liberar gate. Não reabrir discussão da mistura KJo sem nova falha concreta; não mexer nos 3 ranges.
+
+## Checkpoint RFI-MVP 6-max (20/11/2026) — próximo trabalho estratégico
+- [Fonte OpenPPL e regras RFI-MVP](portability/rfi_mvp/README.md); `rfi_6max_mvp.oppl` cobre 845 cenários first-in, sem repetir estratégia no Python.
+- Para checar: `python -m unittest discover -s portability/rfi_mvp -p 'test_*.py' -q`; `python portability/rfi_mvp/generate_rfi_mvp.py`; `git diff --exit-code -- portability/rfi_mvp/rfi_6max_mvp.oppl portability/rfi_mvp/RFI_6MAX_845_MAPPING.csv`; `cd portability/rfi_mvp && sha256sum -c RFI_MVP_SHA256SUMS.txt`.
+- 12 novos testes (254 acumulados esperados); cinco mixes sem aproximações puras, SB com limp. Não recodificar um segundo runtime Python, não operar em apostas, não tratar no-match como None operacional.
+- **Próximo passo:** VS_OPEN na mesma linguagem e estratégia imutável. Não continuar criando auditorias econômicas teóricas sem relação com avanço concreto. Versão OH e replay real ainda pendentes, guardados para o gate de integração.

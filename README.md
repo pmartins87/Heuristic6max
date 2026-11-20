@@ -1,5 +1,12 @@
 # Heuristic6max — fonte de verdade
 
+## RFI-MVP 6-max — módulo OpenPPL das cinco posições (20/11/2026)
+- **[Fonte OpenPPL e documentação](portability/rfi_mvp/README.md)** · [845 linhas por mão/posição](portability/rfi_mvp/RFI_6MAX_845_MAPPING.csv).
+- Implementadas 5 posições LJ/HJ/CO/BTN/SB, **845 classes de situação**, 21 regras e os cinco mixes por `randomhand`; SB preserva ramo de limp (`Call`), não apenas raise/fold.
+- Fonte estratégica OpenPPL única; Python offline apenas gera/verifica. Frequências e decisões da **v0.6.1 são integralmente preservadas**.
+- **12 testes novos** (254 acumulados esperados no CI), sem novas pesquisas de EV imaginário. **Não é bot operacional completo**: VS_OPEN/VS_3BET, fallback e pós-flop pendem; OpenHoldem real não foi executado.
+- **Prioridade de engenharia:** converter VS_OPEN a partir das tabelas existentes, mantendo gate de integração OH separado do desenvolvimento da heurística.
+
 ## PORT-3 / RPL-0 — auditor de evidência OpenHoldem (sem aprovação de runtime)
 - [Método, provas e instruções offline](portability/port3/README.md), [auditor Python](portability/port3/replay_audit.py), [27 testes](portability/port3/test_replay_audit.py).
 - O auditor lê o **mesmo arquivo OpenPPL PORT-2**, exige `randomhand` observado, símbolo/estado do replay, SHA da fórmula, **ação da fórmula** e **ação final**. Recusa no-match como fail-closed e detecta fallback/sizing divergente.
@@ -14,7 +21,7 @@
 
 Estratégia **heurística** de No-Limit Hold'em cash 6-max baseada em fundamentos de GTO, com contratos, ranges auditáveis e testes reprodutíveis. **Não é um solver; não é um bot operacional validado; não há comprovação de EV ou winrate.**
 
-**Checkpoint ativo: PORT-3 (replay evidence harness, 20/11/2026), sobre auditoria v0.11 e estratégia v0.6.1 preservadas** — G0 aprovado; G1 aberto; G2-a em auditoria/HOLD; G3–G7 pendentes. RFI, VS_OPEN e VS_3BET continuam DRAFT.
+**Checkpoint ativo: RFI-MVP OpenPPL 5 posições (20/11/2026), sobre PORT-3 e estratégia v0.6.1 preservada** — G0 aprovado; G1 aberto; G2-a em auditoria/HOLD; G3–G7 pendentes. RFI, VS_OPEN e VS_3BET continuam DRAFT.
 
 ## PORT-1 parcial — RFI LJ (20/11/2026)
 

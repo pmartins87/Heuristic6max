@@ -1,5 +1,5 @@
 # Estado atual — Heuristic6max
-**Data:** 20/11/2026 | **Checkpoint:** auditoria v0.11 de fontes sobre v0.10 sobre v0.6.1 G2-a | **Estado estratégico:** HOLD / não operacional.
+**Data:** 20/11/2026 | **Checkpoint:** RFI-MVP 6-max em OpenPPL sobre v0.6.1 | **Estado estratégico:** G2-a HOLD / não operacional.
 
 ## Evidências concluídas
 - G0: arquitetura e contratos.
@@ -82,3 +82,9 @@ Python de importação de charts, análise, Monte Carlo, testes e reconstrução
 - Testes locais: 27/27; total esperado na CI: **242**. Relatório exclusivamente sintético: **5 STATIC_ONLY + 1 BLOCKED_NO_MATCH**. **Zero capturas de OpenHoldem real, zero aprovações operacionais**.
 - Novos invariantes: hash da fórmula OPPL, mesmo `randomhand` por (sessão,mão), guardas observados, comparação independente de ação da fórmula e ação realmente tomada, RaiseTo exato, evidência auditável e no-match SEM aprovação automática. Um log com hash correto ainda precisa de revisão de autenticidade.
 - Não foram alterados ranges RFI/VS_OPEN/VS_3BET, G1 segue aberto, G2-a HOLD, G6 pendente. Próximo passo é capturar replays **offline** do OpenHoldem-alvo; não presumir existência de executável ou logs.
+
+## RFI-MVP — avanço útil de implementação, 20/11/2026
+- `portability/rfi_mvp/` tem 7 arquivos: OpenPPL real como fonte de decisão, gerador offline, interpretador estrito, 12 testes, 845 registros, README e SHA256.
+- Cobertura first-in 5×169=845: 5 classes de mix (LJ KJo 40%, HJ QJo 50%, BTN 53s 50%, SB K3s raise 50%, SB 97o limp 75%), o restante puro. SB possui estratégia de limp conservada.
+- **12/12 testes locais** e 254 acumulados esperados no CI. Testes percorrem 845 classes e vários valores de randomhand; não simulam EV, não garantem compilação no executável OH.
+- RFI v0.6.1 *imutável*. Próximo produto de estratégia: VS_OPEN OpenPPL da baseline histórica, sem bloqueá-lo por pesquisa não necessária. G1 aberto, G2-a HOLD, G2-b bloqueado, G6 pendente.

@@ -1,4 +1,4 @@
-# Roadmap vivo — 20/11/2026 (auditoria v0.11 de fontes / estratégia v0.6.1)
+# Roadmap vivo — 20/11/2026 (RFI-MVP OpenPPL 6-max / estratégia v0.6.1)
 
 | Gate | Estado | Critério de avanço |
 |---|---|---|
@@ -77,3 +77,9 @@ Ver [PORTABILITY_CONTRACT.md](PORTABILITY_CONTRACT.md).
 - Auditor de evidência reproduzível implementado com 27 testes, mais 6 fixtures explícitas e relatório de 5 casos STATIC_ONLY + 1 BLOCKED_NO_MATCH.
 - **Aceitação do próximo gate PORT-3b:** OH-alvo/build identificado; ManualMode ou OHReplay desconectados de mesa real; `f$debug` registrando os símbolos; ações `Best action` e `Action taken` (e sizing) obtidas de **mesma mão**, evidência local com hash; estabilidade de `randomhand` e sem fallback silencioso. Uma passagem parcial não é aprovação.
 - **Parada atual:** sem arquivo de replay real, parar a inferência de runtime. Preservar PORT-1/PORT-2, G1 ABERTO, G2-a HOLD, G2-b BLOQUEADO, G6 PENDENTE; não mudar a estratégia.
+
+## Entrega pragmática RFI-MVP — interpretação dos gates
+- **Objetivo permanece:** bot heurístico aproximadamente GTO, não solver científico nem tese de EV. Reusar charts compatíveis e heurísticas quando faltarem dados, sem inventar GTO certificado.
+- Concluído **módulo RFI first-in com 845 casos/21 regras OpenPPL** a partir do histórico v0.6.1; 12 testes de paridade pragmática, preservação dos 5 mixes e do limp SB.
+- **Próximo componente concreto:** gerar VS_OPEN a partir das 15 árvores existentes, com `RaiseTo`, `Call` e `Fold` compatíveis e mix `randomhand`, sem reimplementar mãos em Python.
+- **Separação de gates:** criar estratégia em OPPL é permitido como artefato DRAFT, mas não liberar carga/operação real antes de OpenHoldem replay, controle de default.bot e ação final. Não liberar G2-b/VS_4BET antes da decisão G2-a.
