@@ -1,0 +1,16 @@
+Opener,Hero,Our3bet_pct,OurCall_pct,OurFold_pct,Ref3bet_pct,RefCall_pct,AbsDifference3bet_pp,AbsDifferenceCall_pp,ModelSource,ComparableRake,AuditFlag,Status
+LJ,HJ,4.4796,4.7360,90.7843,,,,,,NO,CROSSCHECK_ONLY,DRAFT
+LJ,CO,5.2338,4.9321,89.8341,8.6000,,3.3662,,https://artgto.com/learn/ranges/,NO,REVIEW,DRAFT
+LJ,BTN,5.2338,5.8522,88.9140,7.0000,,1.7662,,https://artgto.com/learn/ranges/,NO,CROSSCHECK_ONLY,DRAFT
+LJ,SB,5.7768,0.0000,94.2232,6.9000,,1.1232,,https://artgto.com/learn/ranges/,NO,CROSSCHECK_ONLY,DRAFT
+LJ,BB,5.7617,20.4525,73.7858,5.8000,20.7000,0.0383,0.2475,https://simplegto.com/learn/preflop-statistics,NO,CROSSCHECK_ONLY,DRAFT
+HJ,CO,5.2338,5.3997,89.3665,10.0000,,4.7662,,https://artgto.com/learn/ranges/,NO,REVIEW,DRAFT
+HJ,BTN,5.5958,6.6516,87.7526,8.7000,,3.1042,,https://artgto.com/learn/ranges/,NO,REVIEW,DRAFT
+HJ,SB,6.0558,0.0000,93.9442,8.1000,,2.0442,,https://artgto.com/learn/ranges/,NO,CROSSCHECK_ONLY,DRAFT
+HJ,BB,6.3575,20.7466,72.8959,7.5000,21.5000,1.1425,0.7534,https://simplegto.com/learn/preflop-statistics,NO,CROSSCHECK_ONLY,DRAFT
+CO,BTN,8.8084,7.2549,83.9367,11.3000,,2.4916,,https://artgto.com/learn/ranges/,NO,CROSSCHECK_ONLY,DRAFT
+CO,SB,8.5596,0.0000,91.4404,10.3000,,1.7404,,https://artgto.com/learn/ranges/,NO,CROSSCHECK_ONLY,DRAFT
+CO,BB,9.2836,25.2564,65.4600,9.5000,24.2000,0.2164,1.0564,https://simplegto.com/learn/preflop-statistics,NO,CROSSCHECK_ONLY,DRAFT
+BTN,SB,12.3831,0.0000,87.6169,14.5000,,2.1169,,https://artgto.com/learn/ranges/,NO,CROSSCHECK_ONLY,DRAFT
+BTN,BB,13.1523,31.6139,55.2338,13.4000,32.5000,0.2477,0.8861,https://simplegto.com/learn/preflop-statistics,NO,CROSSCHECK_ONLY,DRAFT
+SB,BB,15.7768,41.1463,43.0769,16.2000,41.8000,0.4232,0.6537,https://simplegto.com/learn/preflop-statistics,NO,CROSSCHECK_ONLY,DRAFT
