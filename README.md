@@ -24,3 +24,5 @@ A v0.4 (114 testes) tinha 15 árvores VS_3BET, 169 classes cada, com 8 divergên
 - [Issue #1 — Sincronizar código e datasets da v0.5](https://github.com/pmartins87/Heuristic6max/issues/1) (bloqueador de portabilidade).
 - [Issue #2 — Revisar 8 nós VS_3BET críticos](https://github.com/pmartins87/Heuristic6max/issues/2).
 - Execute `python scripts/check_repository.py` para saber se o repositório contém a versão completa. Enquanto houver arquivos faltando, NÃO tratar o GitHub como réplica executável do pacote.
+
+- [RELEASE_MANIFEST.md](RELEASE_MANIFEST.md) registra hashes SHA-256 dos pacotes v0.1–v0.5 e o estado de sincronização.
