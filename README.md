@@ -20,3 +20,7 @@ A v0.4 (114 testes) tinha 15 árvores VS_3BET, 169 classes cada, com 8 divergên
 **Aviso de integridade:** se o código e os datasets completos da v0.5 ainda não estiverem presentes neste GitHub, o repositório é um checkpoint documental **incompleto**; consulte [PROJECT_STATE.md](PROJECT_STATE.md) antes de continuar. O ZIP local da v0.5 é o pacote integral para replicação e não deve ser reconstruído a partir apenas destes resumos.
 
 **Regras de manutenção:** toda mudança relevante exige leitura e atualização destes arquivos; versões anteriores ficam preservadas; nenhum ajuste automático para igualar benchmarks de rake/árvore diferentes; `None` significa política ausente, nunca Fold/Check; não operar com dinheiro real antes de validação completa.
+## Acompanhamento
+- [Issue #1 — Sincronizar código e datasets da v0.5](https://github.com/pmartins87/Heuristic6max/issues/1) (bloqueador de portabilidade).
+- [Issue #2 — Revisar 8 nós VS_3BET críticos](https://github.com/pmartins87/Heuristic6max/issues/2).
+- Execute `python scripts/check_repository.py` para saber se o repositório contém a versão completa. Enquanto houver arquivos faltando, NÃO tratar o GitHub como réplica executável do pacote.
