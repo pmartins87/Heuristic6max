@@ -1,0 +1,7 @@
+COMMAND: python -m unittest -q
+----------------------------------------------------------------------
+Ran 124 tests in 0.467s
+
+OK
+PRESERVATION: 50/50 content files SAME; SHA256SUMS.txt REGENERATED_EXPECTED
+STATUS: G1 OPEN; G2-a HOLD

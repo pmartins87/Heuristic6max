@@ -1,0 +1,16 @@
+Opener,Threebettor,ReachableHandClasses,UnreachableHandClasses,FourbetTo_bb,Pot_bb_at_decision,Conditional4bet_pct,ConditionalCall_pct,ConditionalFold_pct,Status,Rationale
+LJ,HJ,44,125,21.20,12.00,12.2323,13.7150,74.0527,DRAFT,"LJ OOP vs HJ: continue tight; premium 4bets, selective broadway calls"
+LJ,CO,44,125,21.20,12.00,12.2323,14.6211,73.1466,DRAFT,LJ OOP vs CO: 4bet premium; marginal pairs mix call/fold
+LJ,BTN,44,125,21.20,12.00,12.3970,14.6211,72.9819,DRAFT,"LJ OOP vs BTN: balanced value/blockers, avoid over-defending"
+LJ,SB,44,125,23.58,13.75,11.8616,29.6540,58.4843,DRAFT,LJ IP vs SB: more calls with equity realization and suits
+LJ,BB,44,125,23.58,13.25,11.8616,29.6540,58.4843,DRAFT,LJ IP vs BB: defend wider than versus IP 3bettor
+HJ,CO,55,114,21.20,12.00,9.7697,14.3092,75.9211,DRAFT,HJ OOP vs CO: preserve a conservative call region
+HJ,BTN,55,114,21.20,12.00,9.9013,15.0329,75.0658,DRAFT,HJ OOP vs BTN: separate premium 4bet from bluff 4bet
+HJ,SB,55,114,23.58,13.75,10.0000,23.5526,66.4474,DRAFT,HJ IP vs SB: suited and pair calls increase
+HJ,BB,55,114,23.58,13.25,10.0000,23.5526,66.4474,DRAFT,HJ IP vs BB: mix suited ace blockers into 4bet bluffs
+CO,BTN,64,105,21.20,12.00,8.9340,20.8629,70.2030,DRAFT,"CO OOP vs BTN: wider defense, but protect low suited connectors"
+CO,SB,64,105,23.58,13.75,8.6294,23.6548,67.7157,DRAFT,"CO IP vs SB: more suited and broadway calls, 4bet not shove"
+CO,BB,64,105,23.58,13.25,8.6294,23.6548,67.7157,DRAFT,CO IP vs BB: consider 3bet size/pot price explicitly
+BTN,SB,91,78,23.58,13.75,6.2414,23.1724,70.5862,DRAFT,"BTN IP vs SB: wide call region with mix, premium 4bets"
+BTN,BB,91,78,23.58,13.25,6.2414,31.0345,62.7241,DRAFT,BTN IP vs BB: highest BTN continue density; not every suited trash hand
+SB,BB,74,95,25.44,12.60,7.7917,32.0625,60.1458,DRAFT,SB OOP vs BB: separate RFI-raise line from SB limps
