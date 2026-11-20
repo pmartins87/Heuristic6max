@@ -1,0 +1,64 @@
+// SRP-HU-MVP; HEURISTIC TEST MODULE ONLY. NOT VALIDATED ON REAL OPENHOLDEM.
+// Preflop history inferred from documented OH symbols; isolate limped pots conservatively.
+// All decisions in this file are the source of truth, not Python reimplementations.
+// Works only for 6-dealt, HU from flop, without opponent all-in; no implicit Others action.
+##f$SRPHUOpen##
+WHEN (nplayersdealt = 6 AND OpponentsOnFlop = 1 AND OpponentsLeft = 1 AND NOT StackUnknown AND NumberOfOpponentsAllin = 0 AND BotRaisedBeforeFlop AND NOT BotCalledBeforeFlop AND NumberOfRaisesBeforeFlop = 0) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$SRPHUCaller##
+WHEN (nplayersdealt = 6 AND OpponentsOnFlop = 1 AND OpponentsLeft = 1 AND NOT StackUnknown AND NumberOfOpponentsAllin = 0 AND BotCalledBeforeFlop AND NOT BotRaisedBeforeFlop AND NumberOfRaisesBeforeFlop = 1) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$SRPHU##
+WHEN (f$SRPHUOpen) RETURN TRUE FORCE
+WHEN (f$SRPHUCaller) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$SRPStrongMade##
+WHEN (HaveNuts) RETURN TRUE FORCE
+WHEN (HaveQuads) RETURN TRUE FORCE
+WHEN (HaveFullHouse) RETURN TRUE FORCE
+WHEN (HaveFlush) RETURN TRUE FORCE
+WHEN (HaveStraight) RETURN TRUE FORCE
+WHEN (HaveSet) RETURN TRUE FORCE
+WHEN (HaveTrips) RETURN TRUE FORCE
+WHEN (HaveTwoPair) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$SRPTopGood##
+WHEN (HaveOverPair) RETURN TRUE FORCE
+WHEN (HaveTopPair AND HaveBestKicker) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$flop##
+WHEN (f$SRPHU AND AmountToCall > 0 AND HaveNuts AND AmountToCall <= 50% PotSize) RaiseHalfPot FORCE
+WHEN (f$SRPHU AND AmountToCall > 0 AND f$SRPStrongMade) Call FORCE
+WHEN (f$SRPHU AND AmountToCall > 0 AND f$SRPTopGood AND AmountToCall <= 50% PotSize) Call FORCE
+WHEN (f$SRPHU AND AmountToCall > 0 AND HaveTopPair AND AmountToCall <= 30% PotSize) Call FORCE
+WHEN (f$SRPHU AND AmountToCall > 0 AND HaveNutFlushDraw AND AmountToCall <= 40% PotSize) Call FORCE
+WHEN (f$SRPHU AND AmountToCall > 0 AND HaveFlushDraw AND AmountToCall <= 27% PotSize) Call FORCE
+WHEN (f$SRPHU AND AmountToCall > 0 AND HaveOpenEndedStraightDraw AND AmountToCall <= 27% PotSize) Call FORCE
+WHEN (f$SRPHU AND AmountToCall > 0) Fold FORCE
+WHEN (f$SRPHU AND AmountToCall = 0 AND f$SRPStrongMade) BetTwoThirdPot FORCE
+WHEN (f$SRPHUOpen AND AmountToCall = 0 AND f$SRPTopGood) BetHalfPot FORCE
+WHEN (f$SRPHUOpen AND AmountToCall = 0 AND HaveNutFlushDraw) BetHalfPot FORCE
+WHEN (f$SRPHUCaller AND AmountToCall = 0 AND Position = Last AND f$SRPTopGood) BetHalfPot FORCE
+WHEN (f$SRPHUOpen AND AmountToCall = 0 AND BotIsLastRaiser AND NOT FlushPossibleOnFlop AND NOT StraightPossibleOnFlop AND NOT PairOnBoard AND randomhand < 0.25) BetThirdPot FORCE
+WHEN (f$SRPHU AND AmountToCall = 0) Check FORCE
+##f$turn##
+WHEN (f$SRPHU AND AmountToCall > 0 AND HaveNuts AND AmountToCall <= 45% PotSize) RaiseHalfPot FORCE
+WHEN (f$SRPHU AND AmountToCall > 0 AND f$SRPStrongMade) Call FORCE
+WHEN (f$SRPHU AND AmountToCall > 0 AND f$SRPTopGood AND AmountToCall <= 42% PotSize) Call FORCE
+WHEN (f$SRPHU AND AmountToCall > 0 AND HaveNutFlushDraw AND AmountToCall <= 26% PotSize) Call FORCE
+WHEN (f$SRPHU AND AmountToCall > 0 AND HaveOpenEndedStraightDraw AND AmountToCall <= 20% PotSize) Call FORCE
+WHEN (f$SRPHU AND AmountToCall > 0) Fold FORCE
+WHEN (f$SRPHU AND AmountToCall = 0 AND f$SRPStrongMade) BetTwoThirdPot FORCE
+WHEN (f$SRPHUOpen AND AmountToCall = 0 AND BotIsLastRaiser AND f$SRPTopGood) BetHalfPot FORCE
+WHEN (f$SRPHUOpen AND AmountToCall = 0 AND BotIsLastRaiser AND HaveNutFlushDraw AND randomhand < 0.30) BetHalfPot FORCE
+WHEN (f$SRPHU AND AmountToCall = 0) Check FORCE
+##f$river##
+WHEN (f$SRPHU AND AmountToCall > 0 AND HaveNuts AND AmountToCall <= 40% PotSize) RaiseHalfPot FORCE
+WHEN (f$SRPHU AND AmountToCall > 0 AND HaveNuts) Call FORCE
+WHEN (f$SRPHU AND AmountToCall > 0 AND f$SRPStrongMade AND AmountToCall <= 55% PotSize) Call FORCE
+WHEN (f$SRPHU AND AmountToCall > 0 AND f$SRPTopGood AND AmountToCall <= 25% PotSize) Call FORCE
+WHEN (f$SRPHU AND AmountToCall > 0) Fold FORCE
+WHEN (f$SRPHU AND AmountToCall = 0 AND HaveNuts) BetTwoThirdPot FORCE
+WHEN (f$SRPHU AND AmountToCall = 0 AND f$SRPStrongMade) BetHalfPot FORCE
+WHEN (f$SRPHUOpen AND AmountToCall = 0 AND f$SRPTopGood) BetThirdPot FORCE
+WHEN (f$SRPHU AND AmountToCall = 0) Check FORCE

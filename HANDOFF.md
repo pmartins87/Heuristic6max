@@ -129,3 +129,10 @@ Na raiz do repositório, execute:
 - Da raiz: `python -m unittest discover -s portability/vs_3bet_mvp -p 'test_*.py' -q`; `python portability/vs_3bet_mvp/generate_vs3_mvp.py`; `git diff --exit-code -- portability/vs_3bet_mvp/*.oppl portability/vs_3bet_mvp/*.csv`; `(cd portability/vs_3bet_mvp && sha256sum -c VS3_MVP_SHA256SUMS.txt)`.
 - **23 testes novos, 277 acumulados esperados; 888 entradas viáveis, 1.647 explicitamente sem regra**, 135 novas regras em VS3, 277 combinadas. O OPPL combinado **não foi executado** em OpenHoldem. Seu uso depende de verificar histórico, stacks e fallback no OH real.
 - Próximo passo pragmático: replay offline de VS_3BET para confirmar `BotRaisedBeforeFlop`, `RaisesSinceLastPlay`, `First/LastRaiserPosition`, `StackSizeAtBeginningOfCurrentRound`, sizing real e ação final; depois G3 pós-flop SRP HU. Não iniciar G2-b/VS_4BET antes de critério anterior, não duplicar árvores Python em runtime.
+
+## G3 prático SRP HU — checkpoint 20/11/2026
+- **Primeiro ler** [portability/srp_hu_mvp/README.md](portability/srp_hu_mvp/README.md) e depois [PORTABILITY_CONTRACT.md](PORTABILITY_CONTRACT.md) antes de editar pós-flop.
+- Artefatos: `srp_hu_postflop_draft.oppl` (33 regras + 5 helpers); `preflop_and_srp_hu_draft.oppl` (integração direta com preflop VS3); `srp_source_interpreter.py` (teste de interpretação da MESMA fonte), 18 testes e hashes.
+- Executar da raiz: `python -m unittest discover -s portability/srp_hu_mvp -p 'test_*.py' -q`; `python portability/srp_hu_mvp/rebuild_combined.py`; `git diff --exit-code -- portability/srp_hu_mvp/preflop_and_srp_hu_draft.oppl`; `cd portability/srp_hu_mvp && sha256sum -c SRP_HU_SHA256SUMS.txt`.
+- **Não autorizar bot para mesa com dinheiro**: ainda sem OH real, sem bloqueio garantido de no-match e sem prova de identificação inequívoca do pote SRP no caso de limpers/isolamento. Falha na documentação/CI é gate técnico, mas não transformar MVP de bot heurístico em pesquisa científica.
+- Próximo passo: validar parser e ação final com OHReplay/ManualMode offline, resolver a ambiguidade de limpers e evoluir regras pós-flop por textura, mantendo ranges G2-a HOLD.

@@ -100,3 +100,10 @@ Python de importação de charts, análise, Monte Carlo, testes e reconstrução
 - Módulo VS_3BET isolado + fonte única **RFI/VS_OPEN/VS_3BET com 277 regras**; 23 novos testes; **277 acumulados esperados em CI** (254+23). Nenhum dos 3 ranges v0.6.1 alterado.
 - Contagem correta OH `Raises=1` após RFI do Hero; `BotRaisedBeforeFlop`, `RaisesSinceLastPlay`, `FirstRaiserPosition`, `LastRaiserPosition` e stack inicial da rodada são guardas **a verificar no executável**. Nenhuma medição real OH efetuada.
 - **Pronto apenas como código DRAFT**. G1 aberto, G2-a HOLD por qualidade estratégica, G2-b bloqueado, G6 pendente. Não alegar bot operacional ou winrate.
+
+## G3: SRP HU pós-flop em OpenPPL — checkpoint 20/11/2026
+- [portability/srp_hu_mvp/](portability/srp_hu_mvp/) implementa **14 regras flop + 10 turn + 9 river**, mais 5 funções auxiliares, com interpretações Python derivadas EXATAMENTE da fonte OPPL (sem outra estratégia).
+- Condições de cobertura: 6 jogadores dealt, 1 adversário desde flop, sem oponente all-in, estado conhecido, histórico pré-flop compatível com single-open do bot ou single-call do bot. Há **risco residual de limp/isolation** não distinguido com os símbolos presentes; não afirmar detecção SRP exata.
+- Ações: valor com pares fortes/duas-pares+, decisões de draw/price, cbet seca 25% de frequência, turn semi-bluff NFD 30%, river sem blefe; propostas heurísticas NÃO calibradas em EV, nem GTO por solver.
+- **18 testes novos** de ação/fallback/símbolo/sintaxe/prioridade e identidade binária do pré-flop. Um único arquivo combinado `preflop_and_srp_hu_draft.oppl`; estratégia v0.6.1 sem alterações.
+- **G3 em desenvolvimento**, G1 ainda sem replays OH reais, G2-a HOLD, G2-b bloqueado, G4/G5/G6 ainda pendentes; arquivo NÃO operacional.

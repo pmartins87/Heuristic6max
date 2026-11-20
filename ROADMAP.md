@@ -6,7 +6,7 @@
 | G1 Histórico/observação | ABERTO | replays reais de teste, divergências e fallback seguro |
 | G2-a Pré-flop RFI / VS_OPEN / VS_3BET | HOLD | revisar mãos e contabilidade do jogo; conferir compatibilidade de premissas; documentar decisão |
 | G2-b VS_4BET/5BET, squeeze, limps, outros stacks | BLOQUEADO | liberar G2-a primeiro |
-| G3 Pós-flop SRP HU | PENDENTE | flop/turn/river por nó e histórico |
+| G3 Pós-flop SRP HU | EM DESENVOLVIMENTO | heurística inicial flop/turn/river em OpenPPL; validar reconhecimento de histórico e ação real antes de promover |
 | G4 Pós-flop 3bet/4bet/limped HU | PENDENTE | árvores específicas |
 | G5 Multiway | PENDENTE | ranges e nós multiway distintos |
 | G6 Integração OpenPPL/OpenHoldem | PENDENTE | replay + ação final + rollback |
@@ -94,3 +94,10 @@ Ver [PORTABILITY_CONTRACT.md](PORTABILITY_CONTRACT.md).
 - **Encerra somente o trabalho de transposição estática dos três módulos já disponíveis**, não aprova G2-a nem runtime. Testes 23 novos; esperado CI 277.
 - **Próxima ação prática:** replay offline de 3–5 estados RFI/VS_OPEN/VS_3BET no OH-alvo para conferir guardas do 2º ato, randomhand e ação final; registrar fallback controlado antes de habilitar código em mesa. Após esse gate, implementar o núcleo pós-flop SRP HU (G3), preservando o projeto heurístico. Não abrir VS_4BET/G2-b enquanto bloqueado.
 - **Critérios de parada:** não investir mais em análises hipotéticas que não alteram decisões; não obrigar EV solver para cada heurística; não chamar rascunho OpenPPL de bot validado.
+
+## Avanço G3 pós-flop SRP HU — MVP 20/11/2026
+- Desenvolvida cobertura prática de flop/turn/river em [portability/srp_hu_mvp/](portability/srp_hu_mvp/) (33 regras + cinco helpers) e montado arquivo OpenPPL único pré-flop + G3.
+- Sem nova pesquisa de GTO/EV, sem alteração de range/sizing pré-flop: **a missão é bot heurístico jogável e coerente**, não solver científico.
+- **Gate de qualidade pragmático:** símbolos corretos, classificação SRP suficiente sem roteamento incorreto, check/call/raise legal, fallback controlado e regressão de decisão. Replays em OpenHoldem offline seguem necessários para integração, não para provar GTO.
+- **Próximo bloco concreto:** replay com histórico real e revisão das guardas `NumberOfRaisesBeforeFlop`/`BotCalledBeforeFlop`/ `OpponentsOnFlop`; depois melhorar textura/line postflop e liberar outros pot types por gate. A identificação de isolamento de limper permanece ambígua; bloquear promoção até abordagem definida.
+- G1 ABERTO, G2-a HOLD, G2-b BLOQUEADO, G3 EM DESENVOLVIMENTO, G6 PENDENTE. Evitar bloqueio prolongado por auditoria científica, mas não fingir teste de runtime.

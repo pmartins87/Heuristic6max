@@ -74,3 +74,8 @@ Localização versionada: [audits/g2a_v0_7/](audits/g2a_v0_7/). Contém script, 
 - [portability/vs_3bet_mvp/](portability/vs_3bet_mvp/) contém **8 arquivos**: gerador, interpretador, 23 testes, fonte VS3, fonte combinada, mapa 2.535, README e manifesto `VS3_MVP_SHA256SUMS.txt` dos outros sete.
 - Baseline v0.6.1 intocada. 15 pares × 169; 888 alcançáveis e 1.647 com `NOT_REACHABLE_FROM_RFI`; 135 regras VS3 + 142 regras RFI/VS_OPEN = 277. Sem alteração no poker, sem integração testada.
 - CI deve verificar: 254 testes anteriores + 23 = **277**; regeneração byte-idêntica dos dois OPPLs/CSV; SHA256 manifesto; `git diff` nulo. G1 aberto, G2-a HOLD, G6 pendente.
+
+## G3 SRP-HU MVP — fonte OpenPPL, rascunho (20/11/2026)
+- Diretório [portability/srp_hu_mvp/](portability/srp_hu_mvp/) inclui **7 arquivos**: README, regras pós-flop OPPL, arquivo combinado OPPL, interpretador offline, 18 testes, concatenador e manifesto SHA256 de seis conteúdos.
+- Dependência direta: pré-flop `portability/vs_3bet_mvp/preflop_rfi_vsopen_vs3_draft.oppl`, preservado byte a byte. Baseline histórica v0.6.1 imutável.
+- CI: 18 testes incrementais; validar SHA256, regenerar arquivo combinado com diff zero e executar todas suites anteriores. Não corresponde a release operacional e não houve teste no executável OpenHoldem.

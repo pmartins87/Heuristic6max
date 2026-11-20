@@ -1,5 +1,12 @@
 # Heuristic6max — fonte de verdade
 
+## G3 — MVP prático de pós-flop SRP HU (20/11/2026)
+- [Fonte OpenPPL de flop/turn/river, documentação e testes](portability/srp_hu_mvp/README.md); [rascunho combinado pré-flop + pós-flop](portability/srp_hu_mvp/preflop_and_srp_hu_draft.oppl).
+- **33 regras** de decisão (14 flop, 10 turn, 9 river), mais 5 helpers, em OpenPPL nativo; ações heurísticas de valor, draws, calls por sizing, checks/folds e c-bet seca com `randomhand`.
+- **18 testes incrementais aprovados localmente**, fonte única OPPL; os 3 módulos anteriores e ranges v0.6.1 não foram alterados. CI verifica regressão e concatenador.
+- Esta é uma **primeira árvore prática, NÃO um bot operacional**: classificação SRP por histórico OpenPPL tem limitações (possível limp/isolation), `None` fora do domínio não impede fallback do OpenHoldem, e não houve replays reais da ação final. G1/G2-a abertos, G3 EM DESENVOLVIMENTO, G6 pendente.
+- Foco do projeto: **bot heurístico inspirado em GTO**, sem exigência de resolver GTO, simular EV ótimo ou desenvolver método científico; testes só para garantir consistência e evitar retrabalho.
+
 ## VS_3BET-MVP — árvore pré-flop em OpenPPL (20/11/2026; DRAFT)
 - [Código, testes e contrato de integração](portability/vs_3bet_mvp/README.md); [mapeamento 15 × 169](portability/vs_3bet_mvp/VS3_2535_MAPPING.csv).
 - **888 decisões alcançáveis** de 2.535 classes/confrontos, 1.647 impossíveis após RFI (nenhuma ação inventada). **90 handlists + 135 regras**, 23 testes novos; baseline RFI/VS_OPEN/VS_3BET v0.6.1 **intacta**.

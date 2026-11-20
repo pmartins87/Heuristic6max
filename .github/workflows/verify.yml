@@ -116,3 +116,12 @@ jobs:
         run: git diff --exit-code -- portability/vs_3bet_mvp/vs_3bet_6max_mvp.oppl portability/vs_3bet_mvp/preflop_rfi_vsopen_vs3_draft.oppl portability/vs_3bet_mvp/VS3_2535_MAPPING.csv
       - name: Verify VS_3BET SHA256 snapshot
         run: cd portability/vs_3bet_mvp && sha256sum -c VS3_MVP_SHA256SUMS.txt
+
+      - name: Test SRP-HU postflop source rules (18 tests)
+        run: python -m unittest discover -s portability/srp_hu_mvp -p 'test_*.py' -q
+      - name: Rebuild combined preflop plus SRP-HU OpenPPL source
+        run: python portability/srp_hu_mvp/rebuild_combined.py
+      - name: Verify integrated OpenPPL is deterministic
+        run: git diff --exit-code -- portability/srp_hu_mvp/preflop_and_srp_hu_draft.oppl
+      - name: Verify SRP-HU SHA256 manifest
+        run: cd portability/srp_hu_mvp && sha256sum -c SRP_HU_SHA256SUMS.txt
