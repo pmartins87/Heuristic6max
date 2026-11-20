@@ -79,3 +79,10 @@ Dados 169 classes derivados de PreFlopEquities.zip privado (SHA no README, orige
 - **Estado da linguagem:** motor e estratégia em Python. Nenhum OpenPPL operacional no repositório; etapa G6 ainda não iniciada.
 - **Critério de parada:** não ampliar indefinidamente os cenários hipotéticos HJ/CO sem rake, cap, sizing, fonte comparável ou replay real. Próximo gate orientado por evidência G1/G2-a.
 - Usuário não precisa enviar arquivos ao GitHub: manter integração direta, docs vivos e CI verificada.
+
+
+## PORT-0 obrigatório antes de novos módulos de estratégia (ADR-016)
+Leia [PORTABILITY_CONTRACT.md](PORTABILITY_CONTRACT.md). Cada decisão exportável deve ser escrita como OpenPPL nativa ou representação estrita geradora das duas camadas. Python de testes interpreta as MESMAS regras, nunca uma versão estratégica reinventada. Comandos de prova:
+- python -m unittest discover -s portability -p 'test_*.py' -q
+- python portability/oppl_probe.py
+São 7 testes novos e 3.042 estados simulados; OpenHoldem NÃO validado. No-match, raise ilegal, source_quality HIGH e mixed com SHA256 continuam não mapeados. G1/G2/G6 preservados. Não solicitar upload manual ao usuário.

@@ -54,3 +54,11 @@ Revisar os oito nós (SB–BB, HJ–CO, LJ–CO, CO–BTN, HJ–BTN, LJ–HJ, BT
 - Mantidas a arquitetura e a estratégia Python v0.6.1; nenhuma transcrição OpenPPL antecipada.
 - **Parada técnica:** novas auditorias ilustrativas de EV/EQR só com novas evidências que possam alterar a conclusão; priorizar rake/cap e sizings do ambiente-alvo, correspondência da chart e/ou replays reais de G1.
 - G2-a continua HOLD, G2-b continua BLOQUEADO, G6 é FUTURO.
+
+
+## Gate transversal PORT-0 a PORT-3 (ADR-016)
+- PORT-0: contrato publicado; 2 regras puras BTN RFI em texto OpenPPL; intérprete Python lê as mesmas linhas; 7 testes estáticos / 3.042 estados.
+- PORT-1: antes de desenvolver novas regras executáveis, validar predicados/símbolos, prioridade top-down, RaiseTo/By, unidades, histórico, scrape, legalidade e ausência de correspondência. Não aceitar fonte Python-only como ação exportável.
+- PORT-2: bloqueado para mixes até verificação de aleatoriedade estável e memória; SHA256 Python difere de Random OPPL.
+- PORT-3 (G6): exigir teste com OpenHoldem alvo em replays sem apostas, conferindo ação final e fallback. G1/G2 mantêm seus gates anteriores.
+Ver [PORTABILITY_CONTRACT.md](PORTABILITY_CONTRACT.md).

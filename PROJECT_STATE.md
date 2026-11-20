@@ -56,3 +56,9 @@ G2-a permanece aberto: auditar a composição exata dos oito confrontos com prem
 - Direitos de incorporação/reprodução, rake e cap do ambiente-alvo seguem não comprovados. Ausência NÃO equivale a rake zero.
 - **Python atual; OpenPPL não implementado**. G6 PENDENTE; não existe estratégia OpenPPL jogável.
 - **Stop rule:** não repetir simulações de EV baseadas apenas em EQR/rake arbitrários. Próxima evidência necessária: rake/cap/sizings reais, chart compatível e utilizável ou replays reais de teste (G1). Ranges DRAFT intactos, G2-a HOLD, G2-b bloqueado.
+
+
+## PORT-0: novo requisito explícito de paridade (20/11/2026)
+A partir do ADR-016, regras novas de decisão executável devem nascer em OpenPPL ou representação restrita única; Python não terá uma segunda implementação independente da estratégia. [Contrato](PORTABILITY_CONTRACT.md).
+Prova estática BTN RFI AA/KK: duas linhas OpenPPL, sete testes e 3.042 estados. Total esperado 181 testes com as suítes anteriores (174+7). NÃO demonstra funcionamento no OpenHoldem real, nem garante fallback seguro.
+Python de importação de charts, análise, Monte Carlo, testes e reconstrução offline segue sem limitação artificial. Nenhuma ação/range histórico foi alterado. G1 aberto, G2-a HOLD, G6 pendente.

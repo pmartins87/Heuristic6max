@@ -41,3 +41,7 @@ Localização versionada: [audits/g2a_v0_7/](audits/g2a_v0_7/). Contém script, 
 - [audits/g2a_v0_11/](audits/g2a_v0_11/) inclui 7 arquivos: código, testes, registry JSON, CSV derivado, README, decisão, manifesto SHA256.
 - Depende de baseline imutável v0.6.1 (100 BB, HJ 2,5 BB, CO 3bet 8 BB); não inclui charts proprietárias, nem fonte OpenPPL executável.
 - CI esperada: **174 testes (124+7+11+11+10+11)**, CSV reproduzido sem diff e SHA256 validado. G2-a HOLD, G6 pendente.
+
+
+## PORT-0 — checkpoint de portabilidade sem release operacional
+[PORTABILITY_CONTRACT.md](PORTABILITY_CONTRACT.md), [portability/](portability/). Duas regras OPPL BTN RFI, sete testes em 3.042 estados; CI esperado 181 testes (174+7). Não altera snapshots estratégicos nem códigos anteriores. Não é compilação, integração ou teste do OpenHoldem.

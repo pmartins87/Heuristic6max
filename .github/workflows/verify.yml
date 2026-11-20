@@ -57,3 +57,8 @@ jobs:
         run: git diff --exit-code -- audits/g2a_v0_11/SOURCE_APPLICABILITY_v0_11.csv
       - name: Verify v0.11 SHA256 manifest
         run: cd audits/g2a_v0_11 && sha256sum -c AUDIT_SHA256SUMS.txt
+
+      - name: PORT-0 strict OpenPPL-first source proof (7 tests)
+        run: python -m unittest discover -s portability -p 'test_*.py' -q
+      - name: PORT-0 parser smoke check
+        run: python portability/oppl_probe.py

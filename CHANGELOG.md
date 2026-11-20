@@ -22,3 +22,6 @@ Consulte [DECISIONS.md](DECISIONS.md) para justificativas e [RELEASE_MANIFEST.md
 - **Auditoria v0.10 (20/11/2026):** 169 classes físicas de equity de showdown HJ/CO 3bet (fonte externa fornecida, 1.624.350 confrontos, input bruto não republicado por licença desconhecida), checagem Monte Carlo independente de 15 classes × 50k amostras e 10 testes novos (163 acumulados previstos). Nenhuma estratégia alterada. [Código/relatórios](audits/g2a_v0_10/README.md). G2-a HOLD.
 
 - **Auditoria v0.11 (20/11/2026):** gate conservador de compatibilidade de charts externas e registro de procedência de três fontes (ART/GTO, Simple GTO, GTO Wizard). Nenhuma é substituição direta verificada do HJ/CO 3-bet 8 BB com rake/cap desconhecidos. **11 testes adicionais (174 no total)**, CSV determinístico, manifesto SHA256. Critério de parada de auditorias toy-EV sem fatos novos; Python permanece núcleo; OpenPPL é G6 pendente. Nenhum range modificado. [Relatório](audits/g2a_v0_11/README.md).
+
+
+- **PORT-0 / ADR-016 (20/11/2026):** introduzido contrato de paridade OpenPPL obrigatória para novas decisões executáveis, prova com 2 regras BTN RFI nativas no arquivo .oppl e intérprete de testes Python da mesma fonte; 7 testes, 3.042 estados; total CI esperado 181. Estratégia/ranges intactos; não foi executado no OpenHoldem real. [Contrato](PORTABILITY_CONTRACT.md).

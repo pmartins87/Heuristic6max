@@ -75,3 +75,10 @@ Os **fontes e CSVs completos** agora estão commitados no repositório. Os arqui
 Issues: [#1 — importação concluída](https://github.com/pmartins87/Heuristic6max/issues/1) e [#2 — auditoria estratégica aberta](https://github.com/pmartins87/Heuristic6max/issues/2).
 
 **Errata de rastreabilidade:** v0.6 marcou equivocadamente 51 arquivos ancestrais como SAME após regerar o manifesto. A v0.6.1 confirma **50/50 fontes de conteúdo idênticas** e 1 manifesto regenerado. Ver [ERRATA](gto6_heuristic_v0_6_1/ERRATA_v0_6_1.md).
+
+
+## PORT-0: novas regras devem ser portáveis na origem (ADR-016)
+- [Contrato de portabilidade](PORTABILITY_CONTRACT.md): usar regras nativas OpenPPL ou uma representação declarativa que gere OpenPPL e simulação Python a partir da mesma fonte. Python de auditorias e testes permanece livre.
+- [Piloto com 2 regras OpenPPL](portability/portable_rfi_probe.oppl), [intérprete Python](portability/oppl_probe.py) e [7 testes](portability/test_oppl_probe.py) em 3.042 estados. Não operacional e ainda sem testes no OpenHoldem real.
+- Bloqueados até paridade demonstrada: mistura SHA256/Random, predicado source_quality=HIGH, None versus fallback automático e ajustes de RaiseTo ilegal.
+- Versões e ranges anteriores permanecem preservados; G6 continua uma etapa futura.
