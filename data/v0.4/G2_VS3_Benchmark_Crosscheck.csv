@@ -1,0 +1,16 @@
+Opener,Threebettor,Our4bet_pct_cond_RFI,OurCall_pct_cond_RFI,OurFold_pct_cond_RFI,Ref4bet_pct,RefCall_pct,RefFold_pct,Delta4bet_pp,DeltaCall_pp,DeltaFold_pp,MaxAbsDiff_pp,Flag,RefURL,SameRakeAndTree,Status
+LJ,HJ,12.2323,13.715,74.0527,21.3,12.8,65.9,-9.0677,0.915,8.1527,9.0677,MAJOR_REVIEW,https://artgto.com/learn/ranges/utg/,NO,DRAFT
+LJ,CO,12.2323,14.6211,73.1466,22.9,12.5,64.6,-10.6677,2.1211,8.5466,10.6677,MAJOR_REVIEW,https://artgto.com/learn/ranges/utg/,NO,DRAFT
+LJ,BTN,12.397,14.6211,72.9819,20.7,18.6,60.6,-8.303,-3.9789,12.3819,12.3819,MAJOR_REVIEW,https://artgto.com/learn/ranges/utg/,NO,DRAFT
+LJ,SB,11.8616,29.654,58.4843,13.4,26.2,60.5,-1.5384,3.454,-2.0157,3.454,CROSSCHECK_ONLY,https://artgto.com/learn/ranges/utg/,NO,DRAFT
+LJ,BB,11.8616,29.654,58.4843,9.0,30.6,60.4,2.8616,-0.946,-1.9157,2.8616,CROSSCHECK_ONLY,https://artgto.com/learn/ranges/utg/,NO,DRAFT
+HJ,CO,9.7697,14.3092,75.9211,20.9,12.2,66.9,-11.1303,2.1092,9.0211,11.1303,MAJOR_REVIEW,https://artgto.com/learn/ranges/mp/,NO,DRAFT
+HJ,BTN,9.9013,15.0329,75.0658,19.8,17.7,62.5,-9.8987,-2.6671,12.5658,12.5658,MAJOR_REVIEW,https://artgto.com/learn/ranges/mp/,NO,DRAFT
+HJ,SB,10.0,23.5526,66.4474,14.5,24.0,61.5,-4.5,-0.4474,4.9474,4.9474,REVIEW,https://artgto.com/learn/ranges/mp/,NO,DRAFT
+HJ,BB,10.0,23.5526,66.4474,8.5,31.3,60.2,1.5,-7.7474,6.2474,7.7474,REVIEW,https://artgto.com/learn/ranges/mp/,NO,DRAFT
+CO,BTN,8.934,20.8629,70.203,18.9,16.1,65.0,-9.966,4.7629,5.203,9.966,MAJOR_REVIEW,https://artgto.com/learn/ranges/co/,NO,DRAFT
+CO,SB,8.6294,23.6548,67.7157,14.4,21.2,64.4,-5.7706,2.4548,3.3157,5.7706,REVIEW,https://artgto.com/learn/ranges/co/,NO,DRAFT
+CO,BB,8.6294,23.6548,67.7157,8.2,30.8,60.9,0.4294,-7.1452,6.8157,7.1452,REVIEW,https://artgto.com/learn/ranges/co/,NO,DRAFT
+BTN,SB,6.2414,23.1724,70.5862,11.9,26.4,61.7,-5.6586,-3.2276,8.8862,8.8862,MAJOR_REVIEW,https://artgto.com/learn/ranges/bu/,NO,DRAFT
+BTN,BB,6.2414,31.0345,62.7241,9.2,29.3,61.5,-2.9586,1.7345,1.2241,2.9586,CROSSCHECK_ONLY,https://artgto.com/learn/ranges/bu/,NO,DRAFT
+SB,BB,7.7917,32.0625,60.1458,20.6,22.0,57.3,-12.8083,10.0625,2.8458,12.8083,MAJOR_REVIEW,https://artgto.com/learn/ranges/sb/,NO,DRAFT
