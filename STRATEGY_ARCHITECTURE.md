@@ -41,3 +41,8 @@ A unidade de implementação é um **nó de um grafo de decisões**, não um nú
 ## Sequência imediata
 
 **HIST-1 (este checkpoint):** 3 estados exclusivos do flop × 3 do turn, 9 trajetórias, regras específicas, guardas para não classificar raise como c-bet, 18 testes. **HIST-2:** captura canônica de ações intra-street e posições de agressor/caller, bet-raise/call e check-raise. **HIST-3:** board texture/runout, SPR e sizings sobre essas linhas. **HIST-4:** 3bet/4bet/multiway/limped, além de perfis. **OH runtime:** validar paralelamente sem impedir a autoria dos módulos DRAFT, mas impedir qualquer alegação de bot pronto antes de um replay de ponta a ponta.
+
+## G3-HIST-v2 — atualização do roadmap vivo (20/11/2026)
+- **Entregue em DRAFT:** 6 famílias de histórico em flop e turn: B=bet-call, C=check-through, X=call, R=raise sobre bet, H=check-raise e M=bet→raise→call. **36 trajetórias** para o river, 70 helpers e 75 regras pós-flop, todas OpenPPL. Regressão preserva os 9 caminhos HIST-v1.
+- **Não confundir classificação de flags com reconstrução exata:** podem existir ações adicionais dentro da mesma street; no-match continua inseguro em OH. O próximo objetivo é HIST-2b: reconstrutor cronológico/estado persistente e identificação de pote antes de construir a multiplicação de contextos (board, SPR, sizes).
+- **Qualidade > contagem:** milhares de ramos só são úteis quando alcançáveis, semanticamente corretos e conectados às decisões relevantes. Esta versão não implica GTO exata nem excelência estratégica demonstrada.

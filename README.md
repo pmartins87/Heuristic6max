@@ -1,5 +1,11 @@
 # Heuristic6max — fonte de verdade
 
+## Checkpoint mais recente — G3-HIST-v2: 36 trajetórias históricas (20/11/2026)
+- [Módulo de histórico OpenPPL v2](portability/srp_history_v2/README.md) classifica **seis** sequências no flop e **seis** no turn, compondo **36 caminhos condicionais no river** (B=bet-call, C=check-through, X=call, R=raise sobre aposta, H=check-raise, M=bet-raise-call).
+- **75 regras de ação pós-flop** (14 flop + 22 turn + 39 river), 70 funções OpenPPL e o mesmo pré-flop de 277 regras preservado. Estratégia única OPPL: o Python apenas combina e testa o mesmo texto; versão HIST-v1 preservada.
+- **18 testes incrementais novos, 313 totais esperados no CI**; nenhuma mudança em ranges/snapshots v0.6.1. Excelência estratégica permanece uma meta de avaliação, não resultado demonstrado.
+- **Não operacional:** estados desconhecidos podem usar fallback OpenHoldem; flags agregados não substituem histórico cronológico integral, e ainda faltam replays no executável alvo. [Arquitetura viva do bot completo](STRATEGY_ARCHITECTURE.md).
+
 ## Arquitetura do bot completo — G3-HIST-v1 (20/11/2026)
 - **Meta de produto:** bot de engenharia complexa, milhares de caminhos por histórico, board, tamanho, posição, ranges e oponente; heurísticas inspiradas no GTO, **não um solver**. Excelência estratégica é objetivo, não resultado já medido. [Arquitetura viva](STRATEGY_ARCHITECTURE.md).
 - [Implementação histórica OpenPPL](portability/srp_history_v1/README.md): três classes exclusivas de flop × três de turn = 9 sequências explícitas no river; 58 regras pós-flop (14 flop + 16 turn + 28 river), 24 funções; integração preserva as 277 regras pré-flop.

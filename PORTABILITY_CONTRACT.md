@@ -90,3 +90,8 @@ A cada nova implementação estratégica, consultar este contrato e atualizar `D
 - [Overlay OpenPPL](portability/srp_history_v1/history_overlay.oppl) registra os estados B (bot bet/call), C (check-through), X (bot call) em flop e turn, gerando nove caminhos compostos; o Python apenas mescla as fontes OpenPPL e interpreta os mesmos `WHEN` de teste.
 - Flags OH como `NoVillainBetOrRaisedOnFlop/Turn` são exigidos para não confundir bet-call do bot com raise a aposta adversária. Operações incoerentes/raises múltiplos ficam **UNCLASSIFIED** no simulador, não marcadas como Fold.
 - Nenhum runtime OH foi testado; contadores por órbita podem perder histórico, e `None` continua diferente do default.bot. Gate PORT/G6 segue bloqueado. O grafo deve crescer com tipos de linha, board, SPR e oponente, preservando controle de legalidade e integridade das ações.
+
+## G3-HIST-v2 — expansão por ramos cronológicos (ADR-025)
+- [Overlay OpenPPL](portability/srp_history_v2/advanced_history_overlay.oppl) introduz seis predicados próprios: raise sobre bet adversária pago, check-raise pago, bet→raise→call no flop e turn. Um montador de estrutura gera 36 helpers a partir desses predicados nativos; **não há heurística independente escrita em Python**.
+- HIST-v1 permanece importado e preservado, com regressão de equivalência dos 9 pares B/C/X. As novas 17 regras são candidatas de história, não solver.
+- **Bloqueios inalterados:** símbolos OH precisam ser observados em replay real (inclusive contadores por órbita), ações podem ser substituídas no runtime, e retorno None da simulação não impede fallback. Não promover para uso operacional.

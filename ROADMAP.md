@@ -107,3 +107,8 @@ Ver [PORTABILITY_CONTRACT.md](PORTABILITY_CONTRACT.md).
 - **HIST-1 entregue em DRAFT:** nove caminhos de três histórias por street, 24 helpers / 58 regras pós-flop, 18 testes novos, sem alterar os 277 ramos pré-flop nem a v0.6.1.
 - **HIST-2:** discriminar bet/raise/call em cada orbit, check-raise, 2+ raises, delayed c-bet e limp/iso histórico. **HIST-3:** board texture/runout, SPR, sizing buckets e river range/catcher. **HIST-4:** HU 3-bet/4-bet, limped pots, multiway e oponente adaptativo.
 - **Critérios de parada pragmáticos:** não fabricar caminhos impossíveis ou jogar default em histórico desconhecido; não declarar excelência antes de observar qualidade e falhas; não exigir solver/EV formal por ramo para continuar DRAFT. G1/G2-a e G6 preservados; replay real ainda pendente.
+
+## G3-HIST-v2: 36 trajetórias, mais perto da árvore completa
+- **HIST-2 parcial entregue:** categorias B/C/X/R/H/M por street anterior, 36 pares flop/turn, 75 regras de ação e 70 funções. Mais 18 testes, 313 previstos no CI; módulos históricos preservados.
+- **HIST-2 ainda NÃO finalizado:** os flags agregados OH não provam a ordem exata nem tratam múltiplos raises, limp/iso e squeeze; exigir reconstrutor cronológico confiável em replays offline antes de classificar todos os caminhos como alcançáveis e válidos.
+- **Próxima engenharia sem mudança de direção:** HIST-2b evento/ação ordenada e pot-type → HIST-3 board texture/runout + SPR/size buckets → HIST-4 potes 3bet/4bet/multiway e oponente. Criar nós e heurísticas conforme significado estratégico; não somente multiplicar condições. G1/G2-a/G6 intactos.

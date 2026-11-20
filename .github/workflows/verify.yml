@@ -134,3 +134,12 @@ jobs:
         run: git diff --exit-code -- portability/srp_history_v1/srp_hu_history_v1.oppl portability/srp_history_v1/preflop_srp_history_v1.oppl portability/srp_history_v1/HISTORY_FLOP_TURN_9_PATHS.csv
       - name: Verify G3-HIST SHA256 manifest
         run: cd portability/srp_history_v1 && sha256sum -c HISTORY_SHA256SUMS.txt
+
+      - name: Test G3-HIST-v2 six families and 36 river paths (18 tests)
+        run: python -m unittest discover -s portability/srp_history_v2 -p 'test_*.py' -q
+      - name: Rebuild 36-path historical tree and integrated OpenPPL
+        run: python portability/srp_history_v2/build_history_v2.py
+      - name: Verify deterministic G3-HIST-v2 OpenPPL and lineage matrix
+        run: git diff --exit-code -- portability/srp_history_v2/srp_hu_history_v2.oppl portability/srp_history_v2/preflop_srp_history_v2.oppl portability/srp_history_v2/HISTORY_FLOP_TURN_36_PATHS.csv
+      - name: Verify G3-HIST-v2 SHA256 manifest
+        run: cd portability/srp_history_v2 && sha256sum -c HISTORY_V2_SHA256SUMS.txt

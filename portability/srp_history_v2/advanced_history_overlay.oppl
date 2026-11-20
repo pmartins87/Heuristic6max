@@ -1,0 +1,63 @@
+// G3-HIST-v2: three additional action-line classes on BOTH flop and turn.
+// This is a source fragment assembled with historical OpenPPL v1, NOT a bot.
+// The decisions, predicates and actions below are authored in OpenPPL.
+##f$HLFlopRaiseCall##
+// Villain bets, Hero raises WITHOUT checking first, villain calls.
+WHEN (BotRaisedOnFlop AND OpponentCalledOnFlop AND NOT BotCalledOnFlop AND NOT BotCheckedOnFlop AND NOT NoVillainBetOrRaisedOnFlop AND NOT NoBettingOnFlop AND NumberOfRaisesOnFlop = 0) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLFlopCheckRaiseCall##
+// Hero checks, villain bets, Hero raises, villain calls.
+WHEN (BotRaisedOnFlop AND OpponentCalledOnFlop AND NOT BotCalledOnFlop AND BotCheckedOnFlop AND NOT NoVillainBetOrRaisedOnFlop AND NOT NoBettingOnFlop AND NumberOfRaisesOnFlop = 0) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLFlopBetRaisedCall##
+// Hero bets; villain raises; Hero calls that raise. No check beforehand.
+WHEN (BotRaisedOnFlop AND BotCalledOnFlop AND NOT BotCheckedOnFlop AND NOT OpponentCalledOnFlop AND NOT NoVillainBetOrRaisedOnFlop AND NOT NoBettingOnFlop AND NumberOfRaisesOnFlop = 1) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLTurnRaiseCall##
+WHEN (BotRaisedOnTurn AND OpponentCalledOnTurn AND NOT BotCalledOnTurn AND NOT BotCheckedOnTurn AND NOT NoVillainBetOrRaisedOnTurn AND NOT NoBettingOnTurn AND NumberOfRaisesOnTurn = 0) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLTurnCheckRaiseCall##
+WHEN (BotRaisedOnTurn AND OpponentCalledOnTurn AND NOT BotCalledOnTurn AND BotCheckedOnTurn AND NOT NoVillainBetOrRaisedOnTurn AND NOT NoBettingOnTurn AND NumberOfRaisesOnTurn = 0) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLTurnBetRaisedCall##
+WHEN (BotRaisedOnTurn AND BotCalledOnTurn AND NOT BotCheckedOnTurn AND NOT OpponentCalledOnTurn AND NOT NoVillainBetOrRaisedOnTurn AND NOT NoBettingOnTurn AND NumberOfRaisesOnTurn = 1) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLFlopKnownV2##
+WHEN (f$HLFlopKnown) RETURN TRUE FORCE
+WHEN (f$HLFlopRaiseCall) RETURN TRUE FORCE
+WHEN (f$HLFlopCheckRaiseCall) RETURN TRUE FORCE
+WHEN (f$HLFlopBetRaisedCall) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLTurnKnownV2##
+WHEN (f$HLTurnKnown) RETURN TRUE FORCE
+WHEN (f$HLTurnRaiseCall) RETURN TRUE FORCE
+WHEN (f$HLTurnCheckRaiseCall) RETURN TRUE FORCE
+WHEN (f$HLTurnBetRaisedCall) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLTurnDomainV2##
+WHEN (f$SRPHU AND f$HLFlopKnownV2) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLRiverDomainV2##
+WHEN (f$SRPHU AND f$HLFlopKnownV2 AND f$HLTurnKnownV2) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+// 36 exhaustive symbolic path combinations are generated as helper funcs
+// from the six named OpenPPL source predicates, with no extra decisions.
+##f$turn##
+WHEN (f$HLTurnDomainV2 AND f$HLFlopRaiseCall AND AmountToCall = 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) Check FORCE
+WHEN (f$HLTurnDomainV2 AND f$HLFlopCheckRaiseCall AND AmountToCall = 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) Check FORCE
+WHEN (f$HLTurnDomainV2 AND f$HLFlopBetRaisedCall AND AmountToCall = 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) Check FORCE
+WHEN (f$HLTurnDomainV2 AND f$HLFlopBetRaisedCall AND AmountToCall > 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) Fold FORCE
+WHEN (f$HLTurnDomainV2 AND f$HLFlopCheckRaiseCall AND AmountToCall = 0 AND HaveNutFlushDraw AND randomhand < 0.30) BetHalfPot FORCE
+WHEN (f$HLTurnDomainV2 AND f$HLFlopRaiseCall AND AmountToCall = 0 AND HaveNutFlushDraw AND randomhand < 0.30) BetHalfPot FORCE
+##f$river##
+WHEN (f$HLRiverDomainV2 AND f$HLPath2HB AND AmountToCall = 0 AND HaveNuts) BetTwoThirdPot FORCE
+WHEN (f$HLRiverDomainV2 AND f$HLPath2HB AND AmountToCall = 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) Check FORCE
+WHEN (f$HLRiverDomainV2 AND f$HLPath2RB AND AmountToCall = 0 AND f$SRPStrongMade) BetHalfPot FORCE
+WHEN (f$HLRiverDomainV2 AND f$HLPath2CH AND AmountToCall = 0 AND f$SRPStrongMade) BetHalfPot FORCE
+WHEN (f$HLRiverDomainV2 AND f$HLPath2XR AND AmountToCall = 0 AND f$SRPStrongMade) BetHalfPot FORCE
+WHEN (f$HLRiverDomainV2 AND f$HLPath2MC AND AmountToCall = 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) Check FORCE
+WHEN (f$HLRiverDomainV2 AND f$HLPath2HC AND AmountToCall = 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) BetThirdPot FORCE
+WHEN (f$HLRiverDomainV2 AND f$HLPath2RX AND AmountToCall > 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) Fold FORCE
+WHEN (f$HLRiverDomainV2 AND f$HLPath2HX AND AmountToCall > 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) Fold FORCE
+WHEN (f$HLRiverDomainV2 AND f$HLPath2XM AND AmountToCall > 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) Fold FORCE
+WHEN (f$HLRiverDomainV2 AND f$HLPath2MX AND AmountToCall > 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) Fold FORCE

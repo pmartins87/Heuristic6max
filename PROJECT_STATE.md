@@ -113,3 +113,9 @@ Python de importação de charts, análise, Monte Carlo, testes e reconstrução
 - Novo pós-flop OpenPPL: **58 regras de ação** (14/16/28), 24 funções booleanas, **9 trajetórias** flop→turn representadas por sinais de ações; arquivo integrado mantém pré-flop (277 regras) literalmente. Tipos B=bet do bot seguido de call, C=check-through, X=call do bot a uma bet.
 - **18 testes locais novos**; total esperado na CI **295 = 277+18**. Contradições/raises não classificados retornam no-match no simulador, não Fold. **No-match em OpenHoldem pode acionar fallback**, portanto não há aprovação operacional. Baseline e G3 anterior preservados.
 - Gate G3 continua EM DESENVOLVIMENTO: falta ação intra-street, textura/runout, SPR, perfis, 3bet pots, multiway e revisão de histórico em OH-alvo. G1 aberto, G2-a HOLD, G2-b bloqueado, G6 pendente.
+
+## G3-HIST-v2 — segundo incremento nesta rodada (20/11/2026)
+- [portability/srp_history_v2/](portability/srp_history_v2/) acrescenta categorias de check-raise pago (H), raise sobre aposta e call adversário (R) e bet nosso→raise vilão→call nosso (M) às três classes anteriores (B,C,X), **36 combinações flop→turn** verificadas por helpers OpenPPL.
+- **75 ações (14/22/39)**, 70 funções, 18 novos testes; **total esperado CI 313** = 277 anteriores +18 HIST-v1 +18 HIST-v2. As **9 trajetórias HIST-v1 permanecem equivalentes** em inputs iguais; nenhuma alteração nos 277 ramos pré-flop.
+- Más classificações/flags contraditórios ficam sem correspondência no interpretador. OH ainda pode aplicar default.bot, portanto não executar em jogos reais; rastreamento por flags agregado não é um log de eventos verdadeiro. G3 em desenvolvimento e G6 pendente; G1 aberto e G2-a HOLD preservados.
+- Próximo ganho real: histórico ordenado de ações com apostas/raises e mudança de posição, classificação do pote SRP versus limp/iso, board texture/runout, SPR e sizings. Não inflar quantidades de nós sem validação de estado.

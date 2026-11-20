@@ -85,3 +85,8 @@ Localização versionada: [audits/g2a_v0_7/](audits/g2a_v0_7/). Contém script, 
 - Novo documento vivo [STRATEGY_ARCHITECTURE.md](STRATEGY_ARCHITECTURE.md) registra escopo de bot completo, fontes e gates.
 - Nenhuma mudança em `gto6_heuristic_v0_6_1/`, `portability/vs_3bet_mvp/` e `portability/srp_hu_mvp/`. Pré-flop combinado original preservado; G3 novo tem 58 regras de ação e 24 helpers, 18 testes, total esperado no CI **295**.
 - Sem replays reais ou certificado operacional OpenHoldem; não divulgar como bot pronto nem alegar winrate.
+
+## G3-HIST-v2 — 36 trajetórias, snapshot DRAFT (não operacional)
+- [portability/srp_history_v2/](portability/srp_history_v2/): 9 arquivos (OpenPPL autoral, gerador, 36 paths CSV, pós-flop e integrado, intérprete, 18 testes, README e `HISTORY_V2_SHA256SUMS.txt`).
+- Base: `portability/srp_history_v1/`, `portability/vs_3bet_mvp/` e v0.6.1, **sem mudanças históricas**. 75 ações OPPL, 70 helpers, 36 trajetórias, os 9 estados antigos com paridade estática.
+- Regenerar, checar `git diff`, testes e hashes conforme README. **Total esperado na CI 313**; sem build/paridade real OH, sem prova de EV ou de excelência estratégica.
