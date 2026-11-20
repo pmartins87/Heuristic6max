@@ -69,3 +69,8 @@ Localização versionada: [audits/g2a_v0_7/](audits/g2a_v0_7/). Contém script, 
 - [portability/vs_open_mvp/](portability/vs_open_mvp/): **8 arquivos**: módulo OpenPPL de 121 regras/81 listas, combinado RFI+VS_OPEN de 142 regras, gerador offline, interpretador, 19 testes, CSV de 2.535 nós, README e `VS_OPEN_MVP_SHA256SUMS.txt` sobre 7 arquivos.
 - Base estratégica v0.6.1 (66 arquivos) permanece historicamente intocada, com política VS_OPEN v0.3 DRAFT. Não incorporamos chart externa nem novo sizing de solver.
 - CI prevista: **273 = 254 +19**; gera OPPL e CSV de modo determinístico, exige `git diff --exit-code` e manifesto SHA256. G1 sem replay, G2-a HOLD, G6 pendente; sem artefato operacional.
+
+## VS_3BET-MVP — pacote incremental OpenPPL DRAFT (sem release operacional)
+- [portability/vs_3bet_mvp/](portability/vs_3bet_mvp/) contém **8 arquivos**: gerador, interpretador, 23 testes, fonte VS3, fonte combinada, mapa 2.535, README e manifesto `VS3_MVP_SHA256SUMS.txt` dos outros sete.
+- Baseline v0.6.1 intocada. 15 pares × 169; 888 alcançáveis e 1.647 com `NOT_REACHABLE_FROM_RFI`; 135 regras VS3 + 142 regras RFI/VS_OPEN = 277. Sem alteração no poker, sem integração testada.
+- CI deve verificar: 254 testes anteriores + 23 = **277**; regeneração byte-idêntica dos dois OPPLs/CSV; SHA256 manifesto; `git diff` nulo. G1 aberto, G2-a HOLD, G6 pendente.

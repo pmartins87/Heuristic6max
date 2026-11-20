@@ -94,3 +94,9 @@ Python de importação de charts, análise, Monte Carlo, testes e reconstrução
 - Incluído **arquivo combinado OpenPPL** com RFI anterior (**21 regras**) + VS_OPEN (**121 regras**) sob **um único `##f$preflop##`**; são **3.380 entradas classificadas** (845 RFI e 2.535 VS_OPEN) — NÃO todos os cenários do jogo. Ações e sizings v0.6.1 preservados.
 - Mixes: 3bet/call, 3bet/fold e call/fold nativos via `randomhand`, sem duplicar política Python. FirstRaiserPosition e LastRaiserPosition, posição do Hero, RaiseTo em BB e guardas de stack/ação combinadas; sem replay OH-alvo.
 - 19 testes novos: total esperado **273 = 254 +19**. **Ainda não operacional**: no-match/fallback, VS_3BET, jogadores intermediários, pós-flop e paridade OpenHoldem real ausentes. G1 ABERTO; G2-a HOLD para mudanças estratégicas; G2-b bloqueado; G6 pendente.
+
+## Implementação VS_3BET-MVP (20/11/2026)
+- [portability/vs_3bet_mvp/README.md](portability/vs_3bet_mvp/README.md). 15 confrontos, **2.535 classes auditadas**, 888 classes alcançáveis pelo nosso RFI e 1.647 inalcançáveis (sem fallback inventado), 90 handlists e 135 regras OPPL.
+- Módulo VS_3BET isolado + fonte única **RFI/VS_OPEN/VS_3BET com 277 regras**; 23 novos testes; **277 acumulados esperados em CI** (254+23). Nenhum dos 3 ranges v0.6.1 alterado.
+- Contagem correta OH `Raises=1` após RFI do Hero; `BotRaisedBeforeFlop`, `RaisesSinceLastPlay`, `FirstRaiserPosition`, `LastRaiserPosition` e stack inicial da rodada são guardas **a verificar no executável**. Nenhuma medição real OH efetuada.
+- **Pronto apenas como código DRAFT**. G1 aberto, G2-a HOLD por qualidade estratégica, G2-b bloqueado, G6 pendente. Não alegar bot operacional ou winrate.

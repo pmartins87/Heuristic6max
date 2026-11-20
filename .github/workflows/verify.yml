@@ -107,3 +107,12 @@ jobs:
         run: git diff --exit-code -- portability/vs_open_mvp/vs_open_6max_mvp.oppl portability/vs_open_mvp/preflop_rfi_vsopen_draft.oppl portability/vs_open_mvp/VS_OPEN_2535_MAPPING.csv
       - name: Verify VS_OPEN-MVP SHA256 manifest
         run: cd portability/vs_open_mvp && sha256sum -c VS_OPEN_MVP_SHA256SUMS.txt
+
+      - name: Test 15 VS_3BET OpenPPL trees (23 tests)
+        run: python -m unittest discover -s portability/vs_3bet_mvp -p 'test_*.py' -q
+      - name: Rebuild VS_3BET and combined RFI VS_OPEN VS3 from frozen baseline
+        run: python portability/vs_3bet_mvp/generate_vs3_mvp.py
+      - name: Check deterministic VS_3BET OpenPPL and 2535-case map
+        run: git diff --exit-code -- portability/vs_3bet_mvp/vs_3bet_6max_mvp.oppl portability/vs_3bet_mvp/preflop_rfi_vsopen_vs3_draft.oppl portability/vs_3bet_mvp/VS3_2535_MAPPING.csv
+      - name: Verify VS_3BET SHA256 snapshot
+        run: cd portability/vs_3bet_mvp && sha256sum -c VS3_MVP_SHA256SUMS.txt

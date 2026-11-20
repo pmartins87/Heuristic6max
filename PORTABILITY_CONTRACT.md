@@ -73,3 +73,9 @@ A cada nova implementação estratégica, consultar este contrato e atualizar `D
 - O requisito OpenPPL-first cobre agora 5 posições RFI (845 classes) + 15 VS_OPEN (2.535 classes). A fonte `preflop_rfi_vsopen_draft.oppl` gera uma única função `f$preflop`; RFI e VS_OPEN não competem porque `Raises=0` versus `Raises=1`.
 - [Código e 19 testes](portability/vs_open_mvp/README.md) conferem o próprio OPPL contra ranges v0.6.1 **sem segunda política Python**. Guardas exigem `FirstRaiserPosition`, `LastRaiserPosition`, `Calls=0`, pote, sizing e stack; todos são apenas candidatos a símbolos para validar no executável-alvo.
 - Mixes 3BET/CALL, 3BET/FOLD e CALL/FOLD preservam `randomhand`, fonte e prioridades. **Nenhum OHReplay real, nenhum fail-closed garantido.** Próxima etapa VS_3BET de mesma base, e teste OH antes de promover a bot. Não usar este rascunho para apostar.
+
+## VS_3BET-MVP — aplicação prática da fonte única (ADR-020)
+- [portability/vs_3bet_mvp/](portability/vs_3bet_mvp/): decisões de VS_3BET nascem da fonte declarativa/handlists OpenPPL, interpretadas em teste Python a partir do **mesmo arquivo**, com 23 novos testes de regressão e sem duplicar política em runtime.
+- `Raises` do OpenPPL conta raises **adversários** (1 após RFI do Hero + uma 3bet), não raises totais (2); para diferenciar `VS_3BET` de `VS_OPEN`, exigir `BotRaisedBeforeFlop`, `RaisesSinceLastPlay=1`, `FirstRaiserPosition=Hero` e `LastRaiserPosition=vilão`.
+- Guardar stack anterior à ação RFI com `StackSizeAtBeginningOfCurrentRound`. Comparações da classe e do sizing usam correspondência exata da v0.6.1. Sem regra para nós inalcançáveis, sem `WHEN Others` nem fallback inventado.
+- Esses símbolos de histórico **não foram comprovados** na compilação e no runtime da versão OpenHoldem-alvo. A aprovação estática do código não substitui gate de ação final/backup; arquivo combinado (277 regras) ainda é DRAFT e não deve ser executado em jogos reais.

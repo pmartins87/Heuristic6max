@@ -1,5 +1,12 @@
 # Heuristic6max — fonte de verdade
 
+## VS_3BET-MVP — árvore pré-flop em OpenPPL (20/11/2026; DRAFT)
+- [Código, testes e contrato de integração](portability/vs_3bet_mvp/README.md); [mapeamento 15 × 169](portability/vs_3bet_mvp/VS3_2535_MAPPING.csv).
+- **888 decisões alcançáveis** de 2.535 classes/confrontos, 1.647 impossíveis após RFI (nenhuma ação inventada). **90 handlists + 135 regras**, 23 testes novos; baseline RFI/VS_OPEN/VS_3BET v0.6.1 **intacta**.
+- [Fonte OpenPPL VS_3BET](portability/vs_3bet_mvp/vs_3bet_6max_mvp.oppl) e [fonte única pré-flop RFI+VS_OPEN+VS_3BET](portability/vs_3bet_mvp/preflop_rfi_vsopen_vs3_draft.oppl): **277 regras** com um só `f$preflop`. Cobrem apenas sizings/árvores 100BB previstos, **não** são bot operacional.
+- Escolhas técnicas: `Raises=1` (contagem só dos adversários), `BotRaisedBeforeFlop`, `RaisesSinceLastPlay=1`, posições de primeiro/último raiser e stack no início da rodada. Sem replay real OH nem fallback controlado: G1 aberto, G2-a HOLD, G6 pendente.
+- **Foco prático:** bot heurístico aproximadamente GTO, sem solver próprio ou prova científica de EV. Regressões servem para não quebrar transcrição e histórico.
+
 ## VS_OPEN-MVP: 15 árvores pré-flop em OpenPPL (DRAFT — NÃO operacional)
 - [Código, regra de escopo e 19 testes](portability/vs_open_mvp/README.md), [fonte VS_OPEN das 2.535 decisões](portability/vs_open_mvp/vs_open_6max_mvp.oppl) e [pré-flop combinado RFI + VS_OPEN](portability/vs_open_mvp/preflop_rfi_vsopen_draft.oppl).
 - **15 confrontos × 169 classes = 2.535 estados**, 81 listas disjuntas por confronto, 121 regras OpenPPL de VS_OPEN; combinadas com 21 regras RFI anteriores = **142 regras na mesma função preflop** e 3.380 estados de classe/par ou classe/posição.

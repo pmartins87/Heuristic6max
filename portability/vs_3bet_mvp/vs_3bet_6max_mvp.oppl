@@ -1,0 +1,362 @@
+// VS_3BET v0.6.1 DRAFT: 15 positional trees after our own RFI.
+// 1647 NOT_REACHABLE_FROM_RFI hands intentionally have NO action here.
+// OpenPPL Raises counts OPPONENT raises: 1 (not 2) after our RFI.
+// BotRaisedBeforeFlop and RaisesSinceLastPlay require real OH replay validation.
+// Current-round-start stack avoids excluding Hero after investing the RFI.
+// Do NOT load as standalone bot: no-match can invoke default.bot.
+##listV3LJHJP4##
+AA AKs KK
+##listV3LJHJM4C65##
+AKo QQ
+##listV3LJHJM4F25##
+A4s A5s
+##listV3LJHJPC##
+AQs JJ TT
+##listV3LJHJMCF55##
+88 99 AJs KQs
+##listV3LJHJPF##
+22 33 44 55 66 76s 77 87s 98s A2s A3s A6s
+A7s A8s A9s AJo AQo ATo ATs J9s JTs K9s KJo KJs
+KQo KTs Q9s QJs QTs T9s
+##listV3LJCOP4##
+AA AKs KK
+##listV3LJCOM4C65##
+AKo QQ
+##listV3LJCOM4F25##
+A4s A5s
+##listV3LJCOPC##
+AQs JJ TT
+##listV3LJCOMCF55##
+88 99 AJs ATs KQs
+##listV3LJCOPF##
+22 33 44 55 66 76s 77 87s 98s A2s A3s A6s
+A7s A8s A9s AJo AQo ATo J9s JTs K9s KJo KJs KQo
+KTs Q9s QJs QTs T9s
+##listV3LJBTNP4##
+AA AKs KK
+##listV3LJBTNM4C65##
+AKo QQ
+##listV3LJBTNM4F30##
+A4s A5s
+##listV3LJBTNPC##
+AQs JJ TT
+##listV3LJBTNMCF55##
+88 99 AJs ATs KQs
+##listV3LJBTNPF##
+22 33 44 55 66 76s 77 87s 98s A2s A3s A6s
+A7s A8s A9s AJo AQo ATo J9s JTs K9s KJo KJs KQo
+KTs Q9s QJs QTs T9s
+##listV3LJSBP4##
+AA AKs KK
+##listV3LJSBM4C60##
+AKo QQ
+##listV3LJSBM4F25##
+A4s A5s
+##listV3LJSBPC##
+88 99 AJs AQo AQs JJ KQs TT
+##listV3LJSBMCF60##
+66 77 ATs JTs KJs QJs
+##listV3LJSBPF##
+22 33 44 55 76s 87s 98s A2s A3s A6s A7s A8s
+A9s AJo ATo J9s K9s KJo KQo KTs Q9s QTs T9s
+##listV3LJBBP4##
+AA AKs KK
+##listV3LJBBM4C60##
+AKo QQ
+##listV3LJBBM4F25##
+A4s A5s
+##listV3LJBBPC##
+88 99 AJs AQo AQs JJ KQs TT
+##listV3LJBBMCF60##
+66 77 ATs JTs KJs QJs
+##listV3LJBBPF##
+22 33 44 55 76s 87s 98s A2s A3s A6s A7s A8s
+A9s AJo ATo J9s K9s KJo KQo KTs Q9s QTs T9s
+##listV3HJCOP4##
+AA AKs KK
+##listV3HJCOM4C65##
+AKo QQ
+##listV3HJCOM4F25##
+A4s A5s
+##listV3HJCOPC##
+AJs AQs JJ KQs TT
+##listV3HJCOMCF55##
+88 99 ATs KJs QJs
+##listV3HJCOPF##
+22 33 44 54s 55 65s 66 75s 76s 77 86s 87s
+97s 98s A2s A3s A6s A7s A8s A9o A9s AJo AQo ATo
+J8s J9s JTs K8s K9s KJo KQo KTs Q8s Q9s QJo QTs
+T8s T9s
+##listV3HJBTNP4##
+AA AKs KK
+##listV3HJBTNM4C65##
+AKo QQ
+##listV3HJBTNM4F30##
+A4s A5s
+##listV3HJBTNPC##
+AJs AQs JJ KQs TT
+##listV3HJBTNMCF55##
+88 99 ATs JTs KJs QJs
+##listV3HJBTNPF##
+22 33 44 54s 55 65s 66 75s 76s 77 86s 87s
+97s 98s A2s A3s A6s A7s A8s A9o A9s AJo AQo ATo
+J8s J9s K8s K9s KJo KQo KTs Q8s Q9s QJo QTs T8s
+T9s
+##listV3HJSBP4##
+AA AKs KK
+##listV3HJSBM4C60##
+AKo QQ
+##listV3HJSBM4F30##
+A3s A4s A5s
+##listV3HJSBPC##
+99 AJs AQo AQs JJ KJs KQs QJs TT
+##listV3HJSBMCF60##
+77 88 ATs JTs T9s
+##listV3HJSBPF##
+22 33 44 54s 55 65s 66 75s 76s 86s 87s 97s
+98s A2s A6s A7s A8s A9o A9s AJo ATo J8s J9s K8s
+K9s KJo KQo KTs Q8s Q9s QJo QTs T8s
+##listV3HJBBP4##
+AA AKs KK
+##listV3HJBBM4C60##
+AKo QQ
+##listV3HJBBM4F30##
+A3s A4s A5s
+##listV3HJBBPC##
+99 AJs AQo AQs JJ KJs KQs QJs TT
+##listV3HJBBMCF60##
+77 88 ATs JTs T9s
+##listV3HJBBPF##
+22 33 44 54s 55 65s 66 75s 76s 86s 87s 97s
+98s A2s A6s A7s A8s A9o A9s AJo ATo J8s J9s K8s
+K9s KJo KQo KTs Q8s Q9s QJo QTs T8s
+##listV3COBTNP4##
+AA AKs KK
+##listV3COBTNM4C65##
+AKo JJ QQ
+##listV3COBTNM4F30##
+A3s A4s A5s
+##listV3COBTNPC##
+88 99 AJs AQo AQs JTs KJs KQs QJs TT
+##listV3COBTNMCF55##
+66 77 87s 98s ATo ATs
+##listV3COBTNPF##
+22 33 44 54s 55 65s 75s 76s 86s 97s A2s A5o
+A6s A7o A7s A8o A8s A9o A9s AJo J7s J8s J9s JTo
+K7s K8s K9s KJo KQo KTo KTs Q7s Q8s Q9s QJo QTo
+QTs T8s T9s
+##listV3COSBP4##
+AA AKs KK
+##listV3COSBM4C60##
+AKo JJ QQ
+##listV3COSBM4F30##
+A3s A4s A5s
+##listV3COSBPC##
+88 99 AJs AQo AQs ATs JTs KJs KQs QJs T9s TT
+##listV3COSBMCF60##
+66 77 87s 98s A9s AJo
+##listV3COSBPF##
+22 33 44 54s 55 65s 75s 76s 86s 97s A2s A5o
+A6s A7o A7s A8o A8s A9o ATo J7s J8s J9s JTo K7s
+K8s K9s KJo KQo KTo KTs Q7s Q8s Q9s QJo QTo QTs
+T8s
+##listV3COBBP4##
+AA AKs KK
+##listV3COBBM4C60##
+AKo JJ QQ
+##listV3COBBM4F30##
+A3s A4s A5s
+##listV3COBBPC##
+88 99 AJs AQo AQs ATs JTs KJs KQs QJs T9s TT
+##listV3COBBMCF60##
+66 77 87s 98s A9s AJo
+##listV3COBBPF##
+22 33 44 54s 55 65s 75s 76s 86s 97s A2s A5o
+A6s A7o A7s A8o A8s A9o ATo J7s J8s J9s JTo K7s
+K8s K9s KJo KQo KTo KTs Q7s Q8s Q9s QJo QTo QTs
+T8s
+##listV3BTNSBP4##
+AA AKs KK
+##listV3BTNSBM4C55##
+AKo JJ QQ
+##listV3BTNSBM4F35##
+A2s A3s A4s A5s K5s
+##listV3BTNSBPC##
+77 88 98s 99 AJo AJs AQo AQs ATs JTs KJs KQo
+KQs QJs T9s TT
+##listV3BTNSBMCF60##
+44 55 66 76s 87s A8s A9s J9s KTs QTs
+##listV3BTNSBPF##
+22 33 53s 54s 64s 65s 74s 75s 85s 86s 96s 97s
+98o A2o A3o A4o A5o A6o A6s A7o A7s A8o A9o ATo
+J5s J6s J7s J8s J9o JTo K2s K3s K4s K6s K7s K8o
+K8s K9o K9s KJo KTo Q4s Q5s Q6s Q7s Q8s Q9o Q9s
+QJo QTo T6s T7s T8s T9o
+##listV3BTNBBP4##
+AA AKs KK
+##listV3BTNBBM4C55##
+AKo JJ QQ
+##listV3BTNBBM4F35##
+A2s A3s A4s A5s K5s
+##listV3BTNBBPC##
+55 66 77 87s 88 98s 99 AJo AJs AQo AQs ATs
+JTs KJs KQo KQs KTs QJs QTs T9s TT
+##listV3BTNBBMCF60##
+22 33 44 65s 76s A6s A7s A8s A9s ATo J9s K9s
+KJo Q9s T8s
+##listV3BTNBBPF##
+53s 54s 64s 74s 75s 85s 86s 96s 97s 98o A2o A3o
+A4o A5o A6o A7o A8o A9o J5s J6s J7s J8s J9o JTo
+K2s K3s K4s K6s K7s K8o K8s K9o KTo Q4s Q5s Q6s
+Q7s Q8s Q9o QJo QTo T6s T7s T9o
+##listV3SBBBP4##
+AA AKs KK
+##listV3SBBBM4C60##
+AKo JJ QQ
+##listV3SBBBM4F35##
+A2s A3s A4s A5s K5s
+##listV3SBBBPC##
+77 88 98s 99 AJo AJs AQo AQs ATo ATs JTs KJs
+KQo KQs QJs T9s TT
+##listV3SBBBMCF55##
+44 55 66 76s 87s A8s A9s KJo KTs QJo QTs
+##listV3SBBBPF##
+22 33 54s 65s 75s 86s 97s A2o A3o A4o A5o A6o
+A6s A7o A7s A8o A9o J7s J8s J9s JTo K3s K4s K6s
+K7s K8o K8s K9o K9s KTo Q7s Q8s Q9s QTo T8s
+##f$preflop##
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 4 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJHJP4) RaiseTo 21.2 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 4 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJHJM4C65 AND randomhand < 0.65) RaiseTo 21.2 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 4 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJHJM4C65 AND randomhand >= 0.65) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 4 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJHJM4F25 AND randomhand < 0.25) RaiseTo 21.2 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 4 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJHJM4F25 AND randomhand >= 0.25) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 4 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJHJPC) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 4 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJHJMCF55 AND randomhand < 0.55) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 4 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJHJMCF55 AND randomhand >= 0.55) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 4 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJHJPF) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 3 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJCOP4) RaiseTo 21.2 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 3 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJCOM4C65 AND randomhand < 0.65) RaiseTo 21.2 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 3 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJCOM4C65 AND randomhand >= 0.65) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 3 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJCOM4F25 AND randomhand < 0.25) RaiseTo 21.2 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 3 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJCOM4F25 AND randomhand >= 0.25) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 3 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJCOPC) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 3 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJCOMCF55 AND randomhand < 0.55) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 3 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJCOMCF55 AND randomhand >= 0.55) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 3 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJCOPF) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 2 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJBTNP4) RaiseTo 21.2 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 2 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJBTNM4C65 AND randomhand < 0.65) RaiseTo 21.2 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 2 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJBTNM4C65 AND randomhand >= 0.65) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 2 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJBTNM4F30 AND randomhand < 0.30) RaiseTo 21.2 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 2 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJBTNM4F30 AND randomhand >= 0.30) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 2 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJBTNPC) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 2 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJBTNMCF55 AND randomhand < 0.55) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 2 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJBTNMCF55 AND randomhand >= 0.55) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 2 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJBTNPF) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 1 AND PotSize = 13.75 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJSBP4) RaiseTo 23.58 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 1 AND PotSize = 13.75 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJSBM4C60 AND randomhand < 0.60) RaiseTo 23.58 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 1 AND PotSize = 13.75 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJSBM4C60 AND randomhand >= 0.60) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 1 AND PotSize = 13.75 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJSBM4F25 AND randomhand < 0.25) RaiseTo 23.58 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 1 AND PotSize = 13.75 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJSBM4F25 AND randomhand >= 0.25) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 1 AND PotSize = 13.75 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJSBPC) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 1 AND PotSize = 13.75 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJSBMCF60 AND randomhand < 0.60) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 1 AND PotSize = 13.75 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJSBMCF60 AND randomhand >= 0.60) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 1 AND PotSize = 13.75 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJSBPF) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 0 AND PotSize = 13.25 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJBBP4) RaiseTo 23.58 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 0 AND PotSize = 13.25 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJBBM4C60 AND randomhand < 0.60) RaiseTo 23.58 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 0 AND PotSize = 13.25 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJBBM4C60 AND randomhand >= 0.60) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 0 AND PotSize = 13.25 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJBBM4F25 AND randomhand < 0.25) RaiseTo 23.58 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 0 AND PotSize = 13.25 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJBBM4F25 AND randomhand >= 0.25) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 0 AND PotSize = 13.25 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJBBPC) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 0 AND PotSize = 13.25 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJBBMCF60 AND randomhand < 0.60) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 0 AND PotSize = 13.25 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJBBMCF60 AND randomhand >= 0.60) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InUTG AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 5 AND LastRaiserPosition = 0 AND PotSize = 13.25 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3LJBBPF) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InMiddlePosition3 AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 4 AND LastRaiserPosition = 3 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3HJCOP4) RaiseTo 21.2 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InMiddlePosition3 AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 4 AND LastRaiserPosition = 3 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3HJCOM4C65 AND randomhand < 0.65) RaiseTo 21.2 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InMiddlePosition3 AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 4 AND LastRaiserPosition = 3 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3HJCOM4C65 AND randomhand >= 0.65) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InMiddlePosition3 AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 4 AND LastRaiserPosition = 3 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3HJCOM4F25 AND randomhand < 0.25) RaiseTo 21.2 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InMiddlePosition3 AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 4 AND LastRaiserPosition = 3 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3HJCOM4F25 AND randomhand >= 0.25) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InMiddlePosition3 AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 4 AND LastRaiserPosition = 3 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3HJCOPC) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InMiddlePosition3 AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 4 AND LastRaiserPosition = 3 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3HJCOMCF55 AND randomhand < 0.55) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InMiddlePosition3 AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 4 AND LastRaiserPosition = 3 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3HJCOMCF55 AND randomhand >= 0.55) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InMiddlePosition3 AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 4 AND LastRaiserPosition = 3 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3HJCOPF) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InMiddlePosition3 AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 4 AND LastRaiserPosition = 2 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3HJBTNP4) RaiseTo 21.2 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InMiddlePosition3 AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 4 AND LastRaiserPosition = 2 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3HJBTNM4C65 AND randomhand < 0.65) RaiseTo 21.2 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InMiddlePosition3 AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 4 AND LastRaiserPosition = 2 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3HJBTNM4C65 AND randomhand >= 0.65) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InMiddlePosition3 AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 4 AND LastRaiserPosition = 2 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3HJBTNM4F30 AND randomhand < 0.30) RaiseTo 21.2 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InMiddlePosition3 AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 4 AND LastRaiserPosition = 2 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3HJBTNM4F30 AND randomhand >= 0.30) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InMiddlePosition3 AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 4 AND LastRaiserPosition = 2 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3HJBTNPC) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InMiddlePosition3 AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 4 AND LastRaiserPosition = 2 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3HJBTNMCF55 AND randomhand < 0.55) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InMiddlePosition3 AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 4 AND LastRaiserPosition = 2 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3HJBTNMCF55 AND randomhand >= 0.55) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InMiddlePosition3 AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 4 AND LastRaiserPosition = 2 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3HJBTNPF) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InMiddlePosition3 AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 4 AND LastRaiserPosition = 1 AND PotSize = 13.75 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3HJSBP4) RaiseTo 23.58 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InMiddlePosition3 AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 4 AND LastRaiserPosition = 1 AND PotSize = 13.75 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3HJSBM4C60 AND randomhand < 0.60) RaiseTo 23.58 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InMiddlePosition3 AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 4 AND LastRaiserPosition = 1 AND PotSize = 13.75 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3HJSBM4C60 AND randomhand >= 0.60) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InMiddlePosition3 AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 4 AND LastRaiserPosition = 1 AND PotSize = 13.75 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3HJSBM4F30 AND randomhand < 0.30) RaiseTo 23.58 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InMiddlePosition3 AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 4 AND LastRaiserPosition = 1 AND PotSize = 13.75 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3HJSBM4F30 AND randomhand >= 0.30) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InMiddlePosition3 AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 4 AND LastRaiserPosition = 1 AND PotSize = 13.75 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3HJSBPC) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InMiddlePosition3 AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 4 AND LastRaiserPosition = 1 AND PotSize = 13.75 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3HJSBMCF60 AND randomhand < 0.60) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InMiddlePosition3 AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 4 AND LastRaiserPosition = 1 AND PotSize = 13.75 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3HJSBMCF60 AND randomhand >= 0.60) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InMiddlePosition3 AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 4 AND LastRaiserPosition = 1 AND PotSize = 13.75 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3HJSBPF) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InMiddlePosition3 AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 4 AND LastRaiserPosition = 0 AND PotSize = 13.25 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3HJBBP4) RaiseTo 23.58 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InMiddlePosition3 AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 4 AND LastRaiserPosition = 0 AND PotSize = 13.25 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3HJBBM4C60 AND randomhand < 0.60) RaiseTo 23.58 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InMiddlePosition3 AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 4 AND LastRaiserPosition = 0 AND PotSize = 13.25 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3HJBBM4C60 AND randomhand >= 0.60) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InMiddlePosition3 AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 4 AND LastRaiserPosition = 0 AND PotSize = 13.25 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3HJBBM4F30 AND randomhand < 0.30) RaiseTo 23.58 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InMiddlePosition3 AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 4 AND LastRaiserPosition = 0 AND PotSize = 13.25 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3HJBBM4F30 AND randomhand >= 0.30) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InMiddlePosition3 AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 4 AND LastRaiserPosition = 0 AND PotSize = 13.25 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3HJBBPC) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InMiddlePosition3 AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 4 AND LastRaiserPosition = 0 AND PotSize = 13.25 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3HJBBMCF60 AND randomhand < 0.60) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InMiddlePosition3 AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 4 AND LastRaiserPosition = 0 AND PotSize = 13.25 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3HJBBMCF60 AND randomhand >= 0.60) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InMiddlePosition3 AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 4 AND LastRaiserPosition = 0 AND PotSize = 13.25 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3HJBBPF) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InCutOff AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 3 AND LastRaiserPosition = 2 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3COBTNP4) RaiseTo 21.2 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InCutOff AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 3 AND LastRaiserPosition = 2 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3COBTNM4C65 AND randomhand < 0.65) RaiseTo 21.2 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InCutOff AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 3 AND LastRaiserPosition = 2 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3COBTNM4C65 AND randomhand >= 0.65) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InCutOff AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 3 AND LastRaiserPosition = 2 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3COBTNM4F30 AND randomhand < 0.30) RaiseTo 21.2 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InCutOff AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 3 AND LastRaiserPosition = 2 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3COBTNM4F30 AND randomhand >= 0.30) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InCutOff AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 3 AND LastRaiserPosition = 2 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3COBTNPC) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InCutOff AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 3 AND LastRaiserPosition = 2 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3COBTNMCF55 AND randomhand < 0.55) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InCutOff AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 3 AND LastRaiserPosition = 2 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3COBTNMCF55 AND randomhand >= 0.55) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InCutOff AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 3 AND LastRaiserPosition = 2 AND PotSize = 12 AND AmountToCall = 5.5 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3COBTNPF) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InCutOff AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 3 AND LastRaiserPosition = 1 AND PotSize = 13.75 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3COSBP4) RaiseTo 23.58 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InCutOff AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 3 AND LastRaiserPosition = 1 AND PotSize = 13.75 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3COSBM4C60 AND randomhand < 0.60) RaiseTo 23.58 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InCutOff AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 3 AND LastRaiserPosition = 1 AND PotSize = 13.75 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3COSBM4C60 AND randomhand >= 0.60) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InCutOff AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 3 AND LastRaiserPosition = 1 AND PotSize = 13.75 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3COSBM4F30 AND randomhand < 0.30) RaiseTo 23.58 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InCutOff AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 3 AND LastRaiserPosition = 1 AND PotSize = 13.75 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3COSBM4F30 AND randomhand >= 0.30) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InCutOff AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 3 AND LastRaiserPosition = 1 AND PotSize = 13.75 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3COSBPC) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InCutOff AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 3 AND LastRaiserPosition = 1 AND PotSize = 13.75 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3COSBMCF60 AND randomhand < 0.60) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InCutOff AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 3 AND LastRaiserPosition = 1 AND PotSize = 13.75 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3COSBMCF60 AND randomhand >= 0.60) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InCutOff AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 3 AND LastRaiserPosition = 1 AND PotSize = 13.75 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3COSBPF) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InCutOff AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 3 AND LastRaiserPosition = 0 AND PotSize = 13.25 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3COBBP4) RaiseTo 23.58 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InCutOff AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 3 AND LastRaiserPosition = 0 AND PotSize = 13.25 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3COBBM4C60 AND randomhand < 0.60) RaiseTo 23.58 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InCutOff AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 3 AND LastRaiserPosition = 0 AND PotSize = 13.25 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3COBBM4C60 AND randomhand >= 0.60) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InCutOff AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 3 AND LastRaiserPosition = 0 AND PotSize = 13.25 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3COBBM4F30 AND randomhand < 0.30) RaiseTo 23.58 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InCutOff AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 3 AND LastRaiserPosition = 0 AND PotSize = 13.25 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3COBBM4F30 AND randomhand >= 0.30) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InCutOff AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 3 AND LastRaiserPosition = 0 AND PotSize = 13.25 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3COBBPC) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InCutOff AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 3 AND LastRaiserPosition = 0 AND PotSize = 13.25 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3COBBMCF60 AND randomhand < 0.60) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InCutOff AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 3 AND LastRaiserPosition = 0 AND PotSize = 13.25 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3COBBMCF60 AND randomhand >= 0.60) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InCutOff AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 3 AND LastRaiserPosition = 0 AND PotSize = 13.25 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3COBBPF) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InButton AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 2 AND LastRaiserPosition = 1 AND PotSize = 13.75 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3BTNSBP4) RaiseTo 23.58 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InButton AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 2 AND LastRaiserPosition = 1 AND PotSize = 13.75 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3BTNSBM4C55 AND randomhand < 0.55) RaiseTo 23.58 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InButton AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 2 AND LastRaiserPosition = 1 AND PotSize = 13.75 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3BTNSBM4C55 AND randomhand >= 0.55) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InButton AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 2 AND LastRaiserPosition = 1 AND PotSize = 13.75 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3BTNSBM4F35 AND randomhand < 0.35) RaiseTo 23.58 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InButton AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 2 AND LastRaiserPosition = 1 AND PotSize = 13.75 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3BTNSBM4F35 AND randomhand >= 0.35) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InButton AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 2 AND LastRaiserPosition = 1 AND PotSize = 13.75 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3BTNSBPC) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InButton AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 2 AND LastRaiserPosition = 1 AND PotSize = 13.75 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3BTNSBMCF60 AND randomhand < 0.60) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InButton AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 2 AND LastRaiserPosition = 1 AND PotSize = 13.75 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3BTNSBMCF60 AND randomhand >= 0.60) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InButton AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 2 AND LastRaiserPosition = 1 AND PotSize = 13.75 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3BTNSBPF) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InButton AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 2 AND LastRaiserPosition = 0 AND PotSize = 13.25 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3BTNBBP4) RaiseTo 23.58 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InButton AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 2 AND LastRaiserPosition = 0 AND PotSize = 13.25 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3BTNBBM4C55 AND randomhand < 0.55) RaiseTo 23.58 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InButton AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 2 AND LastRaiserPosition = 0 AND PotSize = 13.25 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3BTNBBM4C55 AND randomhand >= 0.55) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InButton AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 2 AND LastRaiserPosition = 0 AND PotSize = 13.25 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3BTNBBM4F35 AND randomhand < 0.35) RaiseTo 23.58 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InButton AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 2 AND LastRaiserPosition = 0 AND PotSize = 13.25 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3BTNBBM4F35 AND randomhand >= 0.35) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InButton AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 2 AND LastRaiserPosition = 0 AND PotSize = 13.25 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3BTNBBPC) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InButton AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 2 AND LastRaiserPosition = 0 AND PotSize = 13.25 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3BTNBBMCF60 AND randomhand < 0.60) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InButton AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 2 AND LastRaiserPosition = 0 AND PotSize = 13.25 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3BTNBBMCF60 AND randomhand >= 0.60) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InButton AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 2 AND LastRaiserPosition = 0 AND PotSize = 13.25 AND AmountToCall = 7.75 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3BTNBBPF) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InSmallBlind AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 1 AND LastRaiserPosition = 0 AND PotSize = 12.6 AND AmountToCall = 6.6 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3SBBBP4) RaiseTo 25.44 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InSmallBlind AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 1 AND LastRaiserPosition = 0 AND PotSize = 12.6 AND AmountToCall = 6.6 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3SBBBM4C60 AND randomhand < 0.60) RaiseTo 25.44 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InSmallBlind AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 1 AND LastRaiserPosition = 0 AND PotSize = 12.6 AND AmountToCall = 6.6 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3SBBBM4C60 AND randomhand >= 0.60) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InSmallBlind AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 1 AND LastRaiserPosition = 0 AND PotSize = 12.6 AND AmountToCall = 6.6 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3SBBBM4F35 AND randomhand < 0.35) RaiseTo 25.44 FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InSmallBlind AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 1 AND LastRaiserPosition = 0 AND PotSize = 12.6 AND AmountToCall = 6.6 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3SBBBM4F35 AND randomhand >= 0.35) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InSmallBlind AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 1 AND LastRaiserPosition = 0 AND PotSize = 12.6 AND AmountToCall = 6.6 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3SBBBPC) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InSmallBlind AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 1 AND LastRaiserPosition = 0 AND PotSize = 12.6 AND AmountToCall = 6.6 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3SBBBMCF55 AND randomhand < 0.55) Call FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InSmallBlind AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 1 AND LastRaiserPosition = 0 AND PotSize = 12.6 AND AmountToCall = 6.6 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3SBBBMCF55 AND randomhand >= 0.55) Fold FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InSmallBlind AND Raises = 1 AND RaisesSinceLastPlay = 1 AND Calls = 0 AND BotRaisedBeforeFlop AND FirstRaiserPosition = 1 AND LastRaiserPosition = 0 AND PotSize = 12.6 AND AmountToCall = 6.6 AND NOT StackUnknown AND StackSizeAtBeginningOfCurrentRound >= 95 AND StackSizeAtBeginningOfCurrentRound <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND listV3SBBBPF) Fold FORCE

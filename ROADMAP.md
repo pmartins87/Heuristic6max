@@ -88,3 +88,9 @@ Ver [PORTABILITY_CONTRACT.md](PORTABILITY_CONTRACT.md).
 - RFI-MVP e VS_OPEN-MVP são ramos DRAFT prontos em fonte OpenPPL comum, não um bot operando. O combinado contém **142 regras**, 3.380 decisões de classe/nó, preserva 15 políticas VS_OPEN e 5 posições RFI do snapshot v0.6.1.
 - **Próxima entrega útil:** portar VS_3BET (15 confrontos ×169) à mesma fonte OpenPPL, sem ajustar ranges ou desbloquear G2-b/VS_4BET. Proteger ações mistas com `randomhand`, legalidade do RaiseTo e eventos de reavaliação.
 - **Teste mínimo para promoção futura:** integração OpenHoldem real via ManualMode/OHReplay offline, checagem de first raiser, pot 4 BB, to_call e stack + **ação final**; impedir fallback silencioso. Sem essa prova, manter G1 ABERTO e G6 PENDENTE. Não prolongar auditorias de equidade hipotéticas sem dados novos.
+
+## Entrega de engenharia VS_3BET-MVP (20/11/2026)
+- Portadas as 15 respostas às 3-bets de vilões sobre nosso RFI, usando OPPL com 135 regras, 888 cenários de mão realmente alcançáveis, 1.647 explicitamente sem regra; CSV 2.535 linhas. Fonte pré-flop integrada RFI+VS_OPEN+VS_3BET com **277 regras em uma função**.
+- **Encerra somente o trabalho de transposição estática dos três módulos já disponíveis**, não aprova G2-a nem runtime. Testes 23 novos; esperado CI 277.
+- **Próxima ação prática:** replay offline de 3–5 estados RFI/VS_OPEN/VS_3BET no OH-alvo para conferir guardas do 2º ato, randomhand e ação final; registrar fallback controlado antes de habilitar código em mesa. Após esse gate, implementar o núcleo pós-flop SRP HU (G3), preservando o projeto heurístico. Não abrir VS_4BET/G2-b enquanto bloqueado.
+- **Critérios de parada:** não investir mais em análises hipotéticas que não alteram decisões; não obrigar EV solver para cada heurística; não chamar rascunho OpenPPL de bot validado.
