@@ -1,5 +1,5 @@
 # Estado atual — Heuristic6max
-**Data:** 20/11/2026 | **Checkpoint:** auditoria v0.8 sobre v0.6.1 G2-a | **Estado estratégico:** HOLD / não operacional.
+**Data:** 20/11/2026 | **Checkpoint:** auditoria v0.9 sobre v0.6.1 G2-a | **Estado estratégico:** HOLD / não operacional.
 
 ## Evidências concluídas
 - G0: arquitetura e contratos.
@@ -36,3 +36,10 @@ G2-a permanece aberto: auditar a composição exata dos oito confrontos com prem
 - Nenhum range, ação, sizing ou módulo estratégico modificado. Ações de possíveis cold callers, EV verdadeiro, rake/cap e equidade/realização continuam sem validação. Gate G2-a HOLD.
 
 **Errata de reprodutibilidade v0.8:** primeiro CI acusou somente ordem de linhas em classes empatadas (Python 3.11 vs 3.13); script agora usa desempate determinístico. Nenhum cálculo estratégico mudou. Testes incrementais v0.8: 11.
+
+## Auditoria incremental v0.9 — HJ vs CO (20/11/2026)
+- [Código, 169 classes, 15 candidatos, 36 cenários de preço, 11 testes e hashes](audits/g2a_v0_9/README.md). Total esperado **153 testes** (124+7+11+11); não é validação estratégica GTO.
+- P(Hero fold | RFI HJ, 3bet CO) = **77,53771778%**, CALL = **14,03919921%**, 4BET = **8,42308301%**. Os testes reproduzem a v0.6.1.
+- HJ abre AQo, AJo, KQo, KJo, A9o e desiste 100% versus o CO 3bettor na política atual. Não há prova de que esse fold ou o próprio open seja errado.
+- Abertura HJ 2,5 / 3bet CO 8 BB: call adicional 5,5 BB, pote após call 17,5 BB, exigência imediata 31,4286% antes de rake/realização. 4bet para 21,2 BB exigiria 60,9121% de folds de todos sob o experimento artificial de blefe com equidade zero.
+- Contrafactuais mudar RFI ou defesa são **simulações de frequência, não EV**. Rake/cap e EQR não são dados reais; todos os três CSV de ranges mantidos, status estratégico HOLD.

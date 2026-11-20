@@ -26,3 +26,8 @@ Localização versionada: [audits/g2a_v0_7/](audits/g2a_v0_7/). Contém script, 
 - Diretório: [audits/g2a_v0_8/](audits/g2a_v0_8/); nove arquivos de auditoria, incluindo **AUDIT_SHA256SUMS.txt** sobre oito outros arquivos.
 - Dependências versionadas: v0.6.1 (66 arquivos) e v0.7 (7 testes e auditoria). O v0.8 não substitui a baseline e não muda políticas.
 - Reexecução esperada: 124+7+11 = **142 testes**, quatro relatórios CSV determinísticos, verificação SHA256 e CI verde.
+
+## Auditoria incremental v0.9 — sem ZIP operacional
+- Diretório GitHub: [audits/g2a_v0_9/](audits/g2a_v0_9/), **8 arquivos** incluindo fontes, 3 CSVs, README, decisão, 11 testes e manifesto SHA256.
+- Snapshot estratégico dependente: v0.6.1, inalterado. Depende também de v0.8/v0.7; não é nova release operacional.
+- CI esperada: 124+7+11+11 = **153 testes**, 3 CSVs determinísticos, SHA256 do audit e diff Git nulo. Sem alegar GTO/EV validado.

@@ -2,7 +2,7 @@
 
 Estratégia **heurística** de No-Limit Hold'em cash 6-max baseada em fundamentos de GTO, com contratos, ranges auditáveis e testes reprodutíveis. **Não é um solver; não é um bot operacional validado; não há comprovação de EV ou winrate.**
 
-**Checkpoint ativo: auditoria v0.8 (20/11/2026), sobre motor/ranges v0.6.1 preservados** — G0 aprovado; G1 aberto; G2-a em auditoria/HOLD; G3–G7 pendentes. RFI, VS_OPEN e VS_3BET continuam DRAFT.
+**Checkpoint ativo: auditoria v0.9 (20/11/2026), sobre motor/ranges v0.6.1 preservados** — G0 aprovado; G1 aberto; G2-a em auditoria/HOLD; G3–G7 pendentes. RFI, VS_OPEN e VS_3BET continuam DRAFT.
 
 ## Retomada em novo chat ou IA
 Leia, nesta ordem:
@@ -12,6 +12,15 @@ Leia, nesta ordem:
 4. [HANDOFF.md](HANDOFF.md)
 5. [CHANGELOG.md](CHANGELOG.md)
 6. [RELEASE_MANIFEST.md](RELEASE_MANIFEST.md)
+
+## Auditoria G2-a v0.9 — HJ vs CO, preços e contrafactuais (sem alterar ranges)
+- [Método, limites e decisão](audits/g2a_v0_9/README.md)
+- [169 classes com posterior e exposição à 3-bet](audits/g2a_v0_9/HJ_CO_169_CLASS_SCREEN_v0_9.csv)
+- [15 classes candidatas: RFI vs resposta ao 3bet](audits/g2a_v0_9/HJ_CO_CANDIDATE_COUNTERFACTUALS_v0_9.csv)
+- [36 fronteiras hipotéticas: rake/realização/sizing](audits/g2a_v0_9/HJ_CO_PRICE_FRONTIER_v0_9.csv)
+- [Fonte e 11 testes incrementais](audits/g2a_v0_9/hj_co_frontier.py)
+
+**153 testes previstos e verificáveis** (124+7+11+11). HJ/CO: FOLD 77,5377%, CALL 14,0392%, 4BET 8,4231%. Com abertura 2,5 e 3-bet para 8 BB, call adicional 5,5 BB / pote 17,5 BB = 31,43% de equidade imediata sem rake. Os cenários NÃO estimam equidade real, EV ou uma estratégia GTO; nenhum range foi alterado. G2-a HOLD.
 
 ## Auditoria G2-a v0.8 — defesa por mãos e interferência de terceiros (sem alterar ranges)
 - [Método e resultados v0.8](audits/g2a_v0_8/README.md)

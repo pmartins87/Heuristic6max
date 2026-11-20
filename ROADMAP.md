@@ -1,4 +1,4 @@
-# Roadmap vivo — 20/11/2026 (auditoria v0.8 / estratégia v0.6.1)
+# Roadmap vivo — 20/11/2026 (auditoria v0.9 / estratégia v0.6.1)
 
 | Gate | Estado | Critério de avanço |
 |---|---|---|
@@ -34,3 +34,9 @@ Revisar os oito nós (SB–BB, HJ–CO, LJ–CO, CO–BTN, HJ–BTN, LJ–HJ, BT
 - Novo gate de revisão por mão: documentar premissa de rake/cap/sizing e matriz de EV (call, fold, 4bet) sob modelo explícito do adversário, com incerteza; só então mudar frequências individuais.
 - Variações de cold action demonstram fragilidade do contrafactual v0.7 em nós com jogadores atrás; sem alegar subdefesa GTO comprovada.
 - G1 real-replay ainda aberto; G2-a HOLD; G2-b (VS_4BET) bloqueado.
+
+## G2-a / v0.9 — faixa de análise econômica HJ–CO
+- Nova medição rastreável: 169 classes, 15 candidatas, 36 fronteiras hipotéticas para 3bet 8/9,5/11 BB, rake artificial e fatores de realização 60–100%; 11 testes novos.
+- **Não** comparar apenas frequência de fold; uma poda de RFI pode baixar o fold condicional e **piorar EV de open**. Converter fold em call exige equity/realização; 4bet exige modelo explícito de desistência/continuação.
+- Próximo gate: obter premissas operacionais de rake/cap/sizings e estimar equity contra range de 3bet do modelo por mão com método verificável. Depois comparar EV de OPEN vs FOLD inicial e CALL/4BET vs FOLD frente a 3bet, sem ajustes até validação.
+- Estado inalterado: G1 aberto, G2-a HOLD, G2-b bloqueado, G3–G7 pendentes.

@@ -48,3 +48,14 @@ Revisar por classe os oito MAJOR_REVIEW com comparações rake/sizings equivalen
 A auditoria v0.8 agrega 11 testes aos 131 da v0.7/base: **142 testes locais**. Fonte: [README v0.8](audits/g2a_v0_8/README.md). O CI confere determinismo dos quatro CSVs versionados. **Não usar o ranking de folds como recomendação de call.** Nenhuma política foi alterada; próxima etapa é análise EV por mão/rake/sizing e replays de teste. Lembre-se de rever os sete documentos vivos antes de qualquer nova implementação.
 
 **Atenção CI:** v0.8 passou por um ajuste de desempate estável (Python 3.11/3.13). Execute os testes + regeneração dos quatro CSVs + `git diff` + `sha256sum -c AUDIT_SHA256SUMS.txt`. Não comparar ordenação de floats sem chave estável.
+
+## Auditoria incremental v0.9 — HJ–CO
+
+    python -m unittest discover -s audits/g2a_v0_9 -p 'test_*.py' -q
+    python audits/g2a_v0_9/hj_co_frontier.py
+    cd audits/g2a_v0_9 && sha256sum -c AUDIT_SHA256SUMS.txt
+
+- [Método e relatórios HJ–CO](audits/g2a_v0_9/README.md): 169 classes, 15 candidatas, 36 cenários artificiais de preço, 11 testes novos; total esperado 153.
+- Baseline de estratégia v0.6.1 preservada. P(HJ fold | RFI, CO 3bet)=77,53771778%, call=14,03919921%, 4bet=8,42308301%.
+- Poda de RFI e deslocamento de FOLD->CALL/4BET são **contrafactuais** sem EV conhecido e NÃO autorizam mudança; rake 5/8% e realização 60–100% são apenas hipóteses.
+- GitHub é atualizado diretamente neste projeto; **não solicitar upload manual ao usuário**. Ler estado e verificar CI antes de continuar. G2-a ainda HOLD; G2-b bloqueado.
