@@ -10,3 +10,5 @@
 Consulte [DECISIONS.md](DECISIONS.md) para justificativas e [RELEASE_MANIFEST.md](RELEASE_MANIFEST.md) para hashes e commits. Não confunda teste de infraestrutura com validação GTO.
 
 - **v0.6.1 (20/11/2026):** hotfix do teste de integridade após falha do primeiro GitHub Actions: 50 fontes ancestrais idênticas, 1 manifesto regenerado. 124 testes mantidos; no change in poker decisions. A v0.6 é mantida para auditoria histórica; CI e documentos vivos passaram a apontar para v0.6.1.
+
+- **Auditoria v0.7 (20/11/2026):** 7 novos testes, 15 nós analisados para pressão de 3bet por combo adversário, 8 tabelas de mão agregadas em CSV e medição do limite de blefe isolado de equidade zero. 7/8 nós críticos sob pressão nesse contrafactual; ranges não modificados. Baseline 124 + 7 = 131 testes. Arquivos em [audits/g2a_v0_7/](audits/g2a_v0_7/), sem duplicar ou modificar snapshots históricos.

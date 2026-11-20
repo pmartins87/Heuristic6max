@@ -1,0 +1,16 @@
+Opener,Threebettor,3betTo_BB,VillainAdditionalRisk_BB,PotBefore_BB,WorstCaseZeroEquityBreakevenFold_pct,OurHeroFoldGivenVillainModel3bet_pct,WorstCaseZeroEquityBluffEV_BB,WeightedShareVillain3betsAboveThreshold_pct,Physical3betCombos,ConditionalPressureFlag,Caveat
+LJ,HJ,8.0,8.0,4.0,66.66666667,75.58766775,1.07052013,100.0,74,CONDITIONAL_PRESSURE,isolated_vs_Hero_only; zero_equity_after_continue; others_fold; not_real_EV
+LJ,CO,8.0,8.0,4.0,66.66666667,74.6184123,0.95420948,100.0,90,CONDITIONAL_PRESSURE,isolated_vs_Hero_only; zero_equity_after_continue; others_fold; not_real_EV
+LJ,BTN,8.0,8.0,4.0,66.66666667,74.48151257,0.93778151,100.0,90,CONDITIONAL_PRESSURE,isolated_vs_Hero_only; zero_equity_after_continue; others_fold; not_real_EV
+LJ,SB,10.25,9.75,4.0,70.90909091,59.8416015,-1.52177979,0.0,94,NO_IMMEDIATE_PRESSURE,isolated_vs_Hero_only; zero_equity_after_continue; others_fold; not_real_EV
+LJ,BB,10.25,9.25,4.0,69.81132075,59.75942033,-1.33187681,0.0,98,NO_IMMEDIATE_PRESSURE,isolated_vs_Hero_only; zero_equity_after_continue; others_fold; not_real_EV
+HJ,CO,8.0,8.0,4.0,66.66666667,77.53771778,1.30452613,100.0,90,CONDITIONAL_PRESSURE,isolated_vs_Hero_only; zero_equity_after_continue; others_fold; not_real_EV
+HJ,BTN,8.0,8.0,4.0,66.66666667,76.52651055,1.18318127,100.0,98,CONDITIONAL_PRESSURE,isolated_vs_Hero_only; zero_equity_after_continue; others_fold; not_real_EV
+HJ,SB,10.25,9.75,4.0,70.90909091,68.11038204,-0.38482247,0.0,98,NO_IMMEDIATE_PRESSURE,isolated_vs_Hero_only; zero_equity_after_continue; others_fold; not_real_EV
+HJ,BB,10.25,9.25,4.0,69.81132075,67.95706587,-0.24568877,0.0,106,NO_IMMEDIATE_PRESSURE,isolated_vs_Hero_only; zero_equity_after_continue; others_fold; not_real_EV
+CO,BTN,8.0,8.0,4.0,66.66666667,71.05225733,0.52627088,100.0,156,CONDITIONAL_PRESSURE,isolated_vs_Hero_only; zero_equity_after_continue; others_fold; not_real_EV
+CO,SB,10.25,9.75,4.0,70.90909091,68.56561937,-0.32222734,0.0,128,NO_IMMEDIATE_PRESSURE,isolated_vs_Hero_only; zero_equity_after_continue; others_fold; not_real_EV
+CO,BB,10.25,9.25,4.0,69.81132075,68.5604489,-0.16574052,4.47865574,148,NO_IMMEDIATE_PRESSURE,isolated_vs_Hero_only; zero_equity_after_continue; others_fold; not_real_EV
+BTN,SB,10.25,9.75,4.0,70.90909091,71.2612309,0.04841925,70.8868124,184,CONDITIONAL_PRESSURE,isolated_vs_Hero_only; zero_equity_after_continue; others_fold; not_real_EV
+BTN,BB,10.25,9.25,4.0,69.81132075,63.22298499,-0.87295449,0.0,208,NO_IMMEDIATE_PRESSURE,isolated_vs_Hero_only; zero_equity_after_continue; others_fold; not_real_EV
+SB,BB,9.6,8.6,4.0,68.25396825,60.76192505,-0.94399744,0.0,250,NO_IMMEDIATE_PRESSURE,isolated_vs_Hero_only; zero_equity_after_continue; others_fold; not_real_EV

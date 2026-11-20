@@ -15,3 +15,9 @@ jobs:
           python-version: '3.11'
       - name: Validate manifests, ancestors and v0.6 tests
         run: python scripts/check_repository.py
+      - name: Check isolated 3bet pressure audit tests
+        run: python -m unittest discover -s audits/g2a_v0_7 -p 'test_*.py' -q
+      - name: Recompute tracked pressure reports
+        run: python audits/g2a_v0_7/pressure_audit.py
+      - name: Confirm deterministic audit CSV output
+        run: git diff --exit-code -- audits/g2a_v0_7/3BET_PRESSURE_ALL_15_v0_7.csv audits/g2a_v0_7/3BET_PRESSURE_HANDS_8_v0_7.csv

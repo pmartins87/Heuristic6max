@@ -2,7 +2,7 @@
 
 Estratégia **heurística** de No-Limit Hold'em cash 6-max baseada em fundamentos de GTO, com contratos, ranges auditáveis e testes reprodutíveis. **Não é um solver; não é um bot operacional validado; não há comprovação de EV ou winrate.**
 
-**Checkpoint ativo: v0.6.1 (20/11/2026)** — G0 aprovado; G1 aberto; G2-a em auditoria/HOLD; G3–G7 pendentes. RFI, VS_OPEN e VS_3BET continuam DRAFT.
+**Checkpoint ativo: auditoria v0.7 (20/11/2026), sobre motor/ranges v0.6.1 preservados** — G0 aprovado; G1 aberto; G2-a em auditoria/HOLD; G3–G7 pendentes. RFI, VS_OPEN e VS_3BET continuam DRAFT.
 
 ## Retomada em novo chat ou IA
 Leia, nesta ordem:
@@ -12,6 +12,14 @@ Leia, nesta ordem:
 4. [HANDOFF.md](HANDOFF.md)
 5. [CHANGELOG.md](CHANGELOG.md)
 6. [RELEASE_MANIFEST.md](RELEASE_MANIFEST.md)
+
+## Nova auditoria G2-a v0.7 (sem alterar ranges)
+- [Método e conclusões](audits/g2a_v0_7/README.md)
+- [15 nós: fold contra preço da 3-bet](audits/g2a_v0_7/3BET_PRESSURE_ALL_15_v0_7.csv)
+- [8 nós: detalhamento por mãos físicas do agressor](audits/g2a_v0_7/3BET_PRESSURE_HANDS_8_v0_7.csv)
+- [Script e testes](audits/g2a_v0_7/pressure_audit.py)
+
+7 dos 8 nós críticos exibem EV positivo para **blefe de equidade zero no experimento isolado**, sem cold actions e com Hero continuando = perda integral do investimento. **Não é EV real, não prova GTO nem autorização de alteração de estratégia.** O resultado altera a prioridade da revisão: investigar folds e defesas conjuntas (call + 4bet), não somente percentual de 4bet.
 
 ## Código e dados completos no GitHub
 - [v0.5 — 51 arquivos históricos preservados](gto6_heuristic_v0_5/)

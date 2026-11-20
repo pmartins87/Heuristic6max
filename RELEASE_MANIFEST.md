@@ -18,3 +18,6 @@ Os hashes do ZIP servem à transferência local; não representam commits Git ne
 **Status:** v0.6.1 teste local 124/124, mas **não operacional**. G1 aberto e G2-a HOLD.
 
 **Correção v0.6.1:** commit a107afa05680c16ca5b0314ebdb892dca1b474af, snapshot com 66 arquivos e [ERRATA](gto6_heuristic_v0_6_1/ERRATA_v0_6_1.md).
+
+## Auditoria incremental v0.7 — sem ZIP obrigatório
+Localização versionada: [audits/g2a_v0_7/](audits/g2a_v0_7/). Contém script, 7 testes, relatório e dois CSVs. Base de execução imutável: v0.6.1 (66 arquivos). Esta é **versão de auditoria**, não versão operacional nem mudança de ranges. Esperado em CI: 124 testes baseline + 7 testes de auditoria, com diffs nulos nos relatórios regenerados.

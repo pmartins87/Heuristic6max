@@ -1,4 +1,4 @@
-# Roadmap vivo — 20/11/2026 (v0.6.1)
+# Roadmap vivo — 20/11/2026 (auditoria v0.7 / estratégia v0.6.1)
 
 | Gate | Estado | Critério de avanço |
 |---|---|---|
@@ -22,3 +22,8 @@
 Revisar os oito nós (SB–BB, HJ–CO, LJ–CO, CO–BTN, HJ–BTN, LJ–HJ, BTN–SB, LJ–BTN) por mão e por premissa de 3-bet de vilão. Primeiro definir modelo econômico alvo (rake, cap, sizings). Distinguir evidência válida de simples diferença numérica frente a tabelas externas.
 
 **Critérios de parada:** não aprovar range por acertar frequência agregada, não passar ao VS_4BET com antecedente não auditado, não validar G1 por replay sintético, não marcar pronto sem rota de ações legais e sem avaliação de qualidade.
+
+## Evidência e prioridade acrescentadas pela v0.7
+- Publicada auditoria matemática por 1.326 combos físicos do adversário, fold condicional por mão e preço exato da 3bet: [audits/g2a_v0_7/](audits/g2a_v0_7/).
+- **7/8 nós** exibem *pressão condicional positiva* no experimento isolado de equidade zero; BTN-SB é limítrofe. Não confundir com exploração real no jogo completo.
+- Revisar **defesa combinada (4bet+call) e fold vs preço**, priorizando HJ-CO, HJ-BTN, LJ-HJ, LJ-CO, LJ-BTN, CO-BTN. Testar alternativas condicionais a rake/cap e sizing antes de alterar ranges. Nenhuma mudança G2-b autorizada.
