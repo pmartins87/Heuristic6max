@@ -101,3 +101,9 @@ Ver [PORTABILITY_CONTRACT.md](PORTABILITY_CONTRACT.md).
 - **Gate de qualidade pragmático:** símbolos corretos, classificação SRP suficiente sem roteamento incorreto, check/call/raise legal, fallback controlado e regressão de decisão. Replays em OpenHoldem offline seguem necessários para integração, não para provar GTO.
 - **Próximo bloco concreto:** replay com histórico real e revisão das guardas `NumberOfRaisesBeforeFlop`/`BotCalledBeforeFlop`/ `OpponentsOnFlop`; depois melhorar textura/line postflop e liberar outros pot types por gate. A identificação de isolamento de limper permanece ambígua; bloquear promoção até abordagem definida.
 - G1 ABERTO, G2-a HOLD, G2-b BLOQUEADO, G3 EM DESENVOLVIMENTO, G6 PENDENTE. Evitar bloqueio prolongado por auditoria científica, mas não fingir teste de runtime.
+
+## Prioridade G3-HIST — Bot completo com histórico, não solver
+**Fonte de verdade:** [STRATEGY_ARCHITECTURE.md](STRATEGY_ARCHITECTURE.md). Não limitar o alvo a heurísticas genéricas ou apenas 33 regras. O produto precisa de árvore extensível com milhares de caminhos **válidos**, condicionados pela cronologia completa, textura, SPR, posições, oponente, apostas e tipos de pote; qualificação de GTO é aproximada e heurística.
+- **HIST-1 entregue em DRAFT:** nove caminhos de três histórias por street, 24 helpers / 58 regras pós-flop, 18 testes novos, sem alterar os 277 ramos pré-flop nem a v0.6.1.
+- **HIST-2:** discriminar bet/raise/call em cada orbit, check-raise, 2+ raises, delayed c-bet e limp/iso histórico. **HIST-3:** board texture/runout, SPR, sizing buckets e river range/catcher. **HIST-4:** HU 3-bet/4-bet, limped pots, multiway e oponente adaptativo.
+- **Critérios de parada pragmáticos:** não fabricar caminhos impossíveis ou jogar default em histórico desconhecido; não declarar excelência antes de observar qualidade e falhas; não exigir solver/EV formal por ramo para continuar DRAFT. G1/G2-a e G6 preservados; replay real ainda pendente.

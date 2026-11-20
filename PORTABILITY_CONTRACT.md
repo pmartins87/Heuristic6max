@@ -85,3 +85,8 @@ A cada nova implementação estratégica, consultar este contrato e atualizar `D
 - Whitelist ampliada para `HaveNuts`, `HaveTwoPair`, `HaveTopPair`, `HaveBestKicker`, `HaveFlushDraw`, `HaveNutFlushDraw`, `NumberOfRaisesBeforeFlop`, `OpponentsOnFlop`, `BotRaisedBeforeFlop`, `BotCalledBeforeFlop`, `Position = Last`, `BetThirdPot`, `BetHalfPot`, `BetTwoThirdPot`, `RaiseHalfPot`, etc.; documentação do manual anexado verificada, **sem executável alvo verificado**.
 - Regras misturadas usam `randomhand` fixo por mão; não criar RNG Python paralelo. Arquivo combinado preserva byte a byte as funções anteriores.
 - **Bloqueio G3 importante:** a combinação atual de símbolos não garante exclusão de todos os potes com limper/isolamento; além disso no-match pode cair em fallback OH. Não anunciar como regra SRP estritamente identificada nem promover a execução sem replay offline e tratamento de estado ambíguo.
+
+## G3-HIST-v1 — escala por histórico sem lógica duplicada em Python
+- [Overlay OpenPPL](portability/srp_history_v1/history_overlay.oppl) registra os estados B (bot bet/call), C (check-through), X (bot call) em flop e turn, gerando nove caminhos compostos; o Python apenas mescla as fontes OpenPPL e interpreta os mesmos `WHEN` de teste.
+- Flags OH como `NoVillainBetOrRaisedOnFlop/Turn` são exigidos para não confundir bet-call do bot com raise a aposta adversária. Operações incoerentes/raises múltiplos ficam **UNCLASSIFIED** no simulador, não marcadas como Fold.
+- Nenhum runtime OH foi testado; contadores por órbita podem perder histórico, e `None` continua diferente do default.bot. Gate PORT/G6 segue bloqueado. O grafo deve crescer com tipos de linha, board, SPR e oponente, preservando controle de legalidade e integridade das ações.

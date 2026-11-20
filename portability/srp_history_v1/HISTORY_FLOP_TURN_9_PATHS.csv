@@ -1,0 +1,10 @@
+flop_line,turn_line,oppl_helper,status,meaning
+BET_CALLED,BET_CALLED,f$HLPathBB,DRAFT_STATIC_ONLY,History uses OH street flags; not validated in target runtime
+BET_CALLED,CHECKED_THROUGH,f$HLPathBC,DRAFT_STATIC_ONLY,History uses OH street flags; not validated in target runtime
+BET_CALLED,CALLED_BET,f$HLPathBX,DRAFT_STATIC_ONLY,History uses OH street flags; not validated in target runtime
+CHECKED_THROUGH,BET_CALLED,f$HLPathCB,DRAFT_STATIC_ONLY,History uses OH street flags; not validated in target runtime
+CHECKED_THROUGH,CHECKED_THROUGH,f$HLPathCC,DRAFT_STATIC_ONLY,History uses OH street flags; not validated in target runtime
+CHECKED_THROUGH,CALLED_BET,f$HLPathCX,DRAFT_STATIC_ONLY,History uses OH street flags; not validated in target runtime
+CALLED_BET,BET_CALLED,f$HLPathXB,DRAFT_STATIC_ONLY,History uses OH street flags; not validated in target runtime
+CALLED_BET,CHECKED_THROUGH,f$HLPathXC,DRAFT_STATIC_ONLY,History uses OH street flags; not validated in target runtime
+CALLED_BET,CALLED_BET,f$HLPathXX,DRAFT_STATIC_ONLY,History uses OH street flags; not validated in target runtime

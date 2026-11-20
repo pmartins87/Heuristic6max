@@ -107,3 +107,9 @@ Python de importação de charts, análise, Monte Carlo, testes e reconstrução
 - Ações: valor com pares fortes/duas-pares+, decisões de draw/price, cbet seca 25% de frequência, turn semi-bluff NFD 30%, river sem blefe; propostas heurísticas NÃO calibradas em EV, nem GTO por solver.
 - **18 testes novos** de ação/fallback/símbolo/sintaxe/prioridade e identidade binária do pré-flop. Um único arquivo combinado `preflop_and_srp_hu_draft.oppl`; estratégia v0.6.1 sem alterações.
 - **G3 em desenvolvimento**, G1 ainda sem replays OH reais, G2-a HOLD, G2-b bloqueado, G4/G5/G6 ainda pendentes; arquivo NÃO operacional.
+
+## G3-HIST-v1 — caminhos flop→turn→river (20/11/2026)
+- [Objetivo completo e critérios](STRATEGY_ARCHITECTURE.md); [código, gerador e 18 testes](portability/srp_history_v1/README.md). O projeto é um bot complexo com árvore de decisões de longa duração e milhares de caminhos planejados; não é experimento científico nem solução exata de GTO.
+- Novo pós-flop OpenPPL: **58 regras de ação** (14/16/28), 24 funções booleanas, **9 trajetórias** flop→turn representadas por sinais de ações; arquivo integrado mantém pré-flop (277 regras) literalmente. Tipos B=bet do bot seguido de call, C=check-through, X=call do bot a uma bet.
+- **18 testes locais novos**; total esperado na CI **295 = 277+18**. Contradições/raises não classificados retornam no-match no simulador, não Fold. **No-match em OpenHoldem pode acionar fallback**, portanto não há aprovação operacional. Baseline e G3 anterior preservados.
+- Gate G3 continua EM DESENVOLVIMENTO: falta ação intra-street, textura/runout, SPR, perfis, 3bet pots, multiway e revisão de histórico em OH-alvo. G1 aberto, G2-a HOLD, G2-b bloqueado, G6 pendente.

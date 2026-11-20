@@ -125,3 +125,12 @@ jobs:
         run: git diff --exit-code -- portability/srp_hu_mvp/preflop_and_srp_hu_draft.oppl
       - name: Verify SRP-HU SHA256 manifest
         run: cd portability/srp_hu_mvp && sha256sum -c SRP_HU_SHA256SUMS.txt
+
+      - name: Test G3 SRP heads-up historical paths (18 tests)
+        run: python -m unittest discover -s portability/srp_history_v1 -p 'test_*.py' -q
+      - name: Rebuild historical SRP and integrated OpenPPL from frozen sources
+        run: python portability/srp_history_v1/build_history.py
+      - name: Check 9-path matrix and OpenPPL deterministic source
+        run: git diff --exit-code -- portability/srp_history_v1/srp_hu_history_v1.oppl portability/srp_history_v1/preflop_srp_history_v1.oppl portability/srp_history_v1/HISTORY_FLOP_TURN_9_PATHS.csv
+      - name: Verify G3-HIST SHA256 manifest
+        run: cd portability/srp_history_v1 && sha256sum -c HISTORY_SHA256SUMS.txt

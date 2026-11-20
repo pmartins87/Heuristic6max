@@ -79,3 +79,9 @@ Localização versionada: [audits/g2a_v0_7/](audits/g2a_v0_7/). Contém script, 
 - Diretório [portability/srp_hu_mvp/](portability/srp_hu_mvp/) inclui **7 arquivos**: README, regras pós-flop OPPL, arquivo combinado OPPL, interpretador offline, 18 testes, concatenador e manifesto SHA256 de seis conteúdos.
 - Dependência direta: pré-flop `portability/vs_3bet_mvp/preflop_rfi_vsopen_vs3_draft.oppl`, preservado byte a byte. Baseline histórica v0.6.1 imutável.
 - CI: 18 testes incrementais; validar SHA256, regenerar arquivo combinado com diff zero e executar todas suites anteriores. Não corresponde a release operacional e não houve teste no executável OpenHoldem.
+
+## G3-HIST-v1 — módulo incremental de histórico (DRAFT)
+- [portability/srp_history_v1/](portability/srp_history_v1/): 9 arquivos (overlay OpenPPL, pós-flop/arquivo completo gerados, intérprete, gerador, 18 testes, matriz 9 caminhos, README e `HISTORY_SHA256SUMS.txt`).
+- Novo documento vivo [STRATEGY_ARCHITECTURE.md](STRATEGY_ARCHITECTURE.md) registra escopo de bot completo, fontes e gates.
+- Nenhuma mudança em `gto6_heuristic_v0_6_1/`, `portability/vs_3bet_mvp/` e `portability/srp_hu_mvp/`. Pré-flop combinado original preservado; G3 novo tem 58 regras de ação e 24 helpers, 18 testes, total esperado no CI **295**.
+- Sem replays reais ou certificado operacional OpenHoldem; não divulgar como bot pronto nem alegar winrate.

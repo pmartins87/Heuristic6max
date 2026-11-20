@@ -1,5 +1,11 @@
 # Heuristic6max — fonte de verdade
 
+## Arquitetura do bot completo — G3-HIST-v1 (20/11/2026)
+- **Meta de produto:** bot de engenharia complexa, milhares de caminhos por histórico, board, tamanho, posição, ranges e oponente; heurísticas inspiradas no GTO, **não um solver**. Excelência estratégica é objetivo, não resultado já medido. [Arquitetura viva](STRATEGY_ARCHITECTURE.md).
+- [Implementação histórica OpenPPL](portability/srp_history_v1/README.md): três classes exclusivas de flop × três de turn = 9 sequências explícitas no river; 58 regras pós-flop (14 flop + 16 turn + 28 river), 24 funções; integração preserva as 277 regras pré-flop.
+- **18 novos testes locais**, total CI esperado 295; os ranges de v0.6.1 e a base G3 foram preservados. Sintaxe, fallback e observações reais do OpenHoldem ainda NÃO foram validados; não operar em jogos reais.
+- Este avanço é uma **fundação incremental** da árvore histórica, não sua conclusão. Próximo corte: raises, check-raises, sizings e linha canônica da mão, depois textura/SPR e potes complexos.
+
 ## G3 — MVP prático de pós-flop SRP HU (20/11/2026)
 - [Fonte OpenPPL de flop/turn/river, documentação e testes](portability/srp_hu_mvp/README.md); [rascunho combinado pré-flop + pós-flop](portability/srp_hu_mvp/preflop_and_srp_hu_draft.oppl).
 - **33 regras** de decisão (14 flop, 10 turn, 9 river), mais 5 helpers, em OpenPPL nativo; ações heurísticas de valor, draws, calls por sizing, checks/folds e c-bet seca com `randomhand`.
