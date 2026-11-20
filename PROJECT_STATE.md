@@ -1,23 +1,22 @@
 # Estado atual — Heuristic6max
+**Data:** 20/11/2026 | **Checkpoint:** v0.6 G2-a | **Estado estratégico:** HOLD / não operacional.
 
-**Data:** 20/11/2026 | **Versão:** v0.5 (auditoria) | **Estado:** HOLD / não operacional.
+## Evidências concluídas
+- G0: arquitetura e contratos.
+- G1: reconstrução e observações **sintéticas**; replays reais do OpenHoldem continuam pendentes.
+- G2: RFI 5 × 169 = 845 registros; VS_OPEN 15 × 169 = 2.535; VS_3BET 15 × 169 = 2.535. Todos DRAFT, sem avaliação completa de EV.
+- v0.5: 119 testes e decomposição de 4-bet por mão; sem modificar a estratégia da v0.4.
+- v0.6: 124 testes locais aprovados; card removal físico nas 1.326 combinações com modelo de 3-bet VS_OPEN; **nenhuma ação ou range foi alterado**. As frequências condicionais de 4-bet ficaram 0,409–1,766 p.p. abaixo dos agregados antigos nos 15 nós.
+- Dos oito nós originalmente MAJOR_REVIEW, sete ainda têm diferenças superiores a 8 p.p. frente à referência publicada após novo condicionamento; BTN–SB apresenta 6,09 p.p. **Os benchmarks têm rake/árvores diferentes; não validam EV nem autorizam ajustes automáticos.**
 
-## O que está concluído
-- G0: arquitetura e contratos de estado; base aprovada.
-- G1: máquina de histórico e observações em teste **sintético**; replays reais continuam pendentes.
-- G2 parcial: RFI 5×169 (845 registros), VS_OPEN 15×169 (2.535), VS_3BET 15×169 (2.535). Todas são hipóteses DRAFT, não soluções GTO.
-- VS_3BET: 888 classes alcançáveis a partir do RFI e 1.647 não alcançáveis.
-- v0.4: 114 testes. v0.5: auditoria de composição por mão, **119 testes locais aprovados**. v0.5 não altera ação estratégica v0.4.
+## Integridade no GitHub
+- v0.5 completo em [gto6_heuristic_v0_5/](gto6_heuristic_v0_5/) — 51 arquivos.
+- v0.6 completo em [gto6_heuristic_v0_6/](gto6_heuristic_v0_6/) — 61 arquivos, incluindo relatórios e scripts.
+- Auditoria de preservação: todos os 51 arquivos ancestrais da v0.5 foram mantidos byte a byte na v0.6.
+- Reproduzir: cd gto6_heuristic_v0_6 && python -m unittest -q; depois python vs3_blocker_audit_v0_6.py. Verifique SHA256SUMS.txt **antes** de regerar qualquer CSV.
 
-## Hipóteses restritas
-Cash NLHE 6-max, 100 BB alvo (95–105), SB 0,5 e BB 1, sem ante; RFI 2,5 BB LJ–BTN / SB 3 BB; 3bet em sizing pré-estabelecido, sem limper/caller/squeeze/short stack. Rake não calibrado. Sem política pós-flop, 4bet/5bet ou integração OH operacional.
+## Premissas e limitações
+Cash 6-max, 100 BB alvo (95–105), blinds 0,5/1 BB, sem ante, RFI 2,5 BB LJ–BTN e 3 BB SB; sizings fixos de 3bet, sem limpers/callers/squeeze/short stacks, rake não calibrado. Não há estratégia pós-flop, VS_4BET/5BET ou integração operacional OpenHoldem. Nenhum resultado de simulação demonstra lucratividade real, proximidade quantitativa à GTO ou segurança em mesas.
 
-## Descobertas e limites
-- Benchmark agregado v0.4: 8/15 nós divergiram >8 p.p., 4 divergiram 4–8 p.p., 3 divergiram até 4 p.p.; **rake e árvore diferem**, logo não é prova de EV.
-- v0.5: blefes representam entre 6,7% e 19,3% da massa de 4-bets dos ranges DRAFT; não é frequência ótima.
-- Não há medição de winrate, EV, solver equivalência nem replay real de OpenHoldem.
-
-## Integridade da fonte
-A v0.5 completa foi gerada localmente em `GTO_Heuristic_6Max_v0.5_Auditoria_Composicao_Handoff.zip` com fontes Python, CSV, docs e SHA256. **Enquanto esse pacote não estiver integralmente replicado no GitHub, a continuidade apenas pelo repositório é incompleta.** Não recriar código ausente a partir de descrições nem afirmar que está versionado.
-
-**Próxima decisão:** auditar as classes dos oito `MAJOR_REVIEW` antes de mudar frequências ou iniciar VS_4BET. **Ação para o usuário:** subir o conteúdo extraído do ZIP v0.5 ao GitHub, preservando estes documentos, para continuidade independente do chat.
+## Próximo gate
+G2-a permanece aberto: auditar a composição exata dos oito confrontos com premissas de rake/sizing e frequências de vilão coerentes antes de mudar ranges. Não iniciar VS_4BET até a decisão documentada. G1 exige replays reais em ambiente de teste sem apostas.

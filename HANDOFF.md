@@ -1,33 +1,28 @@
-# Guia de retomada — outros chats e outras IAs
+# Handoff — retomar em outro chat, computador ou IA
 
-**Leia antes de modificar qualquer coisa:** `README.md` → `PROJECT_STATE.md` → `ROADMAP.md` → `DECISIONS.md` → `CHANGELOG.md` → este guia. Examine commits e arquivos efetivamente presentes no GitHub, não confie só no texto de chats.
+## Regra principal
+**Leia sempre** README.md → PROJECT_STATE.md → ROADMAP.md → DECISIONS.md → CHANGELOG.md → RELEASE_MANIFEST.md → este HANDOFF.md. Compare-os com os arquivos GitHub e commits reais antes de modificar. O repositório é a fonte de verdade; mensagens antigas podem estar obsoletas.
 
-## Checkpoints
-- v0.1: arquitetura, 22 testes.
-- v0.2: RFI, 71 testes.
-- v0.3: VS_OPEN, 91 testes.
-- v0.4: VS_3BET, 114 testes.
-- v0.5: composição por classe de mão, **119 testes**, *sem mudar decisões da v0.4*.
+## Retomada reproduzível
+Clonar https://github.com/pmartins87/Heuristic6max e executar:
 
-## Para executar o pacote completo v0.5
-Após conferir presença e hashes dos arquivos:
-```sh
-cd gto6_heuristic_v0_5
-python -m unittest -q
-python vs3_strategy_audit.py
-```
-Dependência: Python 3.10+ e biblioteca padrão.
+    python scripts/check_repository.py
+    cd gto6_heuristic_v0_6
+    sha256sum -c SHA256SUMS.txt
+    python -m unittest -q
+    python vs3_blocker_audit_v0_6.py
 
-## Parada obrigatória
-Se o ZIP v0.5, seus fontes e datasets **não estiverem no repositório**, o repositório é apenas um checkpoint documental incompleto. Não inventar os scripts ausentes; obter o ZIP original. Não afirmar que o código está versionado sem checar GitHub.
+Esperado: 124 testes OK. São testes **sintéticos**, não validação OpenHoldem, GTO nem EV. Para Windows, usar um verificador SHA256 equivalente em vez de sha256sum, se indisponível.
 
-## Próximos passos
-1. Conferir os arquivos efetivamente publicados.
-2. Auditar por mão os oito `MAJOR_REVIEW`, usando relatórios de composição e observando que benchmarks têm rake/árvore diferentes.
-3. Registrar novos testes e decisões; atualizar os seis documentos vivos.
-4. Retomar VS_4BET **somente após** a revisão por classes e suas premissas.
-5. G1 continua aberto até replays reais de teste e logs de ação final.
+## Localização
+- Histórico integral imutável: gto6_heuristic_v0_5/ (51 arquivos).
+- Snapshot mais recente: gto6_heuristic_v0_6/ (61 arquivos).
+- Método/cálculo: gto6_heuristic_v0_6/G2A_METHOD_AND_FINDINGS_v0_6.md.
+- Relatórios: G2A_VS3_BLOCKER_15_NODES_v0_6.csv, G2A_VS3_BLOCKER_TOP_HANDS_v0_6.csv e G2A_MAJOR_REVIEW_8_NODES_v0_6.csv.
+- Inventário de preservação: V05_PRESERVATION_AUDIT_v0_6.csv (51/51 SAME).
 
-**Sem uso em mesas, sem autoplayer e sem alegar GTO verificada.**
-## Verificação de identidade da entrega
-Conferir [RELEASE_MANIFEST.md](RELEASE_MANIFEST.md) para o SHA-256 do ZIP v0.5 e o estado de replicação; só declarar a versão disponível quando os arquivos constarem no GitHub e passarem na verificação.
+## Estado exato
+G0 aprovado; G1 aberto (falta replay real); G2-a HOLD (auditoria de oito nós incompleta); G2-b VS_4BET bloqueado; G3–G7 pendentes. Nenhum range RFI/VS_OPEN/VS_3BET foi alterado desde v0.4. Não modificar DeepCrusher/CrusherTBP.
+
+## Próximo passo
+Revisar por classe os oito MAJOR_REVIEW com comparações rake/sizings equivalentes, ou registrar lacunas. Só modificar política com evidência, testes de regressão, justificativa, changelog e atualização documental. Não usar em mesas com dinheiro real.

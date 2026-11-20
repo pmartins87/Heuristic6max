@@ -1,20 +1,17 @@
-# Manifesto de releases (20/11/2026)
+# Manifesto de versões (20/11/2026)
 
-Os seguintes hashes SHA-256 foram calculados sobre os **ZIPs locais efetivamente existentes**; presença neste documento NÃO significa que os ZIPs estejam hospedados no GitHub.
-
-| Versão | ZIP | SHA-256 |
+| Versão | SHA-256 do ZIP local | Fonte no GitHub |
 |---|---|---|
-| v0.1 | `GTO_Heuristic_6Max_v0.1_Arquitetura_Contrato_Testes.zip` | `92a0f3a847d0eb62d10e35d6d6aa5be45a51b375e72f430168ce53c72a888397` |
-| v0.2 | `GTO_Heuristic_6Max_v0.2_G1_G2_RFI_DRAFT.zip` | `d864c3f9dd2c7699dcba17c9b27c6c3f5cc87f0def89fa845b4cec7a912abf52` |
-| v0.3 | `GTO_Heuristic_6Max_v0.3_G2_VS_OPEN_DRAFT.zip` | `ec6ca7de7a10893e9dbb8bc18baabd3404f69e0435b02af755e0229650b6d552` |
-| v0.4 | `GTO_Heuristic_6Max_v0.4_VS_3BET_DRAFT.zip` | `6086ccc8b7b4aae583d831287643cfc8f6330769ab96c5d901fdefd63279e227` |
-| v0.5 | `GTO_Heuristic_6Max_v0.5_Auditoria_Composicao_Handoff.zip` | `7b036634896c560fbc7e4a1794f981860fdd9a065bf3161abb0698b6bf97022a` |
+| v0.1 | 92a0f3a847d0eb62d10e35d6d6aa5be45a51b375e72f430168ce53c72a888397 | Histórico em v0.5/v0.6 |
+| v0.2 | d864c3f9dd2c7699dcba17c9b27c6c3f5cc87f0def89fa845b4cec7a912abf52 | Histórico em v0.5/v0.6 |
+| v0.3 | ec6ca7de7a10893e9dbb8bc18baabd3404f69e0435b02af755e0229650b6d552 | Histórico em v0.5/v0.6 |
+| v0.4 | 6086ccc8b7b4aae583d831287643cfc8f6330769ab96c5d901fdefd63279e227 | Baseline preservada em v0.5/v0.6 |
+| v0.5 | 7b036634896c560fbc7e4a1794f981860fdd9a065bf3161abb0698b6bf97022a | gto6_heuristic_v0_5/ — 51 arquivos |
+| v0.6 | 0844f9758ed13ff063ad0c3aeab9b30298b1c0c5e4cfd3ef033f7d6cf70ae963 | gto6_heuristic_v0_6/ — 61 arquivos |
 
-## Estado de replicação
+**Importação v0.5:** commit 91bb2fdd3d1535f7746f7c39ecaddd98db9ebb72, 51 arquivos.  
+**Importação v0.6:** commit 3bbfe3a753111013848e6157c78746e3f49f86d6, 61 arquivos.
 
-- **GitHub confirmado:** arquivos vivos de documentação, README v0.4 arquivado, resumos VS_3BET e auditoria v0.5, script de verificação.
-- **Pendente (Issue #1):** importar o diretório completo `gto6_heuristic_v0_5/`, que contém 51 arquivos, inclusive 22 módulos Python herdados, testes, CSV de 2.535 linhas e `SHA256SUMS.txt`.
-- Ao importar, verificar SHA de cada arquivo listado no `SHA256SUMS.txt` do pacote. A versão futura deve criar novo manifesto se alterar conteúdo.
-- Não confundir PASS em 119 testes sintéticos com validação estratégica GTO ou replay de OpenHoldem.
+Os hashes do ZIP servem à transferência local; não representam commits Git nem presumem que o ZIP esteja no GitHub. O repositório contém as árvores de arquivos texto completas. Cada pasta inclui SHA256SUMS.txt para validação dos arquivos do snapshot; a v0.6 inclui auditoria de preservação dos 51 arquivos-base v0.5.
 
-Ver [estado atual](PROJECT_STATE.md) e [bloqueio de sincronização](https://github.com/pmartins87/Heuristic6max/issues/1).
+**Status:** v0.6 teste local 124/124, mas **não operacional**. G1 aberto e G2-a HOLD.

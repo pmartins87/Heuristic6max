@@ -1,19 +1,19 @@
-# Registro de decisões (ADR)
+# Registro de decisões técnicas — Heuristic6max
 
-## ADR-001 — Heurística, não solver
-Objetivo: NLHE cash 6-max próximo de princípios GTO por heurísticas auditáveis; não reivindicar equilíbrio matemático, EV ótimo ou winrate. Requisitos de validação diferentes de simplesmente passar testes unitários. **Válido.**
+**ADR-001 — Heurística, não solver (MANTIDA).** Construir cash 6-max com heurísticas GTO auditáveis, sem alegar GTO exata, EV ótimo nem lucratividade.
 
-## ADR-002 — GitHub como fonte de verdade
-Repositório: https://github.com/pmartins87/Heuristic6max. Toda revisão deve consultar e atualizar `README.md`, `PROJECT_STATE.md`, `ROADMAP.md`, `DECISIONS.md`, `CHANGELOG.md` e `HANDOFF.md`. Preservar versões e impedir documentação obsoleta. **Válido.**
+**ADR-002 — GitHub fonte de verdade (MANTIDA).** Ler e atualizar README.md, PROJECT_STATE.md, ROADMAP.md, DECISIONS.md, CHANGELOG.md, HANDOFF.md, RELEASE_MANIFEST.md em cada checkpoint. Preservar snapshots anteriores.
 
-## ADR-003 — v0.5 audita sem alterar v0.4
-Vários agregados 4bet são menores que números ART/GTO; benchmark não tem árvore/rake exatamente idênticos. Não alterar percentuais cegamente. Adicionar decomposição e revisar as classes primeiro. **Válido. Mudança exige evidência de mão e contexto, não apenas agregado.**
+**ADR-003 — Não alterar v0.4 por benchmarks incompatíveis (MANTIDA).** Rake/árvore diferentes inviabilizam otimização por simples matching. Não usar diferenças agregadas para justificar mudanças estratégicas.
 
-## ADR-004 — Falha explícita
-Política ausente retorna `None`, nunca Fold ou Check silencioso; range DRAFT não é estratégia pronta para mesa. **Válido.**
+**ADR-004 — Ausência explícita (MANTIDA).** Política ausente = None, nunca Fold/Check automático.
 
-## ADR-005 — Escada de evidência
-(1) testes unitários e replays sintéticos, (2) replay real e observação confiável, (3) auditoria estratégica/benchmark comparável, (4) teste de integração da ação final em OH. Sucesso em (1) não prova (2–4). **Válido.**
+**ADR-005 — Escada de evidência (MANTIDA).** (1) testes estáticos/sintéticos; (2) replay real; (3) benchmark/EV comparável; (4) integração OpenHoldem; nenhum nível superior é inferido pelo inferior.
 
-## ADR-006 — Preservar DeepCrusher/CrusherTBP
-Projeto novo, sem importar decisões estratégicas antigas cegamente e sem modificar seus arquivos. **Válido.**
+**ADR-006 — Separação do DeepCrusher/CrusherTBP (MANTIDA).** Não importar decisões antigas sem validar a economia/árvore.
+
+**ADR-007 — Sincronização de fontes (20/11/2026).** Publicar snapshots v0.5 (51 fontes) e v0.6 (61 fontes) completos no GitHub, sem depender de ZIP externo. Verificar testes, arquivo de hashes e presença de conteúdo. Substitui o bloqueio documental da Issue #1.
+
+**ADR-008 — Corrigir contabilidade antes de mudar strategy (20/11/2026).** Implementada em v0.6 uma auditoria de P(ação | RFI, 3bet) com 1.326 combinações, o modelo VS_OPEN do vilão e card removal. Não se altera a política; compara-se antes/depois e se mantém HOLD. Justificativa: o benchmark anterior usava massa condicional somente ao RFI, sem atualizar pela ocorrência da 3bet.
+
+**ADR-009 — Critério estratégico (20/11/2026).** Manter G2-a aberto; não iniciar VS_4BET sem avaliar os oito confrontos sob rake, sizings e ranges de vilão coerentes. Só mudar recomendação perante evidência nova ou erro comprovado.

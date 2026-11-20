@@ -1,28 +1,32 @@
 # Heuristic6max — fonte de verdade
 
-Projeto de estratégia **heurística** de No-Limit Hold'em cash 6-max, inspirada em princípios GTO. **Não é solver nem bot operacional validado.**
+Estratégia **heurística** de No-Limit Hold'em cash 6-max baseada em fundamentos de GTO, com contratos, ranges auditáveis e testes reprodutíveis. **Não é um solver; não é um bot operacional validado; não há comprovação de EV ou winrate.**
 
-**Estado (20/11/2026):** v0.5 — G0 aprovado; G1 aberto; G2 em auditoria/HOLD; G3–G7 pendentes. As tabelas RFI, VS_OPEN e VS_3BET são DRAFT. Nenhum desempenho/EV foi validado e os testes existentes são sintéticos.
+**Checkpoint ativo: v0.6 (20/11/2026)** — G0 aprovado; G1 aberto; G2-a em auditoria/HOLD; G3–G7 pendentes. RFI, VS_OPEN e VS_3BET continuam DRAFT.
 
-## Leia nesta ordem ao continuar em outro chat/IA
+## Retomada em novo chat ou IA
+Leia, nesta ordem:
+1. [PROJECT_STATE.md](PROJECT_STATE.md)
+2. [ROADMAP.md](ROADMAP.md)
+3. [DECISIONS.md](DECISIONS.md)
+4. [HANDOFF.md](HANDOFF.md)
+5. [CHANGELOG.md](CHANGELOG.md)
+6. [RELEASE_MANIFEST.md](RELEASE_MANIFEST.md)
 
-1. [PROJECT_STATE.md](PROJECT_STATE.md) — versão e evidências atuais.
-2. [ROADMAP.md](ROADMAP.md) — gates e critérios de aceitação.
-3. [DECISIONS.md](DECISIONS.md) — decisões e justificativas.
-4. [HANDOFF.md](HANDOFF.md) — como retomar e testar.
-5. [CHANGELOG.md](CHANGELOG.md) — mudanças preservadas entre versões.
-6. [data/](data/) — relatórios de auditoria disponíveis no repositório.
+## Código e dados completos no GitHub
+- [v0.5 — 51 arquivos históricos preservados](gto6_heuristic_v0_5/)
+- [v0.6 — 61 arquivos autocontidos, 124 testes](gto6_heuristic_v0_6/)
+- [Método e achados G2-a](gto6_heuristic_v0_6/G2A_METHOD_AND_FINDINGS_v0_6.md)
+- [8 confrontos marcados para revisão](gto6_heuristic_v0_6/G2A_MAJOR_REVIEW_8_NODES_v0_6.csv)
 
-## Situação da v0.5
+Os **fontes e CSVs completos** agora estão commitados no repositório. Os arquivos ZIP são conveniências para transferência; não são necessários para reconstrução a partir do GitHub.
 
-A v0.4 (114 testes) tinha 15 árvores VS_3BET, 169 classes cada, com 8 divergências agregadas acima de 8 pontos percentuais frente a benchmarks de condições não idênticas. A v0.5 mantém as decisões e adiciona a decomposição por mão; **119 testes passaram localmente**. A proporção de 4-bets de blefe na massa de 4-bets varia de 6,7% a 19,3% nos ranges atuais (não é meta GTO).
+## Como verificar
+    python scripts/check_repository.py
+    cd gto6_heuristic_v0_6
+    python -m unittest -q
+    python vs3_blocker_audit_v0_6.py
 
-**Aviso de integridade:** se o código e os datasets completos da v0.5 ainda não estiverem presentes neste GitHub, o repositório é um checkpoint documental **incompleto**; consulte [PROJECT_STATE.md](PROJECT_STATE.md) antes de continuar. O ZIP local da v0.5 é o pacote integral para replicação e não deve ser reconstruído a partir apenas destes resumos.
+**Regras permanentes:** alterar docs vivos após cada decisão; preservar versões; não igualar benchmarks incompatíveis artificialmente; política ausente deve retornar None, nunca Fold/Check silencioso; manter DeepCrusher/CrusherTBP intactos; não operar em mesas com dinheiro real até validação apropriada.
 
-**Regras de manutenção:** toda mudança relevante exige leitura e atualização destes arquivos; versões anteriores ficam preservadas; nenhum ajuste automático para igualar benchmarks de rake/árvore diferentes; `None` significa política ausente, nunca Fold/Check; não operar com dinheiro real antes de validação completa.
-## Acompanhamento
-- [Issue #1 — Sincronizar código e datasets da v0.5](https://github.com/pmartins87/Heuristic6max/issues/1) (bloqueador de portabilidade).
-- [Issue #2 — Revisar 8 nós VS_3BET críticos](https://github.com/pmartins87/Heuristic6max/issues/2).
-- Execute `python scripts/check_repository.py` para saber se o repositório contém a versão completa. Enquanto houver arquivos faltando, NÃO tratar o GitHub como réplica executável do pacote.
-
-- [RELEASE_MANIFEST.md](RELEASE_MANIFEST.md) registra hashes SHA-256 dos pacotes v0.1–v0.5 e o estado de sincronização.
+Issues: [#1 — importação v0.5](issues/1) e [#2 — auditoria estratégica G2-a](issues/2).
