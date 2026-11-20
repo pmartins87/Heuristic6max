@@ -2,7 +2,7 @@
 
 Estratégia **heurística** de No-Limit Hold'em cash 6-max baseada em fundamentos de GTO, com contratos, ranges auditáveis e testes reprodutíveis. **Não é um solver; não é um bot operacional validado; não há comprovação de EV ou winrate.**
 
-**Checkpoint ativo: auditoria v0.7 (20/11/2026), sobre motor/ranges v0.6.1 preservados** — G0 aprovado; G1 aberto; G2-a em auditoria/HOLD; G3–G7 pendentes. RFI, VS_OPEN e VS_3BET continuam DRAFT.
+**Checkpoint ativo: auditoria v0.8 (20/11/2026), sobre motor/ranges v0.6.1 preservados** — G0 aprovado; G1 aberto; G2-a em auditoria/HOLD; G3–G7 pendentes. RFI, VS_OPEN e VS_3BET continuam DRAFT.
 
 ## Retomada em novo chat ou IA
 Leia, nesta ordem:
@@ -13,7 +13,16 @@ Leia, nesta ordem:
 5. [CHANGELOG.md](CHANGELOG.md)
 6. [RELEASE_MANIFEST.md](RELEASE_MANIFEST.md)
 
-## Nova auditoria G2-a v0.7 (sem alterar ranges)
+## Auditoria G2-a v0.8 — defesa por mãos e interferência de terceiros (sem alterar ranges)
+- [Método e resultados v0.8](audits/g2a_v0_8/README.md)
+- [Mãos de maior contribuição aos folds](audits/g2a_v0_8/TOP_FOLD_CLASSES_8_v0_8.csv)
+- [Famílias em 15 nós](audits/g2a_v0_8/DEFENSE_FAMILIES_15_v0_8.csv)
+- [Sensibilidade a cold actions](audits/g2a_v0_8/COLD_ACTION_SENSITIVITY_15_v0_8.csv)
+- [Código e 10 testes v0.8](audits/g2a_v0_8/defense_composition.py)
+
+**141 testes locais** (124+7+10). Exemplo HJ-CO: **58,1119 pontos percentuais dos folds** vêm de quatro famílias (suited-outras, pares 22–66, broadways offsuit sem A e Ax offsuit). Isto NÃO significa que essas mãos deveriam dar call. Em BTN-SB, a pressão isolada anterior (+0,048 BB) desaparece sob pequena interferência hipotética do BB (~0,49%). Sem simulação de EV real; G2-a permanece HOLD.
+
+## Auditoria G2-a v0.7 (sem alterar ranges)
 - [Método e conclusões](audits/g2a_v0_7/README.md)
 - [15 nós: fold contra preço da 3-bet](audits/g2a_v0_7/3BET_PRESSURE_ALL_15_v0_7.csv)
 - [8 nós: detalhamento por mãos físicas do agressor](audits/g2a_v0_7/3BET_PRESSURE_HANDS_8_v0_7.csv)

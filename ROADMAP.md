@@ -1,4 +1,4 @@
-# Roadmap vivo — 20/11/2026 (auditoria v0.7 / estratégia v0.6.1)
+# Roadmap vivo — 20/11/2026 (auditoria v0.8 / estratégia v0.6.1)
 
 | Gate | Estado | Critério de avanço |
 |---|---|---|
@@ -27,3 +27,10 @@ Revisar os oito nós (SB–BB, HJ–CO, LJ–CO, CO–BTN, HJ–BTN, LJ–HJ, BT
 - Publicada auditoria matemática por 1.326 combos físicos do adversário, fold condicional por mão e preço exato da 3bet: [audits/g2a_v0_7/](audits/g2a_v0_7/).
 - **7/8 nós** exibem *pressão condicional positiva* no experimento isolado de equidade zero; BTN-SB é limítrofe. Não confundir com exploração real no jogo completo.
 - Revisar **defesa combinada (4bet+call) e fold vs preço**, priorizando HJ-CO, HJ-BTN, LJ-HJ, LJ-CO, LJ-BTN, CO-BTN. Testar alternativas condicionais a rake/cap e sizing antes de alterar ranges. Nenhuma mudança G2-b autorizada.
+
+## Atualização G2-a / v0.8
+- Auditoria de 169 classes com posterior por RFI+3bet e card removal; quatro CSVs, 10 testes adicionais.
+- Falhas de defesa devem ser investigadas em **conjunto com o ancestral RFI**, não resolvidas transferindo mãos para CALL indiscriminadamente.
+- Novo gate de revisão por mão: documentar premissa de rake/cap/sizing e matriz de EV (call, fold, 4bet) sob modelo explícito do adversário, com incerteza; só então mudar frequências individuais.
+- Variações de cold action demonstram fragilidade do contrafactual v0.7 em nós com jogadores atrás; sem alegar subdefesa GTO comprovada.
+- G1 real-replay ainda aberto; G2-a HOLD; G2-b (VS_4BET) bloqueado.

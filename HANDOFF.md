@@ -38,3 +38,11 @@ Revisar por classe os oito MAJOR_REVIEW com comparações rake/sizings equivalen
 **Correção obrigatória de continuidade:** leia [ERRATA v0.6.1](gto6_heuristic_v0_6_1/ERRATA_v0_6_1.md). O primeiro CI falhou por comparar manifestos diferentes como se devessem ser byte-idênticos; a v0.6.1 corrigiu somente metadados.
 
 **Primeira ação ao retomar:** conferir GitHub Actions mais recente, ler ADR-011 e verificar que `audits/g2a_v0_7/` ainda referencia v0.6.1. A próxima mudança estratégica exige premissas compatíveis de rake, sizing e adversários atrás.
+
+## Auditoria incremental v0.8 — última etapa antes de editar ranges
+
+    python -m unittest discover -s audits/g2a_v0_8 -p 'test_*.py' -q
+    python audits/g2a_v0_8/defense_composition.py
+    cd audits/g2a_v0_8 && sha256sum -c AUDIT_SHA256SUMS.txt
+
+A auditoria v0.8 agrega 10 testes aos 131 da v0.7/base: **141 testes locais**. Fonte: [README v0.8](audits/g2a_v0_8/README.md). O CI confere determinismo dos quatro CSVs versionados. **Não usar o ranking de folds como recomendação de call.** Nenhuma política foi alterada; próxima etapa é análise EV por mão/rake/sizing e replays de teste. Lembre-se de rever os sete documentos vivos antes de qualquer nova implementação.

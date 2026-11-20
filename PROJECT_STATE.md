@@ -1,5 +1,5 @@
 # Estado atual — Heuristic6max
-**Data:** 20/11/2026 | **Checkpoint:** auditoria v0.7 sobre v0.6.1 G2-a | **Estado estratégico:** HOLD / não operacional.
+**Data:** 20/11/2026 | **Checkpoint:** auditoria v0.8 sobre v0.6.1 G2-a | **Estado estratégico:** HOLD / não operacional.
 
 ## Evidências concluídas
 - G0: arquitetura e contratos.
@@ -27,3 +27,10 @@ G2-a permanece aberto: auditar a composição exata dos oito confrontos com prem
 - Medição em 15 confrontos de P(Hero fold | RFI, cartas exatas do agressor) com card removal, testada contra agregação v0.6.
 - Sete dos oito MAJOR_REVIEW têm pressão positiva sob **experimento isolado com zero equidade do agressor depois do call/4bet e demais jogadores desistindo**. HJ vs CO: fold 77,54%, break-even 66,67%, EV contrafactual +1,305 BB. SB vs BB: fold 60,76%, break-even 68,25%, EV contrafactual −0,944 BB. BTN vs SB: +0,048 BB é marginal.
 - Sem estimar EV verdadeiro: há ações de outros jogadores, rake não calibrado e decisões futuras. Nenhum range RFI/VS_OPEN/VS_3BET foi alterado. G2-a HOLD; G2-b bloqueado.
+
+## Auditoria v0.8 — checkpoint incremental (20/11/2026)
+- Código e relatórios: [audits/g2a_v0_8/](audits/g2a_v0_8/), nove arquivos incluindo manifesto SHA-256; **10 testes novos**, total local 141 (124+7+10).
+- Massa condicional por mão/família sob RFI+3bet com exclusão de cartas; os totais coincidem com a v0.6.1 nos 15 nós.
+- HJ vs CO: 23,2205 pp de folds da família suited-other, 11,2818 pp de pares 22–66, 9,2929 pp de broadways offsuit sem A, 14,3167 pp de Ax offsuit; somados 58,1119 pp dos 77,5377% de fold.
+- Análise das ações dos jogadores posteriores: sob o modelo zero-equidade da v0.7 e hipótese adicional de independência, o spot BTN vs SB exige P(nenhum cold action)≥99,51% para EV hipotético não negativo. Não existe medição empírica dessa probabilidade.
+- Nenhum range, ação, sizing ou módulo estratégico modificado. Ações de possíveis cold callers, EV verdadeiro, rake/cap e equidade/realização continuam sem validação. Gate G2-a HOLD.

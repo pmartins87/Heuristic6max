@@ -21,3 +21,12 @@ jobs:
         run: python audits/g2a_v0_7/pressure_audit.py
       - name: Confirm deterministic audit CSV output
         run: git diff --exit-code -- audits/g2a_v0_7/3BET_PRESSURE_ALL_15_v0_7.csv audits/g2a_v0_7/3BET_PRESSURE_HANDS_8_v0_7.csv
+
+      - name: Run defense composition audit tests v0.8
+        run: python -m unittest discover -s audits/g2a_v0_8 -p 'test_*.py' -q
+      - name: Recompute tracked v0.8 reports
+        run: python audits/g2a_v0_8/defense_composition.py
+      - name: Verify v0.8 report identity
+        run: git diff --exit-code -- audits/g2a_v0_8/*.csv
+      - name: Verify v0.8 SHA256 manifest
+        run: cd audits/g2a_v0_8 && sha256sum -c AUDIT_SHA256SUMS.txt

@@ -21,3 +21,8 @@ Os hashes do ZIP servem à transferência local; não representam commits Git ne
 
 ## Auditoria incremental v0.7 — sem ZIP obrigatório
 Localização versionada: [audits/g2a_v0_7/](audits/g2a_v0_7/). Contém script, 7 testes, relatório e dois CSVs. Base de execução imutável: v0.6.1 (66 arquivos). Esta é **versão de auditoria**, não versão operacional nem mudança de ranges. Esperado em CI: 124 testes baseline + 7 testes de auditoria, com diffs nulos nos relatórios regenerados.
+
+## Auditoria incremental v0.8 — sem novo ZIP
+- Diretório: [audits/g2a_v0_8/](audits/g2a_v0_8/); nove arquivos de auditoria, incluindo **AUDIT_SHA256SUMS.txt** sobre oito outros arquivos.
+- Dependências versionadas: v0.6.1 (66 arquivos) e v0.7 (7 testes e auditoria). O v0.8 não substitui a baseline e não muda políticas.
+- Reexecução esperada: 124+7+10 = **141 testes**, quatro relatórios CSV determinísticos, verificação SHA256 e CI verde.
