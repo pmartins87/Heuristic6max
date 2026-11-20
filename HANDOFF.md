@@ -29,3 +29,5 @@ Se o ZIP v0.5, seus fontes e datasets **não estiverem no repositório**, o repo
 5. G1 continua aberto até replays reais de teste e logs de ação final.
 
 **Sem uso em mesas, sem autoplayer e sem alegar GTO verificada.**
+## Verificação de identidade da entrega
+Conferir [RELEASE_MANIFEST.md](RELEASE_MANIFEST.md) para o SHA-256 do ZIP v0.5 e o estado de replicação; só declarar a versão disponível quando os arquivos constarem no GitHub e passarem na verificação.
