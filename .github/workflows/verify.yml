@@ -39,3 +39,12 @@ jobs:
         run: git diff --exit-code -- audits/g2a_v0_9/*.csv
       - name: Verify v0.9 SHA256 audit manifest
         run: cd audits/g2a_v0_9 && sha256sum -c AUDIT_SHA256SUMS.txt
+
+      - name: Check HJ-CO physical equity audit v0.10
+        run: python -m unittest discover -s audits/g2a_v0_10 -p 'test_*.py' -q
+      - name: Recompute independent MC estimates v0.10
+        run: python audits/g2a_v0_10/equity_audit.py --mc --samples 50000 --output audits/g2a_v0_10/HJ_CO_EQUITY_15_MONTE_CARLO_v0_10.csv
+      - name: Verify deterministic MC report and derived CSV metadata
+        run: git diff --exit-code -- audits/g2a_v0_10/HJ_CO_EQUITY_15_MONTE_CARLO_v0_10.csv
+      - name: Verify v0.10 SHA-256 manifest
+        run: cd audits/g2a_v0_10 && sha256sum -c AUDIT_SHA256SUMS.txt

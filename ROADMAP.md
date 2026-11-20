@@ -1,4 +1,4 @@
-# Roadmap vivo — 20/11/2026 (auditoria v0.9 / estratégia v0.6.1)
+# Roadmap vivo — 20/11/2026 (auditoria v0.10 / estratégia v0.6.1)
 
 | Gate | Estado | Critério de avanço |
 |---|---|---|
@@ -40,3 +40,11 @@ Revisar os oito nós (SB–BB, HJ–CO, LJ–CO, CO–BTN, HJ–BTN, LJ–HJ, BT
 - **Não** comparar apenas frequência de fold; uma poda de RFI pode baixar o fold condicional e **piorar EV de open**. Converter fold em call exige equity/realização; 4bet exige modelo explícito de desistência/continuação.
 - Próximo gate: obter premissas operacionais de rake/cap/sizings e estimar equity contra range de 3bet do modelo por mão com método verificável. Depois comparar EV de OPEN vs FOLD inicial e CALL/4BET vs FOLD frente a 3bet, sem ajustes até validação.
 - Estado inalterado: G1 aberto, G2-a HOLD, G2-b bloqueado, G3–G7 pendentes.
+
+## Auditoria v0.10 — HJ/CO equities, sem mudança estratégica
+- [Método e referência v0.10](audits/g2a_v0_10/README.md), [169 equities por classe](audits/g2a_v0_10/HJ_CO_EQUITY_169_REFERENCE_v0_10.csv), [15 conferências Monte Carlo](audits/g2a_v0_10/HJ_CO_EQUITY_15_MONTE_CARLO_v0_10.csv).
+- A fonte privada fornecida tinha 1.624.350 confrontos físicos ordenados, cobertura/reciprocidade conferidas; licença/autoria não documentadas, portanto **não publicar o bruto**. SHA-256 da fonte e método presentes no README da auditoria. Motor MC em Python stdlib pode reestimar sem a fonte original.
+- Ex.: AQo 41,3101%, AJo 35,6951%, KJo 32,3099%, TT 44,0217% de **equidade bruta de showdown** contra a política 3bet do CO. Isso NÃO determina EV de call fora de posição, nem prova que folds existentes estão errados.
+- 10 testes novos; total acumulado previsto **163 (124+7+11+11+10)**. Todos os ranges e o snapshot v0.6.1 permanecem intactos; G1 aberto, G2-a HOLD, G2-b bloqueado.
+
+**Próximo gate:** comparar equidade *realizada* e custo/rake da plataforma em cenários HJ OOP, inclusive possíveis ações de jogadores restantes, antes de alterar qualquer mão. Não confundir showdown equity e call EV.

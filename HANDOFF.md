@@ -59,3 +59,12 @@ A auditoria v0.8 agrega 11 testes aos 131 da v0.7/base: **142 testes locais**. F
 - Baseline de estratégia v0.6.1 preservada. P(HJ fold | RFI, CO 3bet)=77,53771778%, call=14,03919921%, 4bet=8,42308301%.
 - Poda de RFI e deslocamento de FOLD->CALL/4BET são **contrafactuais** sem EV conhecido e NÃO autorizam mudança; rake 5/8% e realização 60–100% são apenas hipóteses.
 - GitHub é atualizado diretamente neste projeto; **não solicitar upload manual ao usuário**. Ler estado e verificar CI antes de continuar. G2-a ainda HOLD; G2-b bloqueado.
+
+## Retomada v0.10 — equity HJ vs CO
+Primeiro leia [auditoria v0.10](audits/g2a_v0_10/README.md) e [ADR-014](DECISIONS.md). Para validar o novo trabalho, desde a raiz do checkout:
+
+    python -m unittest discover -s audits/g2a_v0_10 -p 'test_*.py' -q
+    python audits/g2a_v0_10/equity_audit.py --mc --samples 50000 --output audits/g2a_v0_10/HJ_CO_EQUITY_15_MONTE_CARLO_v0_10.csv
+    cd audits/g2a_v0_10 && sha256sum -c AUDIT_SHA256SUMS.txt
+
+Dados 169 classes derivados de PreFlopEquities.zip privado (SHA no README, origem/licença não certificadas); ZIP bruto propositalmente ausente no GitHub. Para reproduzir os valores exatos da referência, recuperar cópia autorizada com hash idêntico; para reestimar a partir apenas do GitHub, usar Monte Carlo stdlib. São 10 testes adicionais (163 total esperado); não operar bot nem editar ranges. Próximo passo: EV de call/4bet, realização e rake reais ou cenários com incerteza, antes de qualquer decisão. **A integração GitHub permite atualizações diretas, sem upload manual do usuário.**

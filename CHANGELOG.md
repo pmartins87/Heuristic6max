@@ -18,3 +18,5 @@ Consulte [DECISIONS.md](DECISIONS.md) para justificativas e [RELEASE_MANIFEST.md
 - **Ajuste de reprodutibilidade v0.8 (mesma data):** primeira execução CI falhou apenas porque pesos numericamente empatados foram ordenados em sequências distintas pelo Python 3.13 e 3.11; ajustado desempate pela classe de mão após arredondamento da **chave de ordenação** em 12 casas, sem mudar pesos/ações. Acrescentado teste determinístico (+1). Relatórios e SHA256 regenerados, v0.6.1 intacta.
 
 - **Auditoria v0.9 (20/11/2026):** HJ/CO, 169 classes, análise contrafactual de 15 classes, 36 fronteiras de preço de call/4bet sob rake, sizing e realização hipotéticos; 11 testes novos, **153 no total**. Estratégia v0.6.1 intacta. [Código e relatórios](audits/g2a_v0_9/README.md). Gate G2-a HOLD.
+
+- **Auditoria v0.10 (20/11/2026):** 169 classes físicas de equity de showdown HJ/CO 3bet (fonte externa fornecida, 1.624.350 confrontos, input bruto não republicado por licença desconhecida), checagem Monte Carlo independente de 15 classes × 50k amostras e 10 testes novos (163 acumulados previstos). Nenhuma estratégia alterada. [Código/relatórios](audits/g2a_v0_10/README.md). G2-a HOLD.

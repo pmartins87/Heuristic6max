@@ -1,5 +1,5 @@
 # Estado atual — Heuristic6max
-**Data:** 20/11/2026 | **Checkpoint:** auditoria v0.9 sobre v0.6.1 G2-a | **Estado estratégico:** HOLD / não operacional.
+**Data:** 20/11/2026 | **Checkpoint:** auditoria v0.10 sobre v0.6.1 G2-a | **Estado estratégico:** HOLD / não operacional.
 
 ## Evidências concluídas
 - G0: arquitetura e contratos.
@@ -43,3 +43,9 @@ G2-a permanece aberto: auditar a composição exata dos oito confrontos com prem
 - HJ abre AQo, AJo, KQo, KJo, A9o e desiste 100% versus o CO 3bettor na política atual. Não há prova de que esse fold ou o próprio open seja errado.
 - Abertura HJ 2,5 / 3bet CO 8 BB: call adicional 5,5 BB, pote após call 17,5 BB, exigência imediata 31,4286% antes de rake/realização. 4bet para 21,2 BB exigiria 60,9121% de folds de todos sob o experimento artificial de blefe com equidade zero.
 - Contrafactuais mudar RFI ou defesa são **simulações de frequência, não EV**. Rake/cap e EQR não são dados reais; todos os três CSV de ranges mantidos, status estratégico HOLD.
+
+## Auditoria v0.10 — HJ/CO equities, sem mudança estratégica
+- [Método e referência v0.10](audits/g2a_v0_10/README.md), [169 equities por classe](audits/g2a_v0_10/HJ_CO_EQUITY_169_REFERENCE_v0_10.csv), [15 conferências Monte Carlo](audits/g2a_v0_10/HJ_CO_EQUITY_15_MONTE_CARLO_v0_10.csv).
+- A fonte privada fornecida tinha 1.624.350 confrontos físicos ordenados, cobertura/reciprocidade conferidas; licença/autoria não documentadas, portanto **não publicar o bruto**. SHA-256 da fonte e método presentes no README da auditoria. Motor MC em Python stdlib pode reestimar sem a fonte original.
+- Ex.: AQo 41,3101%, AJo 35,6951%, KJo 32,3099%, TT 44,0217% de **equidade bruta de showdown** contra a política 3bet do CO. Isso NÃO determina EV de call fora de posição, nem prova que folds existentes estão errados.
+- 10 testes novos; total acumulado previsto **163 (124+7+11+11+10)**. Todos os ranges e o snapshot v0.6.1 permanecem intactos; G1 aberto, G2-a HOLD, G2-b bloqueado.

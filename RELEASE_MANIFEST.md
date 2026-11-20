@@ -31,3 +31,8 @@ Localização versionada: [audits/g2a_v0_7/](audits/g2a_v0_7/). Contém script, 
 - Diretório GitHub: [audits/g2a_v0_9/](audits/g2a_v0_9/), **8 arquivos** incluindo fontes, 3 CSVs, README, decisão, 11 testes e manifesto SHA256.
 - Snapshot estratégico dependente: v0.6.1, inalterado. Depende também de v0.8/v0.7; não é nova release operacional.
 - CI esperada: 124+7+11+11 = **153 testes**, 3 CSVs determinísticos, SHA256 do audit e diff Git nulo. Sem alegar GTO/EV validado.
+
+## Auditoria incremental v0.10 — não operacional
+- Diretório GitHub: [audits/g2a_v0_10](audits/g2a_v0_10/), sete arquivos (motor, 10 testes, 169 equities derivadas, 15 checks MC, docs, hash-manifesto).
+- SHA-256 do input externo PreFlopEquities.zip: 52a0a87174b0d7cabd5b16fe43387b0807a6abd036e5a61c1aafbc008ecf50c2. SHA-256 de PreFlopEquities.txt: 9dd539e2720010684d0006981207489e4f753b1d628f7e0443003b2c7f3e6c9f. O input bruto não é hospedado (licenciamento não estabelecido); somente cálculos derivados e método/fallback MC stdlib.
+- CI esperada: 124+7+11+11+10=163 testes, CSV Monte Carlo regenerado de modo determinístico e manifesto verificado. Ranges v0.6.1 intocados, G2-a HOLD.
