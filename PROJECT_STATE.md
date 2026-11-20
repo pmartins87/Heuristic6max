@@ -88,3 +88,9 @@ Python de importação de charts, análise, Monte Carlo, testes e reconstrução
 - Cobertura first-in 5×169=845: 5 classes de mix (LJ KJo 40%, HJ QJo 50%, BTN 53s 50%, SB K3s raise 50%, SB 97o limp 75%), o restante puro. SB possui estratégia de limp conservada.
 - **12/12 testes locais** e 254 acumulados esperados no CI. Testes percorrem 845 classes e vários valores de randomhand; não simulam EV, não garantem compilação no executável OH.
 - RFI v0.6.1 *imutável*. Próximo produto de estratégia: VS_OPEN OpenPPL da baseline histórica, sem bloqueá-lo por pesquisa não necessária. G1 aberto, G2-a HOLD, G2-b bloqueado, G6 pendente.
+
+## VS_OPEN-MVP OpenPPL — checkpoint 20/11/2026
+- Publicado [portability/vs_open_mvp/](portability/vs_open_mvp/): 8 arquivos (121 regras OpenPPL, 81 listas, 2.535 classes de 15 confrontos, gerador, intérprete da mesma fonte, 19 testes, CSV e manifesto SHA256).
+- Incluído **arquivo combinado OpenPPL** com RFI anterior (**21 regras**) + VS_OPEN (**121 regras**) sob **um único `##f$preflop##`**; são **3.380 entradas classificadas** (845 RFI e 2.535 VS_OPEN) — NÃO todos os cenários do jogo. Ações e sizings v0.6.1 preservados.
+- Mixes: 3bet/call, 3bet/fold e call/fold nativos via `randomhand`, sem duplicar política Python. FirstRaiserPosition e LastRaiserPosition, posição do Hero, RaiseTo em BB e guardas de stack/ação combinadas; sem replay OH-alvo.
+- 19 testes novos: total esperado **273 = 254 +19**. **Ainda não operacional**: no-match/fallback, VS_3BET, jogadores intermediários, pós-flop e paridade OpenHoldem real ausentes. G1 ABERTO; G2-a HOLD para mudanças estratégicas; G2-b bloqueado; G6 pendente.

@@ -64,3 +64,8 @@ Localização versionada: [audits/g2a_v0_7/](audits/g2a_v0_7/). Contém script, 
 - [portability/rfi_mvp/](portability/rfi_mvp/): 7 arquivos rastreados (OPPL 21 regras, gerador, interpretador, 12 testes, 845 linhas CSV, README e `RFI_MVP_SHA256SUMS.txt` sobre 6 arquivos).
 - Depende de `gto6_heuristic_v0_6_1/` (66 arquivos, snapshot e políticas intactos). Há 5 mixes e limp da SB; não há dados novos de GTO/EV.
 - CI esperada: **254 testes = 242 históricos + 12**, regeneração e diff nulo de OPPL/CSV, SHA256 dos artefatos. VS_OPEN/VS_3BET, fallback e OpenHoldem real ainda pendentes.
+
+## VS_OPEN-MVP — componente pré-flop OpenPPL DRAFT (não release de bot)
+- [portability/vs_open_mvp/](portability/vs_open_mvp/): **8 arquivos**: módulo OpenPPL de 121 regras/81 listas, combinado RFI+VS_OPEN de 142 regras, gerador offline, interpretador, 19 testes, CSV de 2.535 nós, README e `VS_OPEN_MVP_SHA256SUMS.txt` sobre 7 arquivos.
+- Base estratégica v0.6.1 (66 arquivos) permanece historicamente intocada, com política VS_OPEN v0.3 DRAFT. Não incorporamos chart externa nem novo sizing de solver.
+- CI prevista: **273 = 254 +19**; gera OPPL e CSV de modo determinístico, exige `git diff --exit-code` e manifesto SHA256. G1 sem replay, G2-a HOLD, G6 pendente; sem artefato operacional.

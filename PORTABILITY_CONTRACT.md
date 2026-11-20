@@ -68,3 +68,8 @@ A cada nova implementação estratégica, consultar este contrato e atualizar `D
 - **Python autorizado exclusivamente para ferramentas offline** de compilação, inspeção, teste e relatório; a fonte da ação final simulada é o arquivo `rfi_6max_mvp.oppl`.
 - Estratégia continua DRAFT: o módulo OPPL não define fallback seguro em cenários fora de domínio; um `default.bot` pode agir onde nenhuma regra encontra correspondência. OPPL completo + replays de OH antes de uso.
 - Metas de qualidade pragmáticas: validade de sintaxe simbólica/ações, cobertura de linhas, comportamento estável das misturas, não regressão; **não exigir prova científica de GTO/EV para continuar a autoria DRAFT**.
+
+## VS_OPEN-MVP — primeira árvore de resposta a open (ADR-021)
+- O requisito OpenPPL-first cobre agora 5 posições RFI (845 classes) + 15 VS_OPEN (2.535 classes). A fonte `preflop_rfi_vsopen_draft.oppl` gera uma única função `f$preflop`; RFI e VS_OPEN não competem porque `Raises=0` versus `Raises=1`.
+- [Código e 19 testes](portability/vs_open_mvp/README.md) conferem o próprio OPPL contra ranges v0.6.1 **sem segunda política Python**. Guardas exigem `FirstRaiserPosition`, `LastRaiserPosition`, `Calls=0`, pote, sizing e stack; todos são apenas candidatos a símbolos para validar no executável-alvo.
+- Mixes 3BET/CALL, 3BET/FOLD e CALL/FOLD preservam `randomhand`, fonte e prioridades. **Nenhum OHReplay real, nenhum fail-closed garantido.** Próxima etapa VS_3BET de mesma base, e teste OH antes de promover a bot. Não usar este rascunho para apostar.

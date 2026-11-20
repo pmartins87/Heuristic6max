@@ -117,3 +117,9 @@ Na raiz do repositório, execute:
 - Para checar: `python -m unittest discover -s portability/rfi_mvp -p 'test_*.py' -q`; `python portability/rfi_mvp/generate_rfi_mvp.py`; `git diff --exit-code -- portability/rfi_mvp/rfi_6max_mvp.oppl portability/rfi_mvp/RFI_6MAX_845_MAPPING.csv`; `cd portability/rfi_mvp && sha256sum -c RFI_MVP_SHA256SUMS.txt`.
 - 12 novos testes (254 acumulados esperados); cinco mixes sem aproximações puras, SB com limp. Não recodificar um segundo runtime Python, não operar em apostas, não tratar no-match como None operacional.
 - **Próximo passo:** VS_OPEN na mesma linguagem e estratégia imutável. Não continuar criando auditorias econômicas teóricas sem relação com avanço concreto. Versão OH e replay real ainda pendentes, guardados para o gate de integração.
+
+## VS_OPEN-MVP (20/11/2026) — próximo passo VS_3BET sem pivot
+- Fonte e limitações: [portability/vs_open_mvp/README.md](portability/vs_open_mvp/README.md), **`vs_open_6max_mvp.oppl`** (15×169) e **`preflop_rfi_vsopen_draft.oppl`** (unificação de RFI 845 + VS_OPEN 2535; 142 regras).
+- Executar da raiz: `python -m unittest discover -s portability/vs_open_mvp -p 'test_*.py' -q`; `python portability/vs_open_mvp/generate_vs_open_mvp.py`; `git diff --exit-code -- portability/vs_open_mvp/*.oppl portability/vs_open_mvp/VS_OPEN_2535_MAPPING.csv`; `(cd portability/vs_open_mvp && sha256sum -c VS_OPEN_MVP_SHA256SUMS.txt)`.
+- **19 testes novos, 273 acumulados esperados**, SHA256 verifica 7 arquivos. Nenhum arquivo histórico de estratégia alterado. FirstRaiserPosition/LastRaiserPosition dependem do OH real; no-match não garante fallback. Nunca chamar o combinado de bot pronto.
+- Próximo: portar **VS_3BET v0.6.1** ao mesmo `##f$preflop##`, usando o arquivo existente como fonte de verdade. Manter 7 docs vivos e issue #2/#3. Não iniciar G2-b/VS_4BET; G2-a permanece HOLD para alterações estratégicas. Testes de replay OH offline continuam pendentes.

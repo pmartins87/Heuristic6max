@@ -98,3 +98,12 @@ jobs:
         run: git diff --exit-code -- portability/rfi_mvp/rfi_6max_mvp.oppl portability/rfi_mvp/RFI_6MAX_845_MAPPING.csv
       - name: Check RFI-MVP SHA256 manifest
         run: cd portability/rfi_mvp && sha256sum -c RFI_MVP_SHA256SUMS.txt
+
+      - name: Test VS_OPEN 15-node native OpenPPL module
+        run: python -m unittest discover -s portability/vs_open_mvp -p 'test_*.py' -q
+      - name: Regenerate 15-node VS_OPEN OpenPPL and combined RFI source
+        run: python portability/vs_open_mvp/generate_vs_open_mvp.py
+      - name: Verify 2535 mapped classes and OpenPPL source identity
+        run: git diff --exit-code -- portability/vs_open_mvp/vs_open_6max_mvp.oppl portability/vs_open_mvp/preflop_rfi_vsopen_draft.oppl portability/vs_open_mvp/VS_OPEN_2535_MAPPING.csv
+      - name: Verify VS_OPEN-MVP SHA256 manifest
+        run: cd portability/vs_open_mvp && sha256sum -c VS_OPEN_MVP_SHA256SUMS.txt

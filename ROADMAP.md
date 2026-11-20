@@ -83,3 +83,8 @@ Ver [PORTABILITY_CONTRACT.md](PORTABILITY_CONTRACT.md).
 - Concluído **módulo RFI first-in com 845 casos/21 regras OpenPPL** a partir do histórico v0.6.1; 12 testes de paridade pragmática, preservação dos 5 mixes e do limp SB.
 - **Próximo componente concreto:** gerar VS_OPEN a partir das 15 árvores existentes, com `RaiseTo`, `Call` e `Fold` compatíveis e mix `randomhand`, sem reimplementar mãos em Python.
 - **Separação de gates:** criar estratégia em OPPL é permitido como artefato DRAFT, mas não liberar carga/operação real antes de OpenHoldem replay, controle de default.bot e ação final. Não liberar G2-b/VS_4BET antes da decisão G2-a.
+
+## VS_OPEN-MVP — entrega OpenPPL sem mudança de estratégia (20/11/2026)
+- RFI-MVP e VS_OPEN-MVP são ramos DRAFT prontos em fonte OpenPPL comum, não um bot operando. O combinado contém **142 regras**, 3.380 decisões de classe/nó, preserva 15 políticas VS_OPEN e 5 posições RFI do snapshot v0.6.1.
+- **Próxima entrega útil:** portar VS_3BET (15 confrontos ×169) à mesma fonte OpenPPL, sem ajustar ranges ou desbloquear G2-b/VS_4BET. Proteger ações mistas com `randomhand`, legalidade do RaiseTo e eventos de reavaliação.
+- **Teste mínimo para promoção futura:** integração OpenHoldem real via ManualMode/OHReplay offline, checagem de first raiser, pot 4 BB, to_call e stack + **ação final**; impedir fallback silencioso. Sem essa prova, manter G1 ABERTO e G6 PENDENTE. Não prolongar auditorias de equidade hipotéticas sem dados novos.

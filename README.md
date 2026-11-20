@@ -1,5 +1,11 @@
 # Heuristic6max — fonte de verdade
 
+## VS_OPEN-MVP: 15 árvores pré-flop em OpenPPL (DRAFT — NÃO operacional)
+- [Código, regra de escopo e 19 testes](portability/vs_open_mvp/README.md), [fonte VS_OPEN das 2.535 decisões](portability/vs_open_mvp/vs_open_6max_mvp.oppl) e [pré-flop combinado RFI + VS_OPEN](portability/vs_open_mvp/preflop_rfi_vsopen_draft.oppl).
+- **15 confrontos × 169 classes = 2.535 estados**, 81 listas disjuntas por confronto, 121 regras OpenPPL de VS_OPEN; combinadas com 21 regras RFI anteriores = **142 regras na mesma função preflop** e 3.380 estados de classe/par ou classe/posição.
+- Ações 3BET/CALL/FOLD e todos os mixes `randomhand` copiados sem alterações da v0.6.1; guardas `Raises=1`, `Calls=0`, `FirstRaiserPosition` e `LastRaiserPosition` + tamanho de open, call e stack. 3bet RaiseTo 8, 10.25 ou 9.6 BB.
+- **19 testes incrementais**; **273 testes acumulados esperados na CI**. Sem replay em OpenHoldem ou fallback seguro; G2-a HOLD em estratégia, G6 pendente. Próximo módulo: VS_3BET sobre snapshot intacto.
+
 ## RFI-MVP 6-max — módulo OpenPPL das cinco posições (20/11/2026)
 - **[Fonte OpenPPL e documentação](portability/rfi_mvp/README.md)** · [845 linhas por mão/posição](portability/rfi_mvp/RFI_6MAX_845_MAPPING.csv).
 - Implementadas 5 posições LJ/HJ/CO/BTN/SB, **845 classes de situação**, 21 regras e os cinco mixes por `randomhand`; SB preserva ramo de limp (`Call`), não apenas raise/fold.
