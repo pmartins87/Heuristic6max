@@ -1,0 +1,7 @@
+case_id,session_id,hand_id,eval_index,capture_source,expected_action,expected_raise_to_bb,observed_formula_action,observed_final_action,verdict,reason
+KJO_RAISE_A,SYNTHETIC_ONLY,HAND_A,0,SYNTHETIC,RAISE,2.5,,,STATIC_ONLY,Synthetic data cannot prove OpenHoldem behavior
+KJO_RAISE_REPEAT,SYNTHETIC_ONLY,HAND_A,1,SYNTHETIC,RAISE,2.5,,,STATIC_ONLY,Synthetic data cannot prove OpenHoldem behavior
+KJO_FOLD_B,SYNTHETIC_ONLY,HAND_B,0,SYNTHETIC,FOLD,,,,STATIC_ONLY,Synthetic data cannot prove OpenHoldem behavior
+PURE_RAISE,SYNTHETIC_ONLY,HAND_C,0,SYNTHETIC,RAISE,2.5,,,STATIC_ONLY,Synthetic data cannot prove OpenHoldem behavior
+PURE_FOLD,SYNTHETIC_ONLY,HAND_D,0,SYNTHETIC,FOLD,,,,STATIC_ONLY,Synthetic data cannot prove OpenHoldem behavior
+NO_MATCH_GUARD,SYNTHETIC_ONLY,HAND_E,0,SYNTHETIC,NO_MATCH,,,,BLOCKED_NO_MATCH,OpenHoldem fallback unknown: no in-domain OPPL action

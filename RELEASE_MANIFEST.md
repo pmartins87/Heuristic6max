@@ -54,3 +54,8 @@ Localização versionada: [audits/g2a_v0_7/](audits/g2a_v0_7/). Contém script, 
 - [portability/port2/](portability/port2/): 7 arquivos versionados com fonte OpenPPL, interpretador, gerador, 19 testes, mapeamento, README e `PORT2_SHA256SUMS.txt` (hashes dos outros seis).
 - Baseline imutável: v0.6.1, 66 arquivos. KJo RFI LJ 40/60 representado via `randomhand`, não convertido em ação pura.
 - Reproduzir: gerador determinístico + `git diff`, 19 testes e `sha256sum -c PORT2_SHA256SUMS.txt`. Total CI esperado **215 = 196 + 19**. Não há teste OpenHoldem, não autoriza execução operacional.
+
+## PORT-3 / RPL-0 — instrumento de replay (sem release operacional)
+- [portability/port3/](portability/port3/) 7 arquivos (auditor, 27 testes, input e output sintéticos, README, .gitignore, `PORT3_SHA256SUMS.txt`).
+- Base de decisão: `portability/port2/lj_rfi_mixed_port2.oppl` inalterada, v0.6.1 imutável. Nenhuma execução OpenHoldem reportada.
+- CI: 215 testes anteriores + 27 = **242** previstos; reproduzir CSV sintético e hashes. Níveis de resultado NÃO incluem PASS operacional. G1 aberto, G2-a HOLD, G6 pendente.

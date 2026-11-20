@@ -56,3 +56,9 @@ A cada nova implementação estratégica, consultar este contrato e atualizar `D
 - **Novo critério PORT-2a (satisfeito estaticamente):** expressar KJo misto sem hash nem memória própria, preservar 169 classes, não duplicar lógica e cobrir testes de limiar e reavaliações.
 - **Critério PORT-2b (ABERTO):** comprovar no executável OH-alvo os símbolos, estabilidade/mudança entre mãos, final action, falsos positivos na detecção, fallback, legalidade de RaiseTo e ausência de desvio em replay sem apostas. Não declarar PORT-2 concluído operacionalmente.
 - Os trechos históricos de PORT-1 que citam KJo bloqueado continuam válidos para o ARTEFATO PORT-1, mas foram superados na prova PORT-2. Nenhum range mudou.
+
+## PORT-3 / RPL-0 — condições de observação verificáveis (ADR-019)
+- Não aceitar teste do Python como evidência do OpenHoldem. Cada amostra OH futura deve incluir `openholdem_version`, SHA da mesma fonte PORT-2, identificador da mão/sessão e avaliações, valores de guardas + `randomhand`, decisão da fórmula e **ação final tomada**, tamanho exato de RaiseTo, arquivo local e SHA256.
+- [Auditor offline](portability/port3/README.md) detecta drift da fórmula, alteração do número aleatório dentro da mão, no-match/fallback, discrepâncias de ação e sizing, prova ausente ou adulterada. **`READY_FOR_MANUAL_REVIEW` exige inspeção humana da evidência e não aprova G6**.
+- **PORT-3a PREPARADO:** 27 testes sintéticos, 5 STATIC_ONLY, 1 BLOCKED_NO_MATCH. **PORT-3b BLOQUEADO:** sem OH-alvo, sem frame real, sem observação de ação final.
+- Não redistribuir logs/frames com dados sensíveis nem conectar autoplayer a mesas reais para experimentar. Preservar G1/G2/G6, snapshots e ranges sem alterações.

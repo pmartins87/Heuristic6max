@@ -72,3 +72,8 @@ Ver [PORTABILITY_CONTRACT.md](PORTABILITY_CONTRACT.md).
 - **Novo dado técnico:** OpenPPL/OH documenta `randomhand` em [0,1), fixo por mão. KJo 40/60 da LJ agora tem 2 regras explícitas complementares no mesmo arquivo OpenPPL; 19 novos testes estáticos.
 - **PORT-1/2 estático:** a lacuna de expressabilidade da mistura KJo foi eliminada; o gate operacional continua aberto. Não alterar gates G1, G2-a, G2-b, G6 nem os 3 ranges.
 - **Próximo gate mensurável:** OH-alvo instalado e versão identificada → replays sem dinheiro → confirmar amostras de `randomhand`, estabilidade por mão, 0.40, escopo correto da posição/stack, sizing final `RaiseTo`, e comportamento de no-match/fallback. Sem esses resultados, não autorizar exportação operacional.
+
+## PORT-3 / RPL-0 — gate de replay preparado, não validado
+- Auditor de evidência reproduzível implementado com 27 testes, mais 6 fixtures explícitas e relatório de 5 casos STATIC_ONLY + 1 BLOCKED_NO_MATCH.
+- **Aceitação do próximo gate PORT-3b:** OH-alvo/build identificado; ManualMode ou OHReplay desconectados de mesa real; `f$debug` registrando os símbolos; ações `Best action` e `Action taken` (e sizing) obtidas de **mesma mão**, evidência local com hash; estabilidade de `randomhand` e sem fallback silencioso. Uma passagem parcial não é aprovação.
+- **Parada atual:** sem arquivo de replay real, parar a inferência de runtime. Preservar PORT-1/PORT-2, G1 ABERTO, G2-a HOLD, G2-b BLOQUEADO, G6 PENDENTE; não mudar a estratégia.

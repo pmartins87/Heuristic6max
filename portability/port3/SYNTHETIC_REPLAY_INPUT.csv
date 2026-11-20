@@ -1,0 +1,7 @@
+case_id,session_id,hand_id,eval_index,capture_source,openholdem_version,oppl_sha256,hand_class,is_preflop,nplayersdealt,in_utg,raises,calls,still_to_act,pot_bb,amount_to_call_bb,stack_unknown,hero_stack_bb,min_opponent_stack_bb,max_opponent_stack_bb,randomhand,observed_formula_action,observed_formula_raise_to_bb,observed_final_action,observed_final_raise_to_bb,evidence_file,evidence_sha256
+KJO_RAISE_A,SYNTHETIC_ONLY,HAND_A,0,SYNTHETIC,,017bcf1704b04d049fd786e79ae6fd33b9d8d232258f916457e9483a6e2755f3,KJo,1,6,1,0,0,5,1.5,1,0,100,100,100,0.3999999,,,,,,
+KJO_RAISE_REPEAT,SYNTHETIC_ONLY,HAND_A,1,SYNTHETIC,,017bcf1704b04d049fd786e79ae6fd33b9d8d232258f916457e9483a6e2755f3,KJo,1,6,1,0,0,5,1.5,1,0,100,100,100,0.3999999,,,,,,
+KJO_FOLD_B,SYNTHETIC_ONLY,HAND_B,0,SYNTHETIC,,017bcf1704b04d049fd786e79ae6fd33b9d8d232258f916457e9483a6e2755f3,KJo,1,6,1,0,0,5,1.5,1,0,100,100,100,0.4,,,,,,
+PURE_RAISE,SYNTHETIC_ONLY,HAND_C,0,SYNTHETIC,,017bcf1704b04d049fd786e79ae6fd33b9d8d232258f916457e9483a6e2755f3,AA,1,6,1,0,0,5,1.5,1,0,100,100,100,0.77,,,,,,
+PURE_FOLD,SYNTHETIC_ONLY,HAND_D,0,SYNTHETIC,,017bcf1704b04d049fd786e79ae6fd33b9d8d232258f916457e9483a6e2755f3,72o,1,6,1,0,0,5,1.5,1,0,100,100,100,0.56,,,,,,
+NO_MATCH_GUARD,SYNTHETIC_ONLY,HAND_E,0,SYNTHETIC,,017bcf1704b04d049fd786e79ae6fd33b9d8d232258f916457e9483a6e2755f3,AA,1,6,0,0,0,5,1.5,1,0,100,100,100,0.12,,,,,,

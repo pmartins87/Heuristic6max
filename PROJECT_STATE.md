@@ -76,3 +76,9 @@ Python de importação de charts, análise, Monte Carlo, testes e reconstrução
 - `portability/port2/`: 169/169 classes LJ RFI representadas em OpenPPL (43 RAISE puro, 125 FOLD puro, KJo misto 40/60 por `randomhand`), derivadas da v0.6.1 imutável.
 - 19 novos testes locais de interpretador estático, distribuição em 10.000 limiares, estabilidade com input constante, fronteira 0,40 e rejeição de regras inseguras. Total esperado no CI: 215.
 - A **implementação real de randomhand** e ação final OpenHoldem NÃO foram verificadas. `None` em Python não prova fail-closed OH. PORT-2 não aprova G6; G1 aberto, G2-a HOLD e G2-b bloqueado.
+
+## PORT-3 / RPL-0 — auditoria de evidência para replay (20/11/2026)
+- [portability/port3/](portability/port3/) contém 7 arquivos novos: auditor offline, **27 testes**, seis registros sintéticos, relatório determinístico, README, .gitignore de evidências privadas e manifesto SHA256.
+- Testes locais: 27/27; total esperado na CI: **242**. Relatório exclusivamente sintético: **5 STATIC_ONLY + 1 BLOCKED_NO_MATCH**. **Zero capturas de OpenHoldem real, zero aprovações operacionais**.
+- Novos invariantes: hash da fórmula OPPL, mesmo `randomhand` por (sessão,mão), guardas observados, comparação independente de ação da fórmula e ação realmente tomada, RaiseTo exato, evidência auditável e no-match SEM aprovação automática. Um log com hash correto ainda precisa de revisão de autenticidade.
+- Não foram alterados ranges RFI/VS_OPEN/VS_3BET, G1 segue aberto, G2-a HOLD, G6 pendente. Próximo passo é capturar replays **offline** do OpenHoldem-alvo; não presumir existência de executável ou logs.

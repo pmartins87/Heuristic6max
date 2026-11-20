@@ -1,5 +1,11 @@
 # Heuristic6max — fonte de verdade
 
+## PORT-3 / RPL-0 — auditor de evidência OpenHoldem (sem aprovação de runtime)
+- [Método, provas e instruções offline](portability/port3/README.md), [auditor Python](portability/port3/replay_audit.py), [27 testes](portability/port3/test_replay_audit.py).
+- O auditor lê o **mesmo arquivo OpenPPL PORT-2**, exige `randomhand` observado, símbolo/estado do replay, SHA da fórmula, **ação da fórmula** e **ação final**. Recusa no-match como fail-closed e detecta fallback/sizing divergente.
+- **Nenhuma captura OH real foi produzida**. CSV sintético contém **5 `STATIC_ONLY` e 1 `BLOCKED_NO_MATCH`**; não há `PASS` operacional automático, mesmo com arquivo de evidência. A versão de OH, logs e observações reais seguem pendentes.
+- 27 testes incrementais; **242 testes esperados em CI** = 215 anteriores + 27. Preservados todos os ranges/snapshots v0.6.1; G1 aberto, G2-a HOLD, G6 pendente.
+
 ## PORT-2: mix nativo OpenPPL com `randomhand` (estático, NÃO operacional)
 - [Fonte única OpenPPL, interpretador e 19 testes](portability/port2/README.md); [mapeamento das 169 classes LJ](portability/port2/PORT2_LJ_169_MAPPING.csv).
 - KJo: raise 40% quando `randomhand < 0.40` e fold 60% caso contrário; 43 classes com raise puro, 125 com fold puro, **nenhuma mudança na baseline v0.6.1**.
@@ -8,7 +14,7 @@
 
 Estratégia **heurística** de No-Limit Hold'em cash 6-max baseada em fundamentos de GTO, com contratos, ranges auditáveis e testes reprodutíveis. **Não é um solver; não é um bot operacional validado; não há comprovação de EV ou winrate.**
 
-**Checkpoint ativo: auditoria v0.11 de fontes, sobre v0.10 (20/11/2026), sobre motor/ranges v0.6.1 preservados** — G0 aprovado; G1 aberto; G2-a em auditoria/HOLD; G3–G7 pendentes. RFI, VS_OPEN e VS_3BET continuam DRAFT.
+**Checkpoint ativo: PORT-3 (replay evidence harness, 20/11/2026), sobre auditoria v0.11 e estratégia v0.6.1 preservadas** — G0 aprovado; G1 aberto; G2-a em auditoria/HOLD; G3–G7 pendentes. RFI, VS_OPEN e VS_3BET continuam DRAFT.
 
 ## PORT-1 parcial — RFI LJ (20/11/2026)
 

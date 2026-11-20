@@ -80,3 +80,12 @@ jobs:
         run: git diff --exit-code -- portability/port2/lj_rfi_mixed_port2.oppl portability/port2/PORT2_LJ_169_MAPPING.csv
       - name: Verify PORT-2 SHA256 manifest
         run: cd portability/port2 && sha256sum -c PORT2_SHA256SUMS.txt
+
+      - name: Run PORT-3 offline replay-evidence tests (never OH runtime)
+        run: python -m unittest discover -s portability/port3 -p 'test_*.py' -q
+      - name: Recompute synthetic-only replay assessment
+        run: python portability/port3/replay_audit.py
+      - name: Verify static evidence CSV determinism
+        run: git diff --exit-code -- portability/port3/SYNTHETIC_REPLAY_REPORT.csv
+      - name: Verify PORT-3 SHA256 manifest
+        run: cd portability/port3 && sha256sum -c PORT3_SHA256SUMS.txt
