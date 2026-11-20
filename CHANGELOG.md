@@ -8,3 +8,5 @@
 - **v0.6 (20/11/2026):** correção *de medição* de VS_3BET com card removal e modelo de 3-bet VS_OPEN. 15 nós, 1.326 combos físicos, 124 testes, 61 arquivos no snapshot completo. Mudança de frequências auditadas: -0,409 a -1,766 p.p. em 4bet condicional. **Nenhuma ação estratégica foi alterada; G2-a permanece HOLD.**
 
 Consulte [DECISIONS.md](DECISIONS.md) para justificativas e [RELEASE_MANIFEST.md](RELEASE_MANIFEST.md) para hashes e commits. Não confunda teste de infraestrutura com validação GTO.
+
+- **v0.6.1 (20/11/2026):** hotfix do teste de integridade após falha do primeiro GitHub Actions: 50 fontes ancestrais idênticas, 1 manifesto regenerado. 124 testes mantidos; no change in poker decisions. A v0.6 é mantida para auditoria histórica; CI e documentos vivos passaram a apontar para v0.6.1.

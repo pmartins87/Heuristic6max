@@ -17,3 +17,5 @@
 **ADR-008 — Corrigir contabilidade antes de mudar strategy (20/11/2026).** Implementada em v0.6 uma auditoria de P(ação | RFI, 3bet) com 1.326 combinações, o modelo VS_OPEN do vilão e card removal. Não se altera a política; compara-se antes/depois e se mantém HOLD. Justificativa: o benchmark anterior usava massa condicional somente ao RFI, sem atualizar pela ocorrência da 3bet.
 
 **ADR-009 — Critério estratégico (20/11/2026).** Manter G2-a aberto; não iniciar VS_4BET sem avaliar os oito confrontos sob rake, sizings e ranges de vilão coerentes. Só mudar recomendação perante evidência nova ou erro comprovado.
+
+**ADR-010 — Errata da comparação de snapshots (20/11/2026).** A v0.6 mediu 51/51 SAME antes da regeneração do SHA256SUMS.txt, produzindo um relatório de preservação incorreto e falha do primeiro CI. NÃO alterar a v0.6 já publicada: preservar como checkpoint histórico, adicionar v0.6.1 com 50/50 arquivos-base de conteúdo idênticos e 1/1 manifesto regenerado. O verificador deve validar cada manifesto por seus próprios hashes. 124 testes sintéticos inalterados. **Válido.**

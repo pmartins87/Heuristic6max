@@ -1,4 +1,4 @@
-# Roadmap vivo — 20/11/2026 (v0.6)
+# Roadmap vivo — 20/11/2026 (v0.6.1)
 
 | Gate | Estado | Critério de avanço |
 |---|---|---|
@@ -16,6 +16,7 @@
 - A fonte completa v0.5 foi publicada no GitHub.
 - v0.6 republica snapshot autocontido (61 arquivos), adiciona cálculo com card removal e cinco testes; 124 testes passaram.
 - Auditoria condicional de 15 nós e tabela de 8 MAJOR_REVIEW publicada; decisões estratégicas **não alteradas**.
+- **v0.6.1 integridade:** 50/50 arquivos-base de conteúdo preservados; manifesto regenerado, errata e verificador/CI corrigidos. Sem mudança estratégica.
 
 ## Próxima decisão concreta
 Revisar os oito nós (SB–BB, HJ–CO, LJ–CO, CO–BTN, HJ–BTN, LJ–HJ, BTN–SB, LJ–BTN) por mão e por premissa de 3-bet de vilão. Primeiro definir modelo econômico alvo (rake, cap, sizings). Distinguir evidência válida de simples diferença numérica frente a tabelas externas.
