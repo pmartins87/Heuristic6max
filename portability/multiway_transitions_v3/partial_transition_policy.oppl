@@ -1,0 +1,57 @@
+// H6 PARTIAL multiway: n flop opponents > current opponents >= 2, SRP only.
+// DRAFT, no runtime OH proof. Value/defense weighted to number still competing.
+// No passive all-in or unconditional Others fallback.
+##f$H6PartialStrong##
+WHEN (HaveNuts) RETURN TRUE FORCE
+WHEN (HaveQuads) RETURN TRUE FORCE
+WHEN (HaveFullHouse) RETURN TRUE FORCE
+WHEN (HaveFlush) RETURN TRUE FORCE
+WHEN (HaveStraight) RETURN TRUE FORCE
+WHEN (HaveSet) RETURN TRUE FORCE
+WHEN (HaveTrips) RETURN TRUE FORCE
+WHEN (HaveTwoPair) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+//@STREET flop
+WHEN (f$H6PartialF AND AmountToCall > 0 AND HaveNuts AND AmountToCall <= 35% PotSize) RaiseHalfPot FORCE
+WHEN (f$H6PartialF AND AmountToCall > 0 AND HaveNuts) Call FORCE
+WHEN (f$H6PartialF2 AND AmountToCall > 0 AND f$H6PartialStrong AND AmountToCall <= 70% PotSize) Call FORCE
+WHEN (f$H6PartialF3 AND AmountToCall > 0 AND f$H6PartialStrong AND AmountToCall <= 55% PotSize) Call FORCE
+WHEN (f$H6PartialF4 AND AmountToCall > 0 AND f$H6PartialStrong AND AmountToCall <= 45% PotSize) Call FORCE
+WHEN (f$H6PartialF2 AND AmountToCall > 0 AND HaveTopPair AND HaveBestKicker AND Position = Last AND AmountToCall <= 25% PotSize) Call FORCE
+WHEN (f$H6PartialF2 AND AmountToCall > 0 AND HaveNutFlushDraw AND Position = Last AND AmountToCall <= 24% PotSize) Call FORCE
+WHEN (f$H6PartialF3 AND AmountToCall > 0 AND HaveNutFlushDraw AND Position = Last AND AmountToCall <= 18% PotSize) Call FORCE
+WHEN (f$H6PartialF AND AmountToCall > 0) Fold FORCE
+WHEN (f$H6PartialF AND AmountToCall = 0 AND HaveNuts) BetTwoThirdPot FORCE
+WHEN (f$H6PartialF2 AND AmountToCall = 0 AND f$H6PartialStrong) BetHalfPot FORCE
+WHEN (f$H6PartialF3 AND AmountToCall = 0 AND f$H6PartialStrong) BetThirdPot FORCE
+WHEN (f$H6PartialF4 AND AmountToCall = 0 AND f$H6PartialStrong) BetThirdPot FORCE
+WHEN (f$H6PartialF2 AND AmountToCall = 0 AND f$H6CrowdedPFR AND Position = Last AND HaveOverPair AND NOT PairOnBoard AND randomhand < 0.20) BetThirdPot FORCE
+WHEN (f$H6PartialF AND AmountToCall = 0) Check FORCE
+//@STREET turn
+WHEN (f$H6PartialT AND AmountToCall > 0 AND HaveNuts AND AmountToCall <= 35% PotSize) RaiseHalfPot FORCE
+WHEN (f$H6PartialT AND AmountToCall > 0 AND HaveNuts) Call FORCE
+WHEN (f$H6PartialT2 AND AmountToCall > 0 AND f$H6PartialStrong AND AmountToCall <= 65% PotSize) Call FORCE
+WHEN (f$H6PartialT3 AND AmountToCall > 0 AND f$H6PartialStrong AND AmountToCall <= 50% PotSize) Call FORCE
+WHEN (f$H6PartialT4 AND AmountToCall > 0 AND f$H6PartialStrong AND AmountToCall <= 40% PotSize) Call FORCE
+WHEN (f$H6PartialT2 AND AmountToCall > 0 AND HaveTopPair AND HaveBestKicker AND Position = Last AND AmountToCall <= 20% PotSize) Call FORCE
+WHEN (f$H6PartialT2 AND AmountToCall > 0 AND HaveNutFlushDraw AND Position = Last AND AmountToCall <= 20% PotSize) Call FORCE
+WHEN (f$H6PartialT AND AmountToCall > 0) Fold FORCE
+WHEN (f$H6PartialT AND AmountToCall = 0 AND HaveNuts) BetTwoThirdPot FORCE
+WHEN (f$H6PartialT2 AND AmountToCall = 0 AND f$H6PartialStrong) BetHalfPot FORCE
+WHEN (f$H6PartialT3 AND AmountToCall = 0 AND f$H6PartialStrong) BetThirdPot FORCE
+WHEN (f$H6PartialT4 AND AmountToCall = 0 AND f$H6PartialStrong) BetThirdPot FORCE
+WHEN (f$H6PartialT2 AND AmountToCall = 0 AND f$H6CrowdedPFR AND Position = Last AND HaveOverPair AND BotRaisedOnFlop AND randomhand < 0.20) BetThirdPot FORCE
+WHEN (f$H6PartialT AND AmountToCall = 0) Check FORCE
+//@STREET river
+WHEN (f$H6PartialR AND AmountToCall > 0 AND HaveNuts AND AmountToCall <= 30% PotSize) RaiseHalfPot FORCE
+WHEN (f$H6PartialR AND AmountToCall > 0 AND HaveNuts) Call FORCE
+WHEN (f$H6PartialR2 AND AmountToCall > 0 AND f$H6PartialStrong AND AmountToCall <= 55% PotSize) Call FORCE
+WHEN (f$H6PartialR3 AND AmountToCall > 0 AND f$H6PartialStrong AND AmountToCall <= 42% PotSize) Call FORCE
+WHEN (f$H6PartialR4 AND AmountToCall > 0 AND f$H6PartialStrong AND AmountToCall <= 35% PotSize) Call FORCE
+WHEN (f$H6PartialR2 AND AmountToCall > 0 AND HaveOverPair AND Position = Last AND AmountToCall <= 14% PotSize) Call FORCE
+WHEN (f$H6PartialR AND AmountToCall > 0) Fold FORCE
+WHEN (f$H6PartialR AND AmountToCall = 0 AND HaveNuts) BetTwoThirdPot FORCE
+WHEN (f$H6PartialR2 AND AmountToCall = 0 AND f$H6PartialStrong) BetHalfPot FORCE
+WHEN (f$H6PartialR3 AND AmountToCall = 0 AND f$H6PartialStrong) BetThirdPot FORCE
+WHEN (f$H6PartialR4 AND AmountToCall = 0 AND f$H6PartialStrong) BetThirdPot FORCE
+WHEN (f$H6PartialR AND AmountToCall = 0) Check FORCE

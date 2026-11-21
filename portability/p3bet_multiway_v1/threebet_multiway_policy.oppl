@@ -1,0 +1,59 @@
+// 3bet multiway postflop: Hero 3bettor or Hero RFI who paid a 3bet.
+// Distinct from SRP, limped, 4bet, squeeze; 3+ people reached flop.
+// No fantasy air c-bet in crowded 3bet pot; tight sizing/draw responses.
+##f$H6ThreeBetMWStrong##
+WHEN (HaveNuts) RETURN TRUE FORCE
+WHEN (HaveQuads) RETURN TRUE FORCE
+WHEN (HaveFullHouse) RETURN TRUE FORCE
+WHEN (HaveFlush) RETURN TRUE FORCE
+WHEN (HaveStraight) RETURN TRUE FORCE
+WHEN (HaveSet) RETURN TRUE FORCE
+WHEN (HaveTrips) RETURN TRUE FORCE
+WHEN (HaveTwoPair) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+//@STREET flop
+WHEN (f$H6ThreeBetMWValid AND AmountToCall > 0 AND HaveNuts AND AmountToCall <= 48% PotSize) RaiseHalfPot FORCE
+WHEN (f$H6ThreeBetMWValid AND AmountToCall > 0 AND HaveNuts) Call FORCE
+WHEN (f$H6ThreeBetMWHU AND AmountToCall > 0 AND f$H6ThreeBetMWStrong AND AmountToCall <= 95% PotSize) Call FORCE
+WHEN (f$H6ThreeBetMWTwo AND AmountToCall > 0 AND f$H6ThreeBetMWStrong AND AmountToCall <= 72% PotSize) Call FORCE
+WHEN (f$H6ThreeBetMWCrowded AND AmountToCall > 0 AND f$H6ThreeBetMWStrong AND AmountToCall <= 50% PotSize) Call FORCE
+WHEN (f$H6ThreeBetMWHU AND AmountToCall > 0 AND HaveOverPair AND AmountToCall <= 48% PotSize) Call FORCE
+WHEN (f$H6ThreeBetMWTwo AND AmountToCall > 0 AND HaveOverPair AND Position = Last AND AmountToCall <= 24% PotSize) Call FORCE
+WHEN (f$H6ThreeBetMWHU AND AmountToCall > 0 AND HaveNutFlushDraw AND AmountToCall <= 32% PotSize) Call FORCE
+WHEN (f$H6ThreeBetMWTwo AND AmountToCall > 0 AND HaveNutFlushDraw AND Position = Last AND AmountToCall <= 20% PotSize) Call FORCE
+WHEN (f$H6ThreeBetMWValid AND AmountToCall > 0) Fold FORCE
+WHEN (f$H6ThreeBetMWValid AND AmountToCall = 0 AND HaveNuts) BetTwoThirdPot FORCE
+WHEN (f$H6ThreeBetMWHU AND AmountToCall = 0 AND f$H6ThreeBetMWStrong) BetHalfPot FORCE
+WHEN (f$H6ThreeBetMWTwo AND AmountToCall = 0 AND f$H6ThreeBetMWStrong) BetHalfPot FORCE
+WHEN (f$H6ThreeBetMWCrowded AND AmountToCall = 0 AND f$H6ThreeBetMWStrong) BetThirdPot FORCE
+WHEN (f$H6ThreeBetMWHU AND AmountToCall = 0 AND f$H6ThreeBetMWAggressor AND HaveOverPair) BetHalfPot FORCE
+WHEN (f$H6ThreeBetMWHU AND AmountToCall = 0 AND f$H6ThreeBetMWAggressor AND HaveTopPair AND HaveBestKicker AND Position = Last) BetThirdPot FORCE
+WHEN (f$H6ThreeBetMWValid AND AmountToCall = 0) Check FORCE
+//@STREET turn
+WHEN (f$H6ThreeBetMWValid AND AmountToCall > 0 AND HaveNuts AND AmountToCall <= 40% PotSize) RaiseHalfPot FORCE
+WHEN (f$H6ThreeBetMWValid AND AmountToCall > 0 AND HaveNuts) Call FORCE
+WHEN (f$H6ThreeBetMWHU AND AmountToCall > 0 AND f$H6ThreeBetMWStrong AND AmountToCall <= 80% PotSize) Call FORCE
+WHEN (f$H6ThreeBetMWTwo AND AmountToCall > 0 AND f$H6ThreeBetMWStrong AND AmountToCall <= 62% PotSize) Call FORCE
+WHEN (f$H6ThreeBetMWCrowded AND AmountToCall > 0 AND f$H6ThreeBetMWStrong AND AmountToCall <= 42% PotSize) Call FORCE
+WHEN (f$H6ThreeBetMWHU AND AmountToCall > 0 AND HaveOverPair AND AmountToCall <= 38% PotSize) Call FORCE
+WHEN (f$H6ThreeBetMWHU AND AmountToCall > 0 AND HaveNutFlushDraw AND AmountToCall <= 26% PotSize) Call FORCE
+WHEN (f$H6ThreeBetMWValid AND AmountToCall > 0) Fold FORCE
+WHEN (f$H6ThreeBetMWValid AND AmountToCall = 0 AND HaveNuts) BetTwoThirdPot FORCE
+WHEN (f$H6ThreeBetMWHU AND AmountToCall = 0 AND f$H6ThreeBetMWStrong) BetHalfPot FORCE
+WHEN (f$H6ThreeBetMWTwo AND AmountToCall = 0 AND f$H6ThreeBetMWStrong) BetHalfPot FORCE
+WHEN (f$H6ThreeBetMWCrowded AND AmountToCall = 0 AND f$H6ThreeBetMWStrong) BetThirdPot FORCE
+WHEN (f$H6ThreeBetMWHU AND AmountToCall = 0 AND f$H6ThreeBetMWAggressor AND HaveOverPair AND BotRaisedOnFlop) BetThirdPot FORCE
+WHEN (f$H6ThreeBetMWValid AND AmountToCall = 0) Check FORCE
+//@STREET river
+WHEN (f$H6ThreeBetMWValid AND AmountToCall > 0 AND HaveNuts AND AmountToCall <= 35% PotSize) RaiseHalfPot FORCE
+WHEN (f$H6ThreeBetMWValid AND AmountToCall > 0 AND HaveNuts) Call FORCE
+WHEN (f$H6ThreeBetMWHU AND AmountToCall > 0 AND f$H6ThreeBetMWStrong AND AmountToCall <= 62% PotSize) Call FORCE
+WHEN (f$H6ThreeBetMWTwo AND AmountToCall > 0 AND f$H6ThreeBetMWStrong AND AmountToCall <= 48% PotSize) Call FORCE
+WHEN (f$H6ThreeBetMWCrowded AND AmountToCall > 0 AND f$H6ThreeBetMWStrong AND AmountToCall <= 30% PotSize) Call FORCE
+WHEN (f$H6ThreeBetMWHU AND AmountToCall > 0 AND HaveOverPair AND Position = Last AND AmountToCall <= 22% PotSize) Call FORCE
+WHEN (f$H6ThreeBetMWValid AND AmountToCall > 0) Fold FORCE
+WHEN (f$H6ThreeBetMWValid AND AmountToCall = 0 AND HaveNuts) BetTwoThirdPot FORCE
+WHEN (f$H6ThreeBetMWHU AND AmountToCall = 0 AND f$H6ThreeBetMWStrong) BetHalfPot FORCE
+WHEN (f$H6ThreeBetMWTwo AND AmountToCall = 0 AND f$H6ThreeBetMWStrong) BetThirdPot FORCE
+WHEN (f$H6ThreeBetMWCrowded AND AmountToCall = 0 AND f$H6ThreeBetMWStrong) BetThirdPot FORCE
+WHEN (f$H6ThreeBetMWValid AND AmountToCall = 0) Check FORCE

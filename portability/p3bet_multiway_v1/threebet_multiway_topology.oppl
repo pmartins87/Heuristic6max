@@ -1,0 +1,147 @@
+// 3bet MW topology: actual 3bet role, initial 3-6 players on flop.
+// All current street-entrant counts are native OpenPPL symbols.
+// A 3bet pot is not an SRP, not a limped pot, and not a 4bet pot.
+##f$H6ThreeBetMWAggressor##
+WHEN (nplayersdealt = 6 AND NumberOfOpponentsAllin = 0 AND NOT StackUnknown AND user_H6_3betIntent AND NOT user_H6_RFIIntent AND NOT user_H6_VSOpenCallIntent AND NOT user_H6_LimpSBIntent AND NOT user_H6_LimpOtherIntent AND NOT user_H6_ML2SB AND NOT user_H6_ML2Other AND NOT user_H6_ML3SB AND NOT user_H6_ML3Other AND NOT user_H6_ML4SB AND NOT user_H6_ML4Other AND NOT user_H6_ML5SB AND BotRaisedBeforeFlop AND NOT BotCalledBeforeFlop AND NumberOfRaisesBeforeFlop = 1) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$H6ThreeBetMWCaller##
+WHEN (nplayersdealt = 6 AND NumberOfOpponentsAllin = 0 AND NOT StackUnknown AND user_H6_RFIIntent AND NOT user_H6_3betIntent AND NOT user_H6_VSOpenCallIntent AND NOT user_H6_LimpSBIntent AND NOT user_H6_LimpOtherIntent AND NOT user_H6_ML2SB AND NOT user_H6_ML2Other AND NOT user_H6_ML3SB AND NOT user_H6_ML3Other AND NOT user_H6_ML4SB AND NOT user_H6_ML4Other AND NOT user_H6_ML5SB AND BotRaisedBeforeFlop AND BotCalledBeforeFlop AND NumberOfRaisesBeforeFlop = 1) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$H6ThreeBetMWOrigin##
+WHEN (f$H6ThreeBetMWAggressor) RETURN TRUE FORCE
+WHEN (f$H6ThreeBetMWCaller) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$H6ThreeBetMWValid##
+WHEN (IsFlop AND OpponentsOnFlop = 2 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 2 AND OpponentsLeft = 2 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 3 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 3 AND OpponentsLeft = 2 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 3 AND OpponentsLeft = 3 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 4 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 4 AND OpponentsLeft = 2 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 4 AND OpponentsLeft = 3 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 4 AND OpponentsLeft = 4 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 5 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 5 AND OpponentsLeft = 2 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 5 AND OpponentsLeft = 3 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 5 AND OpponentsLeft = 4 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 5 AND OpponentsLeft = 5 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 2 AND OpponentsOnTurn = 1 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 2 AND OpponentsOnTurn = 2 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 2 AND OpponentsOnTurn = 2 AND OpponentsLeft = 2 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 1 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 2 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 3 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 2 AND OpponentsLeft = 2 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 3 AND OpponentsLeft = 2 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 3 AND OpponentsLeft = 3 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 1 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 2 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 3 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 4 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 2 AND OpponentsLeft = 2 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 3 AND OpponentsLeft = 2 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 4 AND OpponentsLeft = 2 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 3 AND OpponentsLeft = 3 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 4 AND OpponentsLeft = 3 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 4 AND OpponentsLeft = 4 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 1 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 2 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 3 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 4 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 2 AND OpponentsLeft = 2 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 3 AND OpponentsLeft = 2 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 4 AND OpponentsLeft = 2 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsLeft = 2 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 3 AND OpponentsLeft = 3 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 4 AND OpponentsLeft = 3 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsLeft = 3 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 4 AND OpponentsLeft = 4 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsLeft = 4 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsLeft = 5 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 2 AND OpponentsOnTurn = 1 AND OpponentsOnRiver = 1 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 2 AND OpponentsOnTurn = 2 AND OpponentsOnRiver = 1 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 2 AND OpponentsOnTurn = 2 AND OpponentsOnRiver = 2 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 2 AND OpponentsOnTurn = 2 AND OpponentsOnRiver = 2 AND OpponentsLeft = 2 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 1 AND OpponentsOnRiver = 1 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 2 AND OpponentsOnRiver = 1 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 2 AND OpponentsOnRiver = 2 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 3 AND OpponentsOnRiver = 1 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 3 AND OpponentsOnRiver = 2 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 3 AND OpponentsOnRiver = 3 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 2 AND OpponentsOnRiver = 2 AND OpponentsLeft = 2 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 3 AND OpponentsOnRiver = 2 AND OpponentsLeft = 2 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 3 AND OpponentsOnRiver = 3 AND OpponentsLeft = 2 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 3 AND OpponentsOnRiver = 3 AND OpponentsLeft = 3 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 1 AND OpponentsOnRiver = 1 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 2 AND OpponentsOnRiver = 1 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 2 AND OpponentsOnRiver = 2 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 3 AND OpponentsOnRiver = 1 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 3 AND OpponentsOnRiver = 2 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 3 AND OpponentsOnRiver = 3 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 1 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 2 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 3 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 4 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 2 AND OpponentsOnRiver = 2 AND OpponentsLeft = 2 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 3 AND OpponentsOnRiver = 2 AND OpponentsLeft = 2 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 3 AND OpponentsOnRiver = 3 AND OpponentsLeft = 2 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 2 AND OpponentsLeft = 2 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 3 AND OpponentsLeft = 2 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 4 AND OpponentsLeft = 2 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 3 AND OpponentsOnRiver = 3 AND OpponentsLeft = 3 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 3 AND OpponentsLeft = 3 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 4 AND OpponentsLeft = 3 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 4 AND OpponentsLeft = 4 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 1 AND OpponentsOnRiver = 1 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 2 AND OpponentsOnRiver = 1 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 2 AND OpponentsOnRiver = 2 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 3 AND OpponentsOnRiver = 1 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 3 AND OpponentsOnRiver = 2 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 3 AND OpponentsOnRiver = 3 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 1 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 2 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 3 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 4 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsOnRiver = 1 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsOnRiver = 2 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsOnRiver = 3 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsOnRiver = 4 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsOnRiver = 5 AND OpponentsLeft = 1 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 2 AND OpponentsOnRiver = 2 AND OpponentsLeft = 2 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 3 AND OpponentsOnRiver = 2 AND OpponentsLeft = 2 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 3 AND OpponentsOnRiver = 3 AND OpponentsLeft = 2 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 2 AND OpponentsLeft = 2 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 3 AND OpponentsLeft = 2 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 4 AND OpponentsLeft = 2 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsOnRiver = 2 AND OpponentsLeft = 2 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsOnRiver = 3 AND OpponentsLeft = 2 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsOnRiver = 4 AND OpponentsLeft = 2 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsOnRiver = 5 AND OpponentsLeft = 2 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 3 AND OpponentsOnRiver = 3 AND OpponentsLeft = 3 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 3 AND OpponentsLeft = 3 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 4 AND OpponentsLeft = 3 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsOnRiver = 3 AND OpponentsLeft = 3 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsOnRiver = 4 AND OpponentsLeft = 3 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsOnRiver = 5 AND OpponentsLeft = 3 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 4 AND OpponentsLeft = 4 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsOnRiver = 4 AND OpponentsLeft = 4 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsOnRiver = 5 AND OpponentsLeft = 4 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsOnRiver = 5 AND OpponentsLeft = 5 AND f$H6ThreeBetMWOrigin) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$H6ThreeBetMWHU##
+WHEN (f$H6ThreeBetMWValid AND OpponentsLeft = 1) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$H6ThreeBetMWTwo##
+WHEN (f$H6ThreeBetMWValid AND OpponentsLeft = 2) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$H6ThreeBetMWCrowded##
+WHEN (f$H6ThreeBetMWValid AND OpponentsLeft = 3) RETURN TRUE FORCE
+WHEN (f$H6ThreeBetMWValid AND OpponentsLeft = 4) RETURN TRUE FORCE
+WHEN (f$H6ThreeBetMWValid AND OpponentsLeft = 5) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE

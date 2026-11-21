@@ -34,12 +34,15 @@ class R10dFloor(unittest.TestCase):
         self.assertIn('##f$turn##',text)
         self.assertIn('##f$river##',text)
         self.assertIn('user_H6_3betIntent',text)
+        self.assertIn('##f$H6ThreeBetMWValid##',text)
+        self.assertIn('##f$H6MLValid##',text)
+        self.assertIn('##f$H6PartialF2##',text)
 
     def test_count_current_source_even_if_different_from_r10d(self):
         m=c.inventory(c.SOURCE.read_text())
         self.assertGreater(m['when_rules'],541)
-        self.assertEqual(m['distinct_user_symbols'],9)
-        self.assertEqual(m['set_user_lines'],92)
+        self.assertEqual(m['distinct_user_symbols'],16)
+        self.assertEqual(m['set_user_lines'],99)
 
     def test_false_superiority_is_blocked(self):
         r=c.measure()

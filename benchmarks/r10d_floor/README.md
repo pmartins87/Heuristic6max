@@ -46,3 +46,11 @@ O R10d está no GitHub do outro projeto; **não duplicar** 1,3 MB de código-fon
 - [`portability/limped_bb_v1/`](../../portability/limped_bb_v1/) acrescenta **33 decisões pós-flop** e **duas opções pré-flop de check do BB contra um limper**; limp/iso geral continua pendente.
 - 25 + 17 = **42 novos testes**, total acumulado esperado **434**. Comparação mede o último artefato integrado, sem apagar histórico ou se apropriar das decisões DeepCrusher.
 - Gate NÃO ALTERADO: 14 capacidades ainda têm lacunas e 0 atingiram evidência completa. `PROMOTION_GATE.json` permanece integralmente `false`. Não descrever o bot como superior ao R10d neste estágio.
+
+## Checkpoint integrado multiway/limps/3bet (20/11/2026)
+
+Fonte agora: `portability/p3bet_multiway_v1/preflop_srp_limp_3bet_multiway_draft.oppl`. Inclui 41 regras de transições SRP intermediárias, 39 regras BB contra 2–5 limpers e 43 regras 3bet multiway, além dos 7 novos contextos BB-check. **+38 testes, total previsto 472.**
+
+Atualizações: M03, M04, M05, M06, M07 e M14 ganharam cobertura parcial adicional. **Nenhum dos 14 contratos foi promovido a VERIFIED.** A matriz permanece um piso de aceitação funcional, não um placar de linhas. Replays OH/ações finais continuam ausentes e não é seguro confundir `None` Python com o comportamento do `default.bot`.
+
+O DeepCrusher_R10d permanece congelado como referência com SHA já registrado. Aquele projeto possui histórico e perfis mais completos em várias famílias; este checkpoint não altera a conclusão: **R10d FLOOR NOT MET.**
