@@ -1,3 +1,5 @@
+> **REINÍCIO V2 (21/11/2026):** fonte de verdade atual para NOVO desenvolvimento: **[v2/PLAN.md](v2/PLAN.md)**. Toda a estratégia OpenPPL V1 descrita abaixo (incluindo M08-RIVER4, ranges v0.6.1 e 611 testes) é **LEGACY_UNVALIDATED para qualidade estratégica**. Nenhuma política V2 foi aprovada; não interpretar os checkpoints abaixo como plano vigente ou bot operacional. Objetivo: construir a partir de soluções solver rastreáveis, EV e cobertura, preservando a V1 somente como histórico. Não utilizar em jogos reais.
+
 # Heuristic6max — fonte de verdade
 
 **Estratégia mais recente: M08-RIVER4 DRAFT** (OpenPPL, integra ISODEF-1); **processo de engenharia: CI-LEAN1** (CI plena somente em PR pronta e main; OH-SRC1 permanece incorporado). Ver última seção desta página. O BLISO-2 é o pai congelado; ainda não é release.
