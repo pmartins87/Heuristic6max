@@ -91,9 +91,15 @@ def safe_read(root:Path,record:dict,ext:str)->tuple[bytes|None,str]:
         for block in iter(lambda:src.read(1024*1024),b''):
             hasher.update(block)
     if hasher.hexdigest()!=digest:return None,'evidence SHA256 mismatch'
-    # Reading already checked content is safe enough for a manual review gate,
-    # not for security-sensitive external trust.
-    return real.read_bytes(),'sha256 matches (authenticity unverified)'
+    # File signatures detect mistaken exports, not authenticity.
+    body=real.read_bytes()
+    if ext=='.bmp' and not body.startswith(b'BM'):
+        return None,'invalid BMP signature'
+    if ext=='.png' and not body.startswith(b'\\x89PNG\\r\\n\\x1a\\n'):
+        return None,'invalid PNG signature'
+    if ext=='.html' and b'<html' not in body[:4096].lower() and b'<!doctype html' not in body[:4096].lower():
+        return None,'HTML replay does not contain HTML document tag'
+    return body,'sha256 and file signature match (authenticity unverified)'
 
 
 def _equal_text(a:str,b:str)->bool:
