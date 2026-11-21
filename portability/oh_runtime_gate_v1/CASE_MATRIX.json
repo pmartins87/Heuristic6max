@@ -1,0 +1,211 @@
+{
+  "protocol": "OH-G1G6-1",
+  "source": "portability/iso_defense_v1/iso_defense_integrated_draft.oppl",
+  "catalog": [
+    {
+      "case_id": "RFI_BTN_PURE",
+      "family": "RFI",
+      "gate": "G1",
+      "street": "preflop",
+      "source_markers": [
+        "##f$preflop##",
+        "InButton"
+      ],
+      "required_symbols": [
+        "IsPreflop",
+        "nplayersdealt",
+        "InButton",
+        "Raises",
+        "Calls",
+        "StillToAct",
+        "PotSize",
+        "AmountToCall",
+        "StackSize",
+        "StackUnknown",
+        "randomhand"
+      ],
+      "goal": "Ação de RFI e sizing final; verificação de fórmula carregada, sem usar mesa real"
+    },
+    {
+      "case_id": "VS_OPEN_NO_LIMP",
+      "family": "VS_OPEN",
+      "gate": "G1",
+      "street": "preflop",
+      "source_markers": [
+        "FirstRaiserPosition",
+        "Calls = 0"
+      ],
+      "required_symbols": [
+        "IsPreflop",
+        "nplayersdealt",
+        "Raises",
+        "Calls",
+        "FirstRaiserPosition",
+        "LastRaiserPosition",
+        "PotSize",
+        "AmountToCall",
+        "BotRaisedBeforeFlop"
+      ],
+      "goal": "Distinguir resposta ao primeiro open de isolamento com limper"
+    },
+    {
+      "case_id": "VS_3BET_AFTER_RFI",
+      "family": "VS_3BET",
+      "gate": "G1",
+      "street": "preflop",
+      "source_markers": [
+        "RaisesSinceLastPlay",
+        "BotRaisedBeforeFlop"
+      ],
+      "required_symbols": [
+        "IsPreflop",
+        "Raises",
+        "Calls",
+        "RaisesSinceLastPlay",
+        "BotRaisedBeforeFlop",
+        "FirstRaiserPosition",
+        "LastRaiserPosition",
+        "AmountToCall"
+      ],
+      "goal": "Reentrada depois do nosso RFI; confirmar contador e raiser na segunda órbita"
+    },
+    {
+      "case_id": "ISO_CO_ONE_LIMP",
+      "family": "ISO-1",
+      "gate": "G1",
+      "street": "preflop",
+      "source_markers": [
+        "user_H6_ISOCO1"
+      ],
+      "required_symbols": [
+        "IsPreflop",
+        "Raises",
+        "Calls",
+        "PotSize",
+        "StillToAct",
+        "AmountToCall",
+        "InCutOff",
+        "BotRaisedBeforeFlop"
+      ],
+      "goal": "Isolar um limper com CO e confirmar que Set não é ação executada"
+    },
+    {
+      "case_id": "BLISO_BB_ONE_LIMP",
+      "family": "BLISO-2",
+      "gate": "G1",
+      "street": "preflop",
+      "source_markers": [
+        "user_H6_BISOBB1Other"
+      ],
+      "required_symbols": [
+        "IsPreflop",
+        "Raises",
+        "Calls",
+        "PotSize",
+        "AmountToCall",
+        "InBigBlind",
+        "BotCheckedPreflop",
+        "BotRaisedBeforeFlop"
+      ],
+      "goal": "Raise versus check gratuito em BB; verificar precedência e 0 de AmountToCall"
+    },
+    {
+      "case_id": "ISODEF_BTN_CALL",
+      "family": "ISODEF-1",
+      "gate": "G1",
+      "street": "preflop",
+      "source_markers": [
+        "user_H6_DEF_BTNC"
+      ],
+      "required_symbols": [
+        "IsPreflop",
+        "Raises",
+        "Calls",
+        "PotSize",
+        "AmountToCall",
+        "InButton",
+        "InBigBlind",
+        "StillToAct",
+        "FirstRaiserPosition",
+        "LastRaiserPosition"
+      ],
+      "goal": "Defesa vs isolamento CO, com limper prévio e call separado do VS_OPEN"
+    },
+    {
+      "case_id": "MULTIWAY_TO_HU",
+      "family": "HIST-v3",
+      "gate": "G1",
+      "street": "turn",
+      "source_markers": [
+        "OpponentsOnFlop",
+        "OpponentsOnTurn",
+        "OpponentsLeft"
+      ],
+      "required_symbols": [
+        "IsTurn",
+        "OpponentsOnFlop",
+        "OpponentsOnTurn",
+        "OpponentsLeft",
+        "NumberOfRaisesBeforeFlop",
+        "BotRaisedBeforeFlop",
+        "BotCalledBeforeFlop"
+      ],
+      "goal": "Verificar contagem cronológica sem confundir saída durante street com ausência desde flop"
+    },
+    {
+      "case_id": "NO_MATCH_FALLBACK",
+      "family": "PORT-3",
+      "gate": "G6",
+      "street": "preflop",
+      "source_markers": [
+        "##f$preflop##"
+      ],
+      "required_symbols": [
+        "IsPreflop",
+        "Raises",
+        "Calls",
+        "PotSize",
+        "AmountToCall",
+        "nplayersdealt"
+      ],
+      "goal": "Forçar contexto fora do domínio em simulador, observar fallback da engine; nunca tratar None Python como Fold"
+    },
+    {
+      "case_id": "NUTS_OVERBET",
+      "family": "G6",
+      "gate": "G6",
+      "street": "river",
+      "source_markers": [
+        "HaveNuts",
+        "##f$river##"
+      ],
+      "required_symbols": [
+        "IsRiver",
+        "HaveNuts",
+        "AmountToCall",
+        "PotSize",
+        "OpponentsLeft"
+      ],
+      "goal": "Best action vs Action taken, preço acima do pote e legalidade da execução"
+    },
+    {
+      "case_id": "MEMORY_NEW_HAND",
+      "family": "G1",
+      "gate": "G1",
+      "street": "preflop",
+      "source_markers": [
+        "user_H6_RFIIntent",
+        "user_H6_ISOCO1"
+      ],
+      "required_symbols": [
+        "IsPreflop",
+        "BotRaisedBeforeFlop",
+        "BotCalledBeforeFlop",
+        "NumberOfRaisesBeforeFlop",
+        "Raises",
+        "Calls"
+      ],
+      "goal": "Confirmar reset de intent flags em mão seguinte e múltiplos heartbeats, não apenas avaliação única"
+    }
+  ]
+}
