@@ -58,3 +58,8 @@ Os **30** registros de testes no log do job `136719229320` somam **599**; uma su
 |---|---|---:|---:|---:|
 | [OH-SRC1 aprovado](https://github.com/pmartins87/Heuristic6max/actions/runs/44864070437) | `77e94b77a135924268ba09e8667f9952a08f0bd2` | **616** | **604** | **31** |
 31 registros totalizaram 616 execuções; a suíte benchmark R10d com 12 testes é executada duas vezes, totalizando 616−12=604 por deduplicação de suíte. Aumento de +17 sobre OH-G1G6-1 (599/587), todos **testes de semântica estática**, não mãos de pôquer. Aumentar o número de testes não aprova G1/G6 nem 14/14 critérios R10d.
+
+## CI-LEAN1 — diferença entre execução e cobertura (21/11/2026)
+- **Antes (log observado):** 616 execuções, 604 deduplicadas por suíte, 31 suítes; 12 testes R10d eram rodados duas vezes.
+- **Depois (previsão a verificar no log real):** 604 execuções, 604 deduplicadas, 30 suítes. Remoção de repetição **não implica perda de cobertura**. R10d `comparison.py` 6→1, passos de CI 126→113.
+- A economia principal vem também da CI completa **não ser disparada em PR draft** e do cancelamento de runs de PR obsoletos. Não declarar `skipped` como `success` ou aprovar PR sem regressão integral.

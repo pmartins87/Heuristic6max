@@ -1,6 +1,6 @@
 # Heuristic6max — fonte de verdade
 
-**Estratégia mais recente: ISODEF-1 DRAFT** (OpenPPL); **auditoria ativa: OH-SRC1** (provas estáticas a partir de fontes C++/OpenPPL; sem hash de instalação como requisito para construir). Ver última seção desta página. O BLISO-2 é o pai congelado; ainda não é release.
+**Estratégia mais recente: ISODEF-1 DRAFT** (OpenPPL); **processo de engenharia: CI-LEAN1** (CI plena somente em PR pronta e main; OH-SRC1 permanece incorporado). Ver última seção desta página. O BLISO-2 é o pai congelado; ainda não é release.
 
 ## Checkpoint histórico — BLISO-2 (DRAFT, não operacional)
 - [Módulo de isolamento SB/BB](portability/blind_iso_v2/README.md) integrado como fonte OpenPPL ativa; 13 novos contextos pré-flop, 43 decisões pós-flop, 120 topologias, 552 execuções de testes na [CI 44858448093](https://github.com/pmartins87/Heuristic6max/actions/runs/44858448093), 540 testes deduplicados por suíte.
@@ -209,3 +209,8 @@ Uma overbet muito grande podia escapar do call genérico e atingir `Fold FORCE` 
 - [análise OH-SRC1](portability/oh_source_audit_v1/README.md) cruza o integrado ISODEF-1 **inalterado** com o snapshot público de código-fonte e manual OpenPPL fornecidos. **436 regras de igualdade exata de `PotSize`**, 103 com `StillToAct` e 343 com `FirstRaiserPosition`; registra 6 riscos/propriedades sem reescrever ranges.
 - **17 novos testes aprovados** na [CI OH-SRC1](https://github.com/pmartins87/Heuristic6max/actions/runs/44864070437): **616 execuções / 604 testes deduplicados por suíte / 31 suítes**. O relatório `SOURCE_FINDINGS.json` é determinístico e a CI impede desatualização depois de alteração futura do integrado.
 - **Não exigir hash do executável particular do usuário para construir**. Continua opcional/útil para certificação da instalação e operação final; G1/G6 de runtime não são promovidos, G2-a HOLD e 0/14 critérios R10d VERIFIED. Próximo passo técnico: análise por domínio da igualdade `PotSize`, sem substituição indiscriminada.
+
+## CI-LEAN1 — reduzir retrabalho, manter provas importantes
+- Workflow de 126 passos tinha **6 recalculações R10d e 2 execuções da mesma suíte de 12 testes**. Nova configuração: **113 passos, 29 chamadas de testes, 1 regeneração do benchmark R10d no final**.
+- Enquanto PR for `draft`, usar testes direcionados para o componente alterado, sem CI completa a cada commit. Ao marcar `ready_for_review`, executar toda regressão e não fazer merge sem resultado verde para o SHA exato. Cada `push` em `main` mantém CI completa, sem cancelamento; execuções obsoletas da **mesma PR** são canceladas.
+- A produtividade será medida por **capacidades estratégicas realmente entregues**, não pelo crescimento do número de suítes. Nenhuma regra `.oppl`, range ou gate alterado; G1/G6 de certificação pendentes, G2-a HOLD e 0/14 do R10d verificados.
