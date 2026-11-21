@@ -3,7 +3,7 @@
   "heuristic_active_file": "portability/iso_defense_v1/iso_defense_integrated_draft.oppl",
   "metrics": {
     "bytes": {
-      "Heuristic": 378619,
+      "Heuristic": 378799,
       "R10d": 1325138
     },
     "distinct_user_symbols": {
