@@ -128,7 +128,7 @@ class ISOv1Tests(unittest.TestCase):
             self.assertEqual(self.act(street,HaveNuts=True,AmountToCall=1),'RaiseHalfPot')
 
     def test_11_price_thresholds_tighten_from_hu_to_crowded(self):
-        for street,cap in [('flop',(85,65,45)),('turn',(72,54,35)),('river',(55,42,27))]:
+        for street,cap in [('flop',(8.5,6.5,4.5)),('turn',(7.2,5.4,3.5)),('river',(5.5,4.2,2.7))]:
             for alive,limit in enumerate(cap,1):
                 state={'user_H6_ISOBTN1':False,'user_H6_ISOCO2':True,
                        'OpponentsOnFlop':3,'OpponentsOnTurn':3,
