@@ -61,7 +61,8 @@ def build() -> tuple[int, int]:
     output = render()
     COMBINED.write_text(output, encoding='utf-8', newline='\n')
     policy = POLICY.read_text(encoding='utf-8')
-    return len(re.findall(r'^WHEN \(', policy, flags=re.M)), len(output.encode('utf-8'))
+    _, streets = chunks(policy)
+    return sum(len(re.findall(r'^WHEN \(', value, flags=re.M)) for value in streets.values()), len(output.encode('utf-8'))
 
 
 if __name__ == '__main__':
