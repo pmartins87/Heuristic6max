@@ -1,0 +1,6 @@
+# Developer-local private OHReplay frame pairs, screenshots, and actual logs.
+# NEVER commit raw table captures or executable artifacts in this public project.
+portability/oh_runtime_gate_v1/private_evidence/
+portability/oh_runtime_gate_v1/reports_private/
+__pycache__/
+*.pyc
