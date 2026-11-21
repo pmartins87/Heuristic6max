@@ -143,3 +143,6 @@ Atualizados quatro ramos de nuts-call, testes, intérpretes, os dois integrados,
 ## OH-SRC1 (21/11/2026) — auditoria de semântica fonte-first, NÃO release
 - [portability/oh_source_audit_v1](portability/oh_source_audit_v1/README.md): `audit.py`, `SOURCE_FINDINGS.json`, 17 testes, README com referências a C++/manual, SHA256 e CI. [CI OH-SRC1](https://github.com/pmartins87/Heuristic6max/actions/runs/44864070437) aprovou 616 execuções / 604 deduplicadas em 31 suítes.
 - Inventário da política ativa permanece **2.007 WHEN/159 f$/192 listas**, sem alterações na fórmula OpenPPL, nos ranges congelados, no ledger G2-a ou `PROMOTION_GATE.json`. Auditoria de 436 igualdades exatas de `PotSize` é alerta a tratar por domínio, não validação funcional R10d. Nenhum hash local necessário para construir. G1/G6 runtime, G2-a HOLD e 0/14 R10d VERIFIED permanecem.
+
+## CI-LEAN1 — mudança de engenharia, não de versão do bot
+Workflow `verify.yml` conserva as suítes únicas, SHA dos ancestrais, integrado e benchmark; evita reprocessar o mesmo R10d 6 vezes e reexecutar seus 12 testes duas vezes. PR draft não atesta qualidade; somente CI verde em PR pronta e nova CI verde em main. Nenhum `.oppl` ou `PROMOTION_GATE.json` alterado, G1/G6 de runtime pendentes, G2-a HOLD e 0/14 capacidades R10d VERIFIED.
