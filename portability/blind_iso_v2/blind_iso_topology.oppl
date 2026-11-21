@@ -1,0 +1,190 @@
+// BLISO-2: true SB/BB RAISE intent plus nplayers and strict monotone postflop topology.
+// Topology clauses below are reused from reviewed ISO-1 OpenPPL; origin differs.
+##f$H6BISOOrigin##
+WHEN (user_H6_BISOSB1 AND NOT user_H6_BISOSB2 AND NOT user_H6_BISOSB3 AND NOT user_H6_BISOSB4 AND NOT user_H6_BISOBB1SB AND NOT user_H6_BISOBB1Other AND NOT user_H6_BISOBB2SB AND NOT user_H6_BISOBB2Other AND NOT user_H6_BISOBB3SB AND NOT user_H6_BISOBB3Other AND NOT user_H6_BISOBB4SB AND NOT user_H6_BISOBB4Other AND NOT user_H6_BISOBB5SB AND NOT user_H6_RFIIntent AND NOT user_H6_3betIntent AND NOT user_H6_VSOpenCallIntent AND NOT user_H6_LimpSBIntent AND NOT user_H6_LimpOtherIntent AND NOT user_H6_ISOCO1 AND NOT user_H6_ISOCO2 AND NOT user_H6_ISOBTN1 AND NOT user_H6_ISOBTN2 AND NOT user_H6_ISOBTN3 AND NOT user_H6_ML2SB AND NOT user_H6_ML2Other AND NOT user_H6_ML3SB AND NOT user_H6_ML3Other AND NOT user_H6_ML4SB AND NOT user_H6_ML4Other AND NOT user_H6_ML5SB AND nplayersdealt = 6 AND NumberOfOpponentsAllin = 0 AND NOT StackUnknown AND BotRaisedBeforeFlop AND NOT BotCalledBeforeFlop AND NumberOfRaisesBeforeFlop = 0 AND NOT BotCheckedPreflop) RETURN TRUE FORCE
+WHEN (user_H6_BISOSB2 AND NOT user_H6_BISOSB1 AND NOT user_H6_BISOSB3 AND NOT user_H6_BISOSB4 AND NOT user_H6_BISOBB1SB AND NOT user_H6_BISOBB1Other AND NOT user_H6_BISOBB2SB AND NOT user_H6_BISOBB2Other AND NOT user_H6_BISOBB3SB AND NOT user_H6_BISOBB3Other AND NOT user_H6_BISOBB4SB AND NOT user_H6_BISOBB4Other AND NOT user_H6_BISOBB5SB AND NOT user_H6_RFIIntent AND NOT user_H6_3betIntent AND NOT user_H6_VSOpenCallIntent AND NOT user_H6_LimpSBIntent AND NOT user_H6_LimpOtherIntent AND NOT user_H6_ISOCO1 AND NOT user_H6_ISOCO2 AND NOT user_H6_ISOBTN1 AND NOT user_H6_ISOBTN2 AND NOT user_H6_ISOBTN3 AND NOT user_H6_ML2SB AND NOT user_H6_ML2Other AND NOT user_H6_ML3SB AND NOT user_H6_ML3Other AND NOT user_H6_ML4SB AND NOT user_H6_ML4Other AND NOT user_H6_ML5SB AND nplayersdealt = 6 AND NumberOfOpponentsAllin = 0 AND NOT StackUnknown AND BotRaisedBeforeFlop AND NOT BotCalledBeforeFlop AND NumberOfRaisesBeforeFlop = 0 AND NOT BotCheckedPreflop) RETURN TRUE FORCE
+WHEN (user_H6_BISOSB3 AND NOT user_H6_BISOSB1 AND NOT user_H6_BISOSB2 AND NOT user_H6_BISOSB4 AND NOT user_H6_BISOBB1SB AND NOT user_H6_BISOBB1Other AND NOT user_H6_BISOBB2SB AND NOT user_H6_BISOBB2Other AND NOT user_H6_BISOBB3SB AND NOT user_H6_BISOBB3Other AND NOT user_H6_BISOBB4SB AND NOT user_H6_BISOBB4Other AND NOT user_H6_BISOBB5SB AND NOT user_H6_RFIIntent AND NOT user_H6_3betIntent AND NOT user_H6_VSOpenCallIntent AND NOT user_H6_LimpSBIntent AND NOT user_H6_LimpOtherIntent AND NOT user_H6_ISOCO1 AND NOT user_H6_ISOCO2 AND NOT user_H6_ISOBTN1 AND NOT user_H6_ISOBTN2 AND NOT user_H6_ISOBTN3 AND NOT user_H6_ML2SB AND NOT user_H6_ML2Other AND NOT user_H6_ML3SB AND NOT user_H6_ML3Other AND NOT user_H6_ML4SB AND NOT user_H6_ML4Other AND NOT user_H6_ML5SB AND nplayersdealt = 6 AND NumberOfOpponentsAllin = 0 AND NOT StackUnknown AND BotRaisedBeforeFlop AND NOT BotCalledBeforeFlop AND NumberOfRaisesBeforeFlop = 0 AND NOT BotCheckedPreflop) RETURN TRUE FORCE
+WHEN (user_H6_BISOSB4 AND NOT user_H6_BISOSB1 AND NOT user_H6_BISOSB2 AND NOT user_H6_BISOSB3 AND NOT user_H6_BISOBB1SB AND NOT user_H6_BISOBB1Other AND NOT user_H6_BISOBB2SB AND NOT user_H6_BISOBB2Other AND NOT user_H6_BISOBB3SB AND NOT user_H6_BISOBB3Other AND NOT user_H6_BISOBB4SB AND NOT user_H6_BISOBB4Other AND NOT user_H6_BISOBB5SB AND NOT user_H6_RFIIntent AND NOT user_H6_3betIntent AND NOT user_H6_VSOpenCallIntent AND NOT user_H6_LimpSBIntent AND NOT user_H6_LimpOtherIntent AND NOT user_H6_ISOCO1 AND NOT user_H6_ISOCO2 AND NOT user_H6_ISOBTN1 AND NOT user_H6_ISOBTN2 AND NOT user_H6_ISOBTN3 AND NOT user_H6_ML2SB AND NOT user_H6_ML2Other AND NOT user_H6_ML3SB AND NOT user_H6_ML3Other AND NOT user_H6_ML4SB AND NOT user_H6_ML4Other AND NOT user_H6_ML5SB AND nplayersdealt = 6 AND NumberOfOpponentsAllin = 0 AND NOT StackUnknown AND BotRaisedBeforeFlop AND NOT BotCalledBeforeFlop AND NumberOfRaisesBeforeFlop = 0 AND NOT BotCheckedPreflop) RETURN TRUE FORCE
+WHEN (user_H6_BISOBB1SB AND NOT user_H6_BISOSB1 AND NOT user_H6_BISOSB2 AND NOT user_H6_BISOSB3 AND NOT user_H6_BISOSB4 AND NOT user_H6_BISOBB1Other AND NOT user_H6_BISOBB2SB AND NOT user_H6_BISOBB2Other AND NOT user_H6_BISOBB3SB AND NOT user_H6_BISOBB3Other AND NOT user_H6_BISOBB4SB AND NOT user_H6_BISOBB4Other AND NOT user_H6_BISOBB5SB AND NOT user_H6_RFIIntent AND NOT user_H6_3betIntent AND NOT user_H6_VSOpenCallIntent AND NOT user_H6_LimpSBIntent AND NOT user_H6_LimpOtherIntent AND NOT user_H6_ISOCO1 AND NOT user_H6_ISOCO2 AND NOT user_H6_ISOBTN1 AND NOT user_H6_ISOBTN2 AND NOT user_H6_ISOBTN3 AND NOT user_H6_ML2SB AND NOT user_H6_ML2Other AND NOT user_H6_ML3SB AND NOT user_H6_ML3Other AND NOT user_H6_ML4SB AND NOT user_H6_ML4Other AND NOT user_H6_ML5SB AND nplayersdealt = 6 AND NumberOfOpponentsAllin = 0 AND NOT StackUnknown AND BotRaisedBeforeFlop AND NOT BotCalledBeforeFlop AND NumberOfRaisesBeforeFlop = 0 AND NOT BotCheckedPreflop) RETURN TRUE FORCE
+WHEN (user_H6_BISOBB1Other AND NOT user_H6_BISOSB1 AND NOT user_H6_BISOSB2 AND NOT user_H6_BISOSB3 AND NOT user_H6_BISOSB4 AND NOT user_H6_BISOBB1SB AND NOT user_H6_BISOBB2SB AND NOT user_H6_BISOBB2Other AND NOT user_H6_BISOBB3SB AND NOT user_H6_BISOBB3Other AND NOT user_H6_BISOBB4SB AND NOT user_H6_BISOBB4Other AND NOT user_H6_BISOBB5SB AND NOT user_H6_RFIIntent AND NOT user_H6_3betIntent AND NOT user_H6_VSOpenCallIntent AND NOT user_H6_LimpSBIntent AND NOT user_H6_LimpOtherIntent AND NOT user_H6_ISOCO1 AND NOT user_H6_ISOCO2 AND NOT user_H6_ISOBTN1 AND NOT user_H6_ISOBTN2 AND NOT user_H6_ISOBTN3 AND NOT user_H6_ML2SB AND NOT user_H6_ML2Other AND NOT user_H6_ML3SB AND NOT user_H6_ML3Other AND NOT user_H6_ML4SB AND NOT user_H6_ML4Other AND NOT user_H6_ML5SB AND nplayersdealt = 6 AND NumberOfOpponentsAllin = 0 AND NOT StackUnknown AND BotRaisedBeforeFlop AND NOT BotCalledBeforeFlop AND NumberOfRaisesBeforeFlop = 0 AND NOT BotCheckedPreflop) RETURN TRUE FORCE
+WHEN (user_H6_BISOBB2SB AND NOT user_H6_BISOSB1 AND NOT user_H6_BISOSB2 AND NOT user_H6_BISOSB3 AND NOT user_H6_BISOSB4 AND NOT user_H6_BISOBB1SB AND NOT user_H6_BISOBB1Other AND NOT user_H6_BISOBB2Other AND NOT user_H6_BISOBB3SB AND NOT user_H6_BISOBB3Other AND NOT user_H6_BISOBB4SB AND NOT user_H6_BISOBB4Other AND NOT user_H6_BISOBB5SB AND NOT user_H6_RFIIntent AND NOT user_H6_3betIntent AND NOT user_H6_VSOpenCallIntent AND NOT user_H6_LimpSBIntent AND NOT user_H6_LimpOtherIntent AND NOT user_H6_ISOCO1 AND NOT user_H6_ISOCO2 AND NOT user_H6_ISOBTN1 AND NOT user_H6_ISOBTN2 AND NOT user_H6_ISOBTN3 AND NOT user_H6_ML2SB AND NOT user_H6_ML2Other AND NOT user_H6_ML3SB AND NOT user_H6_ML3Other AND NOT user_H6_ML4SB AND NOT user_H6_ML4Other AND NOT user_H6_ML5SB AND nplayersdealt = 6 AND NumberOfOpponentsAllin = 0 AND NOT StackUnknown AND BotRaisedBeforeFlop AND NOT BotCalledBeforeFlop AND NumberOfRaisesBeforeFlop = 0 AND NOT BotCheckedPreflop) RETURN TRUE FORCE
+WHEN (user_H6_BISOBB2Other AND NOT user_H6_BISOSB1 AND NOT user_H6_BISOSB2 AND NOT user_H6_BISOSB3 AND NOT user_H6_BISOSB4 AND NOT user_H6_BISOBB1SB AND NOT user_H6_BISOBB1Other AND NOT user_H6_BISOBB2SB AND NOT user_H6_BISOBB3SB AND NOT user_H6_BISOBB3Other AND NOT user_H6_BISOBB4SB AND NOT user_H6_BISOBB4Other AND NOT user_H6_BISOBB5SB AND NOT user_H6_RFIIntent AND NOT user_H6_3betIntent AND NOT user_H6_VSOpenCallIntent AND NOT user_H6_LimpSBIntent AND NOT user_H6_LimpOtherIntent AND NOT user_H6_ISOCO1 AND NOT user_H6_ISOCO2 AND NOT user_H6_ISOBTN1 AND NOT user_H6_ISOBTN2 AND NOT user_H6_ISOBTN3 AND NOT user_H6_ML2SB AND NOT user_H6_ML2Other AND NOT user_H6_ML3SB AND NOT user_H6_ML3Other AND NOT user_H6_ML4SB AND NOT user_H6_ML4Other AND NOT user_H6_ML5SB AND nplayersdealt = 6 AND NumberOfOpponentsAllin = 0 AND NOT StackUnknown AND BotRaisedBeforeFlop AND NOT BotCalledBeforeFlop AND NumberOfRaisesBeforeFlop = 0 AND NOT BotCheckedPreflop) RETURN TRUE FORCE
+WHEN (user_H6_BISOBB3SB AND NOT user_H6_BISOSB1 AND NOT user_H6_BISOSB2 AND NOT user_H6_BISOSB3 AND NOT user_H6_BISOSB4 AND NOT user_H6_BISOBB1SB AND NOT user_H6_BISOBB1Other AND NOT user_H6_BISOBB2SB AND NOT user_H6_BISOBB2Other AND NOT user_H6_BISOBB3Other AND NOT user_H6_BISOBB4SB AND NOT user_H6_BISOBB4Other AND NOT user_H6_BISOBB5SB AND NOT user_H6_RFIIntent AND NOT user_H6_3betIntent AND NOT user_H6_VSOpenCallIntent AND NOT user_H6_LimpSBIntent AND NOT user_H6_LimpOtherIntent AND NOT user_H6_ISOCO1 AND NOT user_H6_ISOCO2 AND NOT user_H6_ISOBTN1 AND NOT user_H6_ISOBTN2 AND NOT user_H6_ISOBTN3 AND NOT user_H6_ML2SB AND NOT user_H6_ML2Other AND NOT user_H6_ML3SB AND NOT user_H6_ML3Other AND NOT user_H6_ML4SB AND NOT user_H6_ML4Other AND NOT user_H6_ML5SB AND nplayersdealt = 6 AND NumberOfOpponentsAllin = 0 AND NOT StackUnknown AND BotRaisedBeforeFlop AND NOT BotCalledBeforeFlop AND NumberOfRaisesBeforeFlop = 0 AND NOT BotCheckedPreflop) RETURN TRUE FORCE
+WHEN (user_H6_BISOBB3Other AND NOT user_H6_BISOSB1 AND NOT user_H6_BISOSB2 AND NOT user_H6_BISOSB3 AND NOT user_H6_BISOSB4 AND NOT user_H6_BISOBB1SB AND NOT user_H6_BISOBB1Other AND NOT user_H6_BISOBB2SB AND NOT user_H6_BISOBB2Other AND NOT user_H6_BISOBB3SB AND NOT user_H6_BISOBB4SB AND NOT user_H6_BISOBB4Other AND NOT user_H6_BISOBB5SB AND NOT user_H6_RFIIntent AND NOT user_H6_3betIntent AND NOT user_H6_VSOpenCallIntent AND NOT user_H6_LimpSBIntent AND NOT user_H6_LimpOtherIntent AND NOT user_H6_ISOCO1 AND NOT user_H6_ISOCO2 AND NOT user_H6_ISOBTN1 AND NOT user_H6_ISOBTN2 AND NOT user_H6_ISOBTN3 AND NOT user_H6_ML2SB AND NOT user_H6_ML2Other AND NOT user_H6_ML3SB AND NOT user_H6_ML3Other AND NOT user_H6_ML4SB AND NOT user_H6_ML4Other AND NOT user_H6_ML5SB AND nplayersdealt = 6 AND NumberOfOpponentsAllin = 0 AND NOT StackUnknown AND BotRaisedBeforeFlop AND NOT BotCalledBeforeFlop AND NumberOfRaisesBeforeFlop = 0 AND NOT BotCheckedPreflop) RETURN TRUE FORCE
+WHEN (user_H6_BISOBB4SB AND NOT user_H6_BISOSB1 AND NOT user_H6_BISOSB2 AND NOT user_H6_BISOSB3 AND NOT user_H6_BISOSB4 AND NOT user_H6_BISOBB1SB AND NOT user_H6_BISOBB1Other AND NOT user_H6_BISOBB2SB AND NOT user_H6_BISOBB2Other AND NOT user_H6_BISOBB3SB AND NOT user_H6_BISOBB3Other AND NOT user_H6_BISOBB4Other AND NOT user_H6_BISOBB5SB AND NOT user_H6_RFIIntent AND NOT user_H6_3betIntent AND NOT user_H6_VSOpenCallIntent AND NOT user_H6_LimpSBIntent AND NOT user_H6_LimpOtherIntent AND NOT user_H6_ISOCO1 AND NOT user_H6_ISOCO2 AND NOT user_H6_ISOBTN1 AND NOT user_H6_ISOBTN2 AND NOT user_H6_ISOBTN3 AND NOT user_H6_ML2SB AND NOT user_H6_ML2Other AND NOT user_H6_ML3SB AND NOT user_H6_ML3Other AND NOT user_H6_ML4SB AND NOT user_H6_ML4Other AND NOT user_H6_ML5SB AND nplayersdealt = 6 AND NumberOfOpponentsAllin = 0 AND NOT StackUnknown AND BotRaisedBeforeFlop AND NOT BotCalledBeforeFlop AND NumberOfRaisesBeforeFlop = 0 AND NOT BotCheckedPreflop) RETURN TRUE FORCE
+WHEN (user_H6_BISOBB4Other AND NOT user_H6_BISOSB1 AND NOT user_H6_BISOSB2 AND NOT user_H6_BISOSB3 AND NOT user_H6_BISOSB4 AND NOT user_H6_BISOBB1SB AND NOT user_H6_BISOBB1Other AND NOT user_H6_BISOBB2SB AND NOT user_H6_BISOBB2Other AND NOT user_H6_BISOBB3SB AND NOT user_H6_BISOBB3Other AND NOT user_H6_BISOBB4SB AND NOT user_H6_BISOBB5SB AND NOT user_H6_RFIIntent AND NOT user_H6_3betIntent AND NOT user_H6_VSOpenCallIntent AND NOT user_H6_LimpSBIntent AND NOT user_H6_LimpOtherIntent AND NOT user_H6_ISOCO1 AND NOT user_H6_ISOCO2 AND NOT user_H6_ISOBTN1 AND NOT user_H6_ISOBTN2 AND NOT user_H6_ISOBTN3 AND NOT user_H6_ML2SB AND NOT user_H6_ML2Other AND NOT user_H6_ML3SB AND NOT user_H6_ML3Other AND NOT user_H6_ML4SB AND NOT user_H6_ML4Other AND NOT user_H6_ML5SB AND nplayersdealt = 6 AND NumberOfOpponentsAllin = 0 AND NOT StackUnknown AND BotRaisedBeforeFlop AND NOT BotCalledBeforeFlop AND NumberOfRaisesBeforeFlop = 0 AND NOT BotCheckedPreflop) RETURN TRUE FORCE
+WHEN (user_H6_BISOBB5SB AND NOT user_H6_BISOSB1 AND NOT user_H6_BISOSB2 AND NOT user_H6_BISOSB3 AND NOT user_H6_BISOSB4 AND NOT user_H6_BISOBB1SB AND NOT user_H6_BISOBB1Other AND NOT user_H6_BISOBB2SB AND NOT user_H6_BISOBB2Other AND NOT user_H6_BISOBB3SB AND NOT user_H6_BISOBB3Other AND NOT user_H6_BISOBB4SB AND NOT user_H6_BISOBB4Other AND NOT user_H6_RFIIntent AND NOT user_H6_3betIntent AND NOT user_H6_VSOpenCallIntent AND NOT user_H6_LimpSBIntent AND NOT user_H6_LimpOtherIntent AND NOT user_H6_ISOCO1 AND NOT user_H6_ISOCO2 AND NOT user_H6_ISOBTN1 AND NOT user_H6_ISOBTN2 AND NOT user_H6_ISOBTN3 AND NOT user_H6_ML2SB AND NOT user_H6_ML2Other AND NOT user_H6_ML3SB AND NOT user_H6_ML3Other AND NOT user_H6_ML4SB AND NOT user_H6_ML4Other AND NOT user_H6_ML5SB AND nplayersdealt = 6 AND NumberOfOpponentsAllin = 0 AND NOT StackUnknown AND BotRaisedBeforeFlop AND NOT BotCalledBeforeFlop AND NumberOfRaisesBeforeFlop = 0 AND NOT BotCheckedPreflop) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$H6BISOFlopBound##
+WHEN (user_H6_BISOSB1 AND OpponentsOnFlop >= 1 AND OpponentsOnFlop <= 2) RETURN TRUE FORCE
+WHEN (user_H6_BISOSB2 AND OpponentsOnFlop >= 1 AND OpponentsOnFlop <= 3) RETURN TRUE FORCE
+WHEN (user_H6_BISOSB3 AND OpponentsOnFlop >= 1 AND OpponentsOnFlop <= 4) RETURN TRUE FORCE
+WHEN (user_H6_BISOSB4 AND OpponentsOnFlop >= 1 AND OpponentsOnFlop <= 5) RETURN TRUE FORCE
+WHEN (user_H6_BISOBB1SB AND OpponentsOnFlop >= 1 AND OpponentsOnFlop <= 1) RETURN TRUE FORCE
+WHEN (user_H6_BISOBB1Other AND OpponentsOnFlop >= 1 AND OpponentsOnFlop <= 1) RETURN TRUE FORCE
+WHEN (user_H6_BISOBB2SB AND OpponentsOnFlop >= 1 AND OpponentsOnFlop <= 2) RETURN TRUE FORCE
+WHEN (user_H6_BISOBB2Other AND OpponentsOnFlop >= 1 AND OpponentsOnFlop <= 2) RETURN TRUE FORCE
+WHEN (user_H6_BISOBB3SB AND OpponentsOnFlop >= 1 AND OpponentsOnFlop <= 3) RETURN TRUE FORCE
+WHEN (user_H6_BISOBB3Other AND OpponentsOnFlop >= 1 AND OpponentsOnFlop <= 3) RETURN TRUE FORCE
+WHEN (user_H6_BISOBB4SB AND OpponentsOnFlop >= 1 AND OpponentsOnFlop <= 4) RETURN TRUE FORCE
+WHEN (user_H6_BISOBB4Other AND OpponentsOnFlop >= 1 AND OpponentsOnFlop <= 4) RETURN TRUE FORCE
+WHEN (user_H6_BISOBB5SB AND OpponentsOnFlop >= 1 AND OpponentsOnFlop <= 5) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$H6BISOSB##
+WHEN (f$H6BISOValid AND user_H6_BISOSB1) RETURN TRUE FORCE
+WHEN (f$H6BISOValid AND user_H6_BISOSB2) RETURN TRUE FORCE
+WHEN (f$H6BISOValid AND user_H6_BISOSB3) RETURN TRUE FORCE
+WHEN (f$H6BISOValid AND user_H6_BISOSB4) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$H6BISOBB##
+WHEN (f$H6BISOValid AND user_H6_BISOBB1SB) RETURN TRUE FORCE
+WHEN (f$H6BISOValid AND user_H6_BISOBB1Other) RETURN TRUE FORCE
+WHEN (f$H6BISOValid AND user_H6_BISOBB2SB) RETURN TRUE FORCE
+WHEN (f$H6BISOValid AND user_H6_BISOBB2Other) RETURN TRUE FORCE
+WHEN (f$H6BISOValid AND user_H6_BISOBB3SB) RETURN TRUE FORCE
+WHEN (f$H6BISOValid AND user_H6_BISOBB3Other) RETURN TRUE FORCE
+WHEN (f$H6BISOValid AND user_H6_BISOBB4SB) RETURN TRUE FORCE
+WHEN (f$H6BISOValid AND user_H6_BISOBB4Other) RETURN TRUE FORCE
+WHEN (f$H6BISOValid AND user_H6_BISOBB5SB) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$H6BISOValid##
+WHEN (IsFlop AND OpponentsOnFlop = 1 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 2 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 2 AND OpponentsLeft = 2 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 3 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 3 AND OpponentsLeft = 2 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 3 AND OpponentsLeft = 3 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 4 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 4 AND OpponentsLeft = 2 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 4 AND OpponentsLeft = 3 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 4 AND OpponentsLeft = 4 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 5 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 5 AND OpponentsLeft = 2 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 5 AND OpponentsLeft = 3 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 5 AND OpponentsLeft = 4 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 5 AND OpponentsLeft = 5 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 1 AND OpponentsOnTurn = 1 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 2 AND OpponentsOnTurn = 1 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 2 AND OpponentsOnTurn = 2 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 2 AND OpponentsOnTurn = 2 AND OpponentsLeft = 2 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 1 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 2 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 2 AND OpponentsLeft = 2 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 3 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 3 AND OpponentsLeft = 2 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 3 AND OpponentsLeft = 3 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 1 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 2 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 2 AND OpponentsLeft = 2 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 3 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 3 AND OpponentsLeft = 2 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 3 AND OpponentsLeft = 3 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 4 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 4 AND OpponentsLeft = 2 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 4 AND OpponentsLeft = 3 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 4 AND OpponentsLeft = 4 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 1 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 2 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 2 AND OpponentsLeft = 2 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 3 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 3 AND OpponentsLeft = 2 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 3 AND OpponentsLeft = 3 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 4 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 4 AND OpponentsLeft = 2 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 4 AND OpponentsLeft = 3 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 4 AND OpponentsLeft = 4 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsLeft = 2 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsLeft = 3 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsLeft = 4 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsLeft = 5 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 1 AND OpponentsOnTurn = 1 AND OpponentsOnRiver = 1 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 2 AND OpponentsOnTurn = 1 AND OpponentsOnRiver = 1 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 2 AND OpponentsOnTurn = 2 AND OpponentsOnRiver = 1 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 2 AND OpponentsOnTurn = 2 AND OpponentsOnRiver = 2 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 2 AND OpponentsOnTurn = 2 AND OpponentsOnRiver = 2 AND OpponentsLeft = 2 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 1 AND OpponentsOnRiver = 1 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 2 AND OpponentsOnRiver = 1 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 2 AND OpponentsOnRiver = 2 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 2 AND OpponentsOnRiver = 2 AND OpponentsLeft = 2 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 3 AND OpponentsOnRiver = 1 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 3 AND OpponentsOnRiver = 2 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 3 AND OpponentsOnRiver = 2 AND OpponentsLeft = 2 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 3 AND OpponentsOnRiver = 3 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 3 AND OpponentsOnRiver = 3 AND OpponentsLeft = 2 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 3 AND OpponentsOnRiver = 3 AND OpponentsLeft = 3 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 1 AND OpponentsOnRiver = 1 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 2 AND OpponentsOnRiver = 1 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 2 AND OpponentsOnRiver = 2 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 2 AND OpponentsOnRiver = 2 AND OpponentsLeft = 2 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 3 AND OpponentsOnRiver = 1 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 3 AND OpponentsOnRiver = 2 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 3 AND OpponentsOnRiver = 2 AND OpponentsLeft = 2 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 3 AND OpponentsOnRiver = 3 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 3 AND OpponentsOnRiver = 3 AND OpponentsLeft = 2 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 3 AND OpponentsOnRiver = 3 AND OpponentsLeft = 3 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 1 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 2 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 2 AND OpponentsLeft = 2 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 3 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 3 AND OpponentsLeft = 2 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 3 AND OpponentsLeft = 3 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 4 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 4 AND OpponentsLeft = 2 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 4 AND OpponentsLeft = 3 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 4 AND OpponentsLeft = 4 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 1 AND OpponentsOnRiver = 1 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 2 AND OpponentsOnRiver = 1 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 2 AND OpponentsOnRiver = 2 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 2 AND OpponentsOnRiver = 2 AND OpponentsLeft = 2 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 3 AND OpponentsOnRiver = 1 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 3 AND OpponentsOnRiver = 2 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 3 AND OpponentsOnRiver = 2 AND OpponentsLeft = 2 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 3 AND OpponentsOnRiver = 3 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 3 AND OpponentsOnRiver = 3 AND OpponentsLeft = 2 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 3 AND OpponentsOnRiver = 3 AND OpponentsLeft = 3 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 1 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 2 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 2 AND OpponentsLeft = 2 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 3 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 3 AND OpponentsLeft = 2 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 3 AND OpponentsLeft = 3 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 4 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 4 AND OpponentsLeft = 2 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 4 AND OpponentsLeft = 3 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 4 AND OpponentsOnRiver = 4 AND OpponentsLeft = 4 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsOnRiver = 1 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsOnRiver = 2 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsOnRiver = 2 AND OpponentsLeft = 2 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsOnRiver = 3 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsOnRiver = 3 AND OpponentsLeft = 2 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsOnRiver = 3 AND OpponentsLeft = 3 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsOnRiver = 4 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsOnRiver = 4 AND OpponentsLeft = 2 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsOnRiver = 4 AND OpponentsLeft = 3 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsOnRiver = 4 AND OpponentsLeft = 4 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsOnRiver = 5 AND OpponentsLeft = 1 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsOnRiver = 5 AND OpponentsLeft = 2 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsOnRiver = 5 AND OpponentsLeft = 3 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsOnRiver = 5 AND OpponentsLeft = 4 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsOnRiver = 5 AND OpponentsLeft = 5 AND f$H6BISOOrigin AND f$H6BISOFlopBound) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$H6BISOHU##
+WHEN (f$H6BISOValid AND OpponentsLeft = 1) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$H6BISOTwo##
+WHEN (f$H6BISOValid AND OpponentsLeft = 2) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$H6BISOCrowded##
+WHEN (f$H6BISOValid AND OpponentsLeft = 3) RETURN TRUE FORCE
+WHEN (f$H6BISOValid AND OpponentsLeft = 4) RETURN TRUE FORCE
+WHEN (f$H6BISOValid AND OpponentsLeft = 5) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
