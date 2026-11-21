@@ -24,13 +24,13 @@ class OpenHoldemSourceAuditTests(unittest.TestCase):
 
     def test_01_active_file_comes_from_r10d_source_of_truth(self):
         self.assertEqual(a.active_source().relative_to(a.ROOT).as_posix(),
-                         'portability/iso_defense_v1/iso_defense_integrated_draft.oppl')
+                         'portability/river_fourflush_v1/river_fourflush_integrated_draft.oppl')
 
     def test_02_oppl_digest_is_cryptographic_source_identity_not_runtime_hash(self):
         source=a.active_source().read_bytes()
         self.assertEqual(self.report['source_sha256'],hashlib.sha256(source).hexdigest())
         self.assertEqual(self.report['source_sha256'],
-                         '27be1f161535c9bc07f019fd6e0609c7a3018bf6b2cc640b80a6042c5b7df02b')
+                         '2dae78bfabee4260b98dd39fdcfe671588b05b6c50be0e82fb4e4b161c3b1883')
 
     def test_03_existing_openppl_source_has_four_action_callbacks(self):
         self.assertEqual(len(a.action_sections(self.source)),4)
@@ -42,8 +42,8 @@ class OpenHoldemSourceAuditTests(unittest.TestCase):
         with self.assertRaises(a.SourceAuditError):
             a.action_sections(self.source+'\n##f$flop##')
 
-    def test_05_2007_prior_rules_untouched(self):
-        self.assertEqual(self.report['metrics']['total_when'],2007)
+    def test_05_2016_current_rules_include_one_native_texture_extension(self):
+        self.assertEqual(self.report['metrics']['total_when'],2016)
         self.assertEqual(self.report['source_bytes'],len(self.source.encode('utf-8')))
 
     def test_06_numeric_equality_hotspots_are_measured_not_silently_fixed(self):
@@ -55,7 +55,7 @@ class OpenHoldemSourceAuditTests(unittest.TestCase):
 
     def test_07_call_eq_zero_and_nonzero_are_distinguished(self):
         m=self.report['metrics']
-        self.assertEqual(m['amount_to_call_exact_zero'],258)
+        self.assertEqual(m['amount_to_call_exact_zero'],259)
         self.assertEqual(m['amount_to_call_exact_nonzero'],400)
         self.assertEqual(m['still_to_act_rules'],103)
         self.assertEqual(m['first_raiser_position_rules'],343)
