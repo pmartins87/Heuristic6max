@@ -126,4 +126,4 @@ Atualizados quatro ramos de nuts-call, testes, intérpretes, os dois integrados,
 
 ## ISO-1 (20/11/2026, DRAFT; NÃO release)
 - Nova árvore: `portability/iso_raise_v1/` e integrado `iso_integrated_draft.oppl`, derivado do pai `portability/p3bet_multiway_v1/preflop_srp_limp_3bet_multiway_draft.oppl` sem alterar os 1.460 comandos `WHEN` ancestrais.
-- Cinco contextos de isolamento pré-flop, 41 decisões pós-flop e 120 topologias. Teste e hash de integridade do novo integrado precisam passar CI antes de merge. Fonte v0.6.1 intocada, **sem runtime OH**, sem promoção e sem prova de superação R10d. Ver [ADR-036](DECISIONS.md) e [HANDOFF](HANDOFF.md).
+- Cinco contextos de isolamento pré-flop, 41 decisões pós-flop e 120 topologias. Teste, recomposição do integrado e SHA de integridade **aprovados na CI 44853164836** (534 execuções / 522 distintas por suíte); validação OpenHoldem permanece pendente. Fonte v0.6.1 intocada, **sem runtime OH**, sem promoção e sem prova de superação R10d. Ver [ADR-036](DECISIONS.md) e [HANDOFF](HANDOFF.md).
