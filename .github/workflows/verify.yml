@@ -1,12 +1,25 @@
 name: Verify snapshots and tests
 
+# PR draft: build source and run only targeted tests locally.
+# Full regression runs once the PR becomes ready, and on every main push.
 on:
   push:
     branches: [main]
   pull_request:
+    types: [opened, reopened, synchronize, ready_for_review]
+  workflow_dispatch:
+
+# Superseded PR pushes must not consume unnecessary runner time.
+# Never cancel the main post-merge verification.
+concurrency:
+  group: verify-${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   verify:
+    # Do not run the entire suite for intermediate edits to a draft PR.
+    # On ready_for_review the full suite executes before an intentional merge.
+    if: github.event_name != 'pull_request' || github.event.pull_request.draft == false
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -162,14 +175,6 @@ jobs:
       - name: Verify P3BET HU SHA256 manifest
         run: cd portability/p3bet_hu_v1 && sha256sum -c P3BET_HU_SHA256SUMS.txt
 
-      - name: Test immutable R10d minimum-capability comparison (12 tests)
-        run: python -m unittest discover -s benchmarks/r10d_floor -p 'test_*.py' -q
-      - name: Regenerate honest R10d gap report (release must remain BLOCKED)
-        run: python benchmarks/r10d_floor/comparison.py
-      - name: Verify R10d gap report identity
-        run: git diff --exit-code -- benchmarks/r10d_floor/CURRENT_GAP_REPORT.json
-      - name: Verify R10d benchmark SHA256 manifest
-        run: cd benchmarks/r10d_floor && sha256sum -c BENCHMARK_SHA256SUMS.txt
 
       - name: Test native SRP 3way postflop branch (16 tests)
         run: python -m unittest discover -s portability/p3way_srp_v1 -p 'test_*.py' -q
@@ -179,12 +184,6 @@ jobs:
         run: git diff --exit-code -- portability/p3way_srp_v1/preflop_coldcall_intent.oppl portability/p3way_srp_v1/preflop_srp_3bet_3way_draft.oppl
       - name: Verify threeway SRP SHA256 manifest
         run: cd portability/p3way_srp_v1 && sha256sum -c P3WAY_SRP_SHA256SUMS.txt
-      - name: Recheck updated R10d gap on latest 3way integrated code
-        run: python benchmarks/r10d_floor/comparison.py
-      - name: Confirm R10d comparison report updated with threeway
-        run: git diff --exit-code -- benchmarks/r10d_floor/CURRENT_GAP_REPORT.json
-      - name: Verify updated R10d SHA256 manifest
-        run: cd benchmarks/r10d_floor && sha256sum -c BENCHMARK_SHA256SUMS.txt
       - name: Run 4-6way SRP and multiway to HU regressions
         run: python -m unittest discover -s portability/multiway_v2 -p 'test_*.py' -q
       - name: Regenerate 4-6way and transition source plus topology report
@@ -201,10 +200,6 @@ jobs:
         run: git diff --exit-code -- portability/limped_bb_v1/preflop_multiway_limp_bb_draft.oppl portability/limped_bb_v1/limp_bb_preflop_capture.oppl
       - name: Verify SHA256 for BB limp
         run: cd portability/limped_bb_v1 && sha256sum -c LIMP_BB_SHA256SUMS.txt
-      - name: Re-evaluate latest integrated R10d floor and unit tests
-        run: python -m unittest discover -s benchmarks/r10d_floor -p 'test_*.py' -q && python benchmarks/r10d_floor/comparison.py
-      - name: Verify benchmark unchanged and SHA256
-        run: git diff --exit-code -- benchmarks/r10d_floor/CURRENT_GAP_REPORT.json && cd benchmarks/r10d_floor && sha256sum -c BENCHMARK_SHA256SUMS.txt
 
       - name: Test SRP partial-opponent history (14)
         run: python -m unittest discover -s portability/multiway_transitions_v3 -p 'test_*.py' -q
@@ -232,12 +227,6 @@ jobs:
         run: git diff --exit-code -- portability/p3bet_multiway_v1/threebet_multiway_topology.oppl portability/p3bet_multiway_v1/preflop_srp_limp_3bet_multiway_draft.oppl portability/p3bet_multiway_v1/THREEBET_MW_TOPOLOGY.csv
       - name: Verify P3BMW1 SHA
         run: cd portability/p3bet_multiway_v1 && sha256sum -c P3BM1_SHA256SUMS.txt
-      - name: Verify R10d report against newest integrated source
-        run: python benchmarks/r10d_floor/comparison.py
-      - name: Verify newest R10d report and SHA
-        run: git diff --exit-code -- benchmarks/r10d_floor/CURRENT_GAP_REPORT.json
-      - name: Check R10d SHA after new modules
-        run: cd benchmarks/r10d_floor && sha256sum -c BENCHMARK_SHA256SUMS.txt
 
       - name: Test ISO-1 isolated-limper OpenPPL source (13 tests)
         run: python -m unittest discover -s portability/iso_raise_v1 -p 'test_*.py' -q
@@ -256,10 +245,6 @@ jobs:
         run: git diff --exit-code -- portability/blind_iso_v2/blind_iso_integrated_draft.oppl
       - name: Verify BLISO-2 SHA256 snapshot
         run: cd portability/blind_iso_v2 && sha256sum -c BLISO2_SHA256SUMS.txt
-      - name: Update factual R10d benchmark against BLISO-2 latest draft
-        run: python benchmarks/r10d_floor/comparison.py
-      - name: Verify BLISO-2 R10d metrics and benchmark SHA256
-        run: git diff --exit-code -- benchmarks/r10d_floor/CURRENT_GAP_REPORT.json && cd benchmarks/r10d_floor && sha256sum -c BENCHMARK_SHA256SUMS.txt
 
       - name: Test ISO DEFENSE v1 2 facing-limper raise nodes (21 tests)
         run: python -m unittest discover -s portability/iso_defense_v1 -p 'test_*.py' -q
@@ -270,10 +255,6 @@ jobs:
 
       - name: Verify ISO DEFENSE v1 source and replay-test SHA256
         run: cd portability/iso_defense_v1 && sha256sum -c ISODEF1_SHA256SUMS.txt
-      - name: Re-evaluate R10d gap for ISO DEFENSE v1 active source
-        run: python benchmarks/r10d_floor/comparison.py
-      - name: Verify current ISODEF-1 R10d report and SHA256 manifest
-        run: git diff --exit-code -- benchmarks/r10d_floor/CURRENT_GAP_REPORT.json && cd benchmarks/r10d_floor && sha256sum -c BENCHMARK_SHA256SUMS.txt
 
       - name: Test OH G1/G6 offline evidence preflight (26 tests, no engine)
         run: python -m unittest discover -s portability/oh_runtime_gate_v1 -p 'test_*.py' -q
@@ -292,3 +273,11 @@ jobs:
         run: python portability/oh_source_audit_v1/audit.py --check
       - name: Validate OH-SRC1 content SHA256
         run: cd portability/oh_source_audit_v1 && sha256sum -c OHSRC1_SHA256SUMS.txt
+
+      # Evaluate the latest fully integrated formula once, not after every ancestor.
+      - name: R10d acceptance contracts (one run per full CI)
+        run: python -m unittest discover -s benchmarks/r10d_floor -p 'test_*.py' -q
+      - name: Recompute R10d gap against final integrated OpenPPL
+        run: python benchmarks/r10d_floor/comparison.py
+      - name: Require deterministic R10d report and preserved benchmark manifest
+        run: git diff --exit-code -- benchmarks/r10d_floor/CURRENT_GAP_REPORT.json && cd benchmarks/r10d_floor && sha256sum -c BENCHMARK_SHA256SUMS.txt
