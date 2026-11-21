@@ -7,3 +7,5 @@ Unreachable_undefined,None fail closed,OH implicit zero and action fallback diff
 Scrape_quality,source_quality HIGH flag,No direct verified one-line equivalent,BLOCKED,Stable snapshots/action history OH mapping
 G1_offline_ledger,dataclasses loops and event replay,Not required for live OpenPPL decision,OFFLINE_ONLY,Use to validate OH logs
 Equity_and_MonteCarlo,loops tables and card evaluator,Not needed in live OPPL when precomputed,OFFLINE_ONLY,Export only verified thresholds/handlists
+
+G1_G6_Offline_Evidence,Source-anchored evidence checker and 10 OHReplay cases,ManualMode and OHReplay are offline observations not action-receiver proof,EVIDENCE_PROTOCOL_ONLY,Collect authentic OH build hashes debug trace frames and independently verified final action in offline simulator

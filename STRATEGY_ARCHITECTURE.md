@@ -95,3 +95,8 @@ Corrigida falha estratégica em ambas as novas famílias: HaveNuts enfrentando o
 - Não tratar como VS_OPEN: este último usa `Raises=1`, `Calls=0`, enquanto ISODEF-1 permite `Raises=1`, `Calls=1`, pote exato 7 BB e agressor CO (Hero BTN) ou BTN (Hero BB). Nenhum caller extra de raise no momento da decisão. Guardas de posição negam Hero simultaneamente no BTN e BB.
 - Proveniência: Hero `Set user_H6_DEF_BTN3/BB3` apenas ao 3betar, ou `BTNC/BBC` ao pagar; pós-flop requer flags nativas `BotRaisedBeforeFlop` vs `BotCalledBeforeFlop`, `NumberOfRaisesBeforeFlop=1`, sem tags herdadas. `defense_policy.oppl` cria buckets de ação por 3bettor/caller e HU/2 adversários; 3way→HU é aceito.
 - **Não inferir** que `Calls=1` prova quem limpou, que o marcador prova a ação final, ou que `None` no intérprete desativa `default.bot`; gate operacional continua bloqueado.
+
+## Observabilidade OH-G1G6-1 como pré-requisito de completude
+- A arquitetura mantém fonte única OpenPPL e Python restrito à auditoria fora de runtime. A nova camada de evidências não é estratégia de poker e não adiciona `WHEN`, `Set user`, handlists, ranges, decisões de sizing ou perfis.
+- `Best action` (ação escolhida pela fórmula), `Action taken` (ação de autoplayer) e estado posterior aceito pela simulação offline são observações separadas; coincidência textual e SHA não bastam. Contrato de 10 cenários e checklist: [OH-G1G6-1](portability/oh_runtime_gate_v1/README.md).
+- Exigir G1/G6 antes de estender squeeze, short/deep, 4bet/5bet ou políticas baseadas em contadores; liberar somente mediante observações reprodutíveis sem fallback inesperado. [CI OH-G1G6-1](https://github.com/pmartins87/Heuristic6max/actions/runs/44862638886) confirma apenas a infraestrutura de auditoria.

@@ -18,3 +18,6 @@ python portability/oppl_probe.py
 ## PORT-1 parcial (LJ RFI)
 
 [port1/README.md](port1/README.md): 168 classes puras fielmente espelhadas em handlists/regras OpenPPL (43 RaiseTo, 125 Fold), 15 novos testes; KJo 40% RFI foi bloqueado. **Não carregar como bot:** falta evidência da paridade OpenHoldem-alvo.
+
+## Gate G1/G6 offline — OH-G1G6-1
+[Pacote de evidências](oh_runtime_gate_v1/README.md): 10 casos com campos de `f$debug`, `Best action` vs `Action taken`, pares de replay, identidade e SHA256, 26 testes. [CI OH-G1G6-1](https://github.com/pmartins87/Heuristic6max/actions/runs/44862638886) aprovou 599 execuções totais, 587 deduplicadas por suíte. O pacote **não é código executável para jogar** e mantém sempre `runtime_approved=false`. Última estratégia integrada permanece ISODEF-1; compatibilidade OpenHoldem real não demonstrada.

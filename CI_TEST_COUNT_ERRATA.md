@@ -46,3 +46,9 @@ Os 28 registros `Ran N tests` do job 136704854736 somaram 552; a suíte R10d é 
 | [ISODEF-1 aprovado](https://github.com/pmartins87/Heuristic6max/actions/runs/44860943038) | `c0de8d25bad2ff9869335ab3efe2636a2a3eeec3` | **573** | **561** | **29** |
 
 Os 29 registros `Ran N tests` no log de CI somaram 573 execuções. A suíte do benchmark R10d com 12 testes roda duas vezes: 573 − 12 = **561 testes deduplicados por suíte**, aumento de 21 frente aos 552/540 de BLISO-2. A reconstrução OpenPPL, preservação do ancestral, relatório R10d e manifestos SHA256 passaram. **Não** são 561 decisões de poker, nem replays OpenHoldem; o gate 14/14 ainda bloqueia release.
+
+## OH-G1G6-1 — controle de contagem factual (21/11/2026)
+| Referência | Commit do PR | Execuções (`Ran N tests`) | Deduplicados por suíte | Suítes |
+|---|---|---:|---:|---:|
+| [CI OH-G1G6-1](https://github.com/pmartins87/Heuristic6max/actions/runs/44862638886) | `c0a1eed16fe17212e1cca1d4c117c268d280e55a` | **599** | **587** | **30** |
+Os **30** registros de testes no log do job `136719229320` somam **599**; uma suíte R10d de 12 testes é executada duas vezes (599 − 12 = **587** por deduplicação de suíte). Ganho de **26 testes**, ante 573/561 em 29 suítes no ISODEF-1. Os 26 são verificações sobre evidências sintéticas e guardas da auditoria, não replays OH nem 26 decisões estratégicas. **G1/G6 e 14/14 gates R10d não foram promovidos**.
