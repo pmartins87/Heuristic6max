@@ -14,7 +14,7 @@ A HIST-v2 enumerava 6 x 6 **classes resumidas** de flop/turn, e não trajetória
 4. `hist3_gate_helpers.oppl`: **10 helpers OpenPPL** adicionais. Quatro substituem inferências de `RaiseCall` e `CheckRaiseCall` que dependiam de `OpponentCalledOnFlop/Turn` sem respeitar a biblioteca; dois exigem provenance para `BetRaisedCall` IP; dois promovem classificação apenas quando não há alias; dois criam domínios de turn/river mais restritos.
 5. `history_memory_capture.oppl`: **4 sentenças `Set user_...`** observacionais (2 flop, 2 turn) que marcam se o bot já havia apostado ou aumentado antes de enfrentar um raise adversário. Capturam apenas um evento **anterior identificado por `BotsLastFlopAction`/`BotsLastTurnAction`**, não presumem que a decisão corrente tenha sido executada. O estado é por mão, mas OpenHoldem pode reiniciá-lo após falha de scraping/oclusão.
 6. `srp_hu_history_v3.oppl` e `preflop_srp_history_v3.oppl`: arquivo de regras HIST-v2 com **mesmas 75 ações pós-flop**; o novo roteamento é mais seguro e quatro capturas de memória acontecem antes das regras. Pré-flop RFI + VS_OPEN + VS_3BET preservado **byte a byte**. Nenhum range nem sizing alterado.
-7. `history_v3_interpreter.py`: intérprete offline estrito das linhas do mesmo OPPL, com `Set` side-effect, testes de histórico, prioridade e guardas — não é segundo algoritmo de pôquer. `test_history_v3.py`: **31 testes** novos; gera outputs determinísticos.
+7. `history_v3_interpreter.py`: intérprete offline estrito das linhas do mesmo OPPL, com `Set` side-effect, testes de histórico, prioridade e guardas — não é segundo algoritmo de pôquer. `test_history_v3.py`: **36 testes** novos; gera outputs determinísticos.
 
 ## Exemplo de colisão — ambos eram classificados da mesma forma
 
@@ -22,6 +22,19 @@ A HIST-v2 enumerava 6 x 6 **classes resumidas** de flop/turn, e não trajetória
 - `V:X H:B V:R H:C` = adversário faz check; Hero aposta; adversário dá raise; Hero paga.
 
 O Hero está IP nos dois casos. Flags agregados de raise/call e número de raises do vilão não informam quem **iniciou** a aposta. O segundo deve ser tratado como `bet-raised-call`; o primeiro não. HIST-v3 exige memória observacional `user_H3_IP_FlopLeadBetFacedRaise` para aplicar as regras da segunda linha. Sem essa memória, não classifica o contexto como seguro.
+
+## Auditoria de cobertura por fonte OpenPPL — nova medição
+
+O arquivo `routing_coverage.py` interpreta **os mesmos helpers OpenPPL v3** para as 484 sequências, aplicando um modelo de flags do código-fonte público da biblioteca e supondo que cada captura de evento anterior realmente ocorreu. Exporta `HIST3_ROUTING_COVERAGE.csv`:
+
+| Resultado do domínio v3 sob flags hipotéticos de biblioteca | Históricos |
+|---|---:|
+| `MODELED_DOMAIN_ADMITTED` (poderia selecionar o domínio; **não valida a ação**) | **100** |
+| `FLOP_UNROUTED_OR_ALIAS` | **264** |
+| `TURN_UNROUTED_OR_ALIAS` | **120** |
+| **Total estrutural** | **484** |
+
+Isso significa **384 lacunas de roteamento** no universo do experimento, não 384 decisões diferentes que precisam necessariamente ser hardcoded. A admissão de 100 casos é um **limite superior condicionado** às suposições de captura perfeita de memória e semântica dos símbolos na biblioteca documental, e NÃO um número de casos válidos no executável OpenHoldem-alvo. Ao criar o código real, devemos reduzir essa lacuna por famílias de ação com proveniência confiável e políticas por histórico, board, SPR e preço. **Este indicador impede que 484 seja apresentado como implementação completa.**
 
 ## Regras de segurança e escopo
 
@@ -38,11 +51,11 @@ Da raiz do repositório:
 ```sh
 python -m unittest discover -s portability/srp_history_v3 -p 'test_*.py' -q
 python portability/srp_history_v3/build_history_v3.py
-git diff --exit-code -- portability/srp_history_v3/HIST3_484_CHRONOLOGICAL_PATHS.csv portability/srp_history_v3/HIST3_OBSERVABILITY.csv portability/srp_history_v3/srp_hu_history_v3.oppl portability/srp_history_v3/preflop_srp_history_v3.oppl
+git diff --exit-code -- portability/srp_history_v3/HIST3_484_CHRONOLOGICAL_PATHS.csv portability/srp_history_v3/HIST3_OBSERVABILITY.csv portability/srp_history_v3/HIST3_ROUTING_COVERAGE.csv portability/srp_history_v3/srp_hu_history_v3.oppl portability/srp_history_v3/preflop_srp_history_v3.oppl
 (cd portability/srp_history_v3 && sha256sum -c HIST3_SHA256SUMS.txt)
 ```
 
-**Total CI esperado após incluir o módulo: 344 (313 anteriores + 31).** A CI é verificação estática, nunca certificado de jogabilidade/EV.
+**Total CI esperado após incluir o módulo: 349 (313 anteriores + 36).** A CI é verificação estática, nunca certificado de jogabilidade/EV.
 
 ## Referências inspecionadas e uso permitido
 

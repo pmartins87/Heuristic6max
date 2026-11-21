@@ -146,3 +146,8 @@ Issues: [#1 — importação concluída](https://github.com/pmartins87/Heuristic
 - [Piloto com 2 regras OpenPPL](portability/portable_rfi_probe.oppl), [intérprete Python](portability/oppl_probe.py) e [7 testes](portability/test_oppl_probe.py) em 3.042 estados. Não operacional e ainda sem testes no OpenHoldem real.
 - Bloqueados até paridade demonstrada: mistura SHA256/Random, predicado source_quality=HIGH, None versus fallback automático e ajustes de RaiseTo ilegal.
 - Versões e ranges anteriores permanecem preservados; G6 continua uma etapa futura.
+
+### HIST-v3 — medição de cobertura por interpretação da mesma fonte OPPL
+- [Relatório de 484 linhas](portability/srp_history_v3/HIST3_ROUTING_COVERAGE.csv) e [auditor de cobertura](portability/srp_history_v3/routing_coverage.py): **100 domínios admissíveis sob hipóteses estáticas de biblioteca, 384 lacunas (264 flop, 120 turn)**.
+- **100 não significa 100 decisões verificadas nem 100 exemplos vistos no OpenHoldem**; a simulação supõe que a captura de memória anterior ocorreu corretamente. 484 é universo de palavras legais, não número de políticas.
+- +5 testes de cobertura e determinismo: **36 testes HIST-v3 e 349 testes totais esperados CI**. Próximo passo: resolver lacunas por famílias de histórico realmente observáveis; não gerar ramos sem proveniência.

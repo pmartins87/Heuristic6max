@@ -95,3 +95,5 @@ Localização versionada: [audits/g2a_v0_7/](audits/g2a_v0_7/). Contém script, 
 - [portability/srp_history_v3/](portability/srp_history_v3/): 12 arquivos (2 OpenPPL completos, 2 fragmentos OPPL, enumerador, intérprete, gerador, 31 testes, 2 CSV, README e `HIST3_SHA256SUMS.txt`). As outras fontes históricas não mudaram.
 - Universo estrutural novo: 484 caminhos legais (posição/role e até 4 raises), **não 484 ações estratégicas**; 3 colisões documentadas. Fonte de ação conserva 75 regras antigas e 10 helpers novos, 4 memórias `Set`. Pré-flop combinado imutável.
 - Testes: 31 incrementais, **344 acumulados previstos**. Regenerar CSV/OPPL e verificar hashes no CI; testes de execução OH/alvo continuam inexistentes. G1 aberto, G2-a HOLD e G6 pendente.
+
+**Complemento HIST-v3:** adicionados `routing_coverage.py` e `HIST3_ROUTING_COVERAGE.csv`; README, builder, testes e manifesto SHA256 atualizados. São **14 arquivos no módulo HIST-v3**; 36 testes locais novos, total CI previsto **349**. Cobertura por fonte: 100/484 domínios admitidos apenas sob hipóteses documentais, 384 lacunas. Sem validação no OpenHoldem real.

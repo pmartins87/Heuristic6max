@@ -144,11 +144,11 @@ jobs:
       - name: Verify G3-HIST-v2 SHA256 manifest
         run: cd portability/srp_history_v2 && sha256sum -c HISTORY_V2_SHA256SUMS.txt
 
-      - name: Test chronological SRP-HU HIST-v3, native flags and alias quarantine (31 tests)
+      - name: Test chronological SRP-HU HIST-v3, native flags and alias quarantine (36 tests)
         run: python -m unittest discover -s portability/srp_history_v3 -p 'test_*.py' -q
       - name: Rebuild HIST-v3 and enumerate 484 legal two-street words
         run: python portability/srp_history_v3/build_history_v3.py
       - name: Verify HIST-v3 sources and coverage reports deterministic
-        run: git diff --exit-code -- portability/srp_history_v3/HIST3_484_CHRONOLOGICAL_PATHS.csv portability/srp_history_v3/HIST3_OBSERVABILITY.csv portability/srp_history_v3/srp_hu_history_v3.oppl portability/srp_history_v3/preflop_srp_history_v3.oppl
+        run: git diff --exit-code -- portability/srp_history_v3/HIST3_484_CHRONOLOGICAL_PATHS.csv portability/srp_history_v3/HIST3_OBSERVABILITY.csv portability/srp_history_v3/HIST3_ROUTING_COVERAGE.csv portability/srp_history_v3/srp_hu_history_v3.oppl portability/srp_history_v3/preflop_srp_history_v3.oppl
       - name: Verify HIST-v3 SHA256 manifest
         run: cd portability/srp_history_v3 && sha256sum -c HIST3_SHA256SUMS.txt

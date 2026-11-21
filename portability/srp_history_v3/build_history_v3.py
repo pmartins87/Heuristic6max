@@ -45,6 +45,8 @@ def generate():
     SOURCE.write_text(rewritten,encoding='utf-8',newline='\n')
     COMBINED.write_text(combined,encoding='utf-8',newline='\n')
     n=export()
+    from routing_coverage import export as export_routing
+    if export_routing()!=(484,100):raise ValueError('HIST3 coverage drift')
     return n,len(captures),sum(x.startswith('##f$') for x in gates.splitlines())
 
 if __name__=='__main__':print('HIST3',generate())

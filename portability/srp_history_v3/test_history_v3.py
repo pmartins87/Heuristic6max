@@ -251,4 +251,50 @@ class NativeOpenPPLSource(unittest.TestCase):
         snap=b.PREVIOUS_COMBINED.read_text()
         self.assertEqual(snap,b.PREVIOUS_COMBINED.read_text())
 
+
+
+class ModeledRoutingCoverage(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        import routing_coverage as r
+        cls.r=r
+        cls.rows=r.classify()
+
+    def test_report_matches_exact_legal_universe(self):
+        self.assertEqual(len(self.rows),484)
+        self.assertEqual({x['HistoryID'] for x in self.rows},
+                         {f'H3-{i:04d}' for i in range(1,485)})
+
+    def test_measured_domain_upper_bound_not_complete(self):
+        from collections import Counter
+        counts=Counter(x['RiverDomainStatus'] for x in self.rows)
+        self.assertEqual(counts,{'MODELED_DOMAIN_ADMITTED':100,
+                                 'FLOP_UNROUTED_OR_ALIAS':264,
+                                 'TURN_UNROUTED_OR_ALIAS':120})
+        self.assertEqual(484-counts['MODELED_DOMAIN_ADMITTED'],384)
+
+    def test_no_unsupported_trajectory_labeled_as_admitted(self):
+        for x in self.rows:
+            with self.subTest(history=x['HistoryID']):
+                self.assertEqual(x['RiverDomainStatus']=='MODELED_DOMAIN_ADMITTED',
+                                 bool(x['FlopClassifiedFromSource'] and x['TurnClassifiedFromSource']))
+                self.assertEqual(x['CaptureHypothesis'],
+                                 'IDEAL_PRIOR_EVENT_CAPTURE_UNVERIFIED_IN_OH')
+
+    def test_capture_separates_ip_leadbet_and_raise(self):
+        c=__import__('chronological_history')
+        ev1=c.RoundLine((('V','X'),('H','B'),('V','R'),('H','C')),True)
+        ev2=c.RoundLine((('V','B'),('H','R'),('V','R'),('H','C')),True)
+        a=self.r.previously_observed_event_flags(ev1,'Flop',True)
+        b=self.r.previously_observed_event_flags(ev2,'Flop',True)
+        self.assertEqual(list(a),['user_H3_IP_FlopLeadBetFacedRaise'])
+        self.assertEqual(list(b),['user_H3_IP_FlopRaiseFacedReraise'])
+        self.assertEqual(self.r.previously_observed_event_flags(ev1,'Flop',False),{})
+
+    def test_coverage_report_deterministic(self):
+        path=self.r.REPORT
+        prior=hashlib.sha256(path.read_bytes()).hexdigest()
+        self.assertEqual(self.r.export(),(484,100))
+        self.assertEqual(hashlib.sha256(path.read_bytes()).hexdigest(),prior)
+
 if __name__=='__main__':unittest.main()
