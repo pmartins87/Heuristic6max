@@ -1,13 +1,13 @@
 {
   "capabilities_total": 14,
-  "heuristic_active_file": "portability/iso_raise_v1/iso_integrated_draft.oppl",
+  "heuristic_active_file": "portability/blind_iso_v2/blind_iso_integrated_draft.oppl",
   "metrics": {
     "bytes": {
-      "Heuristic": 315800,
+      "Heuristic": 363759,
       "R10d": 1325138
     },
     "distinct_user_symbols": {
-      "Heuristic": 21,
+      "Heuristic": 34,
       "R10d": 561
     },
     "f_game_functions": {
@@ -19,27 +19,27 @@
       "R10d": 6
     },
     "function_headers": {
-      "Heuristic": 143,
+      "Heuristic": 152,
       "R10d": 725
     },
     "lines": {
-      "Heuristic": 2605,
+      "Heuristic": 2885,
       "R10d": 20788
     },
     "list_headers": {
-      "Heuristic": 188,
+      "Heuristic": 189,
       "R10d": 545
     },
     "set_user_lines": {
-      "Heuristic": 104,
+      "Heuristic": 117,
       "R10d": 1561
     },
     "total_formula_and_list_headers": {
-      "Heuristic": 331,
+      "Heuristic": 341,
       "R10d": 1270
     },
     "when_rules": {
-      "Heuristic": 1666,
+      "Heuristic": 1920,
       "R10d": 6021
     }
   },
