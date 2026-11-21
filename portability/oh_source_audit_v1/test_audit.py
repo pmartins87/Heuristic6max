@@ -106,8 +106,8 @@ class OpenHoldemSourceAuditTests(unittest.TestCase):
         claims=self.report['source_facts']
         self.assertEqual(len(claims),7)
         self.assertIn('UpdateOnHandreset',claims['user_flags_reset'])
-        self.assertIn('first action',claims['calls_not_raw_limper_count'].lower())
-        self.assertIn('memory',claims['preflop_raises_stateful'].lower())
+        self.assertIn('CallsBeforeOurFirstAction',claims['calls_not_raw_limper_count'])
+        self.assertIn('me_re_MemRaisesBeforeFlop',claims['preflop_raises_stateful'])
         self.assertIn('default',claims['fallback_not_failclosed'].lower())
 
     def test_15_dynamic_report_matches_committed_source_snapshot(self):
