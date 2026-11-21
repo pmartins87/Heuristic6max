@@ -95,7 +95,7 @@ def safe_read(root:Path,record:dict,ext:str)->tuple[bytes|None,str]:
     body=real.read_bytes()
     if ext=='.bmp' and not body.startswith(b'BM'):
         return None,'invalid BMP signature'
-    if ext=='.png' and not body.startswith(b'\\x89PNG\\r\\n\\x1a\\n'):
+    if ext=='.png' and not body.startswith(b'\x89PNG\r\n\x1a\n'):
         return None,'invalid PNG signature'
     if ext=='.html' and b'<html' not in body[:4096].lower() and b'<!doctype html' not in body[:4096].lower():
         return None,'HTML replay does not contain HTML document tag'
