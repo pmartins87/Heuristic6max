@@ -1,3 +1,5 @@
+> **ATENÇÃO (21/11/2026):** nenhuma versão de estratégia V2 foi produzida ou liberada. [Reinício V2 e gates F0–F5](v2/PLAN.md). Tudo abaixo é manifesto histórico V1 **sem aprovação de qualidade estratégica**; não carregar em mesas reais nem inferir que CI verde qualifica EV/GTO.
+
 # Manifesto de versões (20/11/2026)
 
 | Versão | SHA-256 do ZIP local | Fonte no GitHub |
