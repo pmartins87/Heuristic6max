@@ -134,3 +134,9 @@ Python de importação de charts, análise, Monte Carlo, testes e reconstrução
 - 14 capacidades exigidas; 14 ainda PARTIAL ou MISSING, 0 totalmente VERIFIED no gate atual. [Matriz](benchmarks/r10d_floor/CAPABILITY_MATRIX.csv). **Não afirmar superioridade, completude, prontidão nem vantagem em poker real.**
 - Novo [p3bet_hu_v1](portability/p3bet_hu_v1/README.md): 39 regras de ação flop/turn/river em potes 3bet HU, intent-tags extraídas de 9 raises first-in +44 3bets vs open; domínio exige histórico nativo de bot e 1 adversário. **Sem alteração nas decisões pré-flop v0.6.1**. 15 testes novos no módulo, 12 no benchmark; 376 esperado no CI.
 - Faltam sobretudo 4bet/5bet, limped/iso, multiway 3 e 4+, short/deep stacks, memória real cronológica, adversário e runtime OH. G1 ABERTO, G2-a HOLD, G6 PENDENTE.
+
+## SRP 3-way v1 — expansão substantiva da cobertura R10d (20/11/2026)
+- [portability/p3way_srp_v1/](portability/p3way_srp_v1/) possui 8 arquivos: 31 ações novas por street 13/10/8, 33 intents de CALL VS_OPEN, 4 helpers, fonte integrada e 16 testes locais.
+- Histórico distinto: Hero PFR que enfrentou 2 callers (marcador RFI confirmado por raise efetivo) e Hero caller de um open que chegou a 3 jogadores no flop (marcador CALL confirmado por BotCalledBeforeFlop). **Pote 3-way exige OpponentsOnFlop=2 e OpponentsLeft=2**, sem allin, estado desconhecido ou raises incompatíveis.
+- Inventário do H6 ativo passou para 729 WHEN, 92 f$, 187 listas, 90 SET e 7 símbolos user_ versus 6.021 WHEN, 725 f$, 545 listas, 1.561 SET e 561 símbolos user_ no R10d. Isso NÃO autoriza comparação de qualidade.
+- A família M05 no piso R10d passou de MISSING para PARTIAL; ainda **14/14 critérios sem aceitação final**, inclusive M05. G1 aberto, G2-a HOLD; G6 ainda não testado em OH. Total esperado CI 392.

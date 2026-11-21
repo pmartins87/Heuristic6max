@@ -164,3 +164,9 @@ Na raiz do repositório, execute:
 3. Rodar `python -m unittest discover -s portability/p3bet_hu_v1 -p 'test_*.py' -q`; `python portability/p3bet_hu_v1/build_p3bet_hu.py`; `python -m unittest discover -s benchmarks/r10d_floor -p 'test_*.py' -q`; `python benchmarks/r10d_floor/comparison.py`; verificar `git diff --exit-code` dos artefatos regenerados; manifestos SHA nos dois diretórios.
 4. **Esperado:** +27 testes, 376 totais. `comparison.py --release-check` deve retornar 2/BLOCKED nesta etapa; não pôr comando de release-check como step verde da CI.
 5. Próximo trabalho: priorizar cobertura real de potes multiway (3way), limped/iso, 4bet, stack bands, ação cronológica e OpenHoldem offline. Não copiar R10d sem verificar semântica, não esquecer o contrato novo nem editar ranges v0.6.1 para mascarar gaps.
+
+## Retomada da SRP 3-way (ADR-030)
+- **Arquivo integrado mais recente:** `portability/p3way_srp_v1/preflop_srp_3bet_3way_draft.oppl`, a partir do arquivo P3BET-HU-v1; não editar o histórico e não tomar a nova fonte como executável validado.
+- Reproduzir `python -m unittest discover -s portability/p3way_srp_v1 -p 'test_*.py' -q`; `python portability/p3way_srp_v1/build_threeway.py`; verificar `git diff --exit-code -- portability/p3way_srp_v1/preflop_coldcall_intent.oppl portability/p3way_srp_v1/preflop_srp_3bet_3way_draft.oppl`; `(cd portability/p3way_srp_v1 && sha256sum -c P3WAY_SRP_SHA256SUMS.txt)`.
+- Após gerar 3way, recomputar `python benchmarks/r10d_floor/comparison.py` e conferir diff/manifesto do benchmark. 16 novos testes (392 totais previstos), contadores de origem e guardas devem se manter. **Benchmark continua NOT MET**, 14/14 requisitos sem validação integral.
+- Recomendar expansão das familias faltantes multiway 3way→HU, 4–6 active, limp/iso, 4bet/5bet, históricos e board/runout/SPR, sem inferir superioridade por contagens de código.

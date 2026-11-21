@@ -170,3 +170,18 @@ jobs:
         run: git diff --exit-code -- benchmarks/r10d_floor/CURRENT_GAP_REPORT.json
       - name: Verify R10d benchmark SHA256 manifest
         run: cd benchmarks/r10d_floor && sha256sum -c BENCHMARK_SHA256SUMS.txt
+
+      - name: Test native SRP 3way postflop branch (16 tests)
+        run: python -m unittest discover -s portability/p3way_srp_v1 -p 'test_*.py' -q
+      - name: Generate integrated native OpenPPL threeway SRP branch
+        run: python portability/p3way_srp_v1/build_threeway.py
+      - name: Confirm 3way SRP provenance and full OpenPPL strategy determinism
+        run: git diff --exit-code -- portability/p3way_srp_v1/preflop_coldcall_intent.oppl portability/p3way_srp_v1/preflop_srp_3bet_3way_draft.oppl
+      - name: Verify threeway SRP SHA256 manifest
+        run: cd portability/p3way_srp_v1 && sha256sum -c P3WAY_SRP_SHA256SUMS.txt
+      - name: Recheck updated R10d gap on latest 3way integrated code
+        run: python benchmarks/r10d_floor/comparison.py
+      - name: Confirm R10d comparison report updated with threeway
+        run: git diff --exit-code -- benchmarks/r10d_floor/CURRENT_GAP_REPORT.json
+      - name: Verify updated R10d SHA256 manifest
+        run: cd benchmarks/r10d_floor && sha256sum -c BENCHMARK_SHA256SUMS.txt

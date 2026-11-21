@@ -60,3 +60,8 @@ A comparação é com o [artefato R10d exato](https://github.com/pmartins87/Deep
 - Executável mais recente em DRAFT: [preflop + SRP-HIST-v3 + 3bet HU](portability/p3bet_hu_v1/preflop_srp_and_3bet_hu_draft.oppl); 39 regras novas de 3bet HU e captura de intenção, não execução.
 - Engenharia orientada por gargalos: história real de ações e classificação do pote → cobertura de famílias faltantes → política por board/SPR/oponente → validação prática → promoção. Não usar multiplicações cartesianas de cenários como se fossem decisões.
 - Release bloqueado até `PROMOTION_GATE.json` com evidência real, verificação de histórico/fallback/legalidade e cobertura comparativa. G2-a segue HOLD para alterações estratégicas, mas adições em novas famílias são DRAFT sob revisão.
+
+## SRP 3-way e evolução do mínimo R10d
+- Adicionado [módulo p3way_srp_v1](portability/p3way_srp_v1/README.md): 31 novas ações pós-flop para Hero PFR ou caller VS_OPEN, 33 comandos `Set` derivados da estratégia original, nativos de verificação do call/raise.
+- O arquivo combinado [preflop_srp_3bet_3way_draft.oppl](portability/p3way_srp_v1/preflop_srp_3bet_3way_draft.oppl) soma 729 WHEN, 92 funções, 187 listas, 90 registros Set, 7 símbolos user_. **Ainda muito inferior em amplitude ao R10d**; a meta não pode ser substituída por mais 31 regras superficiais.
+- Ponto de decisão: próximo aumento de abrangência deve resolver estados relevantes ausentes (multiway que vira HU, potes 3bet multiway e 4–6 players, limp/iso e 4bet), não inflar o grafo de históricos sem políticas. Avaliação futura exige ação final OpenHoldem e cobertura de cenários reais.

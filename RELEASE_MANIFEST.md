@@ -102,3 +102,8 @@ Localização versionada: [audits/g2a_v0_7/](audits/g2a_v0_7/). Contém script, 
 - [benchmarks/r10d_floor/](benchmarks/r10d_floor/): 8 arquivos, incluindo inventário congelado (fonte Git blob/SHA), 14 capacidades, 12 testes, relatório determinístico, contrato de promoção explicitamente false e manifesto SHA.
 - [portability/p3bet_hu_v1/](portability/p3bet_hu_v1/): 8 arquivos, incluindo `threebet_hu_postflop.oppl` (39 ações), captura de intenção RFI/VS_OPEN (9+44 tags), `preflop_srp_and_3bet_hu_draft.oppl` integrado, gerador, interpretador, 15 testes, documentação e manifesto SHA.
 - 27 testes novos, 376 esperados em CI; todos os ranges preflop históricos e fontes anteriores mantidos. **Sem operação OpenHoldem real.** 14/14 famílias da meta R10d ainda não têm status VERIFIED. Não declarar release possível.
+
+## SRP 3-way v1 — incremento DRAFT sobre p3bet_hu_v1
+- [portability/p3way_srp_v1](portability/p3way_srp_v1/): 8 arquivos versionados (fonte 3way OpenPPL, source integrado, 33 marcações de intenção, gerador offline, intérprete restrito, 16 testes, README e manifesto SHA).
+- [benchmarks/r10d_floor](benchmarks/r10d_floor/) atualizado na MESMA revisão: fonte ativa v1 3way, métricas 729 WHEN/90 Set/7 user_, M05 agora PARTIAL, relatório determinístico e SHA de benchmark regenerado.
+- CI esperado 392 testes =349 históricos+15 3bet HU+12 benchmark+16 3way. Estado: DRAFT, sem comparação estratégica validada nem OpenHoldem real. **Piso R10d NOT MET**.

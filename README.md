@@ -1,5 +1,11 @@
 # Heuristic6max — fonte de verdade
 
+## Novo progresso efetivo — pós-flop single-raised **3-way**
+- [p3way_srp_v1](portability/p3way_srp_v1/README.md) adiciona **31 regras de ação OpenPPL** (13 flop/10 turn/8 river), com dois papéis: Hero abriu primeiro ou pagou o open. **33 condições VS_OPEN Call** geram registros de origem `Set user_H6_VSOpenCallIntent`, sempre confirmados contra BotCalledBeforeFlop/raises antes do uso posterior.
+- [Arquivo integrado mais recente](portability/p3way_srp_v1/preflop_srp_3bet_3way_draft.oppl) reúne pré-flop RFI/VS_OPEN/VS_3BET, SRP HU, 3bet HU, SRP 3-way — **729 WHEN, 92 f$, 187 listas, 90 Set e 7 símbolos user_**, contra 6.021 WHEN e 561 símbolos user_ R10d.
+- [Matriz de lacunas atualizada](benchmarks/r10d_floor/CAPABILITY_MATRIX.csv): **M05, multiway 3 jogadores, evoluiu MISSING → PARTIAL**. **0/14 capacidades totalmente aprovadas**. Seguimos deliberadamente SEM alegar superar R10d; resta muito trabalho.
+- **16 testes incrementais novos**, total previsto **392 = 349+15+12+16**. Sem alterações dos ranges/decisões pré-flop e sem validação executável OpenHoldem.
+
 ## Novo piso obrigatório: superar o DeepCrusher_R10d — requisito NÃO atingido
 - [Comparação quantitativa da fonte real R10d](benchmarks/r10d_floor/README.md): R10d contém **6.021 WHEN, 725 funções, 545 handlists e 561 símbolos user_**; o arquivo integrado Heuristic com 3bet HU novo tem **649 WHEN, 88 funções, 187 handlists e 6 símbolos user_**. Métricas são referências de engenharia, **não prova de qualidade ou completude**.
 - [Matriz de 14 capacidades mínimas](benchmarks/r10d_floor/CAPABILITY_MATRIX.csv) e [relatório reproduzível](benchmarks/r10d_floor/CURRENT_GAP_REPORT.json). **14/14 requisitos ainda não estão integralmente verificados**; a release final está bloqueada até dominância funcional real e OpenHoldem seguro.
@@ -65,7 +71,7 @@
 
 Estratégia **heurística** de No-Limit Hold'em cash 6-max baseada em fundamentos de GTO, com contratos, ranges auditáveis e testes reprodutíveis. **Não é um solver; não é um bot operacional validado; não há comprovação de EV ou winrate.**
 
-**Checkpoint ativo: benchmark mínimo R10d + módulo 3bet-pot HU v1 (20/11/2026)** — estratégia ainda DRAFT; G1 aberto, G2-a HOLD, G6 pendente e gate de completude R10d NÃO MET.
+**Checkpoint ativo: piso obrigatório DeepCrusher_R10d e potes 3bet HU + SRP 3-way (20/11/2026)** — Heuristic6max ainda NÃO supera R10d, é DRAFT; G1 aberto, G2-a HOLD e G6 pendente.
 
 ## PORT-1 parcial — RFI LJ (20/11/2026)
 

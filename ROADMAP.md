@@ -126,3 +126,8 @@ Ver [PORTABILITY_CONTRACT.md](PORTABILITY_CONTRACT.md).
 - **Realidade atual:** 14 famílias NÃO verificadas completamente, R10d substantivamente mais abrangente; não apresentar 484 trajetórias enumeradas como decisões reais. Preflop RFI/VS_OPEN/VS_3BET continua DRAFT; G2-a HOLD e G2-b BLOQUEADO para alterações estratégicas.
 - **Entrega imediata neste checkpoint:** 3bet pot HU (15/13/11 ações flop/turn/river), dois marcadores de origem preflop, integrados sem mudança de ação anterior. Não inferir validação runtime pelos 27 novos testes.
 - **Sequência racional:** (1) provar classificação de pote/ator e histórico observado; (2) expandir múltiplos tipos de pote e multiway 3way antes de otimizar raridades; (3) expandir 4–6 players, 4bet/5bet, limp/iso, all-in/short/deep stacks; (4) força/textura/runout/SPR/oponente; (5) avaliação prática e ambiente OH desconectado; (6) só então release. Manter milestones e critérios de parada por invalidez do histórico ou fuga de estado.
+
+## SRP 3-way — ampliação sem descaracterizar piso R10d
+- Após 3bet HU, foi implementada a primeira árvore multiway SRP com **exatamente 3 jogadores vivos no flop e turn/river**, 31 ações DRAFT e 33 marcadores de call como origem pré-flop. Guardas excluem 4bet/3bet, all-in e 4+ jogadores.
+- **M05 = PARTIAL, não VERIFIED**, na [matriz de 14 capacidades](benchmarks/r10d_floor/CAPABILITY_MATRIX.csv). Meta mínima de superar R10d continua BLOQUEADA, sem alterar G2-a HOLD.
+- Próximos ganhos: multiway 3way que vira HU ao longo da mão, 3bet multiway, 4–6 jogadores, pote limp/iso e 4bet/5bet; então histórico completo, textura, SPR, ranges por oponente, empates/stack-offs. É proibido reduzir o escopo final para bater 392 testes.
