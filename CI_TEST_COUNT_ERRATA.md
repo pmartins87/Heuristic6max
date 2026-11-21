@@ -22,3 +22,11 @@ A CI chama a **mesma suíte** `benchmarks/r10d_floor/test_comparison.py` com 12 
 
 ## Verificação
 Consultar os logs dos jobs e as duas ocorrências de `python -m unittest discover -s benchmarks/r10d_floor -p 'test_*.py' -q` no workflow. Esta errata substitui especificamente os totais 434/472 das notas anteriores, mas não apaga esses checkpoints históricos.
+
+## Novo checkpoint ISO-1 — CI verificada (20/11/2026)
+
+| Referência | Commit | Execuções de testes (`Ran N tests`) | Testes distintos por deduplicação de suíte | Número de suítes |
+|---|---|---:|---:|---:|
+| [ISO-1 aprovada](https://github.com/pmartins87/Heuristic6max/actions/runs/44853164836) | `142c00eb036f1283253c2a7119798d77ef3d7540` | **534** | **522** | **27** |
+
+Recontagem diretamente do log do job [44853164836](https://github.com/pmartins87/Heuristic6max/actions/runs/44853164836): 27 registros de `Ran N tests` somam 534 execuções. A suíte R10d de 12 testes continua intencionalmente executada duas vezes, portanto 534 − 12 = 522 por deduplicação de suíte. São **13 testes adicionais** à baseline 521/509, sem apagar checkpoints históricos. O teste de alteração de fonte, a regeneração e os manifestos SHA-256 passaram na mesma execução. Isso **não** valida código no executável OpenHoldem nem altera o gate 14/14.
