@@ -1,3 +1,5 @@
+> **ESTADO ATUAL DO PROJETO: REINÍCIO V2, F0 OPEN, F1–F5 BLOCKED.** Ler [v2/PLAN.md](v2/PLAN.md). O restante deste arquivo é histórico V1; suas métricas de cobertura e testes não aprovam nenhuma decisão estratégica V2. Nenhum módulo de poker V2 escrito nem solver executado. G1/G6 V1 de runtime nunca foram certificados. Não operar.
+
 # Estado atual — Heuristic6max
 **Data:** 21/11/2026 | **Checkpoint:** M08-RIVER4 DRAFT / CI-LEAN1 (CI anterior OH-SRC1: 616 execuções, 604 deduplicadas) | **Estado:** G2-a HOLD; R10d floor NÃO ATINGIDO; não operacional.
 
