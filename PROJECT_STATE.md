@@ -1,5 +1,5 @@
 # Estado atual — Heuristic6max
-**Data:** 21/11/2026 | **Checkpoint:** CI-LEAN1 / estratégia ISODEF-1 DRAFT (CI anterior OH-SRC1: 616 execuções, 604 deduplicadas) | **Estado:** G2-a HOLD; R10d floor NÃO ATINGIDO; não operacional.
+**Data:** 21/11/2026 | **Checkpoint:** M08-RIVER4 DRAFT / CI-LEAN1 (CI anterior OH-SRC1: 616 execuções, 604 deduplicadas) | **Estado:** G2-a HOLD; R10d floor NÃO ATINGIDO; não operacional.
 
 ## Evidências concluídas
 - G0: arquitetura e contratos.
@@ -187,3 +187,8 @@ Protegidos flop/turn contra `HaveNuts → Fold` quando o tamanho da aposta exced
 - Auditoria do workflow: **6 regenerações R10d → 1 final**, **2 execuções R10d de 12 testes → 1**, **126 etapas → 113**, **30 comandos de testes → 29**. As outras suítes, geradores e checksums permanecem.
 - CI completa apenas em PR pronta e em `main` (ou `workflow_dispatch`); PR draft pula job integral; cancelamento de execuções obsoletas só para a mesma PR. Contagem esperada: **604 execuções de testes em 30 suítes**, sujeita a confirmação em log.
 - Fonte estratégica ISODEF-1 permanece intacta; G1/G6 de certificação não aprovados, G2-a HOLD, R10d 0/14. Próxima etapa do projeto: capacidade estratégica material e testes associados, não nova camada de meta-auditoria.
+
+## M08-RIVER4 — novo integrado source-first, ação concreta no river
+- [OpenPPL river four-flush](portability/river_fourflush_v1/README.md) passa a ser o integrado ativo: 2.016 WHEN / 161 f$ / 192 listas / 121 Set user / 38 user_; todas as 2.007 regras ancestrais na mesma ordem. Nenhuma alteração nos ranges pré-flop ou em potes ISO, 3bet e multiway.
+- River com exatamente quatro do mesmo naipe (`OneCardFlushPossible AND NOT FlushOnBoard`) e Hero sem flush/nuts, em SRP HU de origem RFI/VS_OPEN call: Check grátis, Call até 20% do pote com `f$SRPStrongMade`, Call até 10% com `f$SRPTopGood`, Fold nos preços maiores. Thresholds não calibrados em EV. 7 testes focados.
+- **Status:** M08 PARTIAL; 0/14 capacidades R10d VERIFIED, G1/G6 operacionais pendentes, G2-a HOLD; não é release. OH-G1G6-1 captura somente fórmula anterior ISODEF-1, sem certificação transferível.
