@@ -1,4 +1,4 @@
-# Roadmap vivo — 20/11/2026 (RFI-MVP OpenPPL 6-max / estratégia v0.6.1)
+# Roadmap vivo — 20/11/2026 (BLISO-2 DRAFT / preflop v0.6.1 preservado)
 
 | Gate | Estado | Critério de avanço |
 |---|---|---|

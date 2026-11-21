@@ -1,5 +1,9 @@
 # Heuristic6max — fonte de verdade
 
+## Checkpoint ativo — BLISO-2 (DRAFT, não operacional)
+- [Módulo de isolamento SB/BB](portability/blind_iso_v2/README.md) integrado como fonte OpenPPL ativa; 13 novos contextos pré-flop, 43 decisões pós-flop, 120 topologias, 552 execuções de testes na [CI 44858448093](https://github.com/pmartins87/Heuristic6max/actions/runs/44858448093), 540 testes deduplicados por suíte.
+- V0.6.1 e ancestrais permanecem imutáveis; **14/14 requisitos R10d sem aprovação final**, nenhum replay OpenHoldem real. Os checkpoints abaixo são históricos.
+
 ## Checkpoint MWT3 + MLIMP2 + P3BMW1 — OpenPPL integrado (20/11/2026)
 - [Transições SRP multiway](portability/multiway_transitions_v3/README.md): 53 topologias intermediárias e **41 decisões pós-flop** entre quatro e seis jogadores no flop, com contagens próprias de turn/river.
 - [BB contra 2–5 limpers](portability/multilimp_bb_v2/README.md): **7 opções pré-flop de CHECK** e **39 novas decisões pós-flop**, com distinção se o SB completou.

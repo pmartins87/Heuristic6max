@@ -1,5 +1,5 @@
 # Estado atual — Heuristic6max
-**Data:** 20/11/2026 | **Checkpoint:** ISO-1 DRAFT em desenvolvimento | **Estado:** G2-a HOLD; R10d floor NÃO ATINGIDO; não operacional.
+**Data:** 20/11/2026 | **Checkpoint:** BLISO-2 DRAFT (552 testes executados em CI) | **Estado:** G2-a HOLD; R10d floor NÃO ATINGIDO; não operacional.
 
 ## Evidências concluídas
 - G0: arquitetura e contratos.
