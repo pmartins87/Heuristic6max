@@ -1,4 +1,4 @@
-# Roadmap vivo — 21/11/2026 (gate OH-G1G6-1 offline / política ISODEF-1 DRAFT)
+# Roadmap vivo — 21/11/2026 (OH-SRC1 fonte-first + G1/G6 de certificação separados / ISODEF-1 DRAFT)
 
 | Gate | Estado | Critério de avanço |
 |---|---|---|
@@ -167,3 +167,8 @@ Correção de quatro ramos de flop/turn em 3bet HU e SRP 3way: após o raise opc
 - **Gate A / G1:** usuário disponibilizar versão real da aplicação e tablemap, debug com contadores observados e capturas pré-flop→flop→turn→river + mudança de mão. Confrontar `Calls`, `Raises`, `StillToAct`, `NumberOfRaisesBeforeFlop`, `Set user_*` com histórico verdadeiro. Se valores instáveis, **corrigir contrato** antes de desenvolver squeeze/4bet.
 - **Gate B / G6:** demonstrar fórmula efetivamente carregada, `Best action`, `Action taken`, sizing legal em BB e *estado posterior aceito por simulador offline*; reprodução de fallback e no-match. OHReplay estático e ManualMode isolados são evidência parcial, não fechamento automático.
 - **Critério de parada:** sem captura autêntica ou com divergência não explicada, manter DRAFT e G1/G6 abertos, 14/14 R10d sem aprovação; G2-a HOLD e ranges anteriores intactos. Próximo trabalho permitido: diagnosticar a compatibilidade, não acrescentar mais dezenas de políticas não observadas.
+
+## OH-SRC1 — construção e certificação são trilhas separadas (ADR-040)
+- **Trilha de construção (NÃO requer hash de OH local):** consultar código-fonte C++/OpenPPL e testar a mesma fonte estratégica. [CI OH-SRC1](https://github.com/pmartins87/Heuristic6max/actions/runs/44864070437) aprovou 17 novos testes (616 execuções / 604 deduplicadas, 31 suítes). `OH-SRC1` mediu 436 igualdades exatas `PotSize`; próximo gate é classificar colisões dos 15 valores por pote/tipo de ação. **Não trocar por tolerâncias globalmente** nem ampliar squeezes/4bet a partir de `Calls` desconhecido.
+- **Trilha de certificação de produto (não necessária para continuar construindo):** runtime OpenHoldem, parsing verdadeiro, reset da mão, captura do símbolo, ação final e fallback. Identidade da instalação/hash só é relevante se se quiser provar uma build particular; nenhum dado desse tipo impede pesquisa e desenvolvimento.
+- **Critério de mudança:** alterar os guardas de pote somente com justificativa por domínio, reinterpretação fonte-first e testes de inclusão/exclusão (sem vazamento a outro contexto ou estratégia); preservar v0.6.1. Sem comprovação real, manter G1/G6 não aprovados e R10d 0/14, mas **não bloquear automaticamente a evolução de código por isso**.

@@ -1,6 +1,6 @@
 # Heuristic6max — fonte de verdade
 
-**Estratégia mais recente: ISODEF-1 DRAFT** (OpenPPL); **gate de engenharia atual: OH-G1G6-1** (somente instrumentação de evidências). Ver última seção desta página. O BLISO-2 é o pai congelado; ainda não é release.
+**Estratégia mais recente: ISODEF-1 DRAFT** (OpenPPL); **auditoria ativa: OH-SRC1** (provas estáticas a partir de fontes C++/OpenPPL; sem hash de instalação como requisito para construir). Ver última seção desta página. O BLISO-2 é o pai congelado; ainda não é release.
 
 ## Checkpoint histórico — BLISO-2 (DRAFT, não operacional)
 - [Módulo de isolamento SB/BB](portability/blind_iso_v2/README.md) integrado como fonte OpenPPL ativa; 13 novos contextos pré-flop, 43 decisões pós-flop, 120 topologias, 552 execuções de testes na [CI 44858448093](https://github.com/pmartins87/Heuristic6max/actions/runs/44858448093), 540 testes deduplicados por suíte.
@@ -204,3 +204,8 @@ Uma overbet muito grande podia escapar do call genérico e atingir `Fold FORCE` 
 - [Protocolo offline G1/G6](portability/oh_runtime_gate_v1/README.md) ancorado na fonte integrada ISODEF-1 **inalterada** (`portability/iso_defense_v1/iso_defense_integrated_draft.oppl`). **10 cenários** obrigam distinguir símbolo observado, decisão calculada, tentativa/ação do autoplayer e aceite efetivo por simulador offline. O suporte a OHReplay/ManualMode é instrumento de investigação, **não execução comprovada**.
 - 26 testes novos de pré-validação `evidence_gate.py`, incluindo hash, paths privados, `randomhand`, Basic Info `Best action` vs `Action taken` e controles negativos. [CI OH-G1G6-1](https://github.com/pmartins87/Heuristic6max/actions/runs/44862638886) **aprovada: 599 execuções / 587 deduplicadas por suíte / 30 suítes**.
 - `runtime_approved=false` fixo; G1 ABERTO, G6 PENDENTE, G2-a HOLD e R10d **0/14 VERIFIED**. Nenhum frame/log real foi fornecido; não carregar o integrado em mesas reais.
+
+## OH-SRC1 — semântica OpenHoldem a partir do código-fonte (não operacional)
+- [análise OH-SRC1](portability/oh_source_audit_v1/README.md) cruza o integrado ISODEF-1 **inalterado** com o snapshot público de código-fonte e manual OpenPPL fornecidos. **436 regras de igualdade exata de `PotSize`**, 103 com `StillToAct` e 343 com `FirstRaiserPosition`; registra 6 riscos/propriedades sem reescrever ranges.
+- **17 novos testes aprovados** na [CI OH-SRC1](https://github.com/pmartins87/Heuristic6max/actions/runs/44864070437): **616 execuções / 604 testes deduplicados por suíte / 31 suítes**. O relatório `SOURCE_FINDINGS.json` é determinístico e a CI impede desatualização depois de alteração futura do integrado.
+- **Não exigir hash do executável particular do usuário para construir**. Continua opcional/útil para certificação da instalação e operação final; G1/G6 de runtime não são promovidos, G2-a HOLD e 0/14 critérios R10d VERIFIED. Próximo passo técnico: análise por domínio da igualdade `PotSize`, sem substituição indiscriminada.
