@@ -151,7 +151,7 @@ def audit(data:dict,evidence_root:Path)->dict:
     require_shape(data,MAIN_KEYS,'bundle')
     cfg,cases=catalog()
     if data['protocol']!=PROTOCOL:raise EvidenceError('protocol mismatch')
-    if data['capture_mode'] not in CAPTURE_MODES:raise EvidenceError('capture mode invalid')
+    if not isinstance(data['capture_mode'],str) or data['capture_mode'] not in CAPTURE_MODES:raise EvidenceError('capture mode invalid')
     if type(data['offline_attested']) is not bool or type(data['connected_live']) is not bool:
         raise EvidenceError('offline/live indicators must be booleans')
     if not isinstance(data['cases'],list) or not data['cases']:
@@ -165,7 +165,7 @@ def audit(data:dict,evidence_root:Path)->dict:
     for case in data['cases']:
         require_shape(case,CASE_KEYS,'case')
         key=case['case_id']
-        if key not in cases:raise EvidenceError('unknown case id: '+str(key))
+        if not isinstance(key,str) or key not in cases:raise EvidenceError('unknown case id: '+str(key))
         item=cases[key]
         if case['street']!=item['street']:
             raise EvidenceError('case street not in catalog: '+key)
@@ -219,7 +219,7 @@ def audit(data:dict,evidence_root:Path)->dict:
                 body,reason=safe_read(evidence_root,case['artifacts'][label],ext)
                 if body is None:
                     status='EVIDENCE_CONFLICT' if any(w in reason for w in
-                          ('unsafe','escaped','SHA256 mismatch','extension')) else 'INCOMPLETE'
+                          ('unsafe','escaped','SHA256 mismatch','extension','invalid','document tag')) else 'INCOMPLETE'
                     report.update(verdict=status,reason=label+': '+reason)
                     break
                 collected[label]=body
