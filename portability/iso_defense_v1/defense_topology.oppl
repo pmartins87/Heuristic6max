@@ -1,0 +1,39 @@
+// ISODEF-1: limp -> opponent isolation -> Hero first preflop response. Strict origin + native action flags.
+// 3bet or coldcall are exclusive and disjoint from all inherited RFI/ISO/limp/3bet tags.
+##f$H6DEFOrigin3##
+WHEN (user_H6_DEF_BTN3 AND NOT user_H6_DEF_BTNC AND NOT user_H6_DEF_BB3 AND NOT user_H6_DEF_BBC AND nplayersdealt = 6 AND NumberOfOpponentsAllin = 0 AND NOT StackUnknown AND NumberOfRaisesBeforeFlop = 1 AND NOT BotCheckedPreflop AND NOT user_H6_3betIntent AND NOT user_H6_BISOBB1Other AND NOT user_H6_BISOBB1SB AND NOT user_H6_BISOBB2Other AND NOT user_H6_BISOBB2SB AND NOT user_H6_BISOBB3Other AND NOT user_H6_BISOBB3SB AND NOT user_H6_BISOBB4Other AND NOT user_H6_BISOBB4SB AND NOT user_H6_BISOBB5SB AND NOT user_H6_BISOSB1 AND NOT user_H6_BISOSB2 AND NOT user_H6_BISOSB3 AND NOT user_H6_BISOSB4 AND NOT user_H6_ISOBTN1 AND NOT user_H6_ISOBTN2 AND NOT user_H6_ISOBTN3 AND NOT user_H6_ISOCO1 AND NOT user_H6_ISOCO2 AND NOT user_H6_LimpOtherIntent AND NOT user_H6_LimpSBIntent AND NOT user_H6_ML2Other AND NOT user_H6_ML2SB AND NOT user_H6_ML3Other AND NOT user_H6_ML3SB AND NOT user_H6_ML4Other AND NOT user_H6_ML4SB AND NOT user_H6_ML5SB AND NOT user_H6_RFIIntent AND NOT user_H6_VSOpenCallIntent AND BotRaisedBeforeFlop AND NOT BotCalledBeforeFlop) RETURN TRUE FORCE
+WHEN (user_H6_DEF_BB3 AND NOT user_H6_DEF_BTN3 AND NOT user_H6_DEF_BTNC AND NOT user_H6_DEF_BBC AND nplayersdealt = 6 AND NumberOfOpponentsAllin = 0 AND NOT StackUnknown AND NumberOfRaisesBeforeFlop = 1 AND NOT BotCheckedPreflop AND NOT user_H6_3betIntent AND NOT user_H6_BISOBB1Other AND NOT user_H6_BISOBB1SB AND NOT user_H6_BISOBB2Other AND NOT user_H6_BISOBB2SB AND NOT user_H6_BISOBB3Other AND NOT user_H6_BISOBB3SB AND NOT user_H6_BISOBB4Other AND NOT user_H6_BISOBB4SB AND NOT user_H6_BISOBB5SB AND NOT user_H6_BISOSB1 AND NOT user_H6_BISOSB2 AND NOT user_H6_BISOSB3 AND NOT user_H6_BISOSB4 AND NOT user_H6_ISOBTN1 AND NOT user_H6_ISOBTN2 AND NOT user_H6_ISOBTN3 AND NOT user_H6_ISOCO1 AND NOT user_H6_ISOCO2 AND NOT user_H6_LimpOtherIntent AND NOT user_H6_LimpSBIntent AND NOT user_H6_ML2Other AND NOT user_H6_ML2SB AND NOT user_H6_ML3Other AND NOT user_H6_ML3SB AND NOT user_H6_ML4Other AND NOT user_H6_ML4SB AND NOT user_H6_ML5SB AND NOT user_H6_RFIIntent AND NOT user_H6_VSOpenCallIntent AND BotRaisedBeforeFlop AND NOT BotCalledBeforeFlop) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$H6DEFOriginCall##
+WHEN (user_H6_DEF_BTNC AND NOT user_H6_DEF_BTN3 AND NOT user_H6_DEF_BB3 AND NOT user_H6_DEF_BBC AND nplayersdealt = 6 AND NumberOfOpponentsAllin = 0 AND NOT StackUnknown AND NumberOfRaisesBeforeFlop = 1 AND NOT BotCheckedPreflop AND NOT user_H6_3betIntent AND NOT user_H6_BISOBB1Other AND NOT user_H6_BISOBB1SB AND NOT user_H6_BISOBB2Other AND NOT user_H6_BISOBB2SB AND NOT user_H6_BISOBB3Other AND NOT user_H6_BISOBB3SB AND NOT user_H6_BISOBB4Other AND NOT user_H6_BISOBB4SB AND NOT user_H6_BISOBB5SB AND NOT user_H6_BISOSB1 AND NOT user_H6_BISOSB2 AND NOT user_H6_BISOSB3 AND NOT user_H6_BISOSB4 AND NOT user_H6_ISOBTN1 AND NOT user_H6_ISOBTN2 AND NOT user_H6_ISOBTN3 AND NOT user_H6_ISOCO1 AND NOT user_H6_ISOCO2 AND NOT user_H6_LimpOtherIntent AND NOT user_H6_LimpSBIntent AND NOT user_H6_ML2Other AND NOT user_H6_ML2SB AND NOT user_H6_ML3Other AND NOT user_H6_ML3SB AND NOT user_H6_ML4Other AND NOT user_H6_ML4SB AND NOT user_H6_ML5SB AND NOT user_H6_RFIIntent AND NOT user_H6_VSOpenCallIntent AND BotCalledBeforeFlop AND NOT BotRaisedBeforeFlop) RETURN TRUE FORCE
+WHEN (user_H6_DEF_BBC AND NOT user_H6_DEF_BTN3 AND NOT user_H6_DEF_BTNC AND NOT user_H6_DEF_BB3 AND nplayersdealt = 6 AND NumberOfOpponentsAllin = 0 AND NOT StackUnknown AND NumberOfRaisesBeforeFlop = 1 AND NOT BotCheckedPreflop AND NOT user_H6_3betIntent AND NOT user_H6_BISOBB1Other AND NOT user_H6_BISOBB1SB AND NOT user_H6_BISOBB2Other AND NOT user_H6_BISOBB2SB AND NOT user_H6_BISOBB3Other AND NOT user_H6_BISOBB3SB AND NOT user_H6_BISOBB4Other AND NOT user_H6_BISOBB4SB AND NOT user_H6_BISOBB5SB AND NOT user_H6_BISOSB1 AND NOT user_H6_BISOSB2 AND NOT user_H6_BISOSB3 AND NOT user_H6_BISOSB4 AND NOT user_H6_ISOBTN1 AND NOT user_H6_ISOBTN2 AND NOT user_H6_ISOBTN3 AND NOT user_H6_ISOCO1 AND NOT user_H6_ISOCO2 AND NOT user_H6_LimpOtherIntent AND NOT user_H6_LimpSBIntent AND NOT user_H6_ML2Other AND NOT user_H6_ML2SB AND NOT user_H6_ML3Other AND NOT user_H6_ML3SB AND NOT user_H6_ML4Other AND NOT user_H6_ML4SB AND NOT user_H6_ML5SB AND NOT user_H6_RFIIntent AND NOT user_H6_VSOpenCallIntent AND BotCalledBeforeFlop AND NOT BotRaisedBeforeFlop) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$H6DEFOrigin##
+WHEN (f$H6DEFOrigin3) RETURN TRUE FORCE
+WHEN (f$H6DEFOriginCall) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$H6DEFValid##
+WHEN (IsFlop AND OpponentsOnFlop = 1 AND OpponentsLeft = 1 AND f$H6DEFOrigin) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 2 AND OpponentsLeft = 1 AND f$H6DEFOrigin) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 2 AND OpponentsLeft = 2 AND f$H6DEFOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 1 AND OpponentsOnTurn = 1 AND OpponentsLeft = 1 AND f$H6DEFOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 2 AND OpponentsOnTurn = 1 AND OpponentsLeft = 1 AND f$H6DEFOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 2 AND OpponentsOnTurn = 2 AND OpponentsLeft = 1 AND f$H6DEFOrigin) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 2 AND OpponentsOnTurn = 2 AND OpponentsLeft = 2 AND f$H6DEFOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 1 AND OpponentsOnTurn = 1 AND OpponentsOnRiver = 1 AND OpponentsLeft = 1 AND f$H6DEFOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 2 AND OpponentsOnTurn = 1 AND OpponentsOnRiver = 1 AND OpponentsLeft = 1 AND f$H6DEFOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 2 AND OpponentsOnTurn = 2 AND OpponentsOnRiver = 1 AND OpponentsLeft = 1 AND f$H6DEFOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 2 AND OpponentsOnTurn = 2 AND OpponentsOnRiver = 2 AND OpponentsLeft = 1 AND f$H6DEFOrigin) RETURN TRUE FORCE
+WHEN (IsRiver AND OpponentsOnFlop = 2 AND OpponentsOnTurn = 2 AND OpponentsOnRiver = 2 AND OpponentsLeft = 2 AND f$H6DEFOrigin) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$H6DEFHU##
+WHEN (f$H6DEFValid AND OpponentsLeft = 1) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$H6DEFTwo##
+WHEN (f$H6DEFValid AND OpponentsLeft = 2) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
