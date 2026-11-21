@@ -54,3 +54,9 @@ Fonte agora: `portability/p3bet_multiway_v1/preflop_srp_limp_3bet_multiway_draft
 Atualizações: M03, M04, M05, M06, M07 e M14 ganharam cobertura parcial adicional. **Nenhum dos 14 contratos foi promovido a VERIFIED.** A matriz permanece um piso de aceitação funcional, não um placar de linhas. Replays OH/ações finais continuam ausentes e não é seguro confundir `None` Python com o comportamento do `default.bot`.
 
 O DeepCrusher_R10d permanece congelado como referência com SHA já registrado. Aquele projeto possui histórico e perfis mais completos em várias famílias; este checkpoint não altera a conclusão: **R10d FLOOR NOT MET.**
+
+## ISO-1 checkpoint (20/11/2026; DRAFT)
+A matriz M04 continua PARTIAL: foram acrescentadas 5 origens CO/BTN contra limpers e 41 regras pós-flop, mas sem cobrir todos os nós de ISO/limp e sem replay OH. O relatório passou a comparar a fonte integrada `portability/iso_raise_v1/iso_integrated_draft.oppl` com o R10d congelado; **nenhum gate de release foi aprovado**.
+
+## Evidência CI ISO-1
+[Workflow 44853164836](https://github.com/pmartins87/Heuristic6max/actions/runs/44853164836) aprovou 534 execuções em 27 suítes (522 testes deduplicados por suíte). Isso acrescenta 13 testes estáticos frente aos 521 anteriores; M04 continua PARTIAL e a barreira total 14/14 continua vigente. Sem prova de paridade de execução OpenHoldem.

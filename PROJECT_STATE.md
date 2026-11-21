@@ -1,5 +1,5 @@
 # Estado atual — Heuristic6max
-**Data:** 20/11/2026 | **Checkpoint:** Multiway-v2 + LIMP-BB-v1 | **Estado:** G2-a HOLD; R10d floor NÃO ATINGIDO; não operacional.
+**Data:** 20/11/2026 | **Checkpoint:** ISO-1 DRAFT em desenvolvimento | **Estado:** G2-a HOLD; R10d floor NÃO ATINGIDO; não operacional.
 
 ## Evidências concluídas
 - G0: arquitetura e contratos.
@@ -156,3 +156,8 @@ Protegidos flop/turn contra `HaveNuts → Fold` quando o tamanho da aposta exced
 - Piso R10d NÃO ATINGIDO: 14 famílias ainda não VERIFIED; faltam limp/iso, 4bet/5bet, perfil do adversário, SPR/board/runout, stacks, fallback e validação operacional. G1 ABERTO, G2-a HOLD, G6 PENDENTE.
 
 **Errata de contagem CI (20/11/2026):** [registro verificável](CI_TEST_COUNT_ERRATA.md). Antes deste bloco: 483 execuções, 471 testes distintos; após: 521 execuções, 509 distintos. A suíte do benchmark R10d com 12 testes roda duas vezes. Registros anteriores de 434/472 eram estimativas incorretas. Essa correção é exclusivamente documental e NÃO altera a estratégia.
+
+## ISO-1 — isolamento tardio contra limpers (DRAFT, 20/11/2026)
+- Em `portability/iso_raise_v1/`, cinco novos nós CO/BTN com 1–3 limpers, handlist separada e 5 intenções `Set`; **nenhum range RFI/VS_OPEN/VS_3BET da v0.6.1 foi editado**. Os 5 limps pré-flop são uma política heurística nova, NÃO validada em EV.
+- Pós-flop: 41 ações (15/14/12), 120 topologias monotônicas (15 flop, 35 turn, 70 river), origens mutuamente exclusivas e limites por número máximo de callers; nuts protegido contra overbet. Combinação atual DRAFT: `portability/iso_raise_v1/iso_integrated_draft.oppl`.
+- **CI aprovada no commit `142c00eb` ([execução 44853164836](https://github.com/pmartins87/Heuristic6max/actions/runs/44853164836)): 534 execuções em 27 suítes, 522 testes deduplicados por suíte.** São 13 testes incrementais sobre a baseline 521/509. Replays reais OH: **zero**. G1 ABERTO, G2-a HOLD, VS_4BET BLOQUEADO, G6 PENDENTE; 14 capacidades R10d continuam sem aceitação integral. Sem autorização de uso real.

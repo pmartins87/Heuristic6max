@@ -146,3 +146,8 @@ Correção de quatro ramos de flop/turn em 3bet HU e SRP 3way: após o raise opc
 - Próxima prioridade de código: **limp/iso-raise e resposta ao isolamento, coldcall/squeeze e potes 4bet/5bet**, seguidos de força/board/runout, SPR, perfil e histórico de bet/raise/call resolvidos. A meta superar funcionalmente R10d segue inalterada, com 14/14 capacidades não VERIFIED.
 
 **Errata de contagem CI (20/11/2026):** [registro verificável](CI_TEST_COUNT_ERRATA.md). Antes deste bloco: 483 execuções, 471 testes distintos; após: 521 execuções, 509 distintos. A suíte do benchmark R10d com 12 testes roda duas vezes. Registros anteriores de 434/472 eram estimativas incorretas. Essa correção é exclusivamente documental e NÃO altera a estratégia.
+
+## ISO-1 — próximo incremento DRAFT, sujeito à CI e ao replay real
+- Autoria source-first implementada para CO (1/2 limpers) e BTN (1/2/3 limpers), 5 marcadores de intenção, uma lista de ISO nova e 41 decisões pós-flop sobre 120 topologias legais. As decisões históricas v0.6.1 continuam inalteradas; não confundir *adição de política* com validação GTO.
+- **Próximos gates de engenharia:** verificar primeiro funcionamento das ações/preços/memória `Set` em replay OH offline; ampliar SB/BB iso, coldcall e resposta ao isolamento; então squeeze e, após liberar G2-a, VS_4BET/5BET. Em paralelo introduzir textura/runout, SPR e sequenciamento das ações observadas. Stop rule: não publicar jogo operacional sem compatibilidade OH e fallback legal controlado.
+- **CI confirmada:** 534 execuções, 522 distintas por suíte, 27 suítes no run 44853164836; o piso R10d e todas as 14 capacidades continuam sem aprovação final.

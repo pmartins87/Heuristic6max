@@ -123,3 +123,7 @@ Atualizados quatro ramos de nuts-call, testes, intérpretes, os dois integrados,
 - Fonte ativa: `portability/p3bet_multiway_v1/preflop_srp_limp_3bet_multiway_draft.oppl`. 521 testes no CI previstos, hashes gerados e preservação de todos os ranges anteriores. Sem replay real; R10d FLOOR NOT MET.
 
 **Errata de contagem CI (20/11/2026):** [registro verificável](CI_TEST_COUNT_ERRATA.md). Antes deste bloco: 483 execuções, 471 testes distintos; após: 521 execuções, 509 distintos. A suíte do benchmark R10d com 12 testes roda duas vezes. Registros anteriores de 434/472 eram estimativas incorretas. Essa correção é exclusivamente documental e NÃO altera a estratégia.
+
+## ISO-1 (20/11/2026, DRAFT; NÃO release)
+- Nova árvore: `portability/iso_raise_v1/` e integrado `iso_integrated_draft.oppl`, derivado do pai `portability/p3bet_multiway_v1/preflop_srp_limp_3bet_multiway_draft.oppl` sem alterar os 1.460 comandos `WHEN` ancestrais.
+- Cinco contextos de isolamento pré-flop, 41 decisões pós-flop e 120 topologias. Teste, recomposição do integrado e SHA de integridade **aprovados na CI 44853164836** (534 execuções / 522 distintas por suíte); validação OpenHoldem permanece pendente. Fonte v0.6.1 intocada, **sem runtime OH**, sem promoção e sem prova de superação R10d. Ver [ADR-036](DECISIONS.md) e [HANDOFF](HANDOFF.md).
