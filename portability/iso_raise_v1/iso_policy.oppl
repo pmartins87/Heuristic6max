@@ -1,0 +1,56 @@
+// ISO-1 NEW pot type. Inherit from documented native OpenPPL symbols; no solver/EV claim.
+##f$H6ISOStrong##
+WHEN (HaveNuts) RETURN TRUE FORCE
+WHEN (HaveQuads) RETURN TRUE FORCE
+WHEN (HaveFullHouse) RETURN TRUE FORCE
+WHEN (HaveFlush) RETURN TRUE FORCE
+WHEN (HaveStraight) RETURN TRUE FORCE
+WHEN (HaveSet) RETURN TRUE FORCE
+WHEN (HaveTrips) RETURN TRUE FORCE
+WHEN (HaveTwoPair) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+//@STREET flop
+WHEN (f$H6ISOValid AND AmountToCall > 0 AND HaveNuts AND AmountToCall <= 35% PotSize) RaiseHalfPot FORCE
+WHEN (f$H6ISOValid AND AmountToCall > 0 AND HaveNuts) Call FORCE
+WHEN (f$H6ISOHU AND AmountToCall > 0 AND f$H6ISOStrong AND AmountToCall <= 85% PotSize) Call FORCE
+WHEN (f$H6ISOTwo AND AmountToCall > 0 AND f$H6ISOStrong AND AmountToCall <= 65% PotSize) Call FORCE
+WHEN (f$H6ISOCrowded AND AmountToCall > 0 AND f$H6ISOStrong AND AmountToCall <= 45% PotSize) Call FORCE
+WHEN (f$H6ISOHU AND AmountToCall > 0 AND HaveOverPair AND AmountToCall <= 42% PotSize) Call FORCE
+WHEN (f$H6ISOTwo AND AmountToCall > 0 AND HaveOverPair AND Position = Last AND AmountToCall <= 20% PotSize) Call FORCE
+WHEN (f$H6ISOHU AND AmountToCall > 0 AND HaveNutFlushDraw AND AmountToCall <= 30% PotSize) Call FORCE
+WHEN (f$H6ISOValid AND AmountToCall > 0) Fold FORCE
+WHEN (f$H6ISOValid AND AmountToCall = 0 AND HaveNuts) BetTwoThirdPot FORCE
+WHEN (f$H6ISOHU AND AmountToCall = 0 AND f$H6ISOStrong) BetHalfPot FORCE
+WHEN (f$H6ISOTwo AND AmountToCall = 0 AND f$H6ISOStrong) BetThirdPot FORCE
+WHEN (f$H6ISOCrowded AND AmountToCall = 0 AND f$H6ISOStrong) BetThirdPot FORCE
+WHEN (f$H6ISOHU AND AmountToCall = 0 AND HaveOverPair) BetHalfPot FORCE
+WHEN (f$H6ISOHU AND AmountToCall = 0 AND BotIsLastRaiser AND Position = Last AND NOT FlushPossibleOnFlop AND NOT StraightPossibleOnFlop AND NOT PairOnBoard AND randomhand < 0.20) BetThirdPot FORCE
+WHEN (f$H6ISOValid AND AmountToCall = 0) Check FORCE
+//@STREET turn
+WHEN (f$H6ISOValid AND AmountToCall > 0 AND HaveNuts AND AmountToCall <= 30% PotSize) RaiseHalfPot FORCE
+WHEN (f$H6ISOValid AND AmountToCall > 0 AND HaveNuts) Call FORCE
+WHEN (f$H6ISOHU AND AmountToCall > 0 AND f$H6ISOStrong AND AmountToCall <= 72% PotSize) Call FORCE
+WHEN (f$H6ISOTwo AND AmountToCall > 0 AND f$H6ISOStrong AND AmountToCall <= 54% PotSize) Call FORCE
+WHEN (f$H6ISOCrowded AND AmountToCall > 0 AND f$H6ISOStrong AND AmountToCall <= 35% PotSize) Call FORCE
+WHEN (f$H6ISOHU AND AmountToCall > 0 AND HaveOverPair AND AmountToCall <= 32% PotSize) Call FORCE
+WHEN (f$H6ISOHU AND AmountToCall > 0 AND HaveNutFlushDraw AND AmountToCall <= 24% PotSize) Call FORCE
+WHEN (f$H6ISOValid AND AmountToCall > 0) Fold FORCE
+WHEN (f$H6ISOValid AND AmountToCall = 0 AND HaveNuts) BetTwoThirdPot FORCE
+WHEN (f$H6ISOHU AND AmountToCall = 0 AND f$H6ISOStrong) BetHalfPot FORCE
+WHEN (f$H6ISOTwo AND AmountToCall = 0 AND f$H6ISOStrong) BetThirdPot FORCE
+WHEN (f$H6ISOCrowded AND AmountToCall = 0 AND f$H6ISOStrong) BetThirdPot FORCE
+WHEN (f$H6ISOHU AND AmountToCall = 0 AND HaveOverPair AND BotRaisedOnFlop) BetThirdPot FORCE
+WHEN (f$H6ISOValid AND AmountToCall = 0) Check FORCE
+//@STREET river
+WHEN (f$H6ISOValid AND AmountToCall > 0 AND HaveNuts AND AmountToCall <= 25% PotSize) RaiseHalfPot FORCE
+WHEN (f$H6ISOValid AND AmountToCall > 0 AND HaveNuts) Call FORCE
+WHEN (f$H6ISOHU AND AmountToCall > 0 AND f$H6ISOStrong AND AmountToCall <= 55% PotSize) Call FORCE
+WHEN (f$H6ISOTwo AND AmountToCall > 0 AND f$H6ISOStrong AND AmountToCall <= 42% PotSize) Call FORCE
+WHEN (f$H6ISOCrowded AND AmountToCall > 0 AND f$H6ISOStrong AND AmountToCall <= 27% PotSize) Call FORCE
+WHEN (f$H6ISOHU AND AmountToCall > 0 AND HaveOverPair AND Position = Last AND AmountToCall <= 18% PotSize) Call FORCE
+WHEN (f$H6ISOValid AND AmountToCall > 0) Fold FORCE
+WHEN (f$H6ISOValid AND AmountToCall = 0 AND HaveNuts) BetTwoThirdPot FORCE
+WHEN (f$H6ISOHU AND AmountToCall = 0 AND f$H6ISOStrong) BetHalfPot FORCE
+WHEN (f$H6ISOTwo AND AmountToCall = 0 AND f$H6ISOStrong) BetThirdPot FORCE
+WHEN (f$H6ISOCrowded AND AmountToCall = 0 AND f$H6ISOStrong) BetThirdPot FORCE
+WHEN (f$H6ISOValid AND AmountToCall = 0) Check FORCE
