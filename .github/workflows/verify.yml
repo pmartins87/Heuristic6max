@@ -260,3 +260,10 @@ jobs:
         run: python benchmarks/r10d_floor/comparison.py
       - name: Verify BLISO-2 R10d metrics and benchmark SHA256
         run: git diff --exit-code -- benchmarks/r10d_floor/CURRENT_GAP_REPORT.json && cd benchmarks/r10d_floor && sha256sum -c BENCHMARK_SHA256SUMS.txt
+
+      - name: Test ISO DEFENSE v1 2 facing-limper raise nodes (21 tests)
+        run: python -m unittest discover -s portability/iso_defense_v1 -p 'test_*.py' -q
+      - name: Rebuild ISO DEFENSE v1 source-first combined OpenPPL
+        run: python portability/iso_defense_v1/build_defense.py
+      - name: Verify ISO DEFENSE v1 merged parent unchanged
+        run: git diff --exit-code -- portability/iso_defense_v1/iso_defense_integrated_draft.oppl
