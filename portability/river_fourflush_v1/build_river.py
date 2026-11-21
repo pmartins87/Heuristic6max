@@ -36,8 +36,8 @@ def render()->str:
         while i<len(new_actions) and new_actions[i]!=action:i+=1
         if i==len(new_actions):raise ValueError('ancestral OpenPPL action removed or reordered')
         i+=1
-    if len(new_actions)!=len(old_actions)+10:
-        # 4 actions + 2 origin helper cases + 2 fallback + 1 exposure + 1 fallback
+    if len(new_actions)!=len(old_actions)+9:
+        # 4 actions + 2 origin helper cases + 1 exposure case + 2 helper fallbacks
         raise ValueError('unexpected rule cardinality')
     return out
 
