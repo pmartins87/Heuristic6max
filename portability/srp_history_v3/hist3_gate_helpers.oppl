@@ -1,0 +1,43 @@
+// HIST-v3: no silent aliasing of bet-raise-call and raise-reraise-call when Hero IP.
+// Opponent action flags do not encode who bet first; R10 style user memories
+// are REQUIRED before the ambiguous M line can be regarded as known.
+##f$H3FlopBetRaisedCallStrict##
+WHEN (f$HLFlopBetRaisedCall AND Position = First) RETURN TRUE FORCE
+WHEN (f$HLFlopBetRaisedCall AND Position = Last AND user_H3_IP_FlopLeadBetFacedRaise AND NOT user_H3_IP_FlopRaiseFacedReraise) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$H3TurnBetRaisedCallStrict##
+WHEN (f$HLTurnBetRaisedCall AND Position = First) RETURN TRUE FORCE
+WHEN (f$HLTurnBetRaisedCall AND Position = Last AND user_H3_IP_TurnLeadBetFacedRaise AND NOT user_H3_IP_TurnRaiseFacedReraise) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$H3FlopKnownSafe##
+WHEN (Position = Last AND f$HLFlopBetRaisedCall AND NOT f$H3FlopBetRaisedCallStrict) RETURN FALSE FORCE
+WHEN (f$HLFlopKnownV2) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$H3TurnKnownSafe##
+WHEN (Position = Last AND f$HLTurnBetRaisedCall AND NOT f$H3TurnBetRaisedCallStrict) RETURN FALSE FORCE
+WHEN (f$HLTurnKnownV2) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$H3TurnDomain##
+WHEN (f$SRPHU AND f$H3FlopKnownSafe) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$H3RiverDomain##
+WHEN (f$SRPHU AND f$H3FlopKnownSafe AND f$H3TurnKnownSafe) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+// Native library OpponentCalledOnFlop is FALSE if the villain bet first.
+// On the next street, if Hero raised and no opponent re-raise was observed,
+// reaching the next street heads-up implies the villain called.
+// These are observational inferences: verify on target OpenHoldem build.
+##f$H3FlopRaiseCallObserved##
+WHEN (IsTurn AND BotRaisedOnFlop AND NOT BotCalledOnFlop AND NOT BotCheckedOnFlop AND NOT NoVillainBetOrRaisedOnFlop AND NOT NoBettingOnFlop AND NumberOfRaisesOnFlop = 0) RETURN TRUE FORCE
+WHEN (IsRiver AND BotRaisedOnFlop AND NOT BotCalledOnFlop AND NOT BotCheckedOnFlop AND NOT NoVillainBetOrRaisedOnFlop AND NOT NoBettingOnFlop AND NumberOfRaisesOnFlop = 0) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$H3FlopCheckRaiseCallObserved##
+WHEN (IsTurn AND BotRaisedOnFlop AND NOT BotCalledOnFlop AND BotCheckedOnFlop AND NOT NoVillainBetOrRaisedOnFlop AND NOT NoBettingOnFlop AND NumberOfRaisesOnFlop = 0) RETURN TRUE FORCE
+WHEN (IsRiver AND BotRaisedOnFlop AND NOT BotCalledOnFlop AND BotCheckedOnFlop AND NOT NoVillainBetOrRaisedOnFlop AND NOT NoBettingOnFlop AND NumberOfRaisesOnFlop = 0) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$H3TurnRaiseCallObserved##
+WHEN (IsRiver AND BotRaisedOnTurn AND NOT BotCalledOnTurn AND NOT BotCheckedOnTurn AND NOT NoVillainBetOrRaisedOnTurn AND NOT NoBettingOnTurn AND NumberOfRaisesOnTurn = 0) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$H3TurnCheckRaiseCallObserved##
+WHEN (IsRiver AND BotRaisedOnTurn AND NOT BotCalledOnTurn AND BotCheckedOnTurn AND NOT NoVillainBetOrRaisedOnTurn AND NOT NoBettingOnTurn AND NumberOfRaisesOnTurn = 0) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE

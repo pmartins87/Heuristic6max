@@ -119,3 +119,9 @@ Python de importação de charts, análise, Monte Carlo, testes e reconstrução
 - **75 ações (14/22/39)**, 70 funções, 18 novos testes; **total esperado CI 313** = 277 anteriores +18 HIST-v1 +18 HIST-v2. As **9 trajetórias HIST-v1 permanecem equivalentes** em inputs iguais; nenhuma alteração nos 277 ramos pré-flop.
 - Más classificações/flags contraditórios ficam sem correspondência no interpretador. OH ainda pode aplicar default.bot, portanto não executar em jogos reais; rastreamento por flags agregado não é um log de eventos verdadeiro. G3 em desenvolvimento e G6 pendente; G1 aberto e G2-a HOLD preservados.
 - Próximo ganho real: histórico ordenado de ações com apostas/raises e mudança de posição, classificação do pote SRP versus limp/iso, board texture/runout, SPR e sizings. Não inflar quantidades de nós sem validação de estado.
+
+## G3 HIST-v3 — checkpoint cronológico (20/11/2026)
+- **484 históricos legais** de flop+turn chegando ao river (11 cadeias completas de ação por street, IP/OOP e Hero PFR/caller), com cap puramente enumerativo de quatro raises por street. Não há sizing/SPR, all-in, multiway nem 484 ações autoradas. Esses cenários são um **inventário de lacunas**, não uma estratégia final.
+- Biblioteca oficial OpenPPL: `OpponentCalledOnFlop/Turn` somente quando `NoVillainBetOrRaised...`; R/H do HIST-v2 podem ser inalcançáveis. HIST-v3 substitui chamadas por classificadores de raise e check-raise baseados em observações da street anterior; preserva HIST-v2 como histórico.
+- Três colisões por resumos de flags IP; quatro `Set user...` observacionais capturam Bet versus Raise anterior. A nova rota recusa M IP sem marcador consistente. Sem ação inventada em caso desconhecido; **no-match não é fail-closed no OH real**.
+- 10 helpers novos e 31 testes; **344 testes esperados CI**, todas as 75 ações prévias e todo pré-flop preservados. G3 em desenvolvimento; G1 ABERTO, G2-a HOLD, G6 pendente; zero replay real neste checkpoint.

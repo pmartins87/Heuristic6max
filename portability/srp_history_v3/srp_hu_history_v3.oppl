@@ -1,0 +1,374 @@
+// SRP-HU-MVP; HEURISTIC TEST MODULE ONLY. NOT VALIDATED ON REAL OPENHOLDEM.
+// Preflop history inferred from documented OH symbols; isolate limped pots conservatively.
+// All decisions in this file are the source of truth, not Python reimplementations.
+// Works only for 6-dealt, HU from flop, without opponent all-in; no implicit Others action.
+##f$SRPHUOpen##
+WHEN (nplayersdealt = 6 AND OpponentsOnFlop = 1 AND OpponentsLeft = 1 AND NOT StackUnknown AND NumberOfOpponentsAllin = 0 AND BotRaisedBeforeFlop AND NOT BotCalledBeforeFlop AND NumberOfRaisesBeforeFlop = 0) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$SRPHUCaller##
+WHEN (nplayersdealt = 6 AND OpponentsOnFlop = 1 AND OpponentsLeft = 1 AND NOT StackUnknown AND NumberOfOpponentsAllin = 0 AND BotCalledBeforeFlop AND NOT BotRaisedBeforeFlop AND NumberOfRaisesBeforeFlop = 1) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$SRPHU##
+WHEN (f$SRPHUOpen) RETURN TRUE FORCE
+WHEN (f$SRPHUCaller) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$SRPStrongMade##
+WHEN (HaveNuts) RETURN TRUE FORCE
+WHEN (HaveQuads) RETURN TRUE FORCE
+WHEN (HaveFullHouse) RETURN TRUE FORCE
+WHEN (HaveFlush) RETURN TRUE FORCE
+WHEN (HaveStraight) RETURN TRUE FORCE
+WHEN (HaveSet) RETURN TRUE FORCE
+WHEN (HaveTrips) RETURN TRUE FORCE
+WHEN (HaveTwoPair) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$SRPTopGood##
+WHEN (HaveOverPair) RETURN TRUE FORCE
+WHEN (HaveTopPair AND HaveBestKicker) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+// HISTORY-V1: Source OpenPPL of new history predicates and line-specific actions.
+// Not a standalone bot. Build merges this with frozen srp_hu_postflop_draft.oppl.
+// NoVillainBetOrRaisedOn... is required to distinguish a bot bet/call from
+// bot raising a villain bet (which must NOT be classified as a cbet-call).
+##f$HLFlopBetCall##
+WHEN (BotRaisedOnFlop AND OpponentCalledOnFlop AND NOT BotCalledOnFlop AND NoVillainBetOrRaisedOnFlop AND NOT NoBettingOnFlop AND NumberOfRaisesOnFlop = 0) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLFlopCheckedThrough##
+WHEN (NoBettingOnFlop AND NoVillainBetOrRaisedOnFlop AND NOT OpponentCalledOnFlop AND NOT BotRaisedOnFlop AND NOT BotCalledOnFlop AND NumberOfRaisesOnFlop = 0) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLFlopCall##
+WHEN (BotCalledOnFlop AND NOT OpponentCalledOnFlop AND NOT BotRaisedOnFlop AND NOT NoVillainBetOrRaisedOnFlop AND NOT NoBettingOnFlop AND NumberOfRaisesOnFlop = 0) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLFlopKnown##
+WHEN (f$HLFlopBetCall) RETURN TRUE FORCE
+WHEN (f$HLFlopCheckedThrough) RETURN TRUE FORCE
+WHEN (f$HLFlopCall) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLTurnBetCall##
+WHEN (BotRaisedOnTurn AND OpponentCalledOnTurn AND NOT BotCalledOnTurn AND NoVillainBetOrRaisedOnTurn AND NOT NoBettingOnTurn AND NumberOfRaisesOnTurn = 0) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLTurnCheckedThrough##
+WHEN (NoBettingOnTurn AND NoVillainBetOrRaisedOnTurn AND NOT OpponentCalledOnTurn AND NOT BotRaisedOnTurn AND NOT BotCalledOnTurn AND NumberOfRaisesOnTurn = 0) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLTurnCall##
+WHEN (BotCalledOnTurn AND NOT OpponentCalledOnTurn AND NOT BotRaisedOnTurn AND NOT NoVillainBetOrRaisedOnTurn AND NOT NoBettingOnTurn AND NumberOfRaisesOnTurn = 0) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLTurnKnown##
+WHEN (f$HLTurnBetCall) RETURN TRUE FORCE
+WHEN (f$HLTurnCheckedThrough) RETURN TRUE FORCE
+WHEN (f$HLTurnCall) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLTurnDomain##
+WHEN (f$SRPHU AND f$HLFlopKnown) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLRiverDomain##
+WHEN (f$SRPHU AND f$HLFlopKnown AND f$HLTurnKnown) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+// 9 exclusive two-street paths, composed from the two source observations.
+##f$HLPathBB##
+WHEN (f$HLFlopBetCall AND f$HLTurnBetCall) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPathBC##
+WHEN (f$HLFlopBetCall AND f$HLTurnCheckedThrough) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPathBX##
+WHEN (f$HLFlopBetCall AND f$HLTurnCall) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPathCB##
+WHEN (f$HLFlopCheckedThrough AND f$HLTurnBetCall) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPathCC##
+WHEN (f$HLFlopCheckedThrough AND f$HLTurnCheckedThrough) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPathCX##
+WHEN (f$HLFlopCheckedThrough AND f$HLTurnCall) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPathXB##
+WHEN (f$HLFlopCall AND f$HLTurnBetCall) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPathXC##
+WHEN (f$HLFlopCall AND f$HLTurnCheckedThrough) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPathXX##
+WHEN (f$HLFlopCall AND f$HLTurnCall) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+// Additional turn actions TAKE PRECEDENCE over the baseline where path is verified.
+// G3-HIST-v2: three additional action-line classes on BOTH flop and turn.
+// This is a source fragment assembled with historical OpenPPL v1, NOT a bot.
+// The decisions, predicates and actions below are authored in OpenPPL.
+##f$HLFlopRaiseCall##
+// Villain bets, Hero raises WITHOUT checking first, villain calls.
+WHEN (BotRaisedOnFlop AND OpponentCalledOnFlop AND NOT BotCalledOnFlop AND NOT BotCheckedOnFlop AND NOT NoVillainBetOrRaisedOnFlop AND NOT NoBettingOnFlop AND NumberOfRaisesOnFlop = 0) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLFlopCheckRaiseCall##
+// Hero checks, villain bets, Hero raises, villain calls.
+WHEN (BotRaisedOnFlop AND OpponentCalledOnFlop AND NOT BotCalledOnFlop AND BotCheckedOnFlop AND NOT NoVillainBetOrRaisedOnFlop AND NOT NoBettingOnFlop AND NumberOfRaisesOnFlop = 0) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLFlopBetRaisedCall##
+// Hero bets; villain raises; Hero calls that raise. No check beforehand.
+WHEN (BotRaisedOnFlop AND BotCalledOnFlop AND NOT BotCheckedOnFlop AND NOT OpponentCalledOnFlop AND NOT NoVillainBetOrRaisedOnFlop AND NOT NoBettingOnFlop AND NumberOfRaisesOnFlop = 1) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLTurnRaiseCall##
+WHEN (BotRaisedOnTurn AND OpponentCalledOnTurn AND NOT BotCalledOnTurn AND NOT BotCheckedOnTurn AND NOT NoVillainBetOrRaisedOnTurn AND NOT NoBettingOnTurn AND NumberOfRaisesOnTurn = 0) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLTurnCheckRaiseCall##
+WHEN (BotRaisedOnTurn AND OpponentCalledOnTurn AND NOT BotCalledOnTurn AND BotCheckedOnTurn AND NOT NoVillainBetOrRaisedOnTurn AND NOT NoBettingOnTurn AND NumberOfRaisesOnTurn = 0) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLTurnBetRaisedCall##
+WHEN (BotRaisedOnTurn AND BotCalledOnTurn AND NOT BotCheckedOnTurn AND NOT OpponentCalledOnTurn AND NOT NoVillainBetOrRaisedOnTurn AND NOT NoBettingOnTurn AND NumberOfRaisesOnTurn = 1) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLFlopKnownV2##
+WHEN (f$HLFlopKnown) RETURN TRUE FORCE
+WHEN (f$H3FlopRaiseCallObserved) RETURN TRUE FORCE
+WHEN (f$H3FlopCheckRaiseCallObserved) RETURN TRUE FORCE
+WHEN (f$H3FlopBetRaisedCallStrict) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLTurnKnownV2##
+WHEN (f$HLTurnKnown) RETURN TRUE FORCE
+WHEN (f$H3TurnRaiseCallObserved) RETURN TRUE FORCE
+WHEN (f$H3TurnCheckRaiseCallObserved) RETURN TRUE FORCE
+WHEN (f$H3TurnBetRaisedCallStrict) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLTurnDomainV2##
+WHEN (f$SRPHU AND f$HLFlopKnownV2) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLRiverDomainV2##
+WHEN (f$SRPHU AND f$HLFlopKnownV2 AND f$HLTurnKnownV2) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+// 36 exhaustive symbolic path combinations are generated as helper funcs
+// from the six named OpenPPL source predicates, with no extra decisions.
+##f$HLPath2BB##
+WHEN (f$HLFlopBetCall AND f$HLTurnBetCall) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPath2BC##
+WHEN (f$HLFlopBetCall AND f$HLTurnCheckedThrough) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPath2BX##
+WHEN (f$HLFlopBetCall AND f$HLTurnCall) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPath2BR##
+WHEN (f$HLFlopBetCall AND f$H3TurnRaiseCallObserved) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPath2BH##
+WHEN (f$HLFlopBetCall AND f$H3TurnCheckRaiseCallObserved) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPath2BM##
+WHEN (f$HLFlopBetCall AND f$H3TurnBetRaisedCallStrict) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPath2CB##
+WHEN (f$HLFlopCheckedThrough AND f$HLTurnBetCall) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPath2CC##
+WHEN (f$HLFlopCheckedThrough AND f$HLTurnCheckedThrough) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPath2CX##
+WHEN (f$HLFlopCheckedThrough AND f$HLTurnCall) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPath2CR##
+WHEN (f$HLFlopCheckedThrough AND f$H3TurnRaiseCallObserved) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPath2CH##
+WHEN (f$HLFlopCheckedThrough AND f$H3TurnCheckRaiseCallObserved) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPath2CM##
+WHEN (f$HLFlopCheckedThrough AND f$H3TurnBetRaisedCallStrict) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPath2XB##
+WHEN (f$HLFlopCall AND f$HLTurnBetCall) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPath2XC##
+WHEN (f$HLFlopCall AND f$HLTurnCheckedThrough) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPath2XX##
+WHEN (f$HLFlopCall AND f$HLTurnCall) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPath2XR##
+WHEN (f$HLFlopCall AND f$H3TurnRaiseCallObserved) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPath2XH##
+WHEN (f$HLFlopCall AND f$H3TurnCheckRaiseCallObserved) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPath2XM##
+WHEN (f$HLFlopCall AND f$H3TurnBetRaisedCallStrict) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPath2RB##
+WHEN (f$H3FlopRaiseCallObserved AND f$HLTurnBetCall) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPath2RC##
+WHEN (f$H3FlopRaiseCallObserved AND f$HLTurnCheckedThrough) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPath2RX##
+WHEN (f$H3FlopRaiseCallObserved AND f$HLTurnCall) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPath2RR##
+WHEN (f$H3FlopRaiseCallObserved AND f$H3TurnRaiseCallObserved) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPath2RH##
+WHEN (f$H3FlopRaiseCallObserved AND f$H3TurnCheckRaiseCallObserved) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPath2RM##
+WHEN (f$H3FlopRaiseCallObserved AND f$H3TurnBetRaisedCallStrict) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPath2HB##
+WHEN (f$H3FlopCheckRaiseCallObserved AND f$HLTurnBetCall) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPath2HC##
+WHEN (f$H3FlopCheckRaiseCallObserved AND f$HLTurnCheckedThrough) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPath2HX##
+WHEN (f$H3FlopCheckRaiseCallObserved AND f$HLTurnCall) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPath2HR##
+WHEN (f$H3FlopCheckRaiseCallObserved AND f$H3TurnRaiseCallObserved) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPath2HH##
+WHEN (f$H3FlopCheckRaiseCallObserved AND f$H3TurnCheckRaiseCallObserved) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPath2HM##
+WHEN (f$H3FlopCheckRaiseCallObserved AND f$H3TurnBetRaisedCallStrict) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPath2MB##
+WHEN (f$H3FlopBetRaisedCallStrict AND f$HLTurnBetCall) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPath2MC##
+WHEN (f$H3FlopBetRaisedCallStrict AND f$HLTurnCheckedThrough) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPath2MX##
+WHEN (f$H3FlopBetRaisedCallStrict AND f$HLTurnCall) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPath2MR##
+WHEN (f$H3FlopBetRaisedCallStrict AND f$H3TurnRaiseCallObserved) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPath2MH##
+WHEN (f$H3FlopBetRaisedCallStrict AND f$H3TurnCheckRaiseCallObserved) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$HLPath2MM##
+WHEN (f$H3FlopBetRaisedCallStrict AND f$H3TurnBetRaisedCallStrict) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+// HIST-v3: no silent aliasing of bet-raise-call and raise-reraise-call when Hero IP.
+// Opponent action flags do not encode who bet first; R10 style user memories
+// are REQUIRED before the ambiguous M line can be regarded as known.
+##f$H3FlopBetRaisedCallStrict##
+WHEN (f$HLFlopBetRaisedCall AND Position = First) RETURN TRUE FORCE
+WHEN (f$HLFlopBetRaisedCall AND Position = Last AND user_H3_IP_FlopLeadBetFacedRaise AND NOT user_H3_IP_FlopRaiseFacedReraise) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$H3TurnBetRaisedCallStrict##
+WHEN (f$HLTurnBetRaisedCall AND Position = First) RETURN TRUE FORCE
+WHEN (f$HLTurnBetRaisedCall AND Position = Last AND user_H3_IP_TurnLeadBetFacedRaise AND NOT user_H3_IP_TurnRaiseFacedReraise) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$H3FlopKnownSafe##
+WHEN (Position = Last AND f$HLFlopBetRaisedCall AND NOT f$H3FlopBetRaisedCallStrict) RETURN FALSE FORCE
+WHEN (f$HLFlopKnownV2) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$H3TurnKnownSafe##
+WHEN (Position = Last AND f$HLTurnBetRaisedCall AND NOT f$H3TurnBetRaisedCallStrict) RETURN FALSE FORCE
+WHEN (f$HLTurnKnownV2) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$H3TurnDomain##
+WHEN (f$SRPHU AND f$H3FlopKnownSafe) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$H3RiverDomain##
+WHEN (f$SRPHU AND f$H3FlopKnownSafe AND f$H3TurnKnownSafe) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+// Native library OpponentCalledOnFlop is FALSE if the villain bet first.
+// On the next street, if Hero raised and no opponent re-raise was observed,
+// reaching the next street heads-up implies the villain called.
+// These are observational inferences: verify on target OpenHoldem build.
+##f$H3FlopRaiseCallObserved##
+WHEN (IsTurn AND BotRaisedOnFlop AND NOT BotCalledOnFlop AND NOT BotCheckedOnFlop AND NOT NoVillainBetOrRaisedOnFlop AND NOT NoBettingOnFlop AND NumberOfRaisesOnFlop = 0) RETURN TRUE FORCE
+WHEN (IsRiver AND BotRaisedOnFlop AND NOT BotCalledOnFlop AND NOT BotCheckedOnFlop AND NOT NoVillainBetOrRaisedOnFlop AND NOT NoBettingOnFlop AND NumberOfRaisesOnFlop = 0) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$H3FlopCheckRaiseCallObserved##
+WHEN (IsTurn AND BotRaisedOnFlop AND NOT BotCalledOnFlop AND BotCheckedOnFlop AND NOT NoVillainBetOrRaisedOnFlop AND NOT NoBettingOnFlop AND NumberOfRaisesOnFlop = 0) RETURN TRUE FORCE
+WHEN (IsRiver AND BotRaisedOnFlop AND NOT BotCalledOnFlop AND BotCheckedOnFlop AND NOT NoVillainBetOrRaisedOnFlop AND NOT NoBettingOnFlop AND NumberOfRaisesOnFlop = 0) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$H3TurnRaiseCallObserved##
+WHEN (IsRiver AND BotRaisedOnTurn AND NOT BotCalledOnTurn AND NOT BotCheckedOnTurn AND NOT NoVillainBetOrRaisedOnTurn AND NOT NoBettingOnTurn AND NumberOfRaisesOnTurn = 0) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$H3TurnCheckRaiseCallObserved##
+WHEN (IsRiver AND BotRaisedOnTurn AND NOT BotCalledOnTurn AND BotCheckedOnTurn AND NOT NoVillainBetOrRaisedOnTurn AND NOT NoBettingOnTurn AND NumberOfRaisesOnTurn = 0) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$flop##
+WHEN (f$SRPHU AND Position = Last AND AmountToCall > 0 AND BotRaisedOnFlop AND NOT BotCalledOnFlop AND Raises = 1 AND BotsLastFlopAction = Bet) Set user_H3_IP_FlopLeadBetFacedRaise
+WHEN (f$SRPHU AND Position = Last AND AmountToCall > 0 AND BotRaisedOnFlop AND NOT BotCalledOnFlop AND Raises = 1 AND BotsLastFlopAction = Raise) Set user_H3_IP_FlopRaiseFacedReraise
+WHEN (f$SRPHU AND AmountToCall > 0 AND HaveNuts AND AmountToCall <= 50% PotSize) RaiseHalfPot FORCE
+WHEN (f$SRPHU AND AmountToCall > 0 AND f$SRPStrongMade) Call FORCE
+WHEN (f$SRPHU AND AmountToCall > 0 AND f$SRPTopGood AND AmountToCall <= 50% PotSize) Call FORCE
+WHEN (f$SRPHU AND AmountToCall > 0 AND HaveTopPair AND AmountToCall <= 30% PotSize) Call FORCE
+WHEN (f$SRPHU AND AmountToCall > 0 AND HaveNutFlushDraw AND AmountToCall <= 40% PotSize) Call FORCE
+WHEN (f$SRPHU AND AmountToCall > 0 AND HaveFlushDraw AND AmountToCall <= 27% PotSize) Call FORCE
+WHEN (f$SRPHU AND AmountToCall > 0 AND HaveOpenEndedStraightDraw AND AmountToCall <= 27% PotSize) Call FORCE
+WHEN (f$SRPHU AND AmountToCall > 0) Fold FORCE
+WHEN (f$SRPHU AND AmountToCall = 0 AND f$SRPStrongMade) BetTwoThirdPot FORCE
+WHEN (f$SRPHUOpen AND AmountToCall = 0 AND f$SRPTopGood) BetHalfPot FORCE
+WHEN (f$SRPHUOpen AND AmountToCall = 0 AND HaveNutFlushDraw) BetHalfPot FORCE
+WHEN (f$SRPHUCaller AND AmountToCall = 0 AND Position = Last AND f$SRPTopGood) BetHalfPot FORCE
+WHEN (f$SRPHUOpen AND AmountToCall = 0 AND BotIsLastRaiser AND NOT FlushPossibleOnFlop AND NOT StraightPossibleOnFlop AND NOT PairOnBoard AND randomhand < 0.25) BetThirdPot FORCE
+WHEN (f$SRPHU AND AmountToCall = 0) Check FORCE
+##f$turn##
+WHEN (f$SRPHU AND Position = Last AND AmountToCall > 0 AND BotRaisedOnTurn AND NOT BotCalledOnTurn AND Raises = 1 AND BotsLastTurnAction = Bet) Set user_H3_IP_TurnLeadBetFacedRaise
+WHEN (f$SRPHU AND Position = Last AND AmountToCall > 0 AND BotRaisedOnTurn AND NOT BotCalledOnTurn AND Raises = 1 AND BotsLastTurnAction = Raise) Set user_H3_IP_TurnRaiseFacedReraise
+WHEN (f$H3TurnDomain AND f$H3FlopRaiseCallObserved AND AmountToCall = 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) Check FORCE
+WHEN (f$H3TurnDomain AND f$H3FlopCheckRaiseCallObserved AND AmountToCall = 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) Check FORCE
+WHEN (f$H3TurnDomain AND f$H3FlopBetRaisedCallStrict AND AmountToCall = 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) Check FORCE
+WHEN (f$H3TurnDomain AND f$H3FlopBetRaisedCallStrict AND AmountToCall > 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) Fold FORCE
+WHEN (f$H3TurnDomain AND f$H3FlopCheckRaiseCallObserved AND AmountToCall = 0 AND HaveNutFlushDraw AND randomhand < 0.30) BetHalfPot FORCE
+WHEN (f$H3TurnDomain AND f$H3FlopRaiseCallObserved AND AmountToCall = 0 AND HaveNutFlushDraw AND randomhand < 0.30) BetHalfPot FORCE
+WHEN (f$H3TurnDomain AND f$HLFlopBetCall AND AmountToCall = 0 AND f$SRPTopGood AND NOT f$SRPStrongMade AND randomhand < 0.65) BetHalfPot FORCE
+WHEN (f$H3TurnDomain AND f$HLFlopBetCall AND AmountToCall = 0 AND HaveNutFlushDraw AND randomhand < 0.40) BetHalfPot FORCE
+WHEN (f$H3TurnDomain AND f$HLFlopCheckedThrough AND AmountToCall = 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) BetHalfPot FORCE
+WHEN (f$H3TurnDomain AND f$HLFlopCheckedThrough AND AmountToCall = 0 AND HaveNutFlushDraw AND randomhand < 0.30) BetHalfPot FORCE
+WHEN (f$H3TurnDomain AND f$HLFlopCall AND AmountToCall = 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) Check FORCE
+WHEN (f$H3TurnDomain AND f$HLFlopCall AND AmountToCall > 0 AND f$SRPTopGood AND NOT f$SRPStrongMade AND AmountToCall <= 28% PotSize) Call FORCE
+// River rules grouped by 9 independent sequences; existing conservative rules follow as baseline.
+WHEN (f$H3TurnDomain AND f$SRPHU AND AmountToCall > 0 AND HaveNuts AND AmountToCall <= 45% PotSize) RaiseHalfPot FORCE
+WHEN (f$H3TurnDomain AND f$SRPHU AND AmountToCall > 0 AND f$SRPStrongMade) Call FORCE
+WHEN (f$H3TurnDomain AND f$SRPHU AND AmountToCall > 0 AND f$SRPTopGood AND AmountToCall <= 42% PotSize) Call FORCE
+WHEN (f$H3TurnDomain AND f$SRPHU AND AmountToCall > 0 AND HaveNutFlushDraw AND AmountToCall <= 26% PotSize) Call FORCE
+WHEN (f$H3TurnDomain AND f$SRPHU AND AmountToCall > 0 AND HaveOpenEndedStraightDraw AND AmountToCall <= 20% PotSize) Call FORCE
+WHEN (f$H3TurnDomain AND f$SRPHU AND AmountToCall > 0) Fold FORCE
+WHEN (f$H3TurnDomain AND f$SRPHU AND AmountToCall = 0 AND f$SRPStrongMade) BetTwoThirdPot FORCE
+WHEN (f$H3TurnDomain AND f$SRPHUOpen AND AmountToCall = 0 AND BotIsLastRaiser AND f$SRPTopGood) BetHalfPot FORCE
+WHEN (f$H3TurnDomain AND f$SRPHUOpen AND AmountToCall = 0 AND BotIsLastRaiser AND HaveNutFlushDraw AND randomhand < 0.30) BetHalfPot FORCE
+WHEN (f$H3TurnDomain AND f$SRPHU AND AmountToCall = 0) Check FORCE
+##f$river##
+WHEN (f$H3RiverDomain AND f$HLPath2HB AND AmountToCall = 0 AND HaveNuts) BetTwoThirdPot FORCE
+WHEN (f$H3RiverDomain AND f$HLPath2HB AND AmountToCall = 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) Check FORCE
+WHEN (f$H3RiverDomain AND f$HLPath2RB AND AmountToCall = 0 AND f$SRPStrongMade) BetHalfPot FORCE
+WHEN (f$H3RiverDomain AND f$HLPath2CH AND AmountToCall = 0 AND f$SRPStrongMade) BetHalfPot FORCE
+WHEN (f$H3RiverDomain AND f$HLPath2XR AND AmountToCall = 0 AND f$SRPStrongMade) BetHalfPot FORCE
+WHEN (f$H3RiverDomain AND f$HLPath2MC AND AmountToCall = 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) Check FORCE
+WHEN (f$H3RiverDomain AND f$HLPath2HC AND AmountToCall = 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) BetThirdPot FORCE
+WHEN (f$H3RiverDomain AND f$HLPath2RX AND AmountToCall > 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) Fold FORCE
+WHEN (f$H3RiverDomain AND f$HLPath2HX AND AmountToCall > 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) Fold FORCE
+WHEN (f$H3RiverDomain AND f$HLPath2XM AND AmountToCall > 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) Fold FORCE
+WHEN (f$H3RiverDomain AND f$HLPath2MX AND AmountToCall > 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) Fold FORCE
+WHEN (f$H3RiverDomain AND f$HLPathBB AND AmountToCall = 0 AND HaveNuts) BetTwoThirdPot FORCE
+WHEN (f$H3RiverDomain AND f$HLPathBB AND AmountToCall = 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) Check FORCE
+WHEN (f$H3RiverDomain AND f$HLPathBB AND AmountToCall > 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) Fold FORCE
+WHEN (f$H3RiverDomain AND f$HLPathBC AND AmountToCall = 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) BetThirdPot FORCE
+WHEN (f$H3RiverDomain AND f$HLPathBC AND AmountToCall > 0 AND f$SRPTopGood AND NOT f$SRPStrongMade AND AmountToCall <= 20% PotSize) Call FORCE
+WHEN (f$H3RiverDomain AND f$HLPathBX AND AmountToCall = 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) Check FORCE
+WHEN (f$H3RiverDomain AND f$HLPathBX AND AmountToCall > 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) Fold FORCE
+WHEN (f$H3RiverDomain AND f$HLPathCB AND AmountToCall = 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) Check FORCE
+WHEN (f$H3RiverDomain AND f$HLPathCB AND AmountToCall > 0 AND f$SRPTopGood AND NOT f$SRPStrongMade AND AmountToCall <= 20% PotSize) Call FORCE
+WHEN (f$H3RiverDomain AND f$HLPathCC AND AmountToCall = 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) BetThirdPot FORCE
+WHEN (f$H3RiverDomain AND f$HLPathCC AND AmountToCall > 0 AND f$SRPTopGood AND NOT f$SRPStrongMade AND AmountToCall <= 20% PotSize) Call FORCE
+WHEN (f$H3RiverDomain AND f$HLPathCX AND AmountToCall = 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) Check FORCE
+WHEN (f$H3RiverDomain AND f$HLPathCX AND AmountToCall > 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) Fold FORCE
+WHEN (f$H3RiverDomain AND f$HLPathXB AND AmountToCall = 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) Check FORCE
+WHEN (f$H3RiverDomain AND f$HLPathXB AND AmountToCall > 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) Fold FORCE
+WHEN (f$H3RiverDomain AND f$HLPathXC AND AmountToCall = 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) BetThirdPot FORCE
+WHEN (f$H3RiverDomain AND f$HLPathXC AND AmountToCall > 0 AND f$SRPTopGood AND NOT f$SRPStrongMade AND AmountToCall <= 20% PotSize) Call FORCE
+WHEN (f$H3RiverDomain AND f$HLPathXX AND AmountToCall = 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) Check FORCE
+WHEN (f$H3RiverDomain AND f$HLPathXX AND AmountToCall > 0 AND f$SRPTopGood AND NOT f$SRPStrongMade) Fold FORCE
+WHEN (f$H3RiverDomain AND f$SRPHU AND AmountToCall > 0 AND HaveNuts AND AmountToCall <= 40% PotSize) RaiseHalfPot FORCE
+WHEN (f$H3RiverDomain AND f$SRPHU AND AmountToCall > 0 AND HaveNuts) Call FORCE
+WHEN (f$H3RiverDomain AND f$SRPHU AND AmountToCall > 0 AND f$SRPStrongMade AND AmountToCall <= 55% PotSize) Call FORCE
+WHEN (f$H3RiverDomain AND f$SRPHU AND AmountToCall > 0 AND f$SRPTopGood AND AmountToCall <= 25% PotSize) Call FORCE
+WHEN (f$H3RiverDomain AND f$SRPHU AND AmountToCall > 0) Fold FORCE
+WHEN (f$H3RiverDomain AND f$SRPHU AND AmountToCall = 0 AND HaveNuts) BetTwoThirdPot FORCE
+WHEN (f$H3RiverDomain AND f$SRPHU AND AmountToCall = 0 AND f$SRPStrongMade) BetHalfPot FORCE
+WHEN (f$H3RiverDomain AND f$SRPHUOpen AND AmountToCall = 0 AND f$SRPTopGood) BetThirdPot FORCE
+WHEN (f$H3RiverDomain AND f$SRPHU AND AmountToCall = 0) Check FORCE

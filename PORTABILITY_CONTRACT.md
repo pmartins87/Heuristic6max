@@ -95,3 +95,9 @@ A cada nova implementação estratégica, consultar este contrato e atualizar `D
 - [Overlay OpenPPL](portability/srp_history_v2/advanced_history_overlay.oppl) introduz seis predicados próprios: raise sobre bet adversária pago, check-raise pago, bet→raise→call no flop e turn. Um montador de estrutura gera 36 helpers a partir desses predicados nativos; **não há heurística independente escrita em Python**.
 - HIST-v1 permanece importado e preservado, com regressão de equivalência dos 9 pares B/C/X. As novas 17 regras são candidatas de história, não solver.
 - **Bloqueios inalterados:** símbolos OH precisam ser observados em replay real (inclusive contadores por órbita), ações podem ser substituídas no runtime, e retorno None da simulação não impede fallback. Não promover para uso operacional.
+
+## HIST-v3 — correção da biblioteca native OpenPPL e memória observacional (ADR-026)
+- [Fonte](portability/srp_history_v3/README.md) faz auditoria de 11 sequências legais completas por street, 484 combinações flop/turn por posição e papel PF, 3 aliases dos resumos de flags. Não confundir contagem estrutural com política jogável.
+- Fonte pública `OpenPPL_Library_Betting_Action_Symbols.ohf`: `OpponentCalledOnFlop/Turn` exige `NoVillainBetOrRaised...`; portanto R/H de HIST-v2 **não podiam depender desse símbolo** após aposta inicial do vilão. A v3 consulta sinais de raise e continuidade apenas na street seguinte.
+- Registrar linha IP ambígua com `BotsLastFlopAction/TurnAction` e `Set user_H3...` apenas após evento anterior observado, jamais pelo sorteio futuro de ação. `Set` não equivale a prova da ação executada e flags podem resetar; sem captura válida, bloquear roteamento `BetRaisedCall` IP. A ação final OH/fallback ainda precisa ser verificada.
+- Continuar a usar somente OpenPPL como fonte das decisões; intérprete em Python lê a mesma sintaxe, sem policy paralela. Preservar snapshots antigos e roadmap G1/G2/G6.

@@ -90,3 +90,8 @@ Localização versionada: [audits/g2a_v0_7/](audits/g2a_v0_7/). Contém script, 
 - [portability/srp_history_v2/](portability/srp_history_v2/): 9 arquivos (OpenPPL autoral, gerador, 36 paths CSV, pós-flop e integrado, intérprete, 18 testes, README e `HISTORY_V2_SHA256SUMS.txt`).
 - Base: `portability/srp_history_v1/`, `portability/vs_3bet_mvp/` e v0.6.1, **sem mudanças históricas**. 75 ações OPPL, 70 helpers, 36 trajetórias, os 9 estados antigos com paridade estática.
 - Regenerar, checar `git diff`, testes e hashes conforme README. **Total esperado na CI 313**; sem build/paridade real OH, sem prova de EV ou de excelência estratégica.
+
+## HIST-v3 — grafo histórico e correção de flags, DRAFT
+- [portability/srp_history_v3/](portability/srp_history_v3/): 12 arquivos (2 OpenPPL completos, 2 fragmentos OPPL, enumerador, intérprete, gerador, 31 testes, 2 CSV, README e `HIST3_SHA256SUMS.txt`). As outras fontes históricas não mudaram.
+- Universo estrutural novo: 484 caminhos legais (posição/role e até 4 raises), **não 484 ações estratégicas**; 3 colisões documentadas. Fonte de ação conserva 75 regras antigas e 10 helpers novos, 4 memórias `Set`. Pré-flop combinado imutável.
+- Testes: 31 incrementais, **344 acumulados previstos**. Regenerar CSV/OPPL e verificar hashes no CI; testes de execução OH/alvo continuam inexistentes. G1 aberto, G2-a HOLD e G6 pendente.

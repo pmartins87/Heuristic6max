@@ -1,5 +1,11 @@
 # Heuristic6max — fonte de verdade
 
+## HIST-v3 — história cronológica, sem inflar decisões (20/11/2026)
+- [Fonte OpenPPL, testes e documentação](portability/srp_history_v3/README.md); [484 sequências legais flop→turn](portability/srp_history_v3/HIST3_484_CHRONOLOGICAL_PATHS.csv); [3 colisões por flags](portability/srp_history_v3/HIST3_OBSERVABILITY.csv).
+- **484 = cenários legais de eventos com até quatro raises por street, não regras de ação prontas**, considerando IP/OOP e agressor/caller PF. Permite localizar as lacunas antes de escrever mais branches.
+- **Correção real v2:** a implementação OpenPPL de `OpponentCalledOnFlop/Turn` exige `NoVillainBetOrRaised...` e portanto os helpers R/H anteriores podiam ser inalcançáveis. A v3 reclassifica R/H sem esse símbolo, usando continuidade da street, e introduz quatro memórias de eventos nativos para separar duas sequências IP agregadas de forma idêntica.
+- **75 regras de ação preservadas**, +10 helpers e 4 capturas `Set user`; 31 novos testes, **344 testes esperados em CI**. Pré-flop e ranges não mudaram. Histórico ainda não verificado no OpenHoldem-alvo; G3 aberto, G6 pendente.
+
 ## Checkpoint mais recente — G3-HIST-v2: 36 trajetórias históricas (20/11/2026)
 - [Módulo de histórico OpenPPL v2](portability/srp_history_v2/README.md) classifica **seis** sequências no flop e **seis** no turn, compondo **36 caminhos condicionais no river** (B=bet-call, C=check-through, X=call, R=raise sobre aposta, H=check-raise, M=bet-raise-call).
 - **75 regras de ação pós-flop** (14 flop + 22 turn + 39 river), 70 funções OpenPPL e o mesmo pré-flop de 277 regras preservado. Estratégia única OPPL: o Python apenas combina e testa o mesmo texto; versão HIST-v1 preservada.
@@ -53,7 +59,7 @@
 
 Estratégia **heurística** de No-Limit Hold'em cash 6-max baseada em fundamentos de GTO, com contratos, ranges auditáveis e testes reprodutíveis. **Não é um solver; não é um bot operacional validado; não há comprovação de EV ou winrate.**
 
-**Checkpoint ativo: RFI-MVP OpenPPL 5 posições (20/11/2026), sobre PORT-3 e estratégia v0.6.1 preservada** — G0 aprovado; G1 aberto; G2-a em auditoria/HOLD; G3–G7 pendentes. RFI, VS_OPEN e VS_3BET continuam DRAFT.
+**Checkpoint ativo: G3 HIST-v3 (20/11/2026), sobre pré-flop v0.6.1 e auditorias anteriores; desenho de bot completo, ainda não operacional.**
 
 ## PORT-1 parcial — RFI LJ (20/11/2026)
 

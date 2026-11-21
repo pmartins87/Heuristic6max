@@ -1,0 +1,11 @@
+// G3 HIST-v3 — prior-event confirmation through native OpenHoldem action symbols.
+// Not an operational bot. Captures observations only when the Hero IS facing
+// a villain raise after a verified prior Bet vs Raise on the same street.
+// User flags are sticky for the current hand; they are NOT a log of final actions.
+// These four lines must be inserted at the BEGINNING of f$flop/f$turn.
+// Do NOT use them to infer that the CURRENT pending call or raise executed.
+WHEN (f$SRPHU AND Position = Last AND AmountToCall > 0 AND BotRaisedOnFlop AND NOT BotCalledOnFlop AND Raises = 1 AND BotsLastFlopAction = Bet) Set user_H3_IP_FlopLeadBetFacedRaise
+WHEN (f$SRPHU AND Position = Last AND AmountToCall > 0 AND BotRaisedOnFlop AND NOT BotCalledOnFlop AND Raises = 1 AND BotsLastFlopAction = Raise) Set user_H3_IP_FlopRaiseFacedReraise
+// The next two lines are turn-only and MUST NOT be executed on flop.
+WHEN (f$SRPHU AND Position = Last AND AmountToCall > 0 AND BotRaisedOnTurn AND NOT BotCalledOnTurn AND Raises = 1 AND BotsLastTurnAction = Bet) Set user_H3_IP_TurnLeadBetFacedRaise
+WHEN (f$SRPHU AND Position = Last AND AmountToCall > 0 AND BotRaisedOnTurn AND NOT BotCalledOnTurn AND Raises = 1 AND BotsLastTurnAction = Raise) Set user_H3_IP_TurnRaiseFacedReraise

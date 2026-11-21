@@ -1,0 +1,20 @@
+HeroPosition,DerivedOpenPPLLibrarySignature,LegalHistoriesSharingSignature,HistoryExamples,Risk
+OOP,"(False, True, False, False, False, False, 1)",1,H:B V:R H:R V:C,STATIC_UNIQUE_WITHIN_BOUND
+OOP,"(False, True, False, False, False, False, 2)",1,H:B V:R H:R V:R H:R V:C,STATIC_UNIQUE_WITHIN_BOUND
+OOP,"(False, True, False, True, False, True, 0)",1,H:B V:C,STATIC_UNIQUE_WITHIN_BOUND
+OOP,"(False, True, True, False, False, False, 1)",1,H:B V:R H:C,STATIC_UNIQUE_WITHIN_BOUND
+OOP,"(False, True, True, False, False, False, 2)",1,H:B V:R H:R V:R H:C,STATIC_UNIQUE_WITHIN_BOUND
+OOP,"(True, False, False, False, True, True, 0)",1,H:X V:X,STATIC_UNIQUE_WITHIN_BOUND
+OOP,"(True, False, True, False, False, False, 0)",1,H:X V:B H:C,STATIC_UNIQUE_WITHIN_BOUND
+OOP,"(True, True, False, False, False, False, 0)",1,H:X V:B H:R V:C,STATIC_UNIQUE_WITHIN_BOUND
+OOP,"(True, True, False, False, False, False, 1)",1,H:X V:B H:R V:R H:R V:C,STATIC_UNIQUE_WITHIN_BOUND
+OOP,"(True, True, True, False, False, False, 1)",1,H:X V:B H:R V:R H:C,STATIC_UNIQUE_WITHIN_BOUND
+OOP,"(True, True, True, False, False, False, 2)",1,H:X V:B H:R V:R H:R V:R H:C,STATIC_UNIQUE_WITHIN_BOUND
+IP,"(False, False, True, False, False, False, 0)",1,V:B H:C,STATIC_UNIQUE_WITHIN_BOUND
+IP,"(False, True, False, False, False, False, 0)",1,V:B H:R V:C,STATIC_UNIQUE_WITHIN_BOUND
+IP,"(False, True, False, False, False, False, 1)",2,V:B H:R V:R H:R V:C | V:X H:B V:R H:R V:C,COLLISION_NEEDS_CHRONOLOGICAL_MEMORY
+IP,"(False, True, False, False, False, False, 2)",1,V:X H:B V:R H:R V:R H:R V:C,STATIC_UNIQUE_WITHIN_BOUND
+IP,"(False, True, False, True, False, True, 0)",1,V:X H:B V:C,STATIC_UNIQUE_WITHIN_BOUND
+IP,"(False, True, True, False, False, False, 1)",2,V:B H:R V:R H:C | V:X H:B V:R H:C,COLLISION_NEEDS_CHRONOLOGICAL_MEMORY
+IP,"(False, True, True, False, False, False, 2)",2,V:B H:R V:R H:R V:R H:C | V:X H:B V:R H:R V:R H:C,COLLISION_NEEDS_CHRONOLOGICAL_MEMORY
+IP,"(True, False, False, False, True, True, 0)",1,V:X H:X,STATIC_UNIQUE_WITHIN_BOUND
