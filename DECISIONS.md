@@ -1,3 +1,5 @@
+> **V2 é o processo vigente após ADR-043.** Fonte de verdade para nova construção: [v2/PLAN.md](v2/PLAN.md). Todas as decisões operacionais de política V1, incluindo ADR-042, estão suspensas enquanto não forem requalificadas por evidência solver. O histórico permanece consultável, não apagado.
+
 # Registro de decisões técnicas — Heuristic6max
 
 **ADR-001 — Heurística, não solver (MANTIDA).** Construir cash 6-max com heurísticas GTO auditáveis, sem alegar GTO exata, EV ótimo nem lucratividade.
@@ -107,3 +109,8 @@
 **Problema:** `f$SRPStrongMade` incluía set, two pair e straight e permitia value-bet/call amplo mesmo com quatro cartas de um naipe na mesa, quando Hero não tem flush. **Decisão:** acrescentar quatro ações nativas OpenPPL protegidas por `OneCardFlushPossible AND NOT FlushOnBoard AND NOT HaveFlush AND NOT HaveNuts`, exclusivamente nas origens SRP HU RFI e VS_OPEN-call marcadas por tags e símbolos anteriores: check se não há aposta, call até 20% de PotSize com made hand forte, call até 10% com top pair/overpair bom e fold para preços maiores.
 **Justificativa:** mitigar valor excessivo num runout de risco demonstrável por símbolos documentados; adversário pode ter flush com uma carta. **Tradeoff:** estratégia conservadora pode perder EV contra bluffs e calls fracos, e os percentuais são **hipóteses não calibradas**, não GTO ou superioridade quantitativa. Alteração só nesse domínio, preservadas 2.007 WHEN ancestrais e ranges v0.6.1.
 **Gates:** 7 testes focados + full CI, M08 PARTIAL, G1/G6 de runtime pendentes, G2-a HOLD e R10d 0/14 VERIFIED. Não substituir 436 comparações de pote em massa.
+
+## ADR-043 — recomeçar pela evidência estratégica, não pela heurística (21/11/2026)
+**Novo requisito explícito:** reiniciar o desenvolvimento corretamente após erro estratégico confirmado de M08-RIVER4, que podia foldar full house apesar de CI verde. O erro invalida a presunção de qualidade de V1 e demonstra que validar correspondência de código com regra arbitrária não valida regra de poker.
+**Decisão:** manter repo/histórico, colocar todas as políticas V1 em estado LEGACY_UNVALIDATED; não usar faixas/rules V1 por padrão. V2 terá fonte única [v2/PLAN.md](v2/PLAN.md), começará com **F0 viabilidade de solver e evidência EV por combo**, F1 inputs/ranges/regras, F2 validação de estratégia, F3 implementação OpenPPL, F4 paridade offline OH e F5 produto. Nenhuma linha estratégica nova antes de evidência de referência, não pedir hash/instalação particular para construção. Investigação de GTOpen e TexasSolver é provisória, não comprovação. Preservar os antigos gates de promoção fechados e o requisito eventual superioridade ao DeepCrusher_R10d.
+**Critério de parada:** não prosseguir de F0 se nenhum solver entregar solução reproduzível com dados de decisão e EV, ou se a fonte não tiver licença adequada. Não mentir sobre qualidade nem substituir erro por mais testes autorreferenciais.
