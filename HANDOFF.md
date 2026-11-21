@@ -1,3 +1,5 @@
+> **RETOMADA V2:** antes de qualquer regra ou alteração, ler [v2/PLAN.md](v2/PLAN.md) + ADR-043 em DECISIONS.md. Todo o texto abaixo é handoff **histórico V1, suspenso**. Estado V2: F0 OPEN, nenhum solver executado, nenhum código estratégico aprovado. O único próximo objetivo é demonstrar uma solução solver reproduzível com EV por combo e identificar limites; não derivar thresholds de intuição.
+
 # Handoff — retomar em outro chat, computador ou IA
 
 ## Regra principal
