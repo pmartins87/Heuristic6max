@@ -66,3 +66,6 @@ A fonte ativa do benchmark passa a medir `portability/blind_iso_v2/blind_iso_int
 
 ## ISODEF-1 (21/11/2026) — controle limitado de defesa contra isolation
 Duas origens: Hero BTN enfrenta iso do CO após 1 limp; Hero BB enfrenta iso do BTN após 1 limp (7 BB antes de agir, 4.5 / 3.5 BB de call). Quatro tags disjuntas para 3-bet ou call, ranges novos e **42 decisões** flop/turn/river em HU/3-way. Só ramos de 95–105 BB; sem captura OH, EV ou aprovação de ações/sizings. [Fonte](../../portability/iso_defense_v1/README.md). Os 21 testes novos foram aprovados na [workflow 44860943038](https://github.com/pmartins87/Heuristic6max/actions/runs/44860943038): 573 execuções, 561 deduplicadas por suíte; 14/14 critérios continuam não VERIFIED. Todos os 14 gates R10d permanecem não aprovados.
+
+## M08-RIVER4 — progresso parcial de textura no river
+Fonte ativa: `portability/river_fourflush_v1/river_fourflush_integrated_draft.oppl`, 2.016 WHEN. Quatro novas decisões para four-flush river SRP HU de origem RFI/VS_OPEN-call, sem flush/nuts: check grátis, call até 20% de pote com `f$SRPStrongMade`, até 10% com `f$SRPTopGood`, fold maior. A matriz preserva **M08 PARTIAL e 0/14 VERIFIED**; nenhum runtime ou EV medido. [Módulo](../../portability/river_fourflush_v1/README.md).
