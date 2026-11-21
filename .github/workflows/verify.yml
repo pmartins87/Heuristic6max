@@ -247,3 +247,16 @@ jobs:
         run: git diff --exit-code -- portability/iso_raise_v1/iso_integrated_draft.oppl
       - name: Verify ISO-1 SHA256 source snapshot
         run: cd portability/iso_raise_v1 && sha256sum -c ISO1_SHA256SUMS.txt
+
+      - name: Test BLISO-2 SB/BB isolation paths (18 tests)
+        run: python -m unittest discover -s portability/blind_iso_v2 -p 'test_*.py' -q
+      - name: Rebuild BLISO-2 OpenPPL from ISO-1 exact source
+        run: python portability/blind_iso_v2/build_blind_iso.py
+      - name: Verify deterministic BLISO-2 combined source
+        run: git diff --exit-code -- portability/blind_iso_v2/blind_iso_integrated_draft.oppl
+      - name: Verify BLISO-2 SHA256 snapshot
+        run: cd portability/blind_iso_v2 && sha256sum -c BLISO2_SHA256SUMS.txt
+      - name: Update factual R10d benchmark against BLISO-2 latest draft
+        run: python benchmarks/r10d_floor/comparison.py
+      - name: Verify BLISO-2 R10d metrics and benchmark SHA256
+        run: git diff --exit-code -- benchmarks/r10d_floor/CURRENT_GAP_REPORT.json && cd benchmarks/r10d_floor && sha256sum -c BENCHMARK_SHA256SUMS.txt
