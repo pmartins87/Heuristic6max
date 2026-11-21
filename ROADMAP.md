@@ -150,4 +150,4 @@ Correção de quatro ramos de flop/turn em 3bet HU e SRP 3way: após o raise opc
 ## ISO-1 — próximo incremento DRAFT, sujeito à CI e ao replay real
 - Autoria source-first implementada para CO (1/2 limpers) e BTN (1/2/3 limpers), 5 marcadores de intenção, uma lista de ISO nova e 41 decisões pós-flop sobre 120 topologias legais. As decisões históricas v0.6.1 continuam inalteradas; não confundir *adição de política* com validação GTO.
 - **Próximos gates de engenharia:** verificar primeiro funcionamento das ações/preços/memória `Set` em replay OH offline; ampliar SB/BB iso, coldcall e resposta ao isolamento; então squeeze e, após liberar G2-a, VS_4BET/5BET. Em paralelo introduzir textura/runout, SPR e sequenciamento das ações observadas. Stop rule: não publicar jogo operacional sem compatibilidade OH e fallback legal controlado.
-- CI deverá confirmar a contagem dos 13 testes incrementais; piso R10d e as 14 capacidades não estão aprovados.
+- **CI confirmada:** 534 execuções, 522 distintas por suíte, 27 suítes no run 44853164836; o piso R10d e todas as 14 capacidades continuam sem aprovação final.
