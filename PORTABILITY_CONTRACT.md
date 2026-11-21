@@ -137,3 +137,8 @@ Após a decisão RaiseHalfPot opcional com `HaveNuts`, exigir CALL prioritário 
 ## BLISO-2 — contrato de ação pré-flop BB versus SB
 - Os 13 marcadores `user_H6_BISO*` são intenções registradas na mesma condição de `RaiseTo`; não comprovam que o raise foi executado. O módulo se recusa a reconhecer pote isolado quando `BotCheckedPreflop` é verdadeiro. A ordem integra novas ações de BB antes do Check herdado somente para a handlist específica, conservando o Check e os marcadores do BB não-isolador.
 - A geometria `Calls/PotSize` com SB completado e `NumberOfRaisesBeforeFlop=0` após raise do Hero permanece **a validar no OH real**; somente replay desconectado pode aprovar legalidade, sizing final, reset de memória e fallback. Intérprete Python é espelho da fonte OpenPPL, não estratégia independente.
+
+## ISODEF-1 — protocolo de comprovação de defesa à isolation
+- Duas entradas estritas na primeira decisão do Hero: BTN vs CO ou BB vs BTN após 1 limp, pote 7 BB, `Raises=1`, `Calls=1`, preço e posições exatos; `Set` imediatamente seguido pela mesma condição do `RaiseTo` ou `Call`. TAG de intenção não significa execução.
+- Pós-flop exige confirmação de `BotRaisedBeforeFlop` *xor* `BotCalledBeforeFlop`, `NumberOfRaisesBeforeFlop=1`, exclusão das memórias ancestrais e contagens cronológicas de oponentes. Duplo indicador BTN+BB é rejeitado nos guardas pré-flop.
+- Validar no OpenHoldem offline a semântica real de `Raises/Calls/StillToAct/FirstRaiserPosition/LastRaiserPosition`, sizing final, reset de memórias, contexto de player queue e no-match/fallback (inclusive `default.bot`), antes de autorizar qualquer release. Testes Python leem as mesmas fontes OpenPPL, não são prova da engine.

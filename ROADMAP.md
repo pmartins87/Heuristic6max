@@ -1,4 +1,4 @@
-# Roadmap vivo — 20/11/2026 (BLISO-2 DRAFT / preflop v0.6.1 preservado)
+# Roadmap vivo — 21/11/2026 (ISODEF-1 DRAFT / preflop v0.6.1 preservado)
 
 | Gate | Estado | Critério de avanço |
 |---|---|---|
@@ -156,3 +156,8 @@ Correção de quatro ramos de flop/turn em 3bet HU e SRP 3way: após o raise opc
 - Ampliadas as cinco origens CO/BTN ISO-1 com **13 origens SB/BB** (SB 1–4 limpers, BB 1–5). `Check` gratuito do BB permanece em vigor para mãos fora da lista de ISO. Captura de origem exclusiva, 43 ações pós-flop e 120 topologias cronológicas. Os números descrevem código DRAFT e não provas de EV.
 - **Gate CI estático aprovado:** 18 testes novos, 552 execuções / 540 deduplicadas em 28 suítes no [workflow 44858080418](https://github.com/pmartins87/Heuristic6max/actions/runs/44858080418); a legalidade dos 13 Raises ainda exige replay OH antes de release. O próximo desenvolvimento permitido é resposta contra isolamento e coldcall/squeeze **sem modificar os ranges já congelados**. G2-a precisa de evidência nova antes de VS_4BET/5BET. `PotSize/Calls/StillToAct`, memórias e ação final aguardam OpenHoldem offline.
 - Manter as 14 famílias do R10d em PARTIAL/MISSING conforme matriz; nenhuma promoção automática para VERIFIED.
+
+## ISODEF-1 — segundo avanço na família isolamento, gates inalterados
+- Escopo DRAFT: BTN vs iso CO e BB vs iso BTN após exatamente 1 limp (2 cenários específicos, 3bet/call/fold) e 42 ações pós-flop com 12 topologias monotônicas. Não ampliar automaticamente a outros positions/limpers/heads-up squeeze com semântica de `Calls` ainda não medida no OH.
+- CI esperada: 21 novos testes estáticos, comparação factual do benchmark R10d, integração determinística e SHA256. Critério de parada: `FirstRaiserPosition`, `LastRaiserPosition`, `StillToAct`, `Raises`, `Calls`, `PotSize`, reset de tag e sizing sem prova OH implicam DRAFT, independentemente de teste verde.
+- Próximo passo técnico recomendado: **prova de histórico e legalidade da ação OpenHoldem offline**; depois ampliar defesa multi-limper, coldcall não-iso/squeeze e board/SPR/runout observados, preservando G2-a HOLD para ranges ancestrais. 14/14 R10d continuam não verificados.

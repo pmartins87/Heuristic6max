@@ -1,5 +1,5 @@
 # Estado atual — Heuristic6max
-**Data:** 20/11/2026 | **Checkpoint:** BLISO-2 DRAFT (552 testes executados em CI) | **Estado:** G2-a HOLD; R10d floor NÃO ATINGIDO; não operacional.
+**Data:** 20/11/2026 | **Checkpoint:** ISODEF-1 DRAFT (552 testes executados em CI) | **Estado:** G2-a HOLD; R10d floor NÃO ATINGIDO; não operacional.
 
 ## Evidências concluídas
 - G0: arquitetura e contratos.
@@ -167,3 +167,8 @@ Protegidos flop/turn contra `HaveNuts → Fold` quando o tamanho da aposta exced
 - **43 regras pós-flop** (16/14/13) em 120 topologias legais compartilhadas semanticamente com ISO-1, mas com origem blind-isolation exclusiva. A origem exige marcação de intenção, `BotRaisedBeforeFlop`, exclusão de `BotCheckedPreflop`, `BotCalledBeforeFlop` e 3bet. Decisão de valor HU considera posição SB/BB; `HaveNuts` nunca fold por overbet.
 - Novo integrado: `portability/blind_iso_v2/blind_iso_integrated_draft.oppl`: **1.920 WHEN / 152 funções / 189 listas / 117 Set user / 34 símbolos user_**. Todos os 1.666 WHEN anteriores preservados. Ranges RFI/VS_OPEN/VS_3BET v0.6.1 intactos; novos critérios de blind iso não foram avaliados em EV.
 - **18 testes incrementais aprovados** no [workflow 44858080418](https://github.com/pmartins87/Heuristic6max/actions/runs/44858080418): **552 execuções em 28 suítes, 540 testes deduplicados por suíte**. ISO-1 534/522 é checkpoint histórico. R10d 0/14 VERIFIED, G1 ABERTO, G2-a HOLD, G6 PENDENTE, VS_4BET BLOQUEADO e nenhum runtime OH validado.
+
+## ISODEF-1 — resposta delimitada a isolation raise (21/11/2026; DRAFT)
+- Pai: [BLISO-2](portability/blind_iso_v2/README.md); novo integrado: `portability/iso_defense_v1/iso_defense_integrated_draft.oppl`. **2.007 WHEN / 159 f$ / 192 listas / 121 Set user / 38 user_**; todos os 1.920 WHEN anteriores estão presentes na mesma ordem e os ranges RFI/VS_OPEN/VS_3BET v0.6.1 não foram editados.
+- Dois nós de resposta ao isolamento: Hero BTN vs CO após 1 limp (pote pré-ação de 7BB, call 4.5BB) e Hero BB vs BTN após 1 limp (call 3.5BB). Três handlists novas, 4 tags de intenção; 42 decisões pós-flop HU/3way sobre 12 topologias históricas, com nós distintos para Hero 3bettor/caller e `HaveNuts` protegido contra overbet. Rejeição explícita de BTN+BB simultâneos após teste negativo.
+- **21 novos testes autorados, CI ainda pendente neste checkpoint documental**; exigir resultado do log antes de declarar total 573 execuções/561 deduplicados. G1/G6 seguem sem replay real; G2-a HOLD, R10d 0/14 verificados. Não é release/operacional.
