@@ -81,3 +81,7 @@ Corrigida falha estratégica em ambas as novas famílias: HaveNuts enfrentando o
 - O arquivo OpenPPL integrado contém 1.460 WHEN/136 funções/187 listas/99 Set/16 user_, sem alteração de ranges. **Não equivale a superar o R10d**: precisamos de histórico completo intra-street, limp iso/coldcall, 4bet/5bet, board/runout, SPR, perfis, stacks e testes da ação final em OpenHoldem real.
 
 **Errata de contagem CI (20/11/2026):** [registro verificável](CI_TEST_COUNT_ERRATA.md). Antes deste bloco: 483 execuções, 471 testes distintos; após: 521 execuções, 509 distintos. A suíte do benchmark R10d com 12 testes roda duas vezes. Registros anteriores de 434/472 eram estimativas incorretas. Essa correção é exclusivamente documental e NÃO altera a estratégia.
+
+## ISO-1 — pot-family isolamento, sem mudança de baseline
+- Cinco intenções preflop ISO em CO/BTN com contagem explícita de limpers e pot, **não** derivadas de uma interpretação ambígua de `RFI` ou `VS_OPEN`; listas RFI/VS_OPEN/VS_3BET congeladas. Um marcador `Set user_H6_ISO*` somente registra intenção, requer `BotRaisedBeforeFlop` e ausência de nova 3bet para formar domínio posterior.
+- Famílias: 120 topologias possíveis por street dentro do domínio, 41 decisões efetivas com sizing e thresholds por número de oponentes. Limitação crítica: ainda não há trilha confiável da ação final e os resultados são heurísticas não calibradas. Não tratar contagem estrutural como equivalência ao R10d; M04 segue PARTIAL, runtime G6 bloqueado.
