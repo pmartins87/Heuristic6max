@@ -63,3 +63,6 @@ A matriz M04 continua PARTIAL: foram acrescentadas 5 origens CO/BTN contra limpe
 
 ## BLISO-2 (20/11/2026) — DRAFT
 A fonte ativa do benchmark passa a medir `portability/blind_iso_v2/blind_iso_integrated_draft.oppl`, que acrescenta 13 contextos SB/BB de isolamento e 43 novas ações pós-flop sobre 120 topologias. Nenhum range pré-flop RFI/VS_OPEN/VS_3BET foi revisado, M04 segue PARTIAL e 14/14 capacidades continuam sem aprovação. Os 18 testes BLISO-2 foram aprovados no [workflow 44858080418](https://github.com/pmartins87/Heuristic6max/actions/runs/44858080418) (552 execuções / 540 deduplicadas por suíte); não há runtime OpenHoldem real.
+
+## ISODEF-1 (21/11/2026) — controle limitado de defesa contra isolation
+Duas origens: Hero BTN enfrenta iso do CO após 1 limp; Hero BB enfrenta iso do BTN após 1 limp (7 BB antes de agir, 4.5 / 3.5 BB de call). Quatro tags disjuntas para 3-bet ou call, ranges novos e **42 decisões** flop/turn/river em HU/3-way. Só ramos de 95–105 BB; sem captura OH, EV ou aprovação de ações/sizings. [Fonte](../../portability/iso_defense_v1/README.md). A CI de 21 testes está pendente. Todos os 14 gates R10d permanecem não aprovados.
