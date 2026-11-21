@@ -1,0 +1,64 @@
+{
+  "capture_mode": "SYNTHETIC",
+  "cases": [
+    {
+      "artifacts": {
+        "debug_png": {
+          "path": "",
+          "sha256": ""
+        },
+        "debug_txt": {
+          "path": "",
+          "sha256": ""
+        },
+        "decision_log": {
+          "path": "",
+          "sha256": ""
+        },
+        "post_bmp": {
+          "path": "",
+          "sha256": ""
+        },
+        "post_html": {
+          "path": "",
+          "sha256": ""
+        },
+        "pre_bmp": {
+          "path": "",
+          "sha256": ""
+        },
+        "pre_html": {
+          "path": "",
+          "sha256": ""
+        }
+      },
+      "case_id": "RFI_BTN_PURE",
+      "eval_index": 0,
+      "hand_id": "NO_REAL_HAND",
+      "reported_action_taken": "",
+      "reported_best_action": "",
+      "session_id": "SYNTHETIC_ONLY",
+      "street": "preflop",
+      "symbols": {
+        "AmountToCall": "",
+        "Calls": "",
+        "InButton": "",
+        "IsPreflop": "",
+        "PotSize": "",
+        "Raises": "",
+        "StackSize": "",
+        "StackUnknown": "",
+        "StillToAct": "",
+        "nplayersdealt": "",
+        "randomhand": ""
+      }
+    }
+  ],
+  "connected_live": false,
+  "loaded_oppl_sha256": "27be1f161535c9bc07f019fd6e0609c7a3018bf6b2cc640b80a6042c5b7df02b",
+  "offline_attested": true,
+  "openholdem_exe_sha256": "",
+  "openholdem_version": "",
+  "protocol": "OH-G1G6-1",
+  "tablemap_sha256": ""
+}
