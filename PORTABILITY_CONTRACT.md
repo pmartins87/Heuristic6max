@@ -129,3 +129,7 @@ Após a decisão RaiseHalfPot opcional com `HaveNuts`, exigir CALL prioritário 
 - Não existe equivalência demonstrada para o executável OH instalado: símbolos, memória `user_`, no-match/default.bot, sizing legal e ação final precisam de replay antes de uso. Nenhum gate operacional aprovado.
 
 **Errata de contagem CI (20/11/2026):** [registro verificável](CI_TEST_COUNT_ERRATA.md). Antes deste bloco: 483 execuções, 471 testes distintos; após: 521 execuções, 509 distintos. A suíte do benchmark R10d com 12 testes roda duas vezes. Registros anteriores de 434/472 eram estimativas incorretas. Essa correção é exclusivamente documental e NÃO altera a estratégia.
+
+## PORT ISO-1 — intenção de isolamento e prioridade da ação final
+- `user_H6_ISOCO1/CO2/BTN1/BTN2/BTN3` registra **intenção** no momento de `RaiseTo`; não é prova de raise executado. Pós-flop também exige `BotRaisedBeforeFlop`, `NOT BotCalledBeforeFlop`, `NumberOfRaisesBeforeFlop=0`, ausência de RFI/3bet/limp BB concorrente e topologia de jogadores possível. A identidade do preço e a normalização de `PotSize` ainda são hipótese do interpretador da própria fonte OpenPPL.
+- 13 novos testes estáticos propostos; runtime, fallback, repeat-scrape, reset de `Set`, tamanho efetivo de RaiseTo e legalidade da ação só podem ser aprovados por replay desconectado de apostas no OpenHoldem-alvo. Não executar o DRAFT em cash.
