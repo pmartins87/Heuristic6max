@@ -187,7 +187,9 @@ def audit(data:dict,evidence_root:Path)->dict:
             raise EvidenceError('non-monotonic decision index')
         per_hand_last[handle]=case['eval_index']
         rnd=case['symbols'].get('randomhand')
-        if rnd is not None:
+        # Blank means never observed. In a SYNTHETIC template it must stay
+        # blank; only supplied values are validated as [0, 1).
+        if rnd not in (None,''):
             if not isinstance(rnd,str):raise EvidenceError('randomhand must be string')
             try:v=Decimal(rnd)
             except InvalidOperation as e:raise EvidenceError('invalid randomhand') from e
