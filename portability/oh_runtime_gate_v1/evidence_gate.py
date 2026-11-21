@@ -205,7 +205,7 @@ def audit(data:dict,evidence_root:Path)->dict:
             report.update(verdict='SOURCE_MISMATCH',reason='loaded profile digest differs from integrated source')
         elif data['capture_mode']=='SYNTHETIC':
             report.update(verdict='STATIC_ONLY',reason='synthetic case; not OpenHoldem runtime evidence')
-        elif any(not isinstance(data[k],str) or
+        elif any(not isinstance(data[k],str) or not data[k].strip() or
                  (k.endswith('_sha256') and not SHA.fullmatch(data[k]))
                  for k in ('openholdem_version','openholdem_exe_sha256','tablemap_sha256')):
             report.update(reason='runtime executable/version/tablemap identity missing')
