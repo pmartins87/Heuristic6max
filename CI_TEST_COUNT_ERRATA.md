@@ -52,3 +52,9 @@ Os 29 registros `Ran N tests` no log de CI somaram 573 execuções. A suíte do 
 |---|---|---:|---:|---:|
 | [CI OH-G1G6-1](https://github.com/pmartins87/Heuristic6max/actions/runs/44862638886) | `c0a1eed16fe17212e1cca1d4c117c268d280e55a` | **599** | **587** | **30** |
 Os **30** registros de testes no log do job `136719229320` somam **599**; uma suíte R10d de 12 testes é executada duas vezes (599 − 12 = **587** por deduplicação de suíte). Ganho de **26 testes**, ante 573/561 em 29 suítes no ISODEF-1. Os 26 são verificações sobre evidências sintéticas e guardas da auditoria, não replays OH nem 26 decisões estratégicas. **G1/G6 e 14/14 gates R10d não foram promovidos**.
+
+## OH-SRC1 — testes efetivos de auditoria (21/11/2026)
+| Referência | Commit de PR | Execuções `Ran N tests` | Deduplicados por suíte | Suítes |
+|---|---|---:|---:|---:|
+| [OH-SRC1 aprovado](https://github.com/pmartins87/Heuristic6max/actions/runs/44864070437) | `77e94b77a135924268ba09e8667f9952a08f0bd2` | **616** | **604** | **31** |
+31 registros totalizaram 616 execuções; a suíte benchmark R10d com 12 testes é executada duas vezes, totalizando 616−12=604 por deduplicação de suíte. Aumento de +17 sobre OH-G1G6-1 (599/587), todos **testes de semântica estática**, não mãos de pôquer. Aumentar o número de testes não aprova G1/G6 nem 14/14 critérios R10d.

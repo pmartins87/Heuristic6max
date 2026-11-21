@@ -1,0 +1,68 @@
+{
+  "automatic_runtime_approval": false,
+  "contract": "OH_SOURCE_ONLY_NOT_OPENHOLDEM_RUNTIME_PARITY",
+  "finding_ids": [
+    "F1_POT_EXACT_MATCH",
+    "F2_CALLS_STATEFUL",
+    "F3_STILLTOACT_FIRST_ORBIT",
+    "F4_USER_RESET_ENGINE",
+    "F5_SET_THEN_ACTION",
+    "F6_FALLBACK_ENGINEDRIVEN"
+  ],
+  "iso_defense_contracts": {
+    "BB": {
+      "actions": 5,
+      "fallback_guarded": true,
+      "sample_size_is_fixed": true,
+      "set_then_call_guard_identical": true,
+      "set_then_raise_guard_identical": true
+    },
+    "BTN": {
+      "actions": 5,
+      "fallback_guarded": true,
+      "sample_size_is_fixed": true,
+      "set_then_call_guard_identical": true,
+      "set_then_raise_guard_identical": true
+    }
+  },
+  "main_callback_count": 4,
+  "metrics": {
+    "amount_to_call_exact_nonzero": 400,
+    "amount_to_call_exact_zero": 258,
+    "first_raiser_position_rules": 343,
+    "pot_exact_rules": 436,
+    "pot_exact_values": {
+      "1.5": 30,
+      "12": 54,
+      "12.6": 9,
+      "13.25": 36,
+      "13.75": 36,
+      "2": 4,
+      "2.5": 13,
+      "3": 4,
+      "3.5": 13,
+      "4": 202,
+      "4.5": 10,
+      "5": 4,
+      "5.5": 7,
+      "6": 4,
+      "7": 10
+    },
+    "still_to_act_rules": 103,
+    "total_when": 2007
+  },
+  "recommended_next_gate": "audit each distinct PotSize equality domain before any tolerance rewrite; no broad global replacement",
+  "source_bytes": 378799,
+  "source_facts": {
+    "calls_not_raw_limper_count": "OpenPPL Library: Calls delegates to CallsBeforeOurFirstAction / nopponentscalling, else memory plus CallsSinceLastPlay",
+    "fallback_not_failclosed": "OpenPPL manual/OpenHoldem: no-match can enter a default/technical fallback rather than Python None",
+    "first_orbit_stilltoact": "OpenPPL Library: StillToAct uses BotsActionsOnThisRoundIncludingChecks; later orbits emit hint/0",
+    "pot_equals_float_risk": "OpenPPL manual warns on comparisons of real-valued amounts; strict = can reject nearby numeric states",
+    "preflop_raises_stateful": "OpenPPL Library: NumberOfRaisesBeforeFlop returns Raises preflop else me_re_MemRaisesBeforeFlop",
+    "set_is_intent": "OpenPPL manual: Set user variable continues evaluation until first matching action",
+    "user_flags_reset": "CSymbolEngineOpenPPLUserVariables::UpdateOnHandreset clears _user_variables; depends on reliable handreset triggering"
+  },
+  "source_path": "portability/iso_defense_v1/iso_defense_integrated_draft.oppl",
+  "source_sha256": "27be1f161535c9bc07f019fd6e0609c7a3018bf6b2cc640b80a6042c5b7df02b",
+  "strategy_changed": false
+}

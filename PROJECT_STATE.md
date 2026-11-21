@@ -1,5 +1,5 @@
 # Estado atual — Heuristic6max
-**Data:** 20/11/2026 | **Checkpoint:** ISODEF-1 DRAFT / instrumentação offline OH-G1G6-1 (552 testes executados em CI) | **Estado:** G2-a HOLD; R10d floor NÃO ATINGIDO; não operacional.
+**Data:** 20/11/2026 | **Checkpoint:** ISODEF-1 DRAFT / instrumentação offline OH-G1G6-1 (616 execuções verificadas em CI / 604 deduplicadas por suíte) | **Estado:** G2-a HOLD; R10d floor NÃO ATINGIDO; não operacional.
 
 ## Evidências concluídas
 - G0: arquitetura e contratos.
@@ -177,3 +177,8 @@ Protegidos flop/turn contra `HaveNuts → Fold` quando o tamanho da aposta exced
 - Não houve mudança de política poker: último integrado permanece `portability/iso_defense_v1/iso_defense_integrated_draft.oppl` (**2.007 WHEN / 159 f$ / 192 listas / 121 Set / 38 user_**), ranges v0.6.1 e ancestrais preservados.
 - Criado [protocolo de evidências offline](portability/oh_runtime_gate_v1/README.md) com dez cenários ancorados em símbolos/regras reais do integrado, coletor PowerShell de hashes **sem abrir nem automatizar OH**, checklist humano, estrutura privada ignorada pelo Git e script que verifica snapshots/arquivos SHA, debug, estabilidade de `randomhand`, par de ações `Best action`/`Action taken`. Não existe resultado `PASS` ou promoção automática: `runtime_approved=false` é incondicional.
 - [CI OH-G1G6-1](https://github.com/pmartins87/Heuristic6max/actions/runs/44862638886) verde no commit de PR `c0a1eed16fe17212e1cca1d4c117c268d280e55a`: **26 novos testes**, **599 execuções / 587 deduplicadas em 30 suítes**, +26 sobre ISODEF-1 (573/561). Nenhum executável OH, tablemap e replay real disponíveis nesta sessão; evidências de runtime **zero**. **G1 ABERTO, G6 PENDENTE, G2-a HOLD e 0/14 R10d VERIFIED**.
+
+## OH-SRC1 — compatibilidade pela fonte sem dependência da instalação (21/11/2026)
+- [Auditoria de semântica](portability/oh_source_audit_v1/README.md) apoiada no C++ `repositorio_completo_openholdem.txt`, na biblioteca `OpenPPL_Library_Integrated.txt` e no manual OpenPPL fornecidos. **17 testes adicionais aprovados na [CI OH-SRC1](https://github.com/pmartins87/Heuristic6max/actions/runs/44864070437) — 616 execuções, 604 deduplicadas por suíte, 31 suítes.**
+- Inventário exato: **2.007 WHEN** sem mudança de política; **436 `PotSize = literal`**, 258 `AmountToCall = 0`, 400 igualdades de `AmountToCall` não zero, 103 `StillToAct`, 343 `FirstRaiserPosition`. O risco é de precisão/semântica; nenhum dos 436 foi alterado automaticamente. Duas origens ISODEF-1 mantêm `Set`/ação com guardas idênticas.
+- C++ demonstra que `UpdateOnHandreset` limpa flags `user_*`; manual confirma que `Set` continua até a próxima ação. `Calls` depende do estado e histórico; `StillToAct` é válido na primeira órbita. Construção SOURCE-FIRST segue sem qualquer hash do OH local; para certificar executável instalado, fallback e ação efetivamente tomada persistem G1/G6 pendentes. **G2-a HOLD, R10d 0/14 VERIFIED, sem liberação real.**
