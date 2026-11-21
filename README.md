@@ -1,5 +1,11 @@
 # Heuristic6max — fonte de verdade
 
+## Checkpoint ativo — Multiway-v2 + LIMP-BB-v1 (20/11/2026)
+- [Fonte integrada OpenPPL mais recente](portability/limped_bb_v1/preflop_multiway_limp_bb_draft.oppl), [multiway 4–6way e transições HU](portability/multiway_v2/README.md) e [BB check contra um limper](portability/limped_bb_v1/README.md).
+- **74 regras de ação pós-flop multiway** (40 com 4–6 jogadores ativos e 34 para multiway→HU), mais **33 ações pós-flop limp-BB** e 2 novos Check FORCE pré-flop. **42 testes incrementais; 434 testes esperados na CI.**
+- Integrado mede **899 WHEN / 106 funções f$ / 187 handlists / 92 Set user / 9 símbolos user_**. Os ranges e o histórico anterior permaneceram preservados.
+- [Benchmark DeepCrusher_R10d](benchmarks/r10d_floor/README.md) permanece **NÃO ATINGIDO**: M04 e M06 avançaram de MISSING para PARTIAL; 14/14 capacidades ainda exigem validação completa. Sem execução OpenHoldem, sem liberação para jogo real.
+
 ## Novo progresso efetivo — pós-flop single-raised **3-way**
 - [p3way_srp_v1](portability/p3way_srp_v1/README.md) adiciona **31 regras de ação OpenPPL** (13 flop/10 turn/8 river), com dois papéis: Hero abriu primeiro ou pagou o open. **33 condições VS_OPEN Call** geram registros de origem `Set user_H6_VSOpenCallIntent`, sempre confirmados contra BotCalledBeforeFlop/raises antes do uso posterior.
 - [Arquivo integrado mais recente](portability/p3way_srp_v1/preflop_srp_3bet_3way_draft.oppl) reúne pré-flop RFI/VS_OPEN/VS_3BET, SRP HU, 3bet HU, SRP 3-way — **729 WHEN, 92 f$, 187 listas, 90 Set e 7 símbolos user_**, contra 6.021 WHEN e 561 símbolos user_ R10d.

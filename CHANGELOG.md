@@ -54,3 +54,7 @@ Consulte [DECISIONS.md](DECISIONS.md) para justificativas e [RELEASE_MANIFEST.md
 - **SRP-3WAY-v1 / ADR-030 (20/11/2026):** 31 regras novas OpenPPL para SRP com três jogadores (13 flop/10 turn/8 river), 4 auxiliares, 33 `Set user_H6_VSOpenCallIntent` derivados de regras pré-flop existentes e nova fonte integrada completa. 16 testes novos, **392** acumulados esperados. Piso R10d: M05 `MISSING → PARTIAL`, ainda 14 capacidades sem aprovação e 0 release. Sem alterar as decisões pré-flop, sem runtime OH real. [Fonte](portability/p3way_srp_v1/README.md).
 
 - **ADR-031 (20/11/2026):** hotfix de prioridade de nuts vs overbet nos dois módulos pós-flop novos: quatro CALL adicionais antes de FOLD genérico em flop/turn; P3BET-HU 39→41, SRP-3WAY 31→33, H6 integrado 729→733 WHEN. Testes adversariais adicionados nos testes existentes; 392 totais esperados. Sem modificar ranges nem ações pré-flop; R10d ainda não superado.
+
+- **Multiway-v2 / ADR-032 (20/11/2026):** +40 ações SRP 4/5/6way sem saídas, +34 ações multiway→HU, 10 funções, matriz topológica e 25 testes estáticos. [Código](portability/multiway_v2/README.md).
+- **LIMP-BB-v1 / ADR-033 (20/11/2026):** +2 opções pré-flop de Check FORCE contra single-limp, 2 marcações de intenção, +33 ações pós-flop, 17 testes. [Código](portability/limped_bb_v1/README.md).
+- Integração cumulativa: **899 WHEN, 106 f$, 187 listas, 92 Set user, 9 user_**; 434 testes totais esperados. Benchmark atualizado para nova fonte, M04/M06 PARTIAL; R10d ainda NÃO SUPERADO. Sem alteração de ranges ou execução OH.

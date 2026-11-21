@@ -134,3 +134,8 @@ Ver [PORTABILITY_CONTRACT.md](PORTABILITY_CONTRACT.md).
 
 ## ADR-031 — gate prioritário de valor
 Correção de quatro ramos de flop/turn em 3bet HU e SRP 3way: após o raise opcional, um segundo ramo `HaveNuts Call FORCE` precisa vir antes do fold residual. Testes de overbet tornam-se obrigatórios para toda nova família. A meta de superar R10d não mudou; evitar árvores gigantes com defeitos estratégicos graves.
+
+## Multiway-v2 e LIMP-BB-v1 — expansão planejada sem pivô (20/11/2026)
+- DRAFT concluído: potes com 4–6 jogadores ainda ativos no flop/turn/river, e potes originalmente multiway que ficam HU; BB check versus um único limp (SB ou outra posição) com pós-flop próprio.
+- Gates M04 (limp/iso) e M06 (multiway 4+) passam a PARTIAL. **P1 seguinte:** 3→2, 4→2/3 e 5→2/3/4 adversários, limp/iso verdadeiro e potes 3bet multiway. **P2:** 4bet/5bet, squeeze, short/deep stacks, SPR, textura/runout e adversário. Não ampliar ranges v0.6.1 sem justificativa.
+- Piso R10d não atingido; 14 capacidades não verificadas, nenhuma operação real autorizada.

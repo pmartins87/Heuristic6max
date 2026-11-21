@@ -110,3 +110,8 @@ Localização versionada: [audits/g2a_v0_7/](audits/g2a_v0_7/). Contém script, 
 
 ## ADR-031 — hotfix pós-flop DRAFT
 Atualizados quatro ramos de nuts-call, testes, intérpretes, os dois integrados, READMEs, SHA e benchmark. 74 ações novas entre 3bet HU e SRP 3way (41+33), 733 WHEN integrados, 392 testes esperados. Nenhum release operacional, R10d piso NOT MET e sem execução OH.
+
+## Multiway-v2 + LIMP-BB-v1 (20/11/2026, DRAFT)
+- [multiway_v2/](portability/multiway_v2/) contém 9 arquivos versionados: políticas 4–6way e multiway→HU, integrado, gerador, intérprete, testes, matriz, README e SHA.
+- [limped_bb_v1/](portability/limped_bb_v1/) contém 8 arquivos: política de BB limp, captura pré-flop, integrado ativo, gerador, intérprete, testes, README e SHA.
+- [Benchmark R10d](benchmarks/r10d_floor/) repontado ao integrado atual e manifesto regenerado. 392 testes anteriores +25 +17 = **434** esperados. Os 14 gates finais não passaram; G6/execução real ainda bloqueado.

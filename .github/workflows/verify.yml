@@ -185,3 +185,23 @@ jobs:
         run: git diff --exit-code -- benchmarks/r10d_floor/CURRENT_GAP_REPORT.json
       - name: Verify updated R10d SHA256 manifest
         run: cd benchmarks/r10d_floor && sha256sum -c BENCHMARK_SHA256SUMS.txt
+      - name: Run 4-6way SRP and multiway to HU regressions
+        run: python -m unittest discover -s portability/multiway_v2 -p 'test_*.py' -q
+      - name: Regenerate 4-6way and transition source plus topology report
+        run: python portability/multiway_v2/build_multiway_v2.py
+      - name: Check deterministic integrated multiway v2 code and topology
+        run: git diff --exit-code -- portability/multiway_v2/preflop_multiway_v2_draft.oppl portability/multiway_v2/MULTIWAY_V2_TOPOLOGY.csv
+      - name: Verify SHA256 for multiway v2
+        run: cd portability/multiway_v2 && sha256sum -c MULTIWAY_V2_SHA256SUMS.txt
+      - name: Run BB single-limp OpenPPL regressions
+        run: python -m unittest discover -s portability/limped_bb_v1 -p 'test_*.py' -q
+      - name: Regenerate BB limp preflop markers and combined formula
+        run: python portability/limped_bb_v1/build_limp_bb.py
+      - name: Check deterministic BB limp formula and intent markers
+        run: git diff --exit-code -- portability/limped_bb_v1/preflop_multiway_limp_bb_draft.oppl portability/limped_bb_v1/limp_bb_preflop_capture.oppl
+      - name: Verify SHA256 for BB limp
+        run: cd portability/limped_bb_v1 && sha256sum -c LIMP_BB_SHA256SUMS.txt
+      - name: Re-evaluate latest integrated R10d floor and unit tests
+        run: python -m unittest discover -s benchmarks/r10d_floor -p 'test_*.py' -q && python benchmarks/r10d_floor/comparison.py
+      - name: Verify benchmark unchanged and SHA256
+        run: git diff --exit-code -- benchmarks/r10d_floor/CURRENT_GAP_REPORT.json && cd benchmarks/r10d_floor && sha256sum -c BENCHMARK_SHA256SUMS.txt

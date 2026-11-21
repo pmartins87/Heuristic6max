@@ -173,3 +173,9 @@ Na raiz do repositório, execute:
 
 ## ADR-031: preserve a correção de nuts
 Arquivos correntes `portability/p3bet_hu_v1/preflop_srp_and_3bet_hu_draft.oppl` e `portability/p3way_srp_v1/preflop_srp_3bet_3way_draft.oppl`; 41/33 ações novas. Rerodar generators, 15/16 testes de ambos, 12 benchmark, regeneração e SHA. Testes obrigatórios: nuts frente a overbet >250% do pote nunca segue Fold residual. Última fonte 733 WHEN. R10d gate NOT MET; G6 runtime pendente.
+
+## Handoff — Multiway-v2 + LIMP-BB-v1 (20/11/2026)
+- Fonte mais nova: `portability/limped_bb_v1/preflop_multiway_limp_bb_draft.oppl`; pai: `portability/multiway_v2/preflop_multiway_v2_draft.oppl`. **Nunca voltar a fonte anterior ao adicionar próximo módulo.**
+- Rodar da raiz: `python -m unittest discover -s portability/multiway_v2 -p 'test_*.py' -q` (25); `python -m unittest discover -s portability/limped_bb_v1 -p 'test_*.py' -q` (17), depois `python portability/multiway_v2/build_multiway_v2.py`, `python portability/limped_bb_v1/build_limp_bb.py` e `python benchmarks/r10d_floor/comparison.py`.
+- Verificar hashes nos dois pacotes e em `benchmarks/r10d_floor/BENCHMARK_SHA256SUMS.txt`; verificar `git diff --exit-code` dos integrados e relatórios. Esperado 899 WHEN, 106 funções, 187 listas, 92 SET, 9 user_; 434 testes CI.
+- M04/M06 PARTIAL, 14 capacidades não aprovadas, zero OHReplay alvo. **Próximo trabalho:** quedas intermediárias de jogadores, limp/iso, 3bet multiway, depois 4bet/5bet e pós-flop com SPR/board.

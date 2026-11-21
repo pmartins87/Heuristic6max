@@ -1,5 +1,5 @@
 # Estado atual — Heuristic6max
-**Data:** 20/11/2026 | **Checkpoint:** RFI-MVP 6-max em OpenPPL sobre v0.6.1 | **Estado estratégico:** G2-a HOLD / não operacional.
+**Data:** 20/11/2026 | **Checkpoint:** Multiway-v2 + LIMP-BB-v1 | **Estado:** G2-a HOLD; R10d floor NÃO ATINGIDO; não operacional.
 
 ## Evidências concluídas
 - G0: arquitetura e contratos.
@@ -143,3 +143,8 @@ Python de importação de charts, análise, Monte Carlo, testes e reconstrução
 
 ## ADR-031 (20/11/2026): conserto de nuts versus overbets
 Protegidos flop/turn contra `HaveNuts → Fold` quando o tamanho da aposta excede o preço de call previsto para mãos inferiores. Novos módulos: **41+33 ações**, último integrado 733 WHEN /92 funções /187 listas /90 Set /7 user_. Todos os 14 gates R10d continuam sem validação integral. 392 testes previstos; G1 aberto, G2-a HOLD, G6 pendente.
+
+## Checkpoint ativo — Multiway-v2 + LIMP-BB-v1 (20/11/2026)
+- **Nova fonte integrada:** `portability/limped_bb_v1/preflop_multiway_limp_bb_draft.oppl`. 899 WHEN, 106 f$, 187 listas, 92 Set user, 9 user_ distintos. **434 testes totais esperados** (392 anteriores +25 multiway +17 limped BB).
+- [Multiway-v2](portability/multiway_v2/) registra 40 decisões para 4/5/6way SRP sem saídas e 34 quando um pote 3–6way fica HU. [LIMP-BB-v1](portability/limped_bb_v1/) trata check do BB versus single-limp e 33 decisões nas streets seguintes.
+- **M04/M06 PARTIAL**, 14 famílias R10d ainda sem VERIFICATION; zero validação OH real, G1 aberto, G2-a HOLD e G6 pendente. Origem pré-flop e topologia ainda precisam de replay. Ranges da v0.6.1 intactos.

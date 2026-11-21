@@ -68,3 +68,8 @@ A comparação é com o [artefato R10d exato](https://github.com/pmartins87/Deep
 
 ## ADR-031: integridade de ações acima da contagem de nós
 Corrigida falha estratégica em ambas as novas famílias: HaveNuts enfrentando overbet podia atingir Fold residual. Quatro ramos flops/turns agora garantem CALL quando não aplica raise. Último integrado = 733 WHEN, 74 ações 3bet HU+SRP 3way. A lacuna para R10d continua grande; priorizar correção de escolhas e mais famílias reais, não inflação artificial de árvores.
+
+## Expansão de potes e transições — ADR-032/033 (20/11/2026)
+- Mais 74 decisões nativas OpenPPL cobrem potes com 4–6 jogadores ativos e a conversão 3–6way→HU; os estados preservam a quantidade ORIGINAL de oponentes no flop. Não contar automaticamente 484 trajetórias históricas como 484 decisões.
+- Mais 33 decisões e 2 Check FORCE cobrem somente BB versus single-limp; a família limp/iso continua incompleta.
+- Fonte integrada atual: [preflop_multiway_limp_bb_draft.oppl](portability/limped_bb_v1/preflop_multiway_limp_bb_draft.oppl). Métricas 899 WHEN/106 f$/187 listas/92 Set/9 user_; **14 capacidades R10d ainda sem aprovação**. P1: quedas intermediárias, potes com limpers e isolation, multiway 3bet; após isso SPR, board/runout, perfis, multi-street e OH real.

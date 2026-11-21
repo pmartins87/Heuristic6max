@@ -116,3 +116,8 @@ A cada nova implementação estratégica, consultar este contrato e atualizar `D
 
 ## ADR-031 — não deixar nuts cair em folds de preço
 Após a decisão RaiseHalfPot opcional com `HaveNuts`, exigir CALL prioritário sem teto de pot odds reservado a mãos mais fracas, antes do FOLD residual. Testar a mesma fonte OpenPPL com adversarial overbet; caso real/ação final OH permanece sem comprovação.
+
+## ADR-032/033 — Topologia multiway e check de BB versus limp
+- [Multiway-v2](portability/multiway_v2/) exige OpponentsOnFlop=3/4/5 e OpponentsLeft igual para potes com 4–6 jogadores, ou OpponentsOnFlop=2..5 e OpponentsLeft=1 para transição HU. **Não** extrapolar para perdas intermediárias não implementadas.
+- [LIMP-BB-v1](portability/limped_bb_v1/) exige InBigBlind, Calls=1, Raises=0, StillToAct=0, AmountToCall=0 e PotSize 2/2.5 para Check FORCE. A fonte documental `OpenPPL_Library_Integrated.txt` usa **BotCheckedPreflop**; testar na instalação OpenHoldem antes de confiar no símbolo e no reset da memória.
+- As duas fontes OpenPPL são interpretadas diretamente em testes Python. O no-match em Python não é fail-closed OpenHoldem; nunca inferir segurança operacional de CI. R10d gate não aprovado.
