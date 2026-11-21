@@ -267,3 +267,10 @@ jobs:
         run: python portability/iso_defense_v1/build_defense.py
       - name: Verify ISO DEFENSE v1 merged parent unchanged
         run: git diff --exit-code -- portability/iso_defense_v1/iso_defense_integrated_draft.oppl
+
+      - name: Verify ISO DEFENSE v1 source and replay-test SHA256
+        run: cd portability/iso_defense_v1 && sha256sum -c ISODEF1_SHA256SUMS.txt
+      - name: Re-evaluate R10d gap for ISO DEFENSE v1 active source
+        run: python benchmarks/r10d_floor/comparison.py
+      - name: Verify current ISODEF-1 R10d report and SHA256 manifest
+        run: git diff --exit-code -- benchmarks/r10d_floor/CURRENT_GAP_REPORT.json && cd benchmarks/r10d_floor && sha256sum -c BENCHMARK_SHA256SUMS.txt
