@@ -187,3 +187,8 @@ Arquivos correntes `portability/p3bet_hu_v1/preflop_srp_and_3bet_hu_draft.oppl` 
 - +38 testes, 521 esperados na CI, 1.460 WHEN integrados. **Não** reescrever fontes v0.6.1 nem afirmar R10d superado ou uso em mesa real. Próximas famílias: isolation vs limps, squeeze e 4bet/5bet; board, SPR, perfis e replays continuam pendentes.
 
 **Errata de contagem CI (20/11/2026):** [registro verificável](CI_TEST_COUNT_ERRATA.md). Antes deste bloco: 483 execuções, 471 testes distintos; após: 521 execuções, 509 distintos. A suíte do benchmark R10d com 12 testes roda duas vezes. Registros anteriores de 434/472 eram estimativas incorretas. Essa correção é exclusivamente documental e NÃO altera a estratégia.
+
+## Handoff ISO-1 (DRAFT — 20/11/2026)
+- Branch de trabalho `work/iso-v1-draft-20261120`; fonte em `portability/iso_raise_v1/` (handlist, pré-flop, topologia, pós-flop, interpretador, testes e gerador). Pai congelado: `portability/p3bet_multiway_v1/preflop_srp_limp_3bet_multiway_draft.oppl`.
+- Executar 13 testes via `python -m unittest discover -s portability/iso_raise_v1 -p 'test_*.py' -q`; executar builder e `git diff --exit-code -- portability/iso_raise_v1/iso_integrated_draft.oppl`. Não mesclar/promover em caso de falha. A CI anterior provou 521 execuções (509 distintas); não somar 13 como sucesso antes de ver logs.
+- Próximo passo: confirmar CI e benchmark R10d; depois validar portabilidade em OpenHoldem offline. G2-a HOLD; não alterar v0.6.1 nem iniciar VS_4BET sem nova decisão. O integrado é rascunho e não deve ser usado com dinheiro.
