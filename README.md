@@ -184,3 +184,7 @@ Uma overbet muito grande podia escapar do call genérico e atingir `Fold FORCE` 
 
 ## ISO-1 — expansão DRAFT de isolamento de limpers
 - [Módulo de isolamento CO/BTN contra 1–3 limpers](portability/iso_raise_v1/README.md): cinco contextos pré-flop novos, 41 decisões pós-flop e 120 topologias; ranges RFI/VS_OPEN/VS_3BET anteriores preservados. O novo integrado permanece **DRAFT, não operacional**; 13 testes incrementais aprovados na [CI 44853164836](https://github.com/pmartins87/Heuristic6max/actions/runs/44853164836) (534 execuções / 522 deduplicados por suíte), e o piso funcional R10d permanece bloqueado.
+
+## BLISO-2 — isolamento SB/BB em DRAFT
+- [SB 1–4 limpers e BB 1–5 limpers](portability/blind_iso_v2/README.md): 13 novas origens, 43 decisões pós-flop e 120 topologias cronológicas. A lista de ISO é separada da v0.6.1, nenhum range anterior foi alterado, e o BB mantém o Check gratuito para mãos não isoladas.
+- 18 testes incrementais aguardam resultado do CI; **sem replays OpenHoldem e sem comprovação de EV/GTO ou superação do R10d**. G1 ABERTO, G2-a HOLD, G6 PENDENTE.
