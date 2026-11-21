@@ -245,3 +245,5 @@ jobs:
         run: python portability/iso_raise_v1/build_iso.py
       - name: Assert ISO-1 source-merger determinism
         run: git diff --exit-code -- portability/iso_raise_v1/iso_integrated_draft.oppl
+      - name: Verify ISO-1 SHA256 source snapshot
+        run: cd portability/iso_raise_v1 && sha256sum -c ISO1_SHA256SUMS.txt
