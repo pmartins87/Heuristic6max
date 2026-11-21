@@ -664,7 +664,7 @@ KQo KQs QJs T9s TT
 22 33 54s 65s 75s 86s 97s A2o A3o A4o A5o A6o
 A6s A7o A7s A8o A9o J7s J8s J9s JTo K3s K4s K6s
 K7s K8o K8s K9o K9s KTo Q7s Q8s Q9s QTo T8s
-// ISO-1 isolated handlist for NEW 1-3 limper contexts only. Does not modify RFI/VS_OPEN/VS_3BET.
+// ISO-1: NEW separate 1-3-limper contexts; existing v0.6.1 lists never edited.
 ##listH6ISOCORE##
 AA KK QQ JJ TT 99 AKs AKo AQs AQo AJs AJo KQs KJs QJs
 ##f$preflop##
@@ -686,7 +686,6 @@ WHEN (IsPreflop AND nplayersdealt = 6 AND Raises = 0 AND AmountToCall = 1 AND NO
 WHEN (IsPreflop AND nplayersdealt = 6 AND Raises = 0 AND AmountToCall = 1 AND NOT StackUnknown AND StackSize >= 95 AND StackSize <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND InButton AND StillToAct = 2 AND Calls = 3 AND PotSize = 4.5 AND listH6ISOCORE) Set user_H6_ISOBTN3
 WHEN (IsPreflop AND nplayersdealt = 6 AND Raises = 0 AND AmountToCall = 1 AND NOT StackUnknown AND StackSize >= 95 AND StackSize <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND InButton AND StillToAct = 2 AND Calls = 3 AND PotSize = 4.5 AND listH6ISOCORE) RaiseTo 6.5 FORCE
 WHEN (IsPreflop AND nplayersdealt = 6 AND Raises = 0 AND AmountToCall = 1 AND NOT StackUnknown AND StackSize >= 95 AND StackSize <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND InButton AND StillToAct = 2 AND Calls = 3 AND PotSize = 4.5) Fold FORCE
-
 // New multi-limper BB check options, not isolated/raised pots.
 // These intents require a later BotCheckedPreflop observation.
 // The two pot totals reflect whether SB completed its half blind.
@@ -2132,7 +2131,6 @@ WHEN (f$H6ISOValid AND OpponentsLeft = 3) RETURN TRUE FORCE
 WHEN (f$H6ISOValid AND OpponentsLeft = 4) RETURN TRUE FORCE
 WHEN (f$H6ISOValid AND OpponentsLeft = 5) RETURN TRUE FORCE
 WHEN Others RETURN FALSE FORCE
-
 // ISO-1 NEW pot type. Inherit from documented native OpenPPL symbols; no solver/EV claim.
 ##f$H6ISOStrong##
 WHEN (HaveNuts) RETURN TRUE FORCE
@@ -2144,7 +2142,6 @@ WHEN (HaveSet) RETURN TRUE FORCE
 WHEN (HaveTrips) RETURN TRUE FORCE
 WHEN (HaveTwoPair) RETURN TRUE FORCE
 WHEN Others RETURN FALSE FORCE
-
 ##f$flop##
 WHEN (f$H6ISOValid AND AmountToCall > 0 AND HaveNuts AND AmountToCall <= 35% PotSize) RaiseHalfPot FORCE
 WHEN (f$H6ISOValid AND AmountToCall > 0 AND HaveNuts) Call FORCE
@@ -2160,7 +2157,6 @@ WHEN (f$H6ISOHU AND AmountToCall = 0 AND f$H6ISOStrong) BetHalfPot FORCE
 WHEN (f$H6ISOTwo AND AmountToCall = 0 AND f$H6ISOStrong) BetThirdPot FORCE
 WHEN (f$H6ISOCrowded AND AmountToCall = 0 AND f$H6ISOStrong) BetThirdPot FORCE
 WHEN (f$H6ISOHU AND AmountToCall = 0 AND HaveOverPair) BetHalfPot FORCE
-WHEN (f$H6ISOHU AND AmountToCall = 0 AND BotIsLastRaiser AND Position = Last AND NOT FlushPossibleOnFlop AND NOT StraightPossibleOnFlop AND NOT PairOnBoard AND randomhand < 0.20) BetThirdPot FORCE
 WHEN (f$H6ISOValid AND AmountToCall = 0) Check FORCE
 WHEN (f$H6ThreeBetMWValid AND AmountToCall > 0 AND HaveNuts AND AmountToCall <= 48% PotSize) RaiseHalfPot FORCE
 WHEN (f$H6ThreeBetMWValid AND AmountToCall > 0 AND HaveNuts) Call FORCE
