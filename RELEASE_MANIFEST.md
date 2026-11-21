@@ -97,3 +97,8 @@ Localização versionada: [audits/g2a_v0_7/](audits/g2a_v0_7/). Contém script, 
 - Testes: 31 incrementais, **344 acumulados previstos**. Regenerar CSV/OPPL e verificar hashes no CI; testes de execução OH/alvo continuam inexistentes. G1 aberto, G2-a HOLD e G6 pendente.
 
 **Complemento HIST-v3:** adicionados `routing_coverage.py` e `HIST3_ROUTING_COVERAGE.csv`; README, builder, testes e manifesto SHA256 atualizados. São **14 arquivos no módulo HIST-v3**; 36 testes locais novos, total CI previsto **349**. Cobertura por fonte: 100/484 domínios admitidos apenas sob hipóteses documentais, 384 lacunas. Sem validação no OpenHoldem real.
+
+## Benchmark de piso R10d + 3bet HU v1 (DRAFT, não release)
+- [benchmarks/r10d_floor/](benchmarks/r10d_floor/): 8 arquivos, incluindo inventário congelado (fonte Git blob/SHA), 14 capacidades, 12 testes, relatório determinístico, contrato de promoção explicitamente false e manifesto SHA.
+- [portability/p3bet_hu_v1/](portability/p3bet_hu_v1/): 8 arquivos, incluindo `threebet_hu_postflop.oppl` (39 ações), captura de intenção RFI/VS_OPEN (9+44 tags), `preflop_srp_and_3bet_hu_draft.oppl` integrado, gerador, interpretador, 15 testes, documentação e manifesto SHA.
+- 27 testes novos, 376 esperados em CI; todos os ranges preflop históricos e fontes anteriores mantidos. **Sem operação OpenHoldem real.** 14/14 famílias da meta R10d ainda não têm status VERIFIED. Não declarar release possível.

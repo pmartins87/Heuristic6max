@@ -1,5 +1,11 @@
 # Heuristic6max — fonte de verdade
 
+## Novo piso obrigatório: superar o DeepCrusher_R10d — requisito NÃO atingido
+- [Comparação quantitativa da fonte real R10d](benchmarks/r10d_floor/README.md): R10d contém **6.021 WHEN, 725 funções, 545 handlists e 561 símbolos user_**; o arquivo integrado Heuristic com 3bet HU novo tem **649 WHEN, 88 funções, 187 handlists e 6 símbolos user_**. Métricas são referências de engenharia, **não prova de qualidade ou completude**.
+- [Matriz de 14 capacidades mínimas](benchmarks/r10d_floor/CAPABILITY_MATRIX.csv) e [relatório reproduzível](benchmarks/r10d_floor/CURRENT_GAP_REPORT.json). **14/14 requisitos ainda não estão integralmente verificados**; a release final está bloqueada até dominância funcional real e OpenHoldem seguro.
+- [Nova família de pote 3-bet heads-up](portability/p3bet_hu_v1/README.md): **39 ações pós-flop** (15 flop, 13 turn, 11 river) + intenção RFI/3bet registrada em OpenPPL (9+44 situações), leitura do próprio código para testes, nenhuma alteração de ranges ou ações de pré-flop.
+- **27 testes novos locais**, total esperado **376 (349+15+12)** em CI. Status: DRAFT, sem aprovação do executável OpenHoldem nem qualidade estratégica comprovada.
+
 ## HIST-v3 — história cronológica, sem inflar decisões (20/11/2026)
 - [Fonte OpenPPL, testes e documentação](portability/srp_history_v3/README.md); [484 sequências legais flop→turn](portability/srp_history_v3/HIST3_484_CHRONOLOGICAL_PATHS.csv); [3 colisões por flags](portability/srp_history_v3/HIST3_OBSERVABILITY.csv).
 - **484 = cenários legais de eventos com até quatro raises por street, não regras de ação prontas**, considerando IP/OOP e agressor/caller PF. Permite localizar as lacunas antes de escrever mais branches.
@@ -59,7 +65,7 @@
 
 Estratégia **heurística** de No-Limit Hold'em cash 6-max baseada em fundamentos de GTO, com contratos, ranges auditáveis e testes reprodutíveis. **Não é um solver; não é um bot operacional validado; não há comprovação de EV ou winrate.**
 
-**Checkpoint ativo: G3 HIST-v3 (20/11/2026), sobre pré-flop v0.6.1 e auditorias anteriores; desenho de bot completo, ainda não operacional.**
+**Checkpoint ativo: benchmark mínimo R10d + módulo 3bet-pot HU v1 (20/11/2026)** — estratégia ainda DRAFT; G1 aberto, G2-a HOLD, G6 pendente e gate de completude R10d NÃO MET.
 
 ## PORT-1 parcial — RFI LJ (20/11/2026)
 

@@ -1,0 +1,72 @@
+{
+  "capabilities_total": 14,
+  "heuristic_active_file": "portability/p3bet_hu_v1/preflop_srp_and_3bet_hu_draft.oppl",
+  "metrics": {
+    "bytes": {
+      "Heuristic": 180659,
+      "R10d": 1325138
+    },
+    "distinct_user_symbols": {
+      "Heuristic": 6,
+      "R10d": 561
+    },
+    "f_game_functions": {
+      "Heuristic": 0,
+      "R10d": 14
+    },
+    "f_pot_functions": {
+      "Heuristic": 0,
+      "R10d": 6
+    },
+    "function_headers": {
+      "Heuristic": 88,
+      "R10d": 725
+    },
+    "lines": {
+      "Heuristic": 1442,
+      "R10d": 20788
+    },
+    "list_headers": {
+      "Heuristic": 187,
+      "R10d": 545
+    },
+    "set_user_lines": {
+      "Heuristic": 57,
+      "R10d": 1561
+    },
+    "total_formula_and_list_headers": {
+      "Heuristic": 275,
+      "R10d": 1270
+    },
+    "when_rules": {
+      "Heuristic": 649,
+      "R10d": 6021
+    }
+  },
+  "note": "Counts are reference only; strong dominance must be established via verified functional scope and practical play, not rules per line.",
+  "reference": {
+    "file": "artifacts/r10/DeepCrusher_R10d_TBP_HARDENING_20261001.txt",
+    "git_blob_sha": "9f9cba79cdb9dc4438895770cf61a450fb55d17c",
+    "repo": "pmartins87/DeepCrusher",
+    "sha256": "1b198b7086870b427d085506c3c538d3b67d2bc6ac9e35c67b9bf30babb5f46f"
+  },
+  "release_gate": "BLOCKED_MORE_CAPABILITY_AND_REAL_OH_TESTS_REQUIRED",
+  "surpasses_R10d": false,
+  "unmet_capabilities": [
+    "M01",
+    "M02",
+    "M03",
+    "M04",
+    "M05",
+    "M06",
+    "M07",
+    "M08",
+    "M09",
+    "M10",
+    "M11",
+    "M12",
+    "M13",
+    "M14"
+  ],
+  "verified_capabilities": 0
+}

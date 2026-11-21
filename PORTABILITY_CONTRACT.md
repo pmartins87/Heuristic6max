@@ -103,3 +103,8 @@ A cada nova implementação estratégica, consultar este contrato e atualizar `D
 - Continuar a usar somente OpenPPL como fonte das decisões; intérprete em Python lê a mesma sintaxe, sem policy paralela. Preservar snapshots antigos e roadmap G1/G2/G6.
 
 **ADR-027: medição compulsória de cobertura real por ramo.** Os 484 históricos de gramática do HIST-v3 possuem somente 100 admissões de domínio em **simulação hipotética da biblioteca OPPL**, 384 lacunas. Admissão não é ação final do OpenHoldem; não usar o número de caminhos gerados como prova de cobertura estratégica. [Relatório reprodutível](portability/srp_history_v3/HIST3_ROUTING_COVERAGE.csv).
+
+## P3BET-HU e novo gate superior R10d (ADR-028/029)
+- Reutilizar a fonte `portability/p3bet_hu_v1/preflop_srp_and_3bet_hu_draft.oppl` como **único código de ação**: 39 novas regras para 3bet HU e duas famílias de `Set user` de origem extraídas de RaiseTo existente. `Set` registra **intenção**, nunca prova execução; exigir flags de Bot e street subsequente. Históricos contraditórios excluídos; nenhum fallback fake no Python.
+- O limite de cobertura final é [benchmark R10d](benchmarks/r10d_floor/README.md), com **14 capacidades mandatórias**, incluindo multiway 4+, potes 4bet/limp/iso, histórico real, board/SPR e ação final OH. Um teste estático nunca prova atendimento. Não mudar estratégia preflop por desejo de superar contagem.
+- **Atenção:** a fonte R10d inclui 1.561 comandos Set e centenas de símbolos, mas copiá-los sem rastrear origem poderia piorar a qualidade. Se a memória OH-alvo não suportar cronologia confiável, parar a expansão artificial, corrigir adaptador/observabilidade e reavaliar plataforma antes do uso.

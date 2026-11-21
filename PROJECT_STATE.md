@@ -127,3 +127,10 @@ Python de importação de charts, análise, Monte Carlo, testes e reconstrução
 - 10 helpers novos e 31 testes; **344 testes esperados CI**, todas as 75 ações prévias e todo pré-flop preservados. G3 em desenvolvimento; G1 ABERTO, G2-a HOLD, G6 pendente; zero replay real neste checkpoint.
 
 **HIST-v3 cobertura complementar:** interpretador da MESMA fonte OPPL + flags derivados da biblioteca identifica **100/484 cenários permitidos pelo domínio no modelo**, **264 bloqueados pela classificação flop e 120 pela turn**. É um limite superior hipotético de memória perfeita, NÃO taxa de ação operacional; restam 384 lacunas. Agora **36 testes novos, 349 totais previstos**. Regras de ação, ranges e G1/G2/G6 inalterados.
+
+## Novo requisito mínimo — R10d e implementação 3bet HU (20/11/2026)
+- Requisito obrigatório: lançamento final deve ter abrangência estratégica e técnica **superior ao DeepCrusher_R10d**, sem tornar-se solver ou pesquisa científica e sem transplantar decisões sem revisão.
+- Fonte R10d de 1.325.138 bytes lida diretamente do blob Git `9f9cba79...` (link e checksum em [benchmarks/r10d_floor/](benchmarks/r10d_floor/)); contém 725 f$, 545 listas, 6.021 WHEN, 1.561 Set e 561 símbolos de memória. H6 ativo (p3bet v1) contém 88 f$, 187 listas, 649 WHEN, 57 Set e 6 símbolos user_. **As métricas não medem EV nem equivalência estratégica**, mas a diferença de escala/abrangência é real.
+- 14 capacidades exigidas; 14 ainda PARTIAL ou MISSING, 0 totalmente VERIFIED no gate atual. [Matriz](benchmarks/r10d_floor/CAPABILITY_MATRIX.csv). **Não afirmar superioridade, completude, prontidão nem vantagem em poker real.**
+- Novo [p3bet_hu_v1](portability/p3bet_hu_v1/README.md): 39 regras de ação flop/turn/river em potes 3bet HU, intent-tags extraídas de 9 raises first-in +44 3bets vs open; domínio exige histórico nativo de bot e 1 adversário. **Sem alteração nas decisões pré-flop v0.6.1**. 15 testes novos no módulo, 12 no benchmark; 376 esperado no CI.
+- Faltam sobretudo 4bet/5bet, limped/iso, multiway 3 e 4+, short/deep stacks, memória real cronológica, adversário e runtime OH. G1 ABERTO, G2-a HOLD, G6 PENDENTE.
