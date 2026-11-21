@@ -274,7 +274,15 @@ def main(argv=None):
         return 2
     output=json.dumps(report,indent=2,sort_keys=True,ensure_ascii=False)+'\n'
     if args.out:
-        args.out.write_text(output,encoding='utf-8')
+        dest=args.out.resolve()
+        evidence_dir=args.evidence_root.resolve()
+        if (not dest.is_relative_to(evidence_dir) or
+                dest==args.bundle.resolve() or
+                dest.suffix.lower()!='.json' or
+                not dest.parent.is_dir() or args.out.is_symlink()):
+            print('INVALID_REPORT_OUTPUT: use only a private JSON file under evidence root',file=sys.stderr)
+            return 2
+        dest.write_text(output,encoding='utf-8')
     else:
         print(output,end='')
     return 0
