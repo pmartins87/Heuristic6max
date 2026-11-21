@@ -142,5 +142,7 @@ Correção de quatro ramos de flop/turn em 3bet HU e SRP 3way: após o raise opc
 
 ## Último bloco de engenharia — MWT3 / MLIMP2 / P3BMW1
 - Concluído estaticamente: 53 topologias SRP de jogadores que saíram em streets distintas; 7 CHECKs BB contra 2–5 limpers; 39 ações limped pot multiway; 43 ações potes 3bet multiway, mantendo agressor/caller e transferências até HU.
-- Gates reais: capturar `OpponentsOnTurn/OnRiver`, `BotCheckedPreflop`, origem PFR/caller, `NumberOfRaisesBeforeFlop`, sizing e ação final no OpenHoldem offline. **Não** inferir confiabilidade de 472 testes sintéticos.
+- Gates reais: capturar `OpponentsOnTurn/OnRiver`, `BotCheckedPreflop`, origem PFR/caller, `NumberOfRaisesBeforeFlop`, sizing e ação final no OpenHoldem offline. **Não** inferir confiabilidade de 521 testes sintéticos.
 - Próxima prioridade de código: **limp/iso-raise e resposta ao isolamento, coldcall/squeeze e potes 4bet/5bet**, seguidos de força/board/runout, SPR, perfil e histórico de bet/raise/call resolvidos. A meta superar funcionalmente R10d segue inalterada, com 14/14 capacidades não VERIFIED.
+
+**Errata de contagem CI (20/11/2026):** [registro verificável](CI_TEST_COUNT_ERRATA.md). Antes deste bloco: 483 execuções, 471 testes distintos; após: 521 execuções, 509 distintos. A suíte do benchmark R10d com 12 testes roda duas vezes. Registros anteriores de 434/472 eram estimativas incorretas. Essa correção é exclusivamente documental e NÃO altera a estratégia.

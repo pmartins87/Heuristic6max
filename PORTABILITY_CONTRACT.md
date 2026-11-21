@@ -127,3 +127,5 @@ Após a decisão RaiseHalfPot opcional com `HaveNuts`, exigir CALL prioritário 
 - BB contra 2–5 limpers: origem exclusiva por `Calls`, pote e `InBigBlind`; a ação de CHECK é confirmada posteriormente por `BotCheckedPreflop`. Potes 3bet multiway exigem marcador de 3bet + `BotRaisedBeforeFlop` ou RFI + `BotCalledBeforeFlop` com `NumberOfRaisesBeforeFlop=1`.
 - +123 regras flop/turn/river e +7 contextos BB-CHECK em arquivo integrado. Testes Python interpretam o MESMO OpenPPL, e todos os WHEN ancestrais ficam preservados na ordem original.
 - Não existe equivalência demonstrada para o executável OH instalado: símbolos, memória `user_`, no-match/default.bot, sizing legal e ação final precisam de replay antes de uso. Nenhum gate operacional aprovado.
+
+**Errata de contagem CI (20/11/2026):** [registro verificável](CI_TEST_COUNT_ERRATA.md). Antes deste bloco: 483 execuções, 471 testes distintos; após: 521 execuções, 509 distintos. A suíte do benchmark R10d com 12 testes roda duas vezes. Registros anteriores de 434/472 eram estimativas incorretas. Essa correção é exclusivamente documental e NÃO altera a estratégia.

@@ -4,7 +4,7 @@
 - [Transições SRP multiway](portability/multiway_transitions_v3/README.md): 53 topologias intermediárias e **41 decisões pós-flop** entre quatro e seis jogadores no flop, com contagens próprias de turn/river.
 - [BB contra 2–5 limpers](portability/multilimp_bb_v2/README.md): **7 opções pré-flop de CHECK** e **39 novas decisões pós-flop**, com distinção se o SB completou.
 - [3bet multiway](portability/p3bet_multiway_v1/README.md): **43 novas decisões pós-flop** para agressor ou caller pré-flop em potes 3bet com 3–6 jogadores no flop.
-- [Fonte única integrada](portability/p3bet_multiway_v1/preflop_srp_limp_3bet_multiway_draft.oppl): **1.460 WHEN, 136 funções, 187 listas, 99 SET, 16 flags user_**. Mais 38 testes (total **472 previsto na CI**), nenhum range da v0.6.1 alterado.
+- [Fonte única integrada](portability/p3bet_multiway_v1/preflop_srp_limp_3bet_multiway_draft.oppl): **1.460 WHEN, 136 funções, 187 listas, 99 SET, 16 flags user_**. Mais 38 testes (total **521 previsto na CI**), nenhum range da v0.6.1 alterado.
 - **Bot ainda incompleto:** 14/14 capacidades do piso DeepCrusher_R10d não foram plenamente verificadas; OH real e ação final não testados. Não confundir cobertura estática com excelência ou prontidão operacional.
 
 ## Checkpoint ativo — Multiway-v2 + LIMP-BB-v1 (20/11/2026)
@@ -179,3 +179,5 @@ Issues: [#1 — importação concluída](https://github.com/pmartins87/Heuristic
 
 ## Hotfix estratégico ADR-031 — prioridade de nuts sobre overbet
 Uma overbet muito grande podia escapar do call genérico e atingir `Fold FORCE` mesmo com `HaveNuts`. Corrigidos flop e turn de 3bet HU e SRP 3way: `HaveNuts` agora possui Call prioritário após o raise opcional. **41 ações 3bet HU (16/14/11) +33 SRP 3way (14/11/8)**, 74 novas ações; 733 `WHEN` na fonte integrada. Testes incluem overbets maiores que 250% do pote. Ranges pré-flop intactos; R10d continua NÃO SUPERADO; OH real não testado.
+
+**Errata de contagem CI (20/11/2026):** [registro verificável](CI_TEST_COUNT_ERRATA.md). Antes deste bloco: 483 execuções, 471 testes distintos; após: 521 execuções, 509 distintos. A suíte do benchmark R10d com 12 testes roda duas vezes. Registros anteriores de 434/472 eram estimativas incorretas. Essa correção é exclusivamente documental e NÃO altera a estratégia.

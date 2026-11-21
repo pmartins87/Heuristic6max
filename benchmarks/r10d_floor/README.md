@@ -49,7 +49,7 @@ O R10d está no GitHub do outro projeto; **não duplicar** 1,3 MB de código-fon
 
 ## Checkpoint integrado multiway/limps/3bet (20/11/2026)
 
-Fonte agora: `portability/p3bet_multiway_v1/preflop_srp_limp_3bet_multiway_draft.oppl`. Inclui 41 regras de transições SRP intermediárias, 39 regras BB contra 2–5 limpers e 43 regras 3bet multiway, além dos 7 novos contextos BB-check. **+38 testes, total previsto 472.**
+Fonte agora: `portability/p3bet_multiway_v1/preflop_srp_limp_3bet_multiway_draft.oppl`. Inclui 41 regras de transições SRP intermediárias, 39 regras BB contra 2–5 limpers e 43 regras 3bet multiway, além dos 7 novos contextos BB-check. **+38 testes, total observado 521 (logs GH Actions do commit ae4ed39).**
 
 Atualizações: M03, M04, M05, M06, M07 e M14 ganharam cobertura parcial adicional. **Nenhum dos 14 contratos foi promovido a VERIFIED.** A matriz permanece um piso de aceitação funcional, não um placar de linhas. Replays OH/ações finais continuam ausentes e não é seguro confundir `None` Python com o comportamento do `default.bot`.
 

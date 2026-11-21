@@ -79,3 +79,5 @@ Corrigida falha estratégica em ambas as novas famílias: HaveNuts enfrentando o
 - BB pós-option CHECK contra 2–5 limpers: sete origens SB/Other, 39 ações posteriores, e verificação por `BotCheckedPreflop`; ainda **não** cobre iso.
 - 3bet multiway: 117 topologias, 43 ações diferenciadas por agressor da 3bet vs RFI que pagou uma 3bet. Nenhum desses contextos é projetado para cair em SRP HU ou limp BB.
 - O arquivo OpenPPL integrado contém 1.460 WHEN/136 funções/187 listas/99 Set/16 user_, sem alteração de ranges. **Não equivale a superar o R10d**: precisamos de histórico completo intra-street, limp iso/coldcall, 4bet/5bet, board/runout, SPR, perfis, stacks e testes da ação final em OpenHoldem real.
+
+**Errata de contagem CI (20/11/2026):** [registro verificável](CI_TEST_COUNT_ERRATA.md). Antes deste bloco: 483 execuções, 471 testes distintos; após: 521 execuções, 509 distintos. A suíte do benchmark R10d com 12 testes roda duas vezes. Registros anteriores de 434/472 eram estimativas incorretas. Essa correção é exclusivamente documental e NÃO altera a estratégia.

@@ -120,4 +120,6 @@ Atualizados quatro ramos de nuts-call, testes, intérpretes, os dois integrados,
 - `portability/multiway_transitions_v3/`: 9 arquivos, 14 testes, 53 topologias de perdas intermediárias, 41 ações; `MWT3_SHA256SUMS.txt`.
 - `portability/multilimp_bb_v2/`: 10 arquivos, 12 testes, 7 contextos BB-CHECK e 39 ações em potes de 2–5 limpers; `MLIMP2_SHA256SUMS.txt`.
 - `portability/p3bet_multiway_v1/`: 9 arquivos, 12 testes, 43 ações e 117 topologias por street, com dois papéis PF; `P3BM1_SHA256SUMS.txt`.
-- Fonte ativa: `portability/p3bet_multiway_v1/preflop_srp_limp_3bet_multiway_draft.oppl`. 472 testes no CI previstos, hashes gerados e preservação de todos os ranges anteriores. Sem replay real; R10d FLOOR NOT MET.
+- Fonte ativa: `portability/p3bet_multiway_v1/preflop_srp_limp_3bet_multiway_draft.oppl`. 521 testes no CI previstos, hashes gerados e preservação de todos os ranges anteriores. Sem replay real; R10d FLOOR NOT MET.
+
+**Errata de contagem CI (20/11/2026):** [registro verificável](CI_TEST_COUNT_ERRATA.md). Antes deste bloco: 483 execuções, 471 testes distintos; após: 521 execuções, 509 distintos. A suíte do benchmark R10d com 12 testes roda duas vezes. Registros anteriores de 434/472 eram estimativas incorretas. Essa correção é exclusivamente documental e NÃO altera a estratégia.

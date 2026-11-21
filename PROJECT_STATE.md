@@ -152,5 +152,7 @@ Protegidos flop/turn contra `HaveNuts → Fold` quando o tamanho da aposta exced
 ## Estado após expansão MWT3/MLIMP2/P3BMW1 (20/11/2026)
 - Arquivo ativo: `portability/p3bet_multiway_v1/preflop_srp_limp_3bet_multiway_draft.oppl`, 1.460 WHEN, 136 f$, 187 handlists, 99 SET e 16 user_. Antecessor: 899/106/187/92/9. R10d congelado: 6.021/725/545/1.561/561.
 - Ganho de **123 regras de ação pós-flop** (+41 transições SRP, +39 multi-limp BB, +43 potes 3bet multiway) e sete opções BB-check. Modelos de histórico `OpponentsOnTurn` e `OpponentsOnRiver` documentados, sem observação OH real.
-- Testes incrementais: 14+12+12 = 38, total esperado **472**. Políticas v0.6.1 e antigas seções WHEN preservadas, inclusive sized raises.
+- Testes incrementais: 14+12+12 = 38, total esperado **521**. Políticas v0.6.1 e antigas seções WHEN preservadas, inclusive sized raises.
 - Piso R10d NÃO ATINGIDO: 14 famílias ainda não VERIFIED; faltam limp/iso, 4bet/5bet, perfil do adversário, SPR/board/runout, stacks, fallback e validação operacional. G1 ABERTO, G2-a HOLD, G6 PENDENTE.
+
+**Errata de contagem CI (20/11/2026):** [registro verificável](CI_TEST_COUNT_ERRATA.md). Antes deste bloco: 483 execuções, 471 testes distintos; após: 521 execuções, 509 distintos. A suíte do benchmark R10d com 12 testes roda duas vezes. Registros anteriores de 434/472 eram estimativas incorretas. Essa correção é exclusivamente documental e NÃO altera a estratégia.
