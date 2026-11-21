@@ -163,3 +163,6 @@ Issues: [#1 — importação concluída](https://github.com/pmartins87/Heuristic
 - [Relatório de 484 linhas](portability/srp_history_v3/HIST3_ROUTING_COVERAGE.csv) e [auditor de cobertura](portability/srp_history_v3/routing_coverage.py): **100 domínios admissíveis sob hipóteses estáticas de biblioteca, 384 lacunas (264 flop, 120 turn)**.
 - **100 não significa 100 decisões verificadas nem 100 exemplos vistos no OpenHoldem**; a simulação supõe que a captura de memória anterior ocorreu corretamente. 484 é universo de palavras legais, não número de políticas.
 - +5 testes de cobertura e determinismo: **36 testes HIST-v3 e 349 testes totais esperados CI**. Próximo passo: resolver lacunas por famílias de histórico realmente observáveis; não gerar ramos sem proveniência.
+
+## Hotfix estratégico ADR-031 — prioridade de nuts sobre overbet
+Uma overbet muito grande podia escapar do call genérico e atingir `Fold FORCE` mesmo com `HaveNuts`. Corrigidos flop e turn de 3bet HU e SRP 3way: `HaveNuts` agora possui Call prioritário após o raise opcional. **41 ações 3bet HU (16/14/11) +33 SRP 3way (14/11/8)**, 74 novas ações; 733 `WHEN` na fonte integrada. Testes incluem overbets maiores que 250% do pote. Ranges pré-flop intactos; R10d continua NÃO SUPERADO; OH real não testado.

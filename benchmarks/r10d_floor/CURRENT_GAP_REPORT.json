@@ -3,7 +3,7 @@
   "heuristic_active_file": "portability/p3way_srp_v1/preflop_srp_3bet_3way_draft.oppl",
   "metrics": {
     "bytes": {
-      "Heuristic": 197101,
+      "Heuristic": 197371,
       "R10d": 1325138
     },
     "distinct_user_symbols": {
@@ -23,7 +23,7 @@
       "R10d": 725
     },
     "lines": {
-      "Heuristic": 1530,
+      "Heuristic": 1534,
       "R10d": 20788
     },
     "list_headers": {
@@ -39,7 +39,7 @@
       "R10d": 1270
     },
     "when_rules": {
-      "Heuristic": 729,
+      "Heuristic": 733,
       "R10d": 6021
     }
   },

@@ -71,7 +71,7 @@ def parse(text:str)->Source:
     if set(sections)!=HELPERS|set(STREETS):raise SourceError('Missing sections')
     for h in HELPERS:
         if not sections[h][-1].fallback:raise SourceError('Helper missing false fallback')
-    for name,n in (('flop',13),('turn',10),('river',8)):
+    for name,n in (('flop',14),('turn',11),('river',8)):
         rules=sections[name]
         if len(rules)!=n or any(r.fallback for r in rules):raise SourceError('Unreviewed tree')
         if rules[-1].atoms!=('f$H6ThreeWaySRP','AmountToCall = 0') or rules[-1].action!='Check':raise SourceError('Unsafe tail')

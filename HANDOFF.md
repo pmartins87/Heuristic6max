@@ -170,3 +170,6 @@ Na raiz do repositório, execute:
 - Reproduzir `python -m unittest discover -s portability/p3way_srp_v1 -p 'test_*.py' -q`; `python portability/p3way_srp_v1/build_threeway.py`; verificar `git diff --exit-code -- portability/p3way_srp_v1/preflop_coldcall_intent.oppl portability/p3way_srp_v1/preflop_srp_3bet_3way_draft.oppl`; `(cd portability/p3way_srp_v1 && sha256sum -c P3WAY_SRP_SHA256SUMS.txt)`.
 - Após gerar 3way, recomputar `python benchmarks/r10d_floor/comparison.py` e conferir diff/manifesto do benchmark. 16 novos testes (392 totais previstos), contadores de origem e guardas devem se manter. **Benchmark continua NOT MET**, 14/14 requisitos sem validação integral.
 - Recomendar expansão das familias faltantes multiway 3way→HU, 4–6 active, limp/iso, 4bet/5bet, históricos e board/runout/SPR, sem inferir superioridade por contagens de código.
+
+## ADR-031: preserve a correção de nuts
+Arquivos correntes `portability/p3bet_hu_v1/preflop_srp_and_3bet_hu_draft.oppl` e `portability/p3way_srp_v1/preflop_srp_3bet_3way_draft.oppl`; 41/33 ações novas. Rerodar generators, 15/16 testes de ambos, 12 benchmark, regeneração e SHA. Testes obrigatórios: nuts frente a overbet >250% do pote nunca segue Fold residual. Última fonte 733 WHEN. R10d gate NOT MET; G6 runtime pendente.

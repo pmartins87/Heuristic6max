@@ -131,3 +131,6 @@ Ver [PORTABILITY_CONTRACT.md](PORTABILITY_CONTRACT.md).
 - Após 3bet HU, foi implementada a primeira árvore multiway SRP com **exatamente 3 jogadores vivos no flop e turn/river**, 31 ações DRAFT e 33 marcadores de call como origem pré-flop. Guardas excluem 4bet/3bet, all-in e 4+ jogadores.
 - **M05 = PARTIAL, não VERIFIED**, na [matriz de 14 capacidades](benchmarks/r10d_floor/CAPABILITY_MATRIX.csv). Meta mínima de superar R10d continua BLOQUEADA, sem alterar G2-a HOLD.
 - Próximos ganhos: multiway 3way que vira HU ao longo da mão, 3bet multiway, 4–6 jogadores, pote limp/iso e 4bet/5bet; então histórico completo, textura, SPR, ranges por oponente, empates/stack-offs. É proibido reduzir o escopo final para bater 392 testes.
+
+## ADR-031 — gate prioritário de valor
+Correção de quatro ramos de flop/turn em 3bet HU e SRP 3way: após o raise opcional, um segundo ramo `HaveNuts Call FORCE` precisa vir antes do fold residual. Testes de overbet tornam-se obrigatórios para toda nova família. A meta de superar R10d não mudou; evitar árvores gigantes com defeitos estratégicos graves.

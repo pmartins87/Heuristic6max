@@ -140,3 +140,6 @@ Python de importação de charts, análise, Monte Carlo, testes e reconstrução
 - Histórico distinto: Hero PFR que enfrentou 2 callers (marcador RFI confirmado por raise efetivo) e Hero caller de um open que chegou a 3 jogadores no flop (marcador CALL confirmado por BotCalledBeforeFlop). **Pote 3-way exige OpponentsOnFlop=2 e OpponentsLeft=2**, sem allin, estado desconhecido ou raises incompatíveis.
 - Inventário do H6 ativo passou para 729 WHEN, 92 f$, 187 listas, 90 SET e 7 símbolos user_ versus 6.021 WHEN, 725 f$, 545 listas, 1.561 SET e 561 símbolos user_ no R10d. Isso NÃO autoriza comparação de qualidade.
 - A família M05 no piso R10d passou de MISSING para PARTIAL; ainda **14/14 critérios sem aceitação final**, inclusive M05. G1 aberto, G2-a HOLD; G6 ainda não testado em OH. Total esperado CI 392.
+
+## ADR-031 (20/11/2026): conserto de nuts versus overbets
+Protegidos flop/turn contra `HaveNuts → Fold` quando o tamanho da aposta excede o preço de call previsto para mãos inferiores. Novos módulos: **41+33 ações**, último integrado 733 WHEN /92 funções /187 listas /90 Set /7 user_. Todos os 14 gates R10d continuam sem validação integral. 392 testes previstos; G1 aberto, G2-a HOLD, G6 pendente.

@@ -35,7 +35,7 @@ class ThreeBetHU(unittest.TestCase):
             with self.subTest(field=key):self.assertIsNone(self.play(**{key:val}))
 
     def test_all_three_streets_have_actions(self):
-        self.assertEqual([len(self.model.sections[s]) for s in it.STREETS],[15,13,11])
+        self.assertEqual([len(self.model.sections[s]) for s in it.STREETS],[16,14,11])
         for s in it.STREETS:
             self.assertEqual(self.play(s),'Check')
             self.assertEqual(self.play(s,AmountToCall=11),'Fold')
@@ -43,6 +43,8 @@ class ThreeBetHU(unittest.TestCase):
     def test_nuts_price_and_bet_logic(self):
         self.assertEqual(self.play(HaveNuts=True,AmountToCall=4),'RaiseHalfPot')
         self.assertEqual(self.play(HaveNuts=True,AmountToCall=15),'Call')
+        self.assertEqual(self.play(HaveNuts=True,AmountToCall=50),'Call')
+        self.assertEqual(self.play('turn',HaveNuts=True,AmountToCall=50),'Call')
         self.assertEqual(self.play(HaveNuts=True),'BetTwoThirdPot')
         self.assertEqual(self.play('river',HaveNuts=True,AmountToCall=12),'Call')
 
@@ -103,7 +105,7 @@ class ThreeBetHU(unittest.TestCase):
         out=(build.OUT,build.ORIGIN)
         orig=[hashlib.sha256(p.read_bytes()).hexdigest() for p in out]
         frozen=hashlib.sha256(build.PREVIOUS.read_bytes()).hexdigest()
-        self.assertEqual(build.generate(),(9,44,39))
+        self.assertEqual(build.generate(),(9,44,41))
         self.assertEqual(orig,[hashlib.sha256(p.read_bytes()).hexdigest() for p in out])
         self.assertEqual(frozen,hashlib.sha256(build.PREVIOUS.read_bytes()).hexdigest())
 

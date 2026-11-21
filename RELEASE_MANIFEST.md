@@ -107,3 +107,6 @@ Localização versionada: [audits/g2a_v0_7/](audits/g2a_v0_7/). Contém script, 
 - [portability/p3way_srp_v1](portability/p3way_srp_v1/): 8 arquivos versionados (fonte 3way OpenPPL, source integrado, 33 marcações de intenção, gerador offline, intérprete restrito, 16 testes, README e manifesto SHA).
 - [benchmarks/r10d_floor](benchmarks/r10d_floor/) atualizado na MESMA revisão: fonte ativa v1 3way, métricas 729 WHEN/90 Set/7 user_, M05 agora PARTIAL, relatório determinístico e SHA de benchmark regenerado.
 - CI esperado 392 testes =349 históricos+15 3bet HU+12 benchmark+16 3way. Estado: DRAFT, sem comparação estratégica validada nem OpenHoldem real. **Piso R10d NOT MET**.
+
+## ADR-031 — hotfix pós-flop DRAFT
+Atualizados quatro ramos de nuts-call, testes, intérpretes, os dois integrados, READMEs, SHA e benchmark. 74 ações novas entre 3bet HU e SRP 3way (41+33), 733 WHEN integrados, 392 testes esperados. Nenhum release operacional, R10d piso NOT MET e sem execução OH.

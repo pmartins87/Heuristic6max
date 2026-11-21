@@ -23,6 +23,7 @@ WHEN (HaveTwoPair) RETURN TRUE FORCE
 WHEN Others RETURN FALSE FORCE
 //@STREET flop
 WHEN (f$H6ThreeWaySRP AND AmountToCall > 0 AND HaveNuts AND AmountToCall <= 40% PotSize) RaiseHalfPot FORCE
+WHEN (f$H6ThreeWaySRP AND AmountToCall > 0 AND HaveNuts) Call FORCE
 WHEN (f$H6ThreeWaySRP AND AmountToCall > 0 AND f$H6ThreeWayStrong AND AmountToCall <= 85% PotSize) Call FORCE
 WHEN (f$H6ThreeWaySRP AND AmountToCall > 0 AND HaveOverPair AND AmountToCall <= 38% PotSize) Call FORCE
 WHEN (f$H6ThreeWaySRP AND AmountToCall > 0 AND HaveTopPair AND HaveBestKicker AND AmountToCall <= 32% PotSize) Call FORCE
@@ -37,6 +38,7 @@ WHEN (f$H6ThreeWayCaller AND AmountToCall = 0 AND HaveTopPair AND HaveBestKicker
 WHEN (f$H6ThreeWaySRP AND AmountToCall = 0) Check FORCE
 //@STREET turn
 WHEN (f$H6ThreeWaySRP AND AmountToCall > 0 AND HaveNuts AND AmountToCall <= 35% PotSize) RaiseHalfPot FORCE
+WHEN (f$H6ThreeWaySRP AND AmountToCall > 0 AND HaveNuts) Call FORCE
 WHEN (f$H6ThreeWaySRP AND AmountToCall > 0 AND f$H6ThreeWayStrong AND AmountToCall <= 65% PotSize) Call FORCE
 WHEN (f$H6ThreeWaySRP AND AmountToCall > 0 AND HaveOverPair AND AmountToCall <= 32% PotSize) Call FORCE
 WHEN (f$H6ThreeWaySRP AND AmountToCall > 0 AND HaveTopPair AND HaveBestKicker AND AmountToCall <= 25% PotSize) Call FORCE

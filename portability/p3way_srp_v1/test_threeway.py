@@ -14,7 +14,7 @@ class ThreeWay(unittest.TestCase):
     def setUpClass(cls):cls.source=p.parse_file()
     def out(self,street='flop',**kw):return p.eval_source(self.source,street,p.obs(**kw))
     def test_31_rule_streets(self):
-        self.assertEqual([len(self.source.rules[s]) for s in p.STREETS],[13,10,8])
+        self.assertEqual([len(self.source.rules[s]) for s in p.STREETS],[14,11,8])
     def test_threeway_rfi_pfr_and_vsopen_caller(self):
         self.assertEqual(self.out(),'Check')
         caller={'user_H6_RFIIntent':False,'user_H6_VSOpenCallIntent':True,
@@ -45,6 +45,8 @@ class ThreeWay(unittest.TestCase):
         self.assertEqual(self.out(HaveTwoPair=True),'BetHalfPot')
         self.assertEqual(self.out(HaveNuts=True,AmountToCall=2),'RaiseHalfPot')
         self.assertEqual(self.out(HaveNuts=True,AmountToCall=5.9),'Call')
+        self.assertEqual(self.out(HaveNuts=True,AmountToCall=22),'Call')
+        self.assertEqual(self.out('turn',HaveNuts=True,AmountToCall=22),'Call')
     def test_top_pair_call_price_boundaries(self):
         self.assertEqual(self.out(HaveTopPair=True,HaveBestKicker=True,AmountToCall=2.24),'Call')
         self.assertEqual(self.out(HaveTopPair=True,HaveBestKicker=True,AmountToCall=2.25),'Fold')
@@ -75,7 +77,7 @@ class ThreeWay(unittest.TestCase):
         self.assertEqual(old[:20],new[:20])
     def test_generator_deterministic_and_upstream_immutable(self):
         hashes=[hashlib.sha256(x.read_bytes()).hexdigest() for x in (b.INTENT,b.COMBINED,b.PREV)]
-        self.assertEqual(b.generate(),(33,31))
+        self.assertEqual(b.generate(),(33,33))
         self.assertEqual(hashes,[hashlib.sha256(x.read_bytes()).hexdigest() for x in (b.INTENT,b.COMBINED,b.PREV)])
     def test_bad_ppl_or_bad_inputs_are_rejected(self):
         s=p.SOURCE.read_text()

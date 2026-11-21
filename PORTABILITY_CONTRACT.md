@@ -113,3 +113,6 @@ A cada nova implementação estratégica, consultar este contrato e atualizar `D
 - O último .oppl integrado inclui 3way e postflop 3bet HU. O marcador `user_H6_VSOpenCallIntent` nasce exclusivamente de condições preflop `Call FORCE` VS_OPEN; a ação REAL deve também ser confirmada por `BotCalledBeforeFlop` e ausência de raise de Hero. `Set` não é prova de click legal.
 - Escopo restrito: exatamente 2 oponentes desde flop, 2 ainda ativos, RFI do Hero ou VS_OPEN Call, sem all-in. Nunca reinterpretar este módulo como SRP 4+ ou 3way que perdeu um oponente; há risco de default.bot quando não corresponde.
 - Fonte OpenPPL única; Python lê e verifica, mas não decide à parte. Não promover até OHReplay real e controle de ação final/backup. M05 do piso R10d apenas PARTIAL.
+
+## ADR-031 — não deixar nuts cair em folds de preço
+Após a decisão RaiseHalfPot opcional com `HaveNuts`, exigir CALL prioritário sem teto de pot odds reservado a mãos mais fracas, antes do FOLD residual. Testar a mesma fonte OpenPPL com adversarial overbet; caso real/ação final OH permanece sem comprovação.

@@ -1320,6 +1320,7 @@ WHEN Others RETURN FALSE FORCE
 
 ##f$flop##
 WHEN (f$H6ThreeBetHU AND AmountToCall > 0 AND HaveNuts AND AmountToCall <= 50% PotSize) RaiseHalfPot FORCE
+WHEN (f$H6ThreeBetHU AND AmountToCall > 0 AND HaveNuts) Call FORCE
 WHEN (f$H6ThreeBetHU AND AmountToCall > 0 AND f$H6ThreeBetStrong AND AmountToCall <= 100% PotSize) Call FORCE
 WHEN (f$H6ThreeBetAggressorHU AND AmountToCall > 0 AND HaveOverPair AND AmountToCall <= 65% PotSize) Call FORCE
 WHEN (f$H6ThreeBetCallerHU AND AmountToCall > 0 AND HaveTopPair AND HaveBestKicker AND AmountToCall <= 50% PotSize) Call FORCE
@@ -1352,6 +1353,7 @@ WHEN (f$SRPHUOpen AND AmountToCall = 0 AND BotIsLastRaiser AND NOT FlushPossible
 WHEN (f$SRPHU AND AmountToCall = 0) Check FORCE
 ##f$turn##
 WHEN (f$H6ThreeBetHU AND AmountToCall > 0 AND HaveNuts AND AmountToCall <= 45% PotSize) RaiseHalfPot FORCE
+WHEN (f$H6ThreeBetHU AND AmountToCall > 0 AND HaveNuts) Call FORCE
 WHEN (f$H6ThreeBetHU AND AmountToCall > 0 AND f$H6ThreeBetStrong AND AmountToCall <= 80% PotSize) Call FORCE
 WHEN (f$H6ThreeBetAggressorHU AND AmountToCall > 0 AND HaveOverPair AND AmountToCall <= 55% PotSize) Call FORCE
 WHEN (f$H6ThreeBetCallerHU AND AmountToCall > 0 AND HaveTopPair AND HaveBestKicker AND AmountToCall <= 40% PotSize) Call FORCE

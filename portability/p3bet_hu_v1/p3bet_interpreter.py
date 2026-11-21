@@ -77,7 +77,7 @@ def parse(text:str)->Policy:
     if set(sections)!=HEADERS|set(STREETS):raise PolicyError('Incomplete source')
     for h in HEADERS:
         if not sections[h] or not sections[h][-1].fallback:raise PolicyError('Missing helper false fallback')
-    for street,expected in (('flop',15),('turn',13),('river',11)):
+    for street,expected in (('flop',16),('turn',14),('river',11)):
         if len(sections[street])!=expected:raise PolicyError('Unreviewed action tree')
         if any(r.fallback for r in sections[street]):raise PolicyError('Implicit action fallback prohibited')
         if sections[street][-1].atoms!=('f$H6ThreeBetHU','AmountToCall = 0') or sections[street][-1].action!='Check':
