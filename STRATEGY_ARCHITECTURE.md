@@ -93,5 +93,5 @@ Corrigida falha estratégica em ambas as novas famílias: HaveNuts enfrentando o
 
 ## ISODEF-1 — resposta versus isolador: pote raised com limper anterior
 - Não tratar como VS_OPEN: este último usa `Raises=1`, `Calls=0`, enquanto ISODEF-1 permite `Raises=1`, `Calls=1`, pote exato 7 BB e agressor CO (Hero BTN) ou BTN (Hero BB). Nenhum caller extra de raise no momento da decisão. Guardas de posição negam Hero simultaneamente no BTN e BB.
-- Proveniência: Hero `Set user_H6_DEF_BTN3/B B3` apenas ao 3betar, ou `BTNC/BBC` ao pagar; pós-flop requer flags nativas `BotRaisedBeforeFlop` vs `BotCalledBeforeFlop`, `NumberOfRaisesBeforeFlop=1`, sem tags herdadas. `defense_policy.oppl` cria buckets de ação por 3bettor/caller e HU/2 adversários; 3way→HU é aceito.
+- Proveniência: Hero `Set user_H6_DEF_BTN3/BB3` apenas ao 3betar, ou `BTNC/BBC` ao pagar; pós-flop requer flags nativas `BotRaisedBeforeFlop` vs `BotCalledBeforeFlop`, `NumberOfRaisesBeforeFlop=1`, sem tags herdadas. `defense_policy.oppl` cria buckets de ação por 3bettor/caller e HU/2 adversários; 3way→HU é aceito.
 - **Não inferir** que `Calls=1` prova quem limpou, que o marcador prova a ação final, ou que `None` no intérprete desativa `default.bot`; gate operacional continua bloqueado.

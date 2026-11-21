@@ -34,7 +34,7 @@ git diff --exit-code -- portability/iso_defense_v1/iso_defense_integrated_draft.
 python benchmarks/r10d_floor/comparison.py
 ```
 
-Foram escritos **21 testes** que auditam handlists a partir da própria fonte, 169 classes BTN, preços, domínio, guardas, preservação dos 1.920 WHEN ancestrais, histórico, topologias e nuts em overbet. Resultado da CI deve ser registrado a partir do log, não estimado.
+Foram escritos **21 testes** que auditam handlists a partir da própria fonte, 169 classes BTN, preços, domínio, guardas, preservação dos 1.920 WHEN ancestrais, histórico, topologias e nuts em overbet. A [workflow 44860943038](https://github.com/pmartins87/Heuristic6max/actions/runs/44860943038) aprovou **573 execuções em 29 suítes**, sendo **561 testes deduplicados por suíte** (12 repetições do benchmark R10d); +21 testes sobre BLISO-2. Todos os testes são estáticos, sem OpenHoldem runtime.
 
 ## Próximos gates, sem mudança de estratégia anterior
 

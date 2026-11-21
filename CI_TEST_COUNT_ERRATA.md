@@ -38,3 +38,11 @@ Recontagem diretamente do log do job [44853164836](https://github.com/pmartins87
 | [BLISO-2 aprovado](https://github.com/pmartins87/Heuristic6max/actions/runs/44858080418) | `8da515beed4f522fb5c41c9779e811e24e617806` | **552** | **540** | **28** |
 
 Os 28 registros `Ran N tests` do job 136704854736 somaram 552; a suíte R10d é executada duas vezes, com 12 verificações repetidas, totalizando 540 por deduplicação de suíte. São +18 testes frente a ISO-1 (534/522). O build OpenPPL, integração, manifestos e benchmark passaram. Contagens são estáticas: sem prova de EV, runtime OH ou superioridade R10d.
+
+## ISODEF-1 — contagem verificada na CI (21/11/2026)
+
+| Referência | Commit de PR | Execuções de testes (`Ran N tests`) | Testes deduplicados por suíte | Suítes |
+|---|---|---:|---:|---:|
+| [ISODEF-1 aprovado](https://github.com/pmartins87/Heuristic6max/actions/runs/44860943038) | `c0de8d25bad2ff9869335ab3efe2636a2a3eeec3` | **573** | **561** | **29** |
+
+Os 29 registros `Ran N tests` no log de CI somaram 573 execuções. A suíte do benchmark R10d com 12 testes roda duas vezes: 573 − 12 = **561 testes deduplicados por suíte**, aumento de 21 frente aos 552/540 de BLISO-2. A reconstrução OpenPPL, preservação do ancestral, relatório R10d e manifestos SHA256 passaram. **Não** são 561 decisões de poker, nem replays OpenHoldem; o gate 14/14 ainda bloqueia release.
