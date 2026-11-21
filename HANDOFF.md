@@ -217,3 +217,8 @@ Arquivos correntes `portability/p3bet_hu_v1/preflop_srp_and_3bet_hu_draft.oppl` 
 - `.github/workflows/verify.yml`: **113 etapas, 29 chamadas de suítes**, uma comparação R10d depois da geração de todos os módulos; estimados 604 testes executados (anterior: 616 por repetição de 12 testes do R10d).
 - PR draft: a CI completa é **intencionalmente skipped**. Antes de merge, **marcar pronta** e esperar `success` referente ao commit exato da PR; pós-merge conferir `success` no novo commit `main`. Em sincronizações, runs obsoletos da mesma PR são cancelados, sem cancelar main.
 - Próxima tarefa deve produzir capacidade estratégica concreta source-first e seu teste focalizado, não crescimento do aparato de testes. Preservar ISODEF-1 e v0.6.1, G1/G6 de runtime abertos, G2-a HOLD e R10d 0/14.
+
+## M08-RIVER4 — estratégia ativa em DRAFT
+- Fonte: `portability/river_fourflush_v1/river_fourflush_integrated_draft.oppl` (SHA256 `2dae78bfabee4260b98dd39fdcfe671588b05b6c50be0e82fb4e4b161c3b1883`). [4 ações de river](portability/river_fourflush_v1/README.md), builder fonte-first, 7 testes focados; 2.016 WHEN; 2.007 ISODEF-1 ancestrais intactas.
+- River four-flush sem flush/nuts, apenas RFI/VS_OPEN-call SRP HU: Check se zero preço; Call com forte até 20%, com top pair boa até 10%; senão Fold. Não operar com dinheiro real nem confundir teste fonte com OpenHoldem runtime; M08 PARTIAL, 0/14 R10d, G2-a HOLD, G1/G6 pendentes.
+- Próximo incremento deve criar **outra capacidade estratégica concreta**, mantendo CI-LEAN1; `OH-G1G6-1` histórico é somente do integrado ISODEF-1 e não certifica esta versão.
