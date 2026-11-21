@@ -61,7 +61,7 @@ class ISOv1Tests(unittest.TestCase):
                          ['4.5','5.5','4.5','5.5','6.5'])
 
     def test_04_action_count_and_scoped_fallbacks(self):
-        self.assertEqual([len(self.model.streets[s]) for s in build.STREETS],[15,13,11])
+        self.assertEqual([len(self.model.streets[s]) for s in build.STREETS],[15,14,12])
         for street in build.STREETS:
             rs=self.model.streets[street]
             self.assertEqual(rs[-1].action,'Check')
@@ -155,7 +155,7 @@ class ISOv1Tests(unittest.TestCase):
                 [('PARENT',build.PARENT),('HAND',build.HAND),
                  ('PREFLOP',build.PREFLOP),('TOPOLOGY',build.TOPOLOGY),
                  ('POLICY',build.POLICY),('COMBINED',build.COMBINED)]}
-        self.assertEqual(build.build()[0],39)
+        self.assertEqual(build.build()[0],41)
         after={name:hashlib.sha256(path.read_bytes()).hexdigest() for name,path in
                [('PARENT',build.PARENT),('HAND',build.HAND),
                 ('PREFLOP',build.PREFLOP),('TOPOLOGY',build.TOPOLOGY),
