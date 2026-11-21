@@ -24,3 +24,6 @@ python portability/oppl_probe.py
 
 ## OH-SRC1 — verificação estática baseada no código-fonte OpenHoldem
 [Relatório OH-SRC1](oh_source_audit_v1/README.md): regressão de símbolos nativos OpenPPL, C++ com reset `user_*`, primeira órbita, `Set` e 436 comparações exatas de `PotSize`. [CI OH-SRC1](https://github.com/pmartins87/Heuristic6max/actions/runs/44864070437): 616 execuções em 31 suítes, 604 deduplicadas por suíte. **Não depende de fingerprint do software local para construir**, mas não substitui prova operacional do OpenHoldem. Fonte estratégica ISODEF-1 não foi editada.
+
+## M08-RIVER4 — mudança estratégica OpenPPL
+[Política river quatro cartas de um naipe](river_fourflush_v1/README.md) e [integrado atual](river_fourflush_v1/river_fourflush_integrated_draft.oppl), 2.016 WHEN. Quatro decisões seletivas no SRP HU RFI/VS_OPEN-call, sem alterar qualquer uma das 2.007 regras ancestrais. 7 testes direcionados; não certificado em OpenHoldem real.
