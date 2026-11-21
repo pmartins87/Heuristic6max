@@ -17,7 +17,7 @@ STREETS = ('flop', 'turn', 'river')
 
 
 def chunks(text: str) -> tuple[str, dict[str, str]]:
-    parts = re.split(r'^//@STREET (flop|turn|river)\\s*$', text, flags=re.M)
+    parts = re.split(r'^//@STREET (flop|turn|river)\s*$', text, flags=re.M)
     if len(parts) != 7 or tuple(parts[i] for i in (1, 3, 5)) != STREETS:
         raise ValueError('expected one ordered marker for each street')
     return parts[0], {parts[i]: parts[i + 1].strip() for i in (1, 3, 5)}
@@ -38,10 +38,10 @@ def render() -> str:
     for part in (hand, pf, topo, helper, *streets.values()):
         if 'WHEN Others Fold FORCE' in part:
             raise ValueError('ungated global fallback')
-    now = old.replace('##f$preflop##', hand + '\\n##f$preflop##\\n' + pf, 1)
-    now = now.replace('##f$flop##', topo + '\\n' + helper.rstrip() + '\\n##f$flop##', 1)
+    now = old.replace('##f$preflop##', hand + '\n##f$preflop##\n' + pf, 1)
+    now = now.replace('##f$flop##', topo + '\n' + helper.rstrip() + '\n##f$flop##', 1)
     for s in STREETS:
-        now = now.replace('##f$' + s + '##', '##f$' + s + '##\\n' + streets[s], 1)
+        now = now.replace('##f$' + s + '##', '##f$' + s + '##\n' + streets[s], 1)
     for s in ('preflop', *STREETS):
         if now.count('##f$' + s + '##') != 1:
             raise ValueError('repeated street action callback')
@@ -59,9 +59,9 @@ def render() -> str:
 
 def build() -> tuple[int, int]:
     output = render()
-    COMBINED.write_text(output, encoding='utf-8', newline='\\n')
+    COMBINED.write_text(output, encoding='utf-8', newline='\n')
     policy = POLICY.read_text(encoding='utf-8')
-    return len(re.findall(r'^WHEN \\(', policy, flags=re.M)), len(output.encode('utf-8'))
+    return len(re.findall(r'^WHEN \(', policy, flags=re.M)), len(output.encode('utf-8'))
 
 
 if __name__ == '__main__':
