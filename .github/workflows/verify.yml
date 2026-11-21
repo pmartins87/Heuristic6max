@@ -274,3 +274,14 @@ jobs:
         run: python benchmarks/r10d_floor/comparison.py
       - name: Verify current ISODEF-1 R10d report and SHA256 manifest
         run: git diff --exit-code -- benchmarks/r10d_floor/CURRENT_GAP_REPORT.json && cd benchmarks/r10d_floor && sha256sum -c BENCHMARK_SHA256SUMS.txt
+
+      - name: Test OH G1/G6 offline evidence preflight (26 tests, no engine)
+        run: python -m unittest discover -s portability/oh_runtime_gate_v1 -p 'test_*.py' -q
+      - name: Regenerate only the pinned SYNTHETIC OH G1/G6 template
+        run: python portability/oh_runtime_gate_v1/build_template.py
+      - name: Verify deterministic synthetic OH template and untouched policy
+        run: git diff --exit-code -- portability/oh_runtime_gate_v1/SYNTHETIC_BUNDLE.json portability/iso_defense_v1/iso_defense_integrated_draft.oppl
+      - name: Verify offline OH G1/G6 source and contract manifest
+        run: cd portability/oh_runtime_gate_v1 && sha256sum -c OHG1G6_SHA256SUMS.txt
+      - name: Ensure OH G1/G6 synthetic demonstration cannot approve runtime
+        run: python portability/oh_runtime_gate_v1/evidence_gate.py --bundle portability/oh_runtime_gate_v1/SYNTHETIC_BUNDLE.json --evidence-root portability/oh_runtime_gate_v1

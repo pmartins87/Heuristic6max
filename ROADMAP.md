@@ -1,4 +1,4 @@
-# Roadmap vivo — 21/11/2026 (ISODEF-1 DRAFT / preflop v0.6.1 preservado)
+# Roadmap vivo — 21/11/2026 (gate OH-G1G6-1 offline / política ISODEF-1 DRAFT)
 
 | Gate | Estado | Critério de avanço |
 |---|---|---|
@@ -161,3 +161,9 @@ Correção de quatro ramos de flop/turn em 3bet HU e SRP 3way: após o raise opc
 - Escopo DRAFT: BTN vs iso CO e BB vs iso BTN após exatamente 1 limp (2 cenários específicos, 3bet/call/fold) e 42 ações pós-flop com 12 topologias monotônicas. Não ampliar automaticamente a outros positions/limpers/heads-up squeeze com semântica de `Calls` ainda não medida no OH.
 - CI estática aprovada: 21 novos testes, comparação R10d, integração determinística e SHA256; [workflow 44860943038](https://github.com/pmartins87/Heuristic6max/actions/runs/44860943038), 573 execuções / 561 deduplicadas por suíte, 29 suítes. Critério de parada: `FirstRaiserPosition`, `LastRaiserPosition`, `StillToAct`, `Raises`, `Calls`, `PotSize`, reset de tag e sizing sem prova OH implicam DRAFT, independentemente de teste verde.
 - Próximo passo técnico recomendado: **prova de histórico e legalidade da ação OpenHoldem offline**; depois ampliar defesa multi-limper, coldcall não-iso/squeeze e board/SPR/runout observados, preservando G2-a HOLD para ranges ancestrais. 14/14 R10d continuam não verificados.
+
+## Gate experimental OH-G1G6-1 — não ampliar estratégia antes de observar o motor
+- **Entrega realizada:** evidência offline G1/G6 preparada (10 casos/campos, versão e SHA do exe/fórmula/tablemap, debug, dois pares .html/.bmp, log Basic Info com ação calculada e tomada, integridade e restrições privadas). [CI OH-G1G6-1](https://github.com/pmartins87/Heuristic6max/actions/runs/44862638886): 599 execuções, 587 deduplicadas, 30 suítes; 26 testes novos. Nenhuma regra estratégica mudou.
+- **Gate A / G1:** usuário disponibilizar versão real da aplicação e tablemap, debug com contadores observados e capturas pré-flop→flop→turn→river + mudança de mão. Confrontar `Calls`, `Raises`, `StillToAct`, `NumberOfRaisesBeforeFlop`, `Set user_*` com histórico verdadeiro. Se valores instáveis, **corrigir contrato** antes de desenvolver squeeze/4bet.
+- **Gate B / G6:** demonstrar fórmula efetivamente carregada, `Best action`, `Action taken`, sizing legal em BB e *estado posterior aceito por simulador offline*; reprodução de fallback e no-match. OHReplay estático e ManualMode isolados são evidência parcial, não fechamento automático.
+- **Critério de parada:** sem captura autêntica ou com divergência não explicada, manter DRAFT e G1/G6 abertos, 14/14 R10d sem aprovação; G2-a HOLD e ranges anteriores intactos. Próximo trabalho permitido: diagnosticar a compatibilidade, não acrescentar mais dezenas de políticas não observadas.

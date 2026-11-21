@@ -63,3 +63,6 @@ python portability/port3/replay_audit.py --input /caminho/local/observacoes.csv 
 ```
 
 **Critério de parada:** preparar o contrato/replay e parar. NÃO avançar G6 apenas porque o auditor está verde. Antes de mudar qualquer range ou prometer equivalência operacional, exigir observações reais e revisão de `READY_FOR_MANUAL_REVIEW` por caso.
+
+## Continuidade do protocolo: OH-G1G6-1 (21/11/2026)
+O RPL-0 / PORT-3 permanece como auditoria source-first para a primeira família RFI; não foi apagado nem substituído. O [OH-G1G6-1](../oh_runtime_gate_v1/README.md) **complementa** o PORT-3 com dez famílias do integrado atual, pares HTML/BMP pre/post, fingerprint de exe/fórmula/tablemap, controle negativo da diferença `Best action` vs `Action taken` e revisão humana obrigatória. [CI OH-G1G6-1](https://github.com/pmartins87/Heuristic6max/actions/runs/44862638886) aprovou 26 novos testes da instrumentação, **sem logs OH reais** e sem liberar G1/G6.

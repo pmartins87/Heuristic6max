@@ -1,8 +1,8 @@
 # Heuristic6max — fonte de verdade
 
-**Checkpoint ativo: ISODEF-1 DRAFT**, apenas fonte OpenPPL. Ver última seção desta página. O BLISO-2 é o pai congelado; ainda não é release.
+**Estratégia mais recente: ISODEF-1 DRAFT** (OpenPPL); **gate de engenharia atual: OH-G1G6-1** (somente instrumentação de evidências). Ver última seção desta página. O BLISO-2 é o pai congelado; ainda não é release.
 
-## Checkpoint ativo — BLISO-2 (DRAFT, não operacional)
+## Checkpoint histórico — BLISO-2 (DRAFT, não operacional)
 - [Módulo de isolamento SB/BB](portability/blind_iso_v2/README.md) integrado como fonte OpenPPL ativa; 13 novos contextos pré-flop, 43 decisões pós-flop, 120 topologias, 552 execuções de testes na [CI 44858448093](https://github.com/pmartins87/Heuristic6max/actions/runs/44858448093), 540 testes deduplicados por suíte.
 - V0.6.1 e ancestrais permanecem imutáveis; **14/14 requisitos R10d sem aprovação final**, nenhum replay OpenHoldem real. Os checkpoints abaixo são históricos.
 
@@ -199,3 +199,8 @@ Uma overbet muito grande podia escapar do call genérico e atingir `Fold FORCE` 
 - [Fonte OpenPPL de resposta a iso](portability/iso_defense_v1/README.md), derivada de BLISO-2, adiciona **dois cenários** BTN vs CO ISO e BB vs BTN ISO, após exatamente um limp: 3-bet/call/fold com handlists isoladas e quatro flags de intenção.
 - Pós-flop: 42 ações (16/14/12), 12 topologias por street para HU/3-way e transições, mantendo as 1.920 regras WHEN ancestrais em ordem. Novo integrado: `portability/iso_defense_v1/iso_defense_integrated_draft.oppl` (**2.007 WHEN, 159 f$, 192 listas, 121 Set user e 38 símbolos user_**). +21 testes OpenPPL-first **aprovados na CI [workflow 44860943038](https://github.com/pmartins87/Heuristic6max/actions/runs/44860943038)**: 573 execuções / 561 deduplicadas por suíte, 29 suítes.
 - G1 ABERTO, G2-a HOLD para alterar ranges históricos, G6 PENDENTE e 0/14 gates R10d VERIFIED. Sem validação OpenHoldem ou EV; não carregar em mesas reais.
+
+## OH-G1G6-1 — gate de evidências do OpenHoldem (DRAFT, não operacional)
+- [Protocolo offline G1/G6](portability/oh_runtime_gate_v1/README.md) ancorado na fonte integrada ISODEF-1 **inalterada** (`portability/iso_defense_v1/iso_defense_integrated_draft.oppl`). **10 cenários** obrigam distinguir símbolo observado, decisão calculada, tentativa/ação do autoplayer e aceite efetivo por simulador offline. O suporte a OHReplay/ManualMode é instrumento de investigação, **não execução comprovada**.
+- 26 testes novos de pré-validação `evidence_gate.py`, incluindo hash, paths privados, `randomhand`, Basic Info `Best action` vs `Action taken` e controles negativos. [CI OH-G1G6-1](https://github.com/pmartins87/Heuristic6max/actions/runs/44862638886) **aprovada: 599 execuções / 587 deduplicadas por suíte / 30 suítes**.
+- `runtime_approved=false` fixo; G1 ABERTO, G6 PENDENTE, G2-a HOLD e R10d **0/14 VERIFIED**. Nenhum frame/log real foi fornecido; não carregar o integrado em mesas reais.

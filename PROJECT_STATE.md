@@ -1,5 +1,5 @@
 # Estado atual — Heuristic6max
-**Data:** 20/11/2026 | **Checkpoint:** ISODEF-1 DRAFT (552 testes executados em CI) | **Estado:** G2-a HOLD; R10d floor NÃO ATINGIDO; não operacional.
+**Data:** 20/11/2026 | **Checkpoint:** ISODEF-1 DRAFT / instrumentação offline OH-G1G6-1 (552 testes executados em CI) | **Estado:** G2-a HOLD; R10d floor NÃO ATINGIDO; não operacional.
 
 ## Evidências concluídas
 - G0: arquitetura e contratos.
@@ -172,3 +172,8 @@ Protegidos flop/turn contra `HaveNuts → Fold` quando o tamanho da aposta exced
 - Pai: [BLISO-2](portability/blind_iso_v2/README.md); novo integrado: `portability/iso_defense_v1/iso_defense_integrated_draft.oppl`. **2.007 WHEN / 159 f$ / 192 listas / 121 Set user / 38 user_**; todos os 1.920 WHEN anteriores estão presentes na mesma ordem e os ranges RFI/VS_OPEN/VS_3BET v0.6.1 não foram editados.
 - Dois nós de resposta ao isolamento: Hero BTN vs CO após 1 limp (pote pré-ação de 7BB, call 4.5BB) e Hero BB vs BTN após 1 limp (call 3.5BB). Três handlists novas, 4 tags de intenção; 42 decisões pós-flop HU/3way sobre 12 topologias históricas, com nós distintos para Hero 3bettor/caller e `HaveNuts` protegido contra overbet. Rejeição explícita de BTN+BB simultâneos após teste negativo.
 - **21 testes novos aprovados na CI [workflow 44860943038](https://github.com/pmartins87/Heuristic6max/actions/runs/44860943038): 573 execuções / 561 deduplicadas por suíte em 29 suítes**, auditados por registros `Ran N tests`. G1/G6 seguem sem replay real; G2-a HOLD, R10d 0/14 verificados. Não é release/operacional.
+
+## OH-G1G6-1 — instrumentação de prova do executável (21/11/2026)
+- Não houve mudança de política poker: último integrado permanece `portability/iso_defense_v1/iso_defense_integrated_draft.oppl` (**2.007 WHEN / 159 f$ / 192 listas / 121 Set / 38 user_**), ranges v0.6.1 e ancestrais preservados.
+- Criado [protocolo de evidências offline](portability/oh_runtime_gate_v1/README.md) com dez cenários ancorados em símbolos/regras reais do integrado, coletor PowerShell de hashes **sem abrir nem automatizar OH**, checklist humano, estrutura privada ignorada pelo Git e script que verifica snapshots/arquivos SHA, debug, estabilidade de `randomhand`, par de ações `Best action`/`Action taken`. Não existe resultado `PASS` ou promoção automática: `runtime_approved=false` é incondicional.
+- [CI OH-G1G6-1](https://github.com/pmartins87/Heuristic6max/actions/runs/44862638886) verde no commit de PR `c0a1eed16fe17212e1cca1d4c117c268d280e55a`: **26 novos testes**, **599 execuções / 587 deduplicadas em 30 suítes**, +26 sobre ISODEF-1 (573/561). Nenhum executável OH, tablemap e replay real disponíveis nesta sessão; evidências de runtime **zero**. **G1 ABERTO, G6 PENDENTE, G2-a HOLD e 0/14 R10d VERIFIED**.
