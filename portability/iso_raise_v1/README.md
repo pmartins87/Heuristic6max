@@ -17,7 +17,7 @@ python portability/iso_raise_v1/build_iso.py
 git diff --exit-code -- portability/iso_raise_v1/iso_integrated_draft.oppl
 ```
 
-São 13 testes incrementais propostos (521 execuções anteriores +13 = **534**, sujeito ao log real do CI). Não confundir execuções com testes distintos: baseline anterior 509 distintos.
+São 13 testes incrementais **aprovados no GitHub Actions 44853164836**, com **534 execuções em 27 suítes e 522 testes deduplicados por suíte**. Não confundir execuções com testes distintos: baseline anterior 509 distintos.
 
 ## Limites e gates
 
