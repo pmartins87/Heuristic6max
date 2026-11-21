@@ -2027,24 +2027,54 @@ WHEN Others RETURN FALSE FORCE
 
 ##f$H6ISOValid##
 WHEN (IsFlop AND OpponentsOnFlop = 1 AND OpponentsLeft = 1 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 2 AND OpponentsLeft = 1 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
 WHEN (IsFlop AND OpponentsOnFlop = 2 AND OpponentsLeft = 2 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 3 AND OpponentsLeft = 1 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 3 AND OpponentsLeft = 2 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
 WHEN (IsFlop AND OpponentsOnFlop = 3 AND OpponentsLeft = 3 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 4 AND OpponentsLeft = 1 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 4 AND OpponentsLeft = 2 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 4 AND OpponentsLeft = 3 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
 WHEN (IsFlop AND OpponentsOnFlop = 4 AND OpponentsLeft = 4 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 5 AND OpponentsLeft = 1 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 5 AND OpponentsLeft = 2 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 5 AND OpponentsLeft = 3 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
+WHEN (IsFlop AND OpponentsOnFlop = 5 AND OpponentsLeft = 4 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
 WHEN (IsFlop AND OpponentsOnFlop = 5 AND OpponentsLeft = 5 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
 WHEN (IsTurn AND OpponentsOnFlop = 1 AND OpponentsOnTurn = 1 AND OpponentsLeft = 1 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
 WHEN (IsTurn AND OpponentsOnFlop = 2 AND OpponentsOnTurn = 1 AND OpponentsLeft = 1 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 2 AND OpponentsOnTurn = 2 AND OpponentsLeft = 1 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
 WHEN (IsTurn AND OpponentsOnFlop = 2 AND OpponentsOnTurn = 2 AND OpponentsLeft = 2 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
 WHEN (IsTurn AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 1 AND OpponentsLeft = 1 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 2 AND OpponentsLeft = 1 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
 WHEN (IsTurn AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 2 AND OpponentsLeft = 2 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 3 AND OpponentsLeft = 1 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 3 AND OpponentsLeft = 2 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
 WHEN (IsTurn AND OpponentsOnFlop = 3 AND OpponentsOnTurn = 3 AND OpponentsLeft = 3 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
 WHEN (IsTurn AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 1 AND OpponentsLeft = 1 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 2 AND OpponentsLeft = 1 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
 WHEN (IsTurn AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 2 AND OpponentsLeft = 2 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 3 AND OpponentsLeft = 1 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 3 AND OpponentsLeft = 2 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
 WHEN (IsTurn AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 3 AND OpponentsLeft = 3 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 4 AND OpponentsLeft = 1 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 4 AND OpponentsLeft = 2 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 4 AND OpponentsLeft = 3 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
 WHEN (IsTurn AND OpponentsOnFlop = 4 AND OpponentsOnTurn = 4 AND OpponentsLeft = 4 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
 WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 1 AND OpponentsLeft = 1 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 2 AND OpponentsLeft = 1 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
 WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 2 AND OpponentsLeft = 2 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 3 AND OpponentsLeft = 1 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 3 AND OpponentsLeft = 2 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
 WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 3 AND OpponentsLeft = 3 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 4 AND OpponentsLeft = 1 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 4 AND OpponentsLeft = 2 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 4 AND OpponentsLeft = 3 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
 WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 4 AND OpponentsLeft = 4 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsLeft = 1 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsLeft = 2 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsLeft = 3 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
+WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsLeft = 4 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
 WHEN (IsTurn AND OpponentsOnFlop = 5 AND OpponentsOnTurn = 5 AND OpponentsLeft = 5 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
 WHEN (IsRiver AND OpponentsOnFlop = 1 AND OpponentsOnTurn = 1 AND OpponentsOnRiver = 1 AND OpponentsLeft = 1 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
 WHEN (IsRiver AND OpponentsOnFlop = 2 AND OpponentsOnTurn = 1 AND OpponentsOnRiver = 1 AND OpponentsLeft = 1 AND f$H6ISOOrigin AND f$H6ISOFlopBound) RETURN TRUE FORCE
