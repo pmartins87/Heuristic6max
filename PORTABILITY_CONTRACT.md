@@ -121,3 +121,9 @@ Após a decisão RaiseHalfPot opcional com `HaveNuts`, exigir CALL prioritário 
 - [Multiway-v2](portability/multiway_v2/) exige OpponentsOnFlop=3/4/5 e OpponentsLeft igual para potes com 4–6 jogadores, ou OpponentsOnFlop=2..5 e OpponentsLeft=1 para transição HU. **Não** extrapolar para perdas intermediárias não implementadas.
 - [LIMP-BB-v1](portability/limped_bb_v1/) exige InBigBlind, Calls=1, Raises=0, StillToAct=0, AmountToCall=0 e PotSize 2/2.5 para Check FORCE. A fonte documental `OpenPPL_Library_Integrated.txt` usa **BotCheckedPreflop**; testar na instalação OpenHoldem antes de confiar no símbolo e no reset da memória.
 - As duas fontes OpenPPL são interpretadas diretamente em testes Python. O no-match em Python não é fail-closed OpenHoldem; nunca inferir segurança operacional de CI. R10d gate não aprovado.
+
+## NOVO: progressão multiway e origem do pote por street — ADR-032..035
+- Contagem cronológica de participantes usa `OpponentsOnFlop`, `OpponentsOnTurn`, `OpponentsOnRiver` (entrantes por street) e `OpponentsLeft` (restantes agora); as combinações válidas são enumeradas e não provam sequência de apostas.
+- BB contra 2–5 limpers: origem exclusiva por `Calls`, pote e `InBigBlind`; a ação de CHECK é confirmada posteriormente por `BotCheckedPreflop`. Potes 3bet multiway exigem marcador de 3bet + `BotRaisedBeforeFlop` ou RFI + `BotCalledBeforeFlop` com `NumberOfRaisesBeforeFlop=1`.
+- +123 regras flop/turn/river e +7 contextos BB-CHECK em arquivo integrado. Testes Python interpretam o MESMO OpenPPL, e todos os WHEN ancestrais ficam preservados na ordem original.
+- Não existe equivalência demonstrada para o executável OH instalado: símbolos, memória `user_`, no-match/default.bot, sizing legal e ação final precisam de replay antes de uso. Nenhum gate operacional aprovado.

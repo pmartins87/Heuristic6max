@@ -115,3 +115,9 @@ Atualizados quatro ramos de nuts-call, testes, intérpretes, os dois integrados,
 - [multiway_v2/](portability/multiway_v2/) contém 9 arquivos versionados: políticas 4–6way e multiway→HU, integrado, gerador, intérprete, testes, matriz, README e SHA.
 - [limped_bb_v1/](portability/limped_bb_v1/) contém 8 arquivos: política de BB limp, captura pré-flop, integrado ativo, gerador, intérprete, testes, README e SHA.
 - [Benchmark R10d](benchmarks/r10d_floor/) repontado ao integrado atual e manifesto regenerado. 392 testes anteriores +25 +17 = **434** esperados. Os 14 gates finais não passaram; G6/execução real ainda bloqueado.
+
+## MWT3, MLIMP2, P3BMW1 — módulos DRAFT não operacionais
+- `portability/multiway_transitions_v3/`: 9 arquivos, 14 testes, 53 topologias de perdas intermediárias, 41 ações; `MWT3_SHA256SUMS.txt`.
+- `portability/multilimp_bb_v2/`: 10 arquivos, 12 testes, 7 contextos BB-CHECK e 39 ações em potes de 2–5 limpers; `MLIMP2_SHA256SUMS.txt`.
+- `portability/p3bet_multiway_v1/`: 9 arquivos, 12 testes, 43 ações e 117 topologias por street, com dois papéis PF; `P3BM1_SHA256SUMS.txt`.
+- Fonte ativa: `portability/p3bet_multiway_v1/preflop_srp_limp_3bet_multiway_draft.oppl`. 472 testes no CI previstos, hashes gerados e preservação de todos os ranges anteriores. Sem replay real; R10d FLOOR NOT MET.

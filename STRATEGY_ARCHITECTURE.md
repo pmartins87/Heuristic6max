@@ -73,3 +73,9 @@ Corrigida falha estratégica em ambas as novas famílias: HaveNuts enfrentando o
 - Mais 74 decisões nativas OpenPPL cobrem potes com 4–6 jogadores ativos e a conversão 3–6way→HU; os estados preservam a quantidade ORIGINAL de oponentes no flop. Não contar automaticamente 484 trajetórias históricas como 484 decisões.
 - Mais 33 decisões e 2 Check FORCE cobrem somente BB versus single-limp; a família limp/iso continua incompleta.
 - Fonte integrada atual: [preflop_multiway_limp_bb_draft.oppl](portability/limped_bb_v1/preflop_multiway_limp_bb_draft.oppl). Métricas 899 WHEN/106 f$/187 listas/92 Set/9 user_; **14 capacidades R10d ainda sem aprovação**. P1: quedas intermediárias, potes com limpers e isolation, multiway 3bet; após isso SPR, board/runout, perfis, multi-street e OH real.
+
+## Implementação ativa de histórico de participantes e origem de pote (20/11/2026)
+- SRP com 4–6 jogadores que perdeu parcialmente os adversários: 53 topologias cronológicas e 41 regras; classificações distinguem quando a redução ocorreu (flop/turn/river).
+- BB pós-option CHECK contra 2–5 limpers: sete origens SB/Other, 39 ações posteriores, e verificação por `BotCheckedPreflop`; ainda **não** cobre iso.
+- 3bet multiway: 117 topologias, 43 ações diferenciadas por agressor da 3bet vs RFI que pagou uma 3bet. Nenhum desses contextos é projetado para cair em SRP HU ou limp BB.
+- O arquivo OpenPPL integrado contém 1.460 WHEN/136 funções/187 listas/99 Set/16 user_, sem alteração de ranges. **Não equivale a superar o R10d**: precisamos de histórico completo intra-street, limp iso/coldcall, 4bet/5bet, board/runout, SPR, perfis, stacks e testes da ação final em OpenHoldem real.

@@ -139,3 +139,8 @@ Correção de quatro ramos de flop/turn em 3bet HU e SRP 3way: após o raise opc
 - DRAFT concluído: potes com 4–6 jogadores ainda ativos no flop/turn/river, e potes originalmente multiway que ficam HU; BB check versus um único limp (SB ou outra posição) com pós-flop próprio.
 - Gates M04 (limp/iso) e M06 (multiway 4+) passam a PARTIAL. **P1 seguinte:** 3→2, 4→2/3 e 5→2/3/4 adversários, limp/iso verdadeiro e potes 3bet multiway. **P2:** 4bet/5bet, squeeze, short/deep stacks, SPR, textura/runout e adversário. Não ampliar ranges v0.6.1 sem justificativa.
 - Piso R10d não atingido; 14 capacidades não verificadas, nenhuma operação real autorizada.
+
+## Último bloco de engenharia — MWT3 / MLIMP2 / P3BMW1
+- Concluído estaticamente: 53 topologias SRP de jogadores que saíram em streets distintas; 7 CHECKs BB contra 2–5 limpers; 39 ações limped pot multiway; 43 ações potes 3bet multiway, mantendo agressor/caller e transferências até HU.
+- Gates reais: capturar `OpponentsOnTurn/OnRiver`, `BotCheckedPreflop`, origem PFR/caller, `NumberOfRaisesBeforeFlop`, sizing e ação final no OpenHoldem offline. **Não** inferir confiabilidade de 472 testes sintéticos.
+- Próxima prioridade de código: **limp/iso-raise e resposta ao isolamento, coldcall/squeeze e potes 4bet/5bet**, seguidos de força/board/runout, SPR, perfil e histórico de bet/raise/call resolvidos. A meta superar funcionalmente R10d segue inalterada, com 14/14 capacidades não VERIFIED.

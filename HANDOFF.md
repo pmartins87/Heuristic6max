@@ -179,3 +179,9 @@ Arquivos correntes `portability/p3bet_hu_v1/preflop_srp_and_3bet_hu_draft.oppl` 
 - Rodar da raiz: `python -m unittest discover -s portability/multiway_v2 -p 'test_*.py' -q` (25); `python -m unittest discover -s portability/limped_bb_v1 -p 'test_*.py' -q` (17), depois `python portability/multiway_v2/build_multiway_v2.py`, `python portability/limped_bb_v1/build_limp_bb.py` e `python benchmarks/r10d_floor/comparison.py`.
 - Verificar hashes nos dois pacotes e em `benchmarks/r10d_floor/BENCHMARK_SHA256SUMS.txt`; verificar `git diff --exit-code` dos integrados e relatórios. Esperado 899 WHEN, 106 funções, 187 listas, 92 SET, 9 user_; 434 testes CI.
 - M04/M06 PARTIAL, 14 capacidades não aprovadas, zero OHReplay alvo. **Próximo trabalho:** quedas intermediárias de jogadores, limp/iso, 3bet multiway, depois 4bet/5bet e pós-flop com SPR/board.
+
+## Checkpoint operacional de código — MWT3 → MLIMP2 → P3BMW1
+- **Fonte integrada mais recente:** [preflop_srp_limp_3bet_multiway_draft.oppl](portability/p3bet_multiway_v1/preflop_srp_limp_3bet_multiway_draft.oppl).
+- Gerar, nesta ordem: `python portability/multiway_transitions_v3/build_transitions_v3.py`; `python portability/multilimp_bb_v2/build_multilimp.py`; `python portability/p3bet_multiway_v1/build_3bet_multiway.py`; `python benchmarks/r10d_floor/comparison.py`.
+- Testar: `python -m unittest discover -s portability/<multiway_transitions_v3|multilimp_bb_v2|p3bet_multiway_v1> -p 'test_*.py' -q` (executar separadamente em shell) e `sha256sum -c` dos manifestos locais. Conferir `git diff --exit-code --` dos fontes gerados e matriz benchmark.
+- +38 testes, 472 esperados na CI, 1.460 WHEN integrados. **Não** reescrever fontes v0.6.1 nem afirmar R10d superado ou uso em mesa real. Próximas famílias: isolation vs limps, squeeze e 4bet/5bet; board, SPR, perfis e replays continuam pendentes.

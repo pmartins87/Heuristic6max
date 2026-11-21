@@ -1,5 +1,12 @@
 # Heuristic6max — fonte de verdade
 
+## Checkpoint MWT3 + MLIMP2 + P3BMW1 — OpenPPL integrado (20/11/2026)
+- [Transições SRP multiway](portability/multiway_transitions_v3/README.md): 53 topologias intermediárias e **41 decisões pós-flop** entre quatro e seis jogadores no flop, com contagens próprias de turn/river.
+- [BB contra 2–5 limpers](portability/multilimp_bb_v2/README.md): **7 opções pré-flop de CHECK** e **39 novas decisões pós-flop**, com distinção se o SB completou.
+- [3bet multiway](portability/p3bet_multiway_v1/README.md): **43 novas decisões pós-flop** para agressor ou caller pré-flop em potes 3bet com 3–6 jogadores no flop.
+- [Fonte única integrada](portability/p3bet_multiway_v1/preflop_srp_limp_3bet_multiway_draft.oppl): **1.460 WHEN, 136 funções, 187 listas, 99 SET, 16 flags user_**. Mais 38 testes (total **472 previsto na CI**), nenhum range da v0.6.1 alterado.
+- **Bot ainda incompleto:** 14/14 capacidades do piso DeepCrusher_R10d não foram plenamente verificadas; OH real e ação final não testados. Não confundir cobertura estática com excelência ou prontidão operacional.
+
 ## Checkpoint ativo — Multiway-v2 + LIMP-BB-v1 (20/11/2026)
 - [Fonte integrada OpenPPL mais recente](portability/limped_bb_v1/preflop_multiway_limp_bb_draft.oppl), [multiway 4–6way e transições HU](portability/multiway_v2/README.md) e [BB check contra um limper](portability/limped_bb_v1/README.md).
 - **74 regras de ação pós-flop multiway** (40 com 4–6 jogadores ativos e 34 para multiway→HU), mais **33 ações pós-flop limp-BB** e 2 novos Check FORCE pré-flop. **42 testes incrementais; 434 testes esperados na CI.**

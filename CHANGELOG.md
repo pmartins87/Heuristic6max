@@ -58,3 +58,5 @@ Consulte [DECISIONS.md](DECISIONS.md) para justificativas e [RELEASE_MANIFEST.md
 - **Multiway-v2 / ADR-032 (20/11/2026):** +40 ações SRP 4/5/6way sem saídas, +34 ações multiway→HU, 10 funções, matriz topológica e 25 testes estáticos. [Código](portability/multiway_v2/README.md).
 - **LIMP-BB-v1 / ADR-033 (20/11/2026):** +2 opções pré-flop de Check FORCE contra single-limp, 2 marcações de intenção, +33 ações pós-flop, 17 testes. [Código](portability/limped_bb_v1/README.md).
 - Integração cumulativa: **899 WHEN, 106 f$, 187 listas, 92 Set user, 9 user_**; 434 testes totais esperados. Benchmark atualizado para nova fonte, M04/M06 PARTIAL; R10d ainda NÃO SUPERADO. Sem alteração de ranges ou execução OH.
+
+- **MWT3 / MLIMP2 / P3BMW1 (20/11/2026):** 41 regras SRP com saídas intermediárias, 39 regras BB multi-limp + 7 CHECKs pré-flop, 43 regras 3bet multiway. Integração incremental preservou ações anteriores; +38 testes (472 esperados CI), fonte combinada com 1.460 WHEN / 136 f$ / 187 listas / 99 SET / 16 user_. [Códigos](portability/p3bet_multiway_v1/README.md). Matriz R10d atualizada, 14/14 sem verificação; nenhum runtime OH executado.

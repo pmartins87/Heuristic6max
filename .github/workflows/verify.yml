@@ -205,3 +205,36 @@ jobs:
         run: python -m unittest discover -s benchmarks/r10d_floor -p 'test_*.py' -q && python benchmarks/r10d_floor/comparison.py
       - name: Verify benchmark unchanged and SHA256
         run: git diff --exit-code -- benchmarks/r10d_floor/CURRENT_GAP_REPORT.json && cd benchmarks/r10d_floor && sha256sum -c BENCHMARK_SHA256SUMS.txt
+
+      - name: Test SRP partial-opponent history (14)
+        run: python -m unittest discover -s portability/multiway_transitions_v3 -p 'test_*.py' -q
+      - name: Regenerate SRP partial multiway topology
+        run: python portability/multiway_transitions_v3/build_transitions_v3.py
+      - name: Check deterministic SRP partial artifacts
+        run: git diff --exit-code -- portability/multiway_transitions_v3/topology_helpers.oppl portability/multiway_transitions_v3/preflop_multiway_partial_v3_draft.oppl portability/multiway_transitions_v3/PARTIAL_TRANSITION_TOPOLOGY.csv
+      - name: Verify MWT3 SHA
+        run: cd portability/multiway_transitions_v3 && sha256sum -c MWT3_SHA256SUMS.txt
+
+      - name: Test BB after 2-5 limpers (12)
+        run: python -m unittest discover -s portability/multilimp_bb_v2 -p 'test_*.py' -q
+      - name: Regenerate BB multi-limper source
+        run: python portability/multilimp_bb_v2/build_multilimp.py
+      - name: Check deterministic BB multi-limper artifacts
+        run: git diff --exit-code -- portability/multilimp_bb_v2/multilimp_topology.oppl portability/multilimp_bb_v2/multilimp_preflop_capture.oppl portability/multilimp_bb_v2/preflop_multiway_partial_multilimp_v2_draft.oppl portability/multilimp_bb_v2/MULTILIMP_TOPOLOGY.csv
+      - name: Verify MLIMP2 SHA
+        run: cd portability/multilimp_bb_v2 && sha256sum -c MLIMP2_SHA256SUMS.txt
+
+      - name: Test 3bet multiway sources (12)
+        run: python -m unittest discover -s portability/p3bet_multiway_v1 -p 'test_*.py' -q
+      - name: Regenerate 3bet multiway and current combined source
+        run: python portability/p3bet_multiway_v1/build_3bet_multiway.py
+      - name: Check deterministic 3bet multiway source
+        run: git diff --exit-code -- portability/p3bet_multiway_v1/threebet_multiway_topology.oppl portability/p3bet_multiway_v1/preflop_srp_limp_3bet_multiway_draft.oppl portability/p3bet_multiway_v1/THREEBET_MW_TOPOLOGY.csv
+      - name: Verify P3BMW1 SHA
+        run: cd portability/p3bet_multiway_v1 && sha256sum -c P3BM1_SHA256SUMS.txt
+      - name: Verify R10d report against newest integrated source
+        run: python benchmarks/r10d_floor/comparison.py
+      - name: Verify newest R10d report and SHA
+        run: git diff --exit-code -- benchmarks/r10d_floor/CURRENT_GAP_REPORT.json
+      - name: Check R10d SHA after new modules
+        run: cd benchmarks/r10d_floor && sha256sum -c BENCHMARK_SHA256SUMS.txt

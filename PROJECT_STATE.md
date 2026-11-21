@@ -148,3 +148,9 @@ Protegidos flop/turn contra `HaveNuts → Fold` quando o tamanho da aposta exced
 - **Nova fonte integrada:** `portability/limped_bb_v1/preflop_multiway_limp_bb_draft.oppl`. 899 WHEN, 106 f$, 187 listas, 92 Set user, 9 user_ distintos. **434 testes totais esperados** (392 anteriores +25 multiway +17 limped BB).
 - [Multiway-v2](portability/multiway_v2/) registra 40 decisões para 4/5/6way SRP sem saídas e 34 quando um pote 3–6way fica HU. [LIMP-BB-v1](portability/limped_bb_v1/) trata check do BB versus single-limp e 33 decisões nas streets seguintes.
 - **M04/M06 PARTIAL**, 14 famílias R10d ainda sem VERIFICATION; zero validação OH real, G1 aberto, G2-a HOLD e G6 pendente. Origem pré-flop e topologia ainda precisam de replay. Ranges da v0.6.1 intactos.
+
+## Estado após expansão MWT3/MLIMP2/P3BMW1 (20/11/2026)
+- Arquivo ativo: `portability/p3bet_multiway_v1/preflop_srp_limp_3bet_multiway_draft.oppl`, 1.460 WHEN, 136 f$, 187 handlists, 99 SET e 16 user_. Antecessor: 899/106/187/92/9. R10d congelado: 6.021/725/545/1.561/561.
+- Ganho de **123 regras de ação pós-flop** (+41 transições SRP, +39 multi-limp BB, +43 potes 3bet multiway) e sete opções BB-check. Modelos de histórico `OpponentsOnTurn` e `OpponentsOnRiver` documentados, sem observação OH real.
+- Testes incrementais: 14+12+12 = 38, total esperado **472**. Políticas v0.6.1 e antigas seções WHEN preservadas, inclusive sized raises.
+- Piso R10d NÃO ATINGIDO: 14 famílias ainda não VERIFIED; faltam limp/iso, 4bet/5bet, perfil do adversário, SPR/board/runout, stacks, fallback e validação operacional. G1 ABERTO, G2-a HOLD, G6 PENDENTE.
