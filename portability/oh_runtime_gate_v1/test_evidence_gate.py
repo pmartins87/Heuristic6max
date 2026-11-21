@@ -234,6 +234,11 @@ class OHGateContractTests(unittest.TestCase):
                    '--out',str(report)])
         self.assertEqual(rc,0)
         self.assertFalse(json.loads(report.read_text())['runtime_approved'])
+        # Never allow the CLI --out flag to overwrite project release gates.
+        outside=self.root.parent/'OHG1G6_OUTSIDE_PRIVATE_ROOT.json'
+        self.assertEqual(g.main(['--bundle',str(f),'--evidence-root',str(self.root),
+                                 '--out',str(outside)]),2)
+        self.assertFalse(outside.exists())
 
     def test_26_magic_file_integrity_not_just_sha(self):
         b=self.fill_evidence(self.bundle('OH_REPLAY'))
