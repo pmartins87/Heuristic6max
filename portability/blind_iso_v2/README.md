@@ -26,7 +26,7 @@ git diff --exit-code -- portability/blind_iso_v2/blind_iso_integrated_draft.oppl
 (cd portability/blind_iso_v2 && sha256sum -c BLISO2_SHA256SUMS.txt)
 ```
 
-São **18 novos testes locais propostos** além das 534 execuções anteriores. A contagem real será extraída do log do CI; 12 repetições deliberadas da suíte R10d continuam a ser descontadas da contagem deduplicada por suíte.
+São **18 novos testes aprovados** no [workflow 44858080418](https://github.com/pmartins87/Heuristic6max/actions/runs/44858080418). O log executou 28 suítes e 552 testes; descontando 12 execuções duplicadas do R10d, são **540 testes deduplicados por suíte**.
 
 ## Gates e limitações
 
