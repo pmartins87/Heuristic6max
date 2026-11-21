@@ -24,7 +24,6 @@ WHEN (f$H6ISOHU AND AmountToCall = 0 AND f$H6ISOStrong) BetHalfPot FORCE
 WHEN (f$H6ISOTwo AND AmountToCall = 0 AND f$H6ISOStrong) BetThirdPot FORCE
 WHEN (f$H6ISOCrowded AND AmountToCall = 0 AND f$H6ISOStrong) BetThirdPot FORCE
 WHEN (f$H6ISOHU AND AmountToCall = 0 AND HaveOverPair) BetHalfPot FORCE
-WHEN (f$H6ISOHU AND AmountToCall = 0 AND BotIsLastRaiser AND Position = Last AND NOT FlushPossibleOnFlop AND NOT StraightPossibleOnFlop AND NOT PairOnBoard AND randomhand < 0.20) BetThirdPot FORCE
 WHEN (f$H6ISOValid AND AmountToCall = 0) Check FORCE
 //@STREET turn
 WHEN (f$H6ISOValid AND AmountToCall > 0 AND HaveNuts AND AmountToCall <= 30% PotSize) RaiseHalfPot FORCE
