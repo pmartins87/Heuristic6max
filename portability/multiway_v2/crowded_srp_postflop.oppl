@@ -1,0 +1,81 @@
+// H6 CROWDED SRP V1: 4-, 5-, 6-player pots (3/4/5 opponents on FLOP).
+// DRAFT only. Never run against real-money tables: OH runtime unverified.
+// Strict domain: no departures since flop, no all-in, preflop RFI/VS_OPEN
+// provenance AND native action confirmation. Other pot families must not leak.
+// Strong hands, tighter draw prices as number of opponents increases.
+##f$H6CrowdedPFR##
+WHEN (nplayersdealt = 6 AND NumberOfOpponentsAllin = 0 AND NOT StackUnknown AND user_H6_RFIIntent AND NOT user_H6_3betIntent AND NOT user_H6_VSOpenCallIntent AND BotRaisedBeforeFlop AND NOT BotCalledBeforeFlop AND NumberOfRaisesBeforeFlop = 0) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$H6CrowdedCaller##
+WHEN (nplayersdealt = 6 AND NumberOfOpponentsAllin = 0 AND NOT StackUnknown AND user_H6_VSOpenCallIntent AND NOT user_H6_RFIIntent AND NOT user_H6_3betIntent AND NOT BotRaisedBeforeFlop AND BotCalledBeforeFlop AND NumberOfRaisesBeforeFlop = 1) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$H6Crowded4##
+WHEN (OpponentsOnFlop = 3 AND OpponentsLeft = 3 AND f$H6CrowdedPFR) RETURN TRUE FORCE
+WHEN (OpponentsOnFlop = 3 AND OpponentsLeft = 3 AND f$H6CrowdedCaller) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$H6Crowded5##
+WHEN (OpponentsOnFlop = 4 AND OpponentsLeft = 4 AND f$H6CrowdedPFR) RETURN TRUE FORCE
+WHEN (OpponentsOnFlop = 4 AND OpponentsLeft = 4 AND f$H6CrowdedCaller) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$H6Crowded6##
+WHEN (OpponentsOnFlop = 5 AND OpponentsLeft = 5 AND f$H6CrowdedPFR) RETURN TRUE FORCE
+WHEN (OpponentsOnFlop = 5 AND OpponentsLeft = 5 AND f$H6CrowdedCaller) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$H6CrowdedSRP##
+WHEN (f$H6Crowded4) RETURN TRUE FORCE
+WHEN (f$H6Crowded5) RETURN TRUE FORCE
+WHEN (f$H6Crowded6) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$H6CrowdedStrong##
+WHEN (HaveNuts) RETURN TRUE FORCE
+WHEN (HaveQuads) RETURN TRUE FORCE
+WHEN (HaveFullHouse) RETURN TRUE FORCE
+WHEN (HaveFlush) RETURN TRUE FORCE
+WHEN (HaveStraight) RETURN TRUE FORCE
+WHEN (HaveSet) RETURN TRUE FORCE
+WHEN (HaveTrips) RETURN TRUE FORCE
+WHEN (HaveTwoPair) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+//@STREET flop
+WHEN (f$H6CrowdedSRP AND AmountToCall > 0 AND HaveNuts AND AmountToCall <= 30% PotSize) RaiseHalfPot FORCE
+WHEN (f$H6CrowdedSRP AND AmountToCall > 0 AND HaveNuts) Call FORCE
+WHEN (f$H6Crowded4 AND AmountToCall > 0 AND f$H6CrowdedStrong AND AmountToCall <= 65% PotSize) Call FORCE
+WHEN (f$H6Crowded5 AND AmountToCall > 0 AND f$H6CrowdedStrong AND AmountToCall <= 55% PotSize) Call FORCE
+WHEN (f$H6Crowded6 AND AmountToCall > 0 AND f$H6CrowdedStrong AND AmountToCall <= 45% PotSize) Call FORCE
+WHEN (f$H6Crowded4 AND AmountToCall > 0 AND HaveOverPair AND Position = Last AND AmountToCall <= 22% PotSize) Call FORCE
+WHEN (f$H6Crowded4 AND AmountToCall > 0 AND HaveTopPair AND HaveBestKicker AND Position = Last AND AmountToCall <= 18% PotSize) Call FORCE
+WHEN (f$H6Crowded4 AND AmountToCall > 0 AND HaveNutFlushDraw AND Position = Last AND AmountToCall <= 20% PotSize) Call FORCE
+WHEN (f$H6Crowded5 AND AmountToCall > 0 AND HaveNutFlushDraw AND Position = Last AND AmountToCall <= 15% PotSize) Call FORCE
+WHEN (f$H6CrowdedSRP AND AmountToCall > 0) Fold FORCE
+WHEN (f$H6CrowdedSRP AND AmountToCall = 0 AND HaveNuts) BetTwoThirdPot FORCE
+WHEN (f$H6Crowded4 AND AmountToCall = 0 AND f$H6CrowdedStrong) BetHalfPot FORCE
+WHEN (f$H6Crowded5 AND AmountToCall = 0 AND f$H6CrowdedStrong) BetThirdPot FORCE
+WHEN (f$H6Crowded6 AND AmountToCall = 0 AND f$H6CrowdedStrong) BetThirdPot FORCE
+WHEN (f$H6Crowded4 AND AmountToCall = 0 AND f$H6CrowdedPFR AND HaveOverPair AND Position = Last AND NOT PairOnBoard AND randomhand < 0.20) BetThirdPot FORCE
+WHEN (f$H6CrowdedSRP AND AmountToCall = 0) Check FORCE
+//@STREET turn
+WHEN (f$H6CrowdedSRP AND AmountToCall > 0 AND HaveNuts AND AmountToCall <= 25% PotSize) RaiseHalfPot FORCE
+WHEN (f$H6CrowdedSRP AND AmountToCall > 0 AND HaveNuts) Call FORCE
+WHEN (f$H6Crowded4 AND AmountToCall > 0 AND f$H6CrowdedStrong AND AmountToCall <= 55% PotSize) Call FORCE
+WHEN (f$H6Crowded5 AND AmountToCall > 0 AND f$H6CrowdedStrong AND AmountToCall <= 45% PotSize) Call FORCE
+WHEN (f$H6Crowded6 AND AmountToCall > 0 AND f$H6CrowdedStrong AND AmountToCall <= 35% PotSize) Call FORCE
+WHEN (f$H6Crowded4 AND AmountToCall > 0 AND HaveNutFlushDraw AND Position = Last AND AmountToCall <= 15% PotSize) Call FORCE
+WHEN (f$H6CrowdedSRP AND AmountToCall > 0) Fold FORCE
+WHEN (f$H6CrowdedSRP AND AmountToCall = 0 AND HaveNuts) BetTwoThirdPot FORCE
+WHEN (f$H6Crowded4 AND AmountToCall = 0 AND f$H6CrowdedStrong) BetHalfPot FORCE
+WHEN (f$H6Crowded5 AND AmountToCall = 0 AND f$H6CrowdedStrong) BetThirdPot FORCE
+WHEN (f$H6Crowded6 AND AmountToCall = 0 AND f$H6CrowdedStrong) BetThirdPot FORCE
+WHEN (f$H6Crowded4 AND AmountToCall = 0 AND f$H6CrowdedPFR AND HaveOverPair AND BotRaisedOnFlop AND Position = Last) BetThirdPot FORCE
+WHEN (f$H6CrowdedSRP AND AmountToCall = 0) Check FORCE
+//@STREET river
+WHEN (f$H6CrowdedSRP AND AmountToCall > 0 AND HaveNuts AND AmountToCall <= 25% PotSize) RaiseHalfPot FORCE
+WHEN (f$H6CrowdedSRP AND AmountToCall > 0 AND HaveNuts) Call FORCE
+WHEN (f$H6Crowded4 AND AmountToCall > 0 AND f$H6CrowdedStrong AND AmountToCall <= 45% PotSize) Call FORCE
+WHEN (f$H6Crowded5 AND AmountToCall > 0 AND f$H6CrowdedStrong AND AmountToCall <= 35% PotSize) Call FORCE
+WHEN (f$H6Crowded6 AND AmountToCall > 0 AND f$H6CrowdedStrong AND AmountToCall <= 25% PotSize) Call FORCE
+WHEN (f$H6CrowdedSRP AND AmountToCall > 0) Fold FORCE
+WHEN (f$H6CrowdedSRP AND AmountToCall = 0 AND HaveNuts) BetTwoThirdPot FORCE
+WHEN (f$H6Crowded4 AND AmountToCall = 0 AND f$H6CrowdedStrong) BetHalfPot FORCE
+WHEN (f$H6Crowded5 AND AmountToCall = 0 AND f$H6CrowdedStrong) BetThirdPot FORCE
+WHEN (f$H6Crowded6 AND AmountToCall = 0 AND f$H6CrowdedStrong) BetThirdPot FORCE
+WHEN (f$H6CrowdedSRP AND AmountToCall = 0) Check FORCE

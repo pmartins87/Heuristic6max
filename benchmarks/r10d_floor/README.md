@@ -38,3 +38,11 @@ python benchmarks/r10d_floor/comparison.py --release-check
 Um SHA, um rótulo `VERIFIED` ou uma contagem grande **não demonstram** execução real. `PROMOTION_GATE.json` permanece false até apresentação de evidência de OpenHoldem e aceitação de cobertura/qualidade. A CI somente exige **honestidade e regressão**, não marca como pronto. O protocolo não substitui a estratégia.
 
 O R10d está no GitHub do outro projeto; **não duplicar** 1,3 MB de código-fonte alheio nem citar R10d como tendo validação runtime que seus documentos não afirmam.
+
+## Atualização de abrangência — Multiway-v2 + LIMP-BB-v1 (20/11/2026)
+
+- Fonte integrada ativa agora em [`portability/limped_bb_v1/preflop_multiway_limp_bb_draft.oppl`](../../portability/limped_bb_v1/preflop_multiway_limp_bb_draft.oppl): pré-flop RFI/VS_OPEN/VS_3BET preservado; pós-flop SRP HU/HIST-v3, 3bet HU, 3way, e os dois novos módulos.
+- [`portability/multiway_v2/`](../../portability/multiway_v2/) acrescenta **40 decisões 4–6-way** SRP sem desistências posteriores e **34 para multiway→HU** (inicialmente 3–6 jogadores). Ainda faltam topologias intermediárias.
+- [`portability/limped_bb_v1/`](../../portability/limped_bb_v1/) acrescenta **33 decisões pós-flop** e **duas opções pré-flop de check do BB contra um limper**; limp/iso geral continua pendente.
+- 25 + 17 = **42 novos testes**, total acumulado esperado **434**. Comparação mede o último artefato integrado, sem apagar histórico ou se apropriar das decisões DeepCrusher.
+- Gate NÃO ALTERADO: 14 capacidades ainda têm lacunas e 0 atingiram evidência completa. `PROMOTION_GATE.json` permanece integralmente `false`. Não descrever o bot como superior ao R10d neste estágio.

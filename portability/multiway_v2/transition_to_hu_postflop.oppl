@@ -1,0 +1,57 @@
+// MULTIWAY-to-HU TRANSITION v1. Not HU from flop: multiway pot history persists.
+// Works only for original 3/4/5/6-handed flop, one opponent remaining,
+// a reviewed RFI or VS_OPEN-call origin, known no all-in, source-only decisions.
+// No user_ SET here: observed OpponentsOnFlop + OpponentsLeft carry topology.
+##f$H6Transition3##
+WHEN (OpponentsOnFlop = 2 AND OpponentsLeft = 1 AND f$H6CrowdedPFR) RETURN TRUE FORCE
+WHEN (OpponentsOnFlop = 2 AND OpponentsLeft = 1 AND f$H6CrowdedCaller) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$H6Transition4Plus##
+WHEN (OpponentsOnFlop = 3 AND OpponentsLeft = 1 AND f$H6CrowdedPFR) RETURN TRUE FORCE
+WHEN (OpponentsOnFlop = 3 AND OpponentsLeft = 1 AND f$H6CrowdedCaller) RETURN TRUE FORCE
+WHEN (OpponentsOnFlop = 4 AND OpponentsLeft = 1 AND f$H6CrowdedPFR) RETURN TRUE FORCE
+WHEN (OpponentsOnFlop = 4 AND OpponentsLeft = 1 AND f$H6CrowdedCaller) RETURN TRUE FORCE
+WHEN (OpponentsOnFlop = 5 AND OpponentsLeft = 1 AND f$H6CrowdedPFR) RETURN TRUE FORCE
+WHEN (OpponentsOnFlop = 5 AND OpponentsLeft = 1 AND f$H6CrowdedCaller) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$H6TransitionHU##
+WHEN (f$H6Transition3) RETURN TRUE FORCE
+WHEN (f$H6Transition4Plus) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+//@STREET flop
+WHEN (f$H6TransitionHU AND AmountToCall > 0 AND HaveNuts AND AmountToCall <= 45% PotSize) RaiseHalfPot FORCE
+WHEN (f$H6TransitionHU AND AmountToCall > 0 AND HaveNuts) Call FORCE
+WHEN (f$H6Transition3 AND AmountToCall > 0 AND f$H6CrowdedStrong AND AmountToCall <= 75% PotSize) Call FORCE
+WHEN (f$H6Transition4Plus AND AmountToCall > 0 AND f$H6CrowdedStrong AND AmountToCall <= 55% PotSize) Call FORCE
+WHEN (f$H6Transition3 AND AmountToCall > 0 AND HaveOverPair AND AmountToCall <= 30% PotSize) Call FORCE
+WHEN (f$H6Transition3 AND AmountToCall > 0 AND HaveTopPair AND HaveBestKicker AND AmountToCall <= 28% PotSize) Call FORCE
+WHEN (f$H6TransitionHU AND AmountToCall > 0 AND HaveNutFlushDraw AND AmountToCall <= 22% PotSize) Call FORCE
+WHEN (f$H6TransitionHU AND AmountToCall > 0) Fold FORCE
+WHEN (f$H6TransitionHU AND AmountToCall = 0 AND HaveNuts) BetTwoThirdPot FORCE
+WHEN (f$H6Transition3 AND AmountToCall = 0 AND f$H6CrowdedStrong) BetHalfPot FORCE
+WHEN (f$H6Transition4Plus AND AmountToCall = 0 AND f$H6CrowdedStrong) BetThirdPot FORCE
+WHEN (f$H6Transition3 AND AmountToCall = 0 AND f$H6CrowdedPFR AND HaveTopPair AND HaveBestKicker AND Position = Last AND randomhand < 0.20) BetThirdPot FORCE
+WHEN (f$H6TransitionHU AND AmountToCall = 0) Check FORCE
+//@STREET turn
+WHEN (f$H6TransitionHU AND AmountToCall > 0 AND HaveNuts AND AmountToCall <= 40% PotSize) RaiseHalfPot FORCE
+WHEN (f$H6TransitionHU AND AmountToCall > 0 AND HaveNuts) Call FORCE
+WHEN (f$H6Transition3 AND AmountToCall > 0 AND f$H6CrowdedStrong AND AmountToCall <= 65% PotSize) Call FORCE
+WHEN (f$H6Transition4Plus AND AmountToCall > 0 AND f$H6CrowdedStrong AND AmountToCall <= 50% PotSize) Call FORCE
+WHEN (f$H6Transition3 AND AmountToCall > 0 AND HaveOverPair AND AmountToCall <= 25% PotSize) Call FORCE
+WHEN (f$H6Transition3 AND AmountToCall > 0 AND HaveNutFlushDraw AND AmountToCall <= 22% PotSize) Call FORCE
+WHEN (f$H6TransitionHU AND AmountToCall > 0) Fold FORCE
+WHEN (f$H6TransitionHU AND AmountToCall = 0 AND HaveNuts) BetTwoThirdPot FORCE
+WHEN (f$H6Transition3 AND AmountToCall = 0 AND f$H6CrowdedStrong) BetHalfPot FORCE
+WHEN (f$H6Transition4Plus AND AmountToCall = 0 AND f$H6CrowdedStrong) BetThirdPot FORCE
+WHEN (f$H6Transition3 AND AmountToCall = 0 AND f$H6CrowdedPFR AND HaveOverPair AND BotRaisedOnFlop AND Position = Last) BetThirdPot FORCE
+WHEN (f$H6TransitionHU AND AmountToCall = 0) Check FORCE
+//@STREET river
+WHEN (f$H6TransitionHU AND AmountToCall > 0 AND HaveNuts AND AmountToCall <= 35% PotSize) RaiseHalfPot FORCE
+WHEN (f$H6TransitionHU AND AmountToCall > 0 AND HaveNuts) Call FORCE
+WHEN (f$H6Transition3 AND AmountToCall > 0 AND f$H6CrowdedStrong AND AmountToCall <= 55% PotSize) Call FORCE
+WHEN (f$H6Transition4Plus AND AmountToCall > 0 AND f$H6CrowdedStrong AND AmountToCall <= 40% PotSize) Call FORCE
+WHEN (f$H6TransitionHU AND AmountToCall > 0) Fold FORCE
+WHEN (f$H6TransitionHU AND AmountToCall = 0 AND HaveNuts) BetTwoThirdPot FORCE
+WHEN (f$H6Transition3 AND AmountToCall = 0 AND f$H6CrowdedStrong) BetHalfPot FORCE
+WHEN (f$H6Transition4Plus AND AmountToCall = 0 AND f$H6CrowdedStrong) BetThirdPot FORCE
+WHEN (f$H6TransitionHU AND AmountToCall = 0) Check FORCE

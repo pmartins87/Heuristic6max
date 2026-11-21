@@ -1,0 +1,59 @@
+// H6 LIMPED BB HU V1 — only check-option BB versus SINGLE preflop limp.
+// Distinguish SB-limp (BB is IP) from non-SB limper (BB is OOP).
+// No multi-limp, isolation, 3bet, all-in, missing symbols or unknown history.
+##f$H6LimpBBvsSB##
+WHEN (nplayersdealt = 6 AND OpponentsOnFlop = 1 AND OpponentsLeft = 1 AND NumberOfOpponentsAllin = 0 AND NOT StackUnknown AND user_H6_LimpSBIntent AND NOT user_H6_LimpOtherIntent AND NOT user_H6_RFIIntent AND NOT user_H6_3betIntent AND NOT user_H6_VSOpenCallIntent AND BotCheckedPreflop AND NOT BotRaisedBeforeFlop AND NOT BotCalledBeforeFlop AND NumberOfRaisesBeforeFlop = 0) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$H6LimpBBvsOther##
+WHEN (nplayersdealt = 6 AND OpponentsOnFlop = 1 AND OpponentsLeft = 1 AND NumberOfOpponentsAllin = 0 AND NOT StackUnknown AND user_H6_LimpOtherIntent AND NOT user_H6_LimpSBIntent AND NOT user_H6_RFIIntent AND NOT user_H6_3betIntent AND NOT user_H6_VSOpenCallIntent AND BotCheckedPreflop AND NOT BotRaisedBeforeFlop AND NOT BotCalledBeforeFlop AND NumberOfRaisesBeforeFlop = 0) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$H6LimpBBHU##
+WHEN (f$H6LimpBBvsSB) RETURN TRUE FORCE
+WHEN (f$H6LimpBBvsOther) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$H6LimpBBStrong##
+WHEN (HaveNuts) RETURN TRUE FORCE
+WHEN (HaveQuads) RETURN TRUE FORCE
+WHEN (HaveFullHouse) RETURN TRUE FORCE
+WHEN (HaveFlush) RETURN TRUE FORCE
+WHEN (HaveStraight) RETURN TRUE FORCE
+WHEN (HaveSet) RETURN TRUE FORCE
+WHEN (HaveTrips) RETURN TRUE FORCE
+WHEN (HaveTwoPair) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+//@STREET flop
+WHEN (f$H6LimpBBHU AND AmountToCall > 0 AND HaveNuts AND AmountToCall <= 40% PotSize) RaiseHalfPot FORCE
+WHEN (f$H6LimpBBHU AND AmountToCall > 0 AND HaveNuts) Call FORCE
+WHEN (f$H6LimpBBHU AND AmountToCall > 0 AND f$H6LimpBBStrong AND AmountToCall <= 95% PotSize) Call FORCE
+WHEN (f$H6LimpBBHU AND AmountToCall > 0 AND HaveOverPair AND AmountToCall <= 55% PotSize) Call FORCE
+WHEN (f$H6LimpBBHU AND AmountToCall > 0 AND HaveTopPair AND HaveBestKicker AND AmountToCall <= 45% PotSize) Call FORCE
+WHEN (f$H6LimpBBHU AND AmountToCall > 0 AND HaveNutFlushDraw AND AmountToCall <= 35% PotSize) Call FORCE
+WHEN (f$H6LimpBBHU AND AmountToCall > 0 AND HaveOpenEndedStraightDraw AND AmountToCall <= 25% PotSize) Call FORCE
+WHEN (f$H6LimpBBHU AND AmountToCall > 0) Fold FORCE
+WHEN (f$H6LimpBBHU AND AmountToCall = 0 AND HaveNuts) BetTwoThirdPot FORCE
+WHEN (f$H6LimpBBHU AND AmountToCall = 0 AND f$H6LimpBBStrong) BetHalfPot FORCE
+WHEN (f$H6LimpBBvsSB AND AmountToCall = 0 AND Position = Last AND HaveTopPair AND HaveBestKicker) BetHalfPot FORCE
+WHEN (f$H6LimpBBvsSB AND AmountToCall = 0 AND Position = Last AND HaveNutFlushDraw AND randomhand < 0.35) BetThirdPot FORCE
+WHEN (f$H6LimpBBHU AND AmountToCall = 0) Check FORCE
+//@STREET turn
+WHEN (f$H6LimpBBHU AND AmountToCall > 0 AND HaveNuts AND AmountToCall <= 35% PotSize) RaiseHalfPot FORCE
+WHEN (f$H6LimpBBHU AND AmountToCall > 0 AND HaveNuts) Call FORCE
+WHEN (f$H6LimpBBHU AND AmountToCall > 0 AND f$H6LimpBBStrong AND AmountToCall <= 75% PotSize) Call FORCE
+WHEN (f$H6LimpBBHU AND AmountToCall > 0 AND HaveOverPair AND AmountToCall <= 45% PotSize) Call FORCE
+WHEN (f$H6LimpBBHU AND AmountToCall > 0 AND HaveTopPair AND HaveBestKicker AND AmountToCall <= 35% PotSize) Call FORCE
+WHEN (f$H6LimpBBHU AND AmountToCall > 0 AND HaveNutFlushDraw AND AmountToCall <= 27% PotSize) Call FORCE
+WHEN (f$H6LimpBBHU AND AmountToCall > 0) Fold FORCE
+WHEN (f$H6LimpBBHU AND AmountToCall = 0 AND HaveNuts) BetTwoThirdPot FORCE
+WHEN (f$H6LimpBBHU AND AmountToCall = 0 AND f$H6LimpBBStrong) BetHalfPot FORCE
+WHEN (f$H6LimpBBvsSB AND AmountToCall = 0 AND Position = Last AND HaveOverPair AND BotRaisedOnFlop) BetHalfPot FORCE
+WHEN (f$H6LimpBBHU AND AmountToCall = 0) Check FORCE
+//@STREET river
+WHEN (f$H6LimpBBHU AND AmountToCall > 0 AND HaveNuts AND AmountToCall <= 30% PotSize) RaiseHalfPot FORCE
+WHEN (f$H6LimpBBHU AND AmountToCall > 0 AND HaveNuts) Call FORCE
+WHEN (f$H6LimpBBHU AND AmountToCall > 0 AND f$H6LimpBBStrong AND AmountToCall <= 60% PotSize) Call FORCE
+WHEN (f$H6LimpBBHU AND AmountToCall > 0 AND HaveOverPair AND AmountToCall <= 25% PotSize) Call FORCE
+WHEN (f$H6LimpBBHU AND AmountToCall > 0 AND HaveTopPair AND HaveBestKicker AND AmountToCall <= 20% PotSize) Call FORCE
+WHEN (f$H6LimpBBHU AND AmountToCall > 0) Fold FORCE
+WHEN (f$H6LimpBBHU AND AmountToCall = 0 AND HaveNuts) BetTwoThirdPot FORCE
+WHEN (f$H6LimpBBHU AND AmountToCall = 0 AND f$H6LimpBBStrong) BetHalfPot FORCE
+WHEN (f$H6LimpBBHU AND AmountToCall = 0) Check FORCE

@@ -38,8 +38,8 @@ class R10dFloor(unittest.TestCase):
     def test_count_current_source_even_if_different_from_r10d(self):
         m=c.inventory(c.SOURCE.read_text())
         self.assertGreater(m['when_rules'],541)
-        self.assertEqual(m['distinct_user_symbols'],7)
-        self.assertEqual(m['set_user_lines'],90)
+        self.assertEqual(m['distinct_user_symbols'],9)
+        self.assertEqual(m['set_user_lines'],92)
 
     def test_false_superiority_is_blocked(self):
         r=c.measure()

@@ -1,13 +1,13 @@
 {
   "capabilities_total": 14,
-  "heuristic_active_file": "portability/p3way_srp_v1/preflop_srp_3bet_3way_draft.oppl",
+  "heuristic_active_file": "portability/limped_bb_v1/preflop_multiway_limp_bb_draft.oppl",
   "metrics": {
     "bytes": {
-      "Heuristic": 197371,
+      "Heuristic": 213479,
       "R10d": 1325138
     },
     "distinct_user_symbols": {
-      "Heuristic": 7,
+      "Heuristic": 9,
       "R10d": 561
     },
     "f_game_functions": {
@@ -19,11 +19,11 @@
       "R10d": 6
     },
     "function_headers": {
-      "Heuristic": 92,
+      "Heuristic": 106,
       "R10d": 725
     },
     "lines": {
-      "Heuristic": 1534,
+      "Heuristic": 1736,
       "R10d": 20788
     },
     "list_headers": {
@@ -31,15 +31,15 @@
       "R10d": 545
     },
     "set_user_lines": {
-      "Heuristic": 90,
+      "Heuristic": 92,
       "R10d": 1561
     },
     "total_formula_and_list_headers": {
-      "Heuristic": 279,
+      "Heuristic": 293,
       "R10d": 1270
     },
     "when_rules": {
-      "Heuristic": 733,
+      "Heuristic": 899,
       "R10d": 6021
     }
   },

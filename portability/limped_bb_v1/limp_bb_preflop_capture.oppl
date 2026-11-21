@@ -1,0 +1,8 @@
+// BB-option after exactly ONE voluntary limp; two pot amounts
+// identify SB-vs-BB 2BB pot vs other single-limper 2.5BB pot.
+// Set flags denote intent; postflop requires BotCheckedPreflop.
+
+WHEN (IsPreflop AND nplayersdealt = 6 AND InBigBlind AND Raises = 0 AND Calls = 1 AND StillToAct = 0 AND AmountToCall = 0 AND NOT StackUnknown AND StackSize >= 95 AND StackSize <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND PotSize = 2) Set user_H6_LimpSBIntent
+WHEN (IsPreflop AND nplayersdealt = 6 AND InBigBlind AND Raises = 0 AND Calls = 1 AND StillToAct = 0 AND AmountToCall = 0 AND NOT StackUnknown AND StackSize >= 95 AND StackSize <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND PotSize = 2) Check FORCE
+WHEN (IsPreflop AND nplayersdealt = 6 AND InBigBlind AND Raises = 0 AND Calls = 1 AND StillToAct = 0 AND AmountToCall = 0 AND NOT StackUnknown AND StackSize >= 95 AND StackSize <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND PotSize = 2.5) Set user_H6_LimpOtherIntent
+WHEN (IsPreflop AND nplayersdealt = 6 AND InBigBlind AND Raises = 0 AND Calls = 1 AND StillToAct = 0 AND AmountToCall = 0 AND NOT StackUnknown AND StackSize >= 95 AND StackSize <= 105 AND MinOpponentStackSize >= 95 AND MaxOpponentStackSize <= 105 AND PotSize = 2.5) Check FORCE
