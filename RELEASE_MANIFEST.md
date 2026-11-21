@@ -146,3 +146,7 @@ Atualizados quatro ramos de nuts-call, testes, intérpretes, os dois integrados,
 
 ## CI-LEAN1 — mudança de engenharia, não de versão do bot
 Workflow `verify.yml` conserva as suítes únicas, SHA dos ancestrais, integrado e benchmark; evita reprocessar o mesmo R10d 6 vezes e reexecutar seus 12 testes duas vezes. PR draft não atesta qualidade; somente CI verde em PR pronta e nova CI verde em main. Nenhum `.oppl` ou `PROMOTION_GATE.json` alterado, G1/G6 de runtime pendentes, G2-a HOLD e 0/14 capacidades R10d VERIFIED.
+
+## M08-RIVER4 — fonte integrada DRAFT, NÃO release (21/11/2026)
+- `portability/river_fourflush_v1/river_fourflush_integrated_draft.oppl`, SHA256 `2dae78bfabee4260b98dd39fdcfe671588b05b6c50be0e82fb4e4b161c3b1883` (pai ISODEF-1 SHA `27be1f161535c9bc07f019fd6e0609c7a3018bf6b2cc640b80a6042c5b7df02b` imutável).
+- 2.016 WHEN, 161 f$, 192 handlists, 121 Set user, 38 user_. Quatro novas ações river em four-flush sem flush/nuts e 7 testes direcionados. M08 PARTIAL, 0/14 R10d VERIFIED, G1/G6 não aprovados, G2-a HOLD. `PROMOTION_GATE.json` não alterado.
