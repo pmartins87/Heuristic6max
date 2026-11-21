@@ -1,4 +1,4 @@
-# Roadmap vivo — 21/11/2026 (OH-SRC1 fonte-first + G1/G6 de certificação separados / ISODEF-1 DRAFT)
+# Roadmap vivo — 21/11/2026 (M08-RIVER4 fonte-first + G1/G6 de certificação separados / DRAFT)
 
 | Gate | Estado | Critério de avanço |
 |---|---|---|
@@ -178,3 +178,8 @@ Correção de quatro ramos de flop/turn em 3bet HU e SRP 3way: após o raise opc
 2. **Integração:** manter PR em `draft` durante mudanças intermediárias. Marcar `ready_for_review` quando o incremento estiver consistente; exigir regressão integral com status `success` no commit exato antes de merge. Nova versão cancela run obsoleto apenas da própria PR. CI integral também em `main`.
 3. **Parada:** não criar verificadores de verificadores nem reexecutar R10d em cada ancestral; só adicionar teste quando o risco da nova regra for concreto. Preservar precedência/fallback/linhagem OpenPPL, ranges congelados e gates de promoção.
 **Métricas do processo:** 126→113 etapas, R10d 6→1 comparações, suíte R10d 2→1. **Métrica do produto:** avançar em 14 capacidades R10d, hoje 0 verificadas integralmente.
+
+## M08-RIVER4 — entrega concreta, próximos passos proporcionais
+- Fonte integrada `portability/river_fourflush_v1/river_fourflush_integrated_draft.oppl`, 4 decisões estritamente no river four-flush SRP HU sem flush/nuts, com 2.007 WHEN anteriores preservadas. M08 permanece PARTIAL porque não inclui paired runouts, one-card-straights, outras famílias de potes, EV nem prova de motor.
+- Avaliar a alteração via 7 testes fonte-first, uma CI completa em PR pronta e outra na main. **Próxima prioridade estratégica:** outro runout adverso (straight/paired) ou SPR com condição comprovadamente mal tratada; não criar mais camadas de auditoria.
+- Manter v0.6.1, G2-a HOLD, G1/G6 pendentes e 0/14 R10d VERIFIED; não usar a nova branch para antecipar VS_4BET/5BET.

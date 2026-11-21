@@ -274,6 +274,15 @@ jobs:
       - name: Validate OH-SRC1 content SHA256
         run: cd portability/oh_source_audit_v1 && sha256sum -c OHSRC1_SHA256SUMS.txt
 
+      - name: Targeted M08 SRP river four-flush decisions (7 cases)
+        run: python -m unittest discover -s portability/river_fourflush_v1 -p 'test_*.py' -q
+      - name: Rebuild source-first four-flush integrated OpenPPL
+        run: python portability/river_fourflush_v1/build_river.py
+      - name: Ensure river policy and entire ancestral OpenPPL are deterministic
+        run: git diff --exit-code -- portability/river_fourflush_v1/river_fourflush_integrated_draft.oppl
+      - name: Verify M08 river module immutable source manifest
+        run: cd portability/river_fourflush_v1 && sha256sum -c RIVER4_SHA256SUMS.txt
+
       # Evaluate the latest fully integrated formula once, not after every ancestor.
       - name: R10d acceptance contracts (one run per full CI)
         run: python -m unittest discover -s benchmarks/r10d_floor -p 'test_*.py' -q

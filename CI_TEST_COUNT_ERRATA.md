@@ -63,3 +63,6 @@ Os **30** registros de testes no log do job `136719229320` somam **599**; uma su
 - **Antes (log observado):** 616 execuções, 604 deduplicadas por suíte, 31 suítes; 12 testes R10d eram rodados duas vezes.
 - **Depois (previsão a verificar no log real):** 604 execuções, 604 deduplicadas, 30 suítes. Remoção de repetição **não implica perda de cobertura**. R10d `comparison.py` 6→1, passos de CI 126→113.
 - A economia principal vem também da CI completa **não ser disparada em PR draft** e do cancelamento de runs de PR obsoletos. Não declarar `skipped` como `success` ou aprovar PR sem regressão integral.
+
+## M08-RIVER4 — somente 7 testes novos (21/11/2026)
+Baseline CI-LEAN1: 604 execuções / 30 suítes. O módulo M08-RIVER4 introduz 7 casos focados de ação e integridade da fonte, sem duplicar R10d; **previsão**: 611 execuções / 31 suítes. Confirmar nos logs reais pré/pós merge, não atribuir melhoria estratégica ao mero número de testes.

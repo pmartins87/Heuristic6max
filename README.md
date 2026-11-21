@@ -1,6 +1,6 @@
 # Heuristic6max — fonte de verdade
 
-**Estratégia mais recente: ISODEF-1 DRAFT** (OpenPPL); **processo de engenharia: CI-LEAN1** (CI plena somente em PR pronta e main; OH-SRC1 permanece incorporado). Ver última seção desta página. O BLISO-2 é o pai congelado; ainda não é release.
+**Estratégia mais recente: M08-RIVER4 DRAFT** (OpenPPL, integra ISODEF-1); **processo de engenharia: CI-LEAN1** (CI plena somente em PR pronta e main; OH-SRC1 permanece incorporado). Ver última seção desta página. O BLISO-2 é o pai congelado; ainda não é release.
 
 ## Checkpoint histórico — BLISO-2 (DRAFT, não operacional)
 - [Módulo de isolamento SB/BB](portability/blind_iso_v2/README.md) integrado como fonte OpenPPL ativa; 13 novos contextos pré-flop, 43 decisões pós-flop, 120 topologias, 552 execuções de testes na [CI 44858448093](https://github.com/pmartins87/Heuristic6max/actions/runs/44858448093), 540 testes deduplicados por suíte.
@@ -214,3 +214,7 @@ Uma overbet muito grande podia escapar do call genérico e atingir `Fold FORCE` 
 - Workflow de 126 passos tinha **6 recalculações R10d e 2 execuções da mesma suíte de 12 testes**. Nova configuração: **113 passos, 29 chamadas de testes, 1 regeneração do benchmark R10d no final**.
 - Enquanto PR for `draft`, usar testes direcionados para o componente alterado, sem CI completa a cada commit. Ao marcar `ready_for_review`, executar toda regressão e não fazer merge sem resultado verde para o SHA exato. Cada `push` em `main` mantém CI completa, sem cancelamento; execuções obsoletas da **mesma PR** são canceladas.
 - A produtividade será medida por **capacidades estratégicas realmente entregues**, não pelo crescimento do número de suítes. Nenhuma regra `.oppl`, range ou gate alterado; G1/G6 de certificação pendentes, G2-a HOLD e 0/14 do R10d verificados.
+
+## M08-RIVER4 — nova ação estratégica por textura no river (21/11/2026; DRAFT)
+- [Módulo OpenPPL](portability/river_fourflush_v1/README.md): 4 novas decisões no river SRP HU RFI/VS_OPEN call quando o board tem 4 cartas do mesmo naipe e Hero **não** tem flush/nuts. Check gratuito; Call com made hand forte até **20%** do pote, com top pair/overpair bom até **10%**, Fold acima. Limiares experimentais não demonstram EV/GTO.
+- **Fonte ativa** `portability/river_fourflush_v1/river_fourflush_integrated_draft.oppl`: **2.016 WHEN / 161 f$ / 192 listas / 121 Set user / 38 user_**. Todas as **2.007 WHEN** anteriores preservadas, ranges v0.6.1 inalterados. Apenas 7 testes de risco específico; CI-LEAN1 mantém regressão completa no PR pronto e main. M08 permanece PARTIAL, G1/G6 pendentes, G2-a HOLD, R10d 0/14 VERIFIED.

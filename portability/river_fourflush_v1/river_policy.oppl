@@ -1,0 +1,19 @@
+// SRP-RIVER-4FLUSH v1 — source-first change: river texture, scoped to native
+// RFI or VS_OPEN-call origin already tagged by the actual preflop OpenPPL.
+// OneCardFlushPossible means board has 4 or 5 of one suit (OpenPPL Manual).
+// FlushOnBoard excludes 5-card-board flush; HaveNuts/HaveFlush are untouched.
+// All thresholds are exploratory heuristics; not proven +EV or runtime-safe.
+##f$H6RiverTextureSRPOrigin##
+WHEN (f$SRPHUOpen AND user_H6_RFIIntent AND NOT user_H6_VSOpenCallIntent AND NOT user_H6_3betIntent) RETURN TRUE FORCE
+WHEN (f$SRPHUCaller AND user_H6_VSOpenCallIntent AND NOT user_H6_RFIIntent AND NOT user_H6_3betIntent) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+##f$H6RiverFourFlushNoFlush##
+WHEN (f$H6RiverTextureSRPOrigin AND OneCardFlushPossible AND NOT FlushOnBoard AND NOT HaveFlush AND NOT HaveNuts) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+//@STREET river
+// Vulnerable made hands on a FOUR-flush board: cheap bluffcatch only.
+WHEN (f$H6RiverFourFlushNoFlush AND AmountToCall > 0 AND f$SRPStrongMade AND AmountToCall <= 20% PotSize) Call FORCE
+WHEN (f$H6RiverFourFlushNoFlush AND AmountToCall > 0 AND f$SRPTopGood AND AmountToCall <= 10% PotSize) Call FORCE
+WHEN (f$H6RiverFourFlushNoFlush AND AmountToCall > 0) Fold FORCE
+// Avoid thin value bets with no flush; check at zero price instead.
+WHEN (f$H6RiverFourFlushNoFlush AND AmountToCall = 0) Check FORCE

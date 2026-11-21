@@ -28,7 +28,7 @@
   "main_callback_count": 4,
   "metrics": {
     "amount_to_call_exact_nonzero": 400,
-    "amount_to_call_exact_zero": 258,
+    "amount_to_call_exact_zero": 259,
     "first_raiser_position_rules": 343,
     "pot_exact_rules": 436,
     "pot_exact_values": {
@@ -49,10 +49,10 @@
       "7": 10
     },
     "still_to_act_rules": 103,
-    "total_when": 2007
+    "total_when": 2016
   },
   "recommended_next_gate": "audit each distinct PotSize equality domain before any tolerance rewrite; no broad global replacement",
-  "source_bytes": 378799,
+  "source_bytes": 380185,
   "source_facts": {
     "calls_not_raw_limper_count": "OpenPPL Library: Calls delegates to CallsBeforeOurFirstAction / nopponentscalling, else memory plus CallsSinceLastPlay",
     "fallback_not_failclosed": "OpenPPL manual/OpenHoldem: no-match can enter a default/technical fallback rather than Python None",
@@ -62,7 +62,7 @@
     "set_is_intent": "OpenPPL manual: Set user variable continues evaluation until first matching action",
     "user_flags_reset": "CSymbolEngineOpenPPLUserVariables::UpdateOnHandreset clears _user_variables; depends on reliable handreset triggering"
   },
-  "source_path": "portability/iso_defense_v1/iso_defense_integrated_draft.oppl",
-  "source_sha256": "27be1f161535c9bc07f019fd6e0609c7a3018bf6b2cc640b80a6042c5b7df02b",
+  "source_path": "portability/river_fourflush_v1/river_fourflush_integrated_draft.oppl",
+  "source_sha256": "2dae78bfabee4260b98dd39fdcfe671588b05b6c50be0e82fb4e4b161c3b1883",
   "strategy_changed": false
 }
