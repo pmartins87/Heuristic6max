@@ -133,3 +133,7 @@ Após a decisão RaiseHalfPot opcional com `HaveNuts`, exigir CALL prioritário 
 ## PORT ISO-1 — intenção de isolamento e prioridade da ação final
 - `user_H6_ISOCO1/CO2/BTN1/BTN2/BTN3` registra **intenção** no momento de `RaiseTo`; não é prova de raise executado. Pós-flop também exige `BotRaisedBeforeFlop`, `NOT BotCalledBeforeFlop`, `NumberOfRaisesBeforeFlop=0`, ausência de RFI/3bet/limp BB concorrente e topologia de jogadores possível. A identidade do preço e a normalização de `PotSize` ainda são hipótese do interpretador da própria fonte OpenPPL.
 - 13 novos testes estáticos propostos; runtime, fallback, repeat-scrape, reset de `Set`, tamanho efetivo de RaiseTo e legalidade da ação só podem ser aprovados por replay desconectado de apostas no OpenHoldem-alvo. Não executar o DRAFT em cash.
+
+## BLISO-2 — contrato de ação pré-flop BB versus SB
+- Os 13 marcadores `user_H6_BISO*` são intenções registradas na mesma condição de `RaiseTo`; não comprovam que o raise foi executado. O módulo se recusa a reconhecer pote isolado quando `BotCheckedPreflop` é verdadeiro. A ordem integra novas ações de BB antes do Check herdado somente para a handlist específica, conservando o Check e os marcadores do BB não-isolador.
+- A geometria `Calls/PotSize` com SB completado e `NumberOfRaisesBeforeFlop=0` após raise do Hero permanece **a validar no OH real**; somente replay desconectado pode aprovar legalidade, sizing final, reset de memória e fallback. Intérprete Python é espelho da fonte OpenPPL, não estratégia independente.

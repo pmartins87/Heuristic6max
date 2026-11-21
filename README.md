@@ -1,5 +1,9 @@
 # Heuristic6max — fonte de verdade
 
+## Checkpoint ativo — BLISO-2 (DRAFT, não operacional)
+- [Módulo de isolamento SB/BB](portability/blind_iso_v2/README.md) integrado como fonte OpenPPL ativa; 13 novos contextos pré-flop, 43 decisões pós-flop, 120 topologias, 552 execuções de testes na [CI 44858448093](https://github.com/pmartins87/Heuristic6max/actions/runs/44858448093), 540 testes deduplicados por suíte.
+- V0.6.1 e ancestrais permanecem imutáveis; **14/14 requisitos R10d sem aprovação final**, nenhum replay OpenHoldem real. Os checkpoints abaixo são históricos.
+
 ## Checkpoint MWT3 + MLIMP2 + P3BMW1 — OpenPPL integrado (20/11/2026)
 - [Transições SRP multiway](portability/multiway_transitions_v3/README.md): 53 topologias intermediárias e **41 decisões pós-flop** entre quatro e seis jogadores no flop, com contagens próprias de turn/river.
 - [BB contra 2–5 limpers](portability/multilimp_bb_v2/README.md): **7 opções pré-flop de CHECK** e **39 novas decisões pós-flop**, com distinção se o SB completou.
@@ -184,3 +188,7 @@ Uma overbet muito grande podia escapar do call genérico e atingir `Fold FORCE` 
 
 ## ISO-1 — expansão DRAFT de isolamento de limpers
 - [Módulo de isolamento CO/BTN contra 1–3 limpers](portability/iso_raise_v1/README.md): cinco contextos pré-flop novos, 41 decisões pós-flop e 120 topologias; ranges RFI/VS_OPEN/VS_3BET anteriores preservados. O novo integrado permanece **DRAFT, não operacional**; 13 testes incrementais aprovados na [CI 44853164836](https://github.com/pmartins87/Heuristic6max/actions/runs/44853164836) (534 execuções / 522 deduplicados por suíte), e o piso funcional R10d permanece bloqueado.
+
+## BLISO-2 — isolamento SB/BB em DRAFT
+- [SB 1–4 limpers e BB 1–5 limpers](portability/blind_iso_v2/README.md): 13 novas origens, 43 decisões pós-flop e 120 topologias cronológicas. A lista de ISO é separada da v0.6.1, nenhum range anterior foi alterado, e o BB mantém o Check gratuito para mãos não isoladas.
+- 18 testes incrementais aprovados no [workflow 44858080418](https://github.com/pmartins87/Heuristic6max/actions/runs/44858080418) (552 execuções / 540 deduplicados por suíte); **sem replays OpenHoldem e sem comprovação de EV/GTO ou superação do R10d**. G1 ABERTO, G2-a HOLD, G6 PENDENTE.

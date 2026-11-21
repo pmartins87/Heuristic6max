@@ -1,0 +1,58 @@
+// Blind ISO v2 (DRAFT). Hero SB/BB isolation, not limped BB check or standard RFI.
+// No new air bluff. Strong hands/price and position matter; all sizes provisional.
+##f$H6BISOStrong##
+WHEN (HaveNuts) RETURN TRUE FORCE
+WHEN (HaveQuads) RETURN TRUE FORCE
+WHEN (HaveFullHouse) RETURN TRUE FORCE
+WHEN (HaveFlush) RETURN TRUE FORCE
+WHEN (HaveStraight) RETURN TRUE FORCE
+WHEN (HaveSet) RETURN TRUE FORCE
+WHEN (HaveTrips) RETURN TRUE FORCE
+WHEN (HaveTwoPair) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+//@STREET flop
+WHEN (f$H6BISOValid AND AmountToCall > 0 AND HaveNuts AND AmountToCall <= 32% PotSize) RaiseHalfPot FORCE
+WHEN (f$H6BISOValid AND AmountToCall > 0 AND HaveNuts) Call FORCE
+WHEN (f$H6BISOHU AND AmountToCall > 0 AND f$H6BISOStrong AND AmountToCall <= 80% PotSize) Call FORCE
+WHEN (f$H6BISOTwo AND AmountToCall > 0 AND f$H6BISOStrong AND AmountToCall <= 60% PotSize) Call FORCE
+WHEN (f$H6BISOCrowded AND AmountToCall > 0 AND f$H6BISOStrong AND AmountToCall <= 40% PotSize) Call FORCE
+WHEN (f$H6BISOHU AND f$H6BISOBB AND Position = Last AND AmountToCall > 0 AND HaveOverPair AND AmountToCall <= 48% PotSize) Call FORCE
+WHEN (f$H6BISOHU AND f$H6BISOSB AND AmountToCall > 0 AND HaveOverPair AND AmountToCall <= 32% PotSize) Call FORCE
+WHEN (f$H6BISOHU AND AmountToCall > 0 AND HaveNutFlushDraw AND AmountToCall <= 27% PotSize) Call FORCE
+WHEN (f$H6BISOValid AND AmountToCall > 0) Fold FORCE
+WHEN (f$H6BISOValid AND AmountToCall = 0 AND HaveNuts) BetTwoThirdPot FORCE
+WHEN (f$H6BISOHU AND f$H6BISOBB AND AmountToCall = 0 AND f$H6BISOStrong) BetHalfPot FORCE
+WHEN (f$H6BISOHU AND f$H6BISOSB AND AmountToCall = 0 AND f$H6BISOStrong) BetThirdPot FORCE
+WHEN (f$H6BISOTwo AND AmountToCall = 0 AND f$H6BISOStrong) BetThirdPot FORCE
+WHEN (f$H6BISOCrowded AND AmountToCall = 0 AND f$H6BISOStrong) BetThirdPot FORCE
+WHEN (f$H6BISOHU AND f$H6BISOBB AND Position = Last AND AmountToCall = 0 AND HaveOverPair) BetHalfPot FORCE
+WHEN (f$H6BISOValid AND AmountToCall = 0) Check FORCE
+//@STREET turn
+WHEN (f$H6BISOValid AND AmountToCall > 0 AND HaveNuts AND AmountToCall <= 30% PotSize) RaiseHalfPot FORCE
+WHEN (f$H6BISOValid AND AmountToCall > 0 AND HaveNuts) Call FORCE
+WHEN (f$H6BISOHU AND AmountToCall > 0 AND f$H6BISOStrong AND AmountToCall <= 68% PotSize) Call FORCE
+WHEN (f$H6BISOTwo AND AmountToCall > 0 AND f$H6BISOStrong AND AmountToCall <= 48% PotSize) Call FORCE
+WHEN (f$H6BISOCrowded AND AmountToCall > 0 AND f$H6BISOStrong AND AmountToCall <= 32% PotSize) Call FORCE
+WHEN (f$H6BISOHU AND AmountToCall > 0 AND HaveOverPair AND AmountToCall <= 27% PotSize) Call FORCE
+WHEN (f$H6BISOHU AND AmountToCall > 0 AND HaveNutFlushDraw AND AmountToCall <= 21% PotSize) Call FORCE
+WHEN (f$H6BISOValid AND AmountToCall > 0) Fold FORCE
+WHEN (f$H6BISOValid AND AmountToCall = 0 AND HaveNuts) BetTwoThirdPot FORCE
+WHEN (f$H6BISOHU AND f$H6BISOBB AND AmountToCall = 0 AND f$H6BISOStrong) BetHalfPot FORCE
+WHEN (f$H6BISOHU AND f$H6BISOSB AND AmountToCall = 0 AND f$H6BISOStrong) BetThirdPot FORCE
+WHEN (f$H6BISOTwo AND AmountToCall = 0 AND f$H6BISOStrong) BetThirdPot FORCE
+WHEN (f$H6BISOCrowded AND AmountToCall = 0 AND f$H6BISOStrong) BetThirdPot FORCE
+WHEN (f$H6BISOValid AND AmountToCall = 0) Check FORCE
+//@STREET river
+WHEN (f$H6BISOValid AND AmountToCall > 0 AND HaveNuts AND AmountToCall <= 25% PotSize) RaiseHalfPot FORCE
+WHEN (f$H6BISOValid AND AmountToCall > 0 AND HaveNuts) Call FORCE
+WHEN (f$H6BISOHU AND AmountToCall > 0 AND f$H6BISOStrong AND AmountToCall <= 56% PotSize) Call FORCE
+WHEN (f$H6BISOTwo AND AmountToCall > 0 AND f$H6BISOStrong AND AmountToCall <= 38% PotSize) Call FORCE
+WHEN (f$H6BISOCrowded AND AmountToCall > 0 AND f$H6BISOStrong AND AmountToCall <= 23% PotSize) Call FORCE
+WHEN (f$H6BISOHU AND f$H6BISOBB AND Position = Last AND AmountToCall > 0 AND HaveOverPair AND AmountToCall <= 15% PotSize) Call FORCE
+WHEN (f$H6BISOValid AND AmountToCall > 0) Fold FORCE
+WHEN (f$H6BISOValid AND AmountToCall = 0 AND HaveNuts) BetTwoThirdPot FORCE
+WHEN (f$H6BISOHU AND f$H6BISOBB AND AmountToCall = 0 AND f$H6BISOStrong) BetHalfPot FORCE
+WHEN (f$H6BISOHU AND f$H6BISOSB AND AmountToCall = 0 AND f$H6BISOStrong) BetThirdPot FORCE
+WHEN (f$H6BISOTwo AND AmountToCall = 0 AND f$H6BISOStrong) BetThirdPot FORCE
+WHEN (f$H6BISOCrowded AND AmountToCall = 0 AND f$H6BISOStrong) BetThirdPot FORCE
+WHEN (f$H6BISOValid AND AmountToCall = 0) Check FORCE

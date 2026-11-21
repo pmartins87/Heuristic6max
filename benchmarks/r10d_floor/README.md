@@ -60,3 +60,6 @@ A matriz M04 continua PARTIAL: foram acrescentadas 5 origens CO/BTN contra limpe
 
 ## Evidência CI ISO-1
 [Workflow 44853164836](https://github.com/pmartins87/Heuristic6max/actions/runs/44853164836) aprovou 534 execuções em 27 suítes (522 testes deduplicados por suíte). Isso acrescenta 13 testes estáticos frente aos 521 anteriores; M04 continua PARTIAL e a barreira total 14/14 continua vigente. Sem prova de paridade de execução OpenHoldem.
+
+## BLISO-2 (20/11/2026) — DRAFT
+A fonte ativa do benchmark passa a medir `portability/blind_iso_v2/blind_iso_integrated_draft.oppl`, que acrescenta 13 contextos SB/BB de isolamento e 43 novas ações pós-flop sobre 120 topologias. Nenhum range pré-flop RFI/VS_OPEN/VS_3BET foi revisado, M04 segue PARTIAL e 14/14 capacidades continuam sem aprovação. Os 18 testes BLISO-2 foram aprovados no [workflow 44858080418](https://github.com/pmartins87/Heuristic6max/actions/runs/44858080418) (552 execuções / 540 deduplicadas por suíte); não há runtime OpenHoldem real.

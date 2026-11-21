@@ -85,3 +85,8 @@ Corrigida falha estratégica em ambas as novas famílias: HaveNuts enfrentando o
 ## ISO-1 — pot-family isolamento, sem mudança de baseline
 - Cinco intenções preflop ISO em CO/BTN com contagem explícita de limpers e pot, **não** derivadas de uma interpretação ambígua de `RFI` ou `VS_OPEN`; listas RFI/VS_OPEN/VS_3BET congeladas. Um marcador `Set user_H6_ISO*` somente registra intenção, requer `BotRaisedBeforeFlop` e ausência de nova 3bet para formar domínio posterior.
 - Famílias: 120 topologias possíveis por street dentro do domínio, 41 decisões efetivas com sizing e thresholds por número de oponentes. Limitação crítica: ainda não há trilha confiável da ação final e os resultados são heurísticas não calibradas. Não tratar contagem estrutural como equivalência ao R10d; M04 segue PARTIAL, runtime G6 bloqueado.
+
+## BLISO-2: origem de blind isolation e distinção contra BB CHECK
+- Novo domínio pós-flop não significa pote limped: origens de ISO só são válidas depois de RaiseTo marcado e `BotRaisedBeforeFlop` efetivamente relatado, sem `BotCheckedPreflop` ou `BotCalledBeforeFlop`. 13 tags separados de RFI, 3bet, VS_OPEN, 5 tags ISO-1 e 7 BB-limp.
+- 120 topologias monotônicas, 43 ações e três buckets de oponentes; no HU distingue Hero SB (fora de posição) de BB quando em última posição. Não assumir, contudo, que `Position = Last` prova sequência do agressor sem replay.
+- **Precedência importante:** novo RaiseTo do BB deve vir antes da política anterior de Check, que continua ativa no domínio não isolado. G1/G6 e regra de no-match continuam bloqueadores operacionais.
