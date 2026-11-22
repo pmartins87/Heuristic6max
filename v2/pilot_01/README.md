@@ -1,6 +1,6 @@
 # V2/PILOT-01 — duas ações, fonte OpenPPL nativa isolada
 
-**Data:** 21/11/2026. **Estado ADR-048:** `F3_STATIC_SYMBOLIC_VERIFIED / OH_PENDING` (20 testes; sem OpenHoldem real). Não é uma estratégia completa; **não carregar no OpenHoldem durante jogo**.
+**Data:** 21/11/2026. **Estado ADR-048, preservado por ADR-049:** `F3_STATIC_SYMBOLIC_VERIFIED / OH_PENDING` (20 testes; sem OpenHoldem real). Não é uma estratégia completa; **não carregar no OpenHoldem durante jogo**.
 
 [Plano Vivo V2](../PLAN.md) · [Decisões F2 revisadas](../cases/BTN_BB_SRP_CBET_F2_PILOT.md) · [Contrato de contexto F1](../cases/BTN_BB_SRP_FLOP_CBET_SOURCE_CONTRACT.md)
 
@@ -39,3 +39,7 @@ Próximo gate `F3`: carregar em OpenHoldem em replay **desconectado de mesa real
 - [OH_OFFLINE_EVIDENCE_GATE.md](OH_OFFLINE_EVIDENCE_GATE.md) separa prova de lógica estática de evidências ainda inexistentes: parser C++ carregando a fórmula, marcador de RFI em mão de verdade, fluxo cronológico, botão real, bet enviada/aceita e comportamento fora do domínio.
 - O filtro StackSize cobre o Hero, **não certifica stack efetivo do BB**. Não dizer que a fórmula opera exclusivamente a 100BB efetivos.
 - O plano seguinte depende de ManualMode/OHReplay e do build instalado no Windows. Não incrementar a estratégia com regras universais enquanto ainda não sabemos se o primeiro módulo executa corretamente em OH.
+
+
+## ADR-049 — papel correto deste piloto
+Este arquivo e seus dois casos exatos **são fixtures de engenharia**, úteis para testar linguagem/memória e ação final do OpenHoldem em segurança offline. **Não definem escopo do futuro bot, prioridades permanentes, nem necessidade de refinar 41–44% BTN.** A trilha estratégica deve estudar **muitas outras famílias de estados** em paralelo, conforme [Política Geral](../GENERAL_POLICY.md), [auditoria DeepCrusher](../DEEPCRUSHER_TRANSFER_AUDIT.md) e [nova família F1](../families/DEFENDING_VS_AGGRESSION_F1.md). Falta replay OH real para promover a **execução** desta fixture, não para continuar a **pesquisa estratégica** de outros módulos.
