@@ -260,11 +260,11 @@ WHEN Others RETURN FALSE FORCE
 // Origin of the initial raise (may be followed by an opponent reraise).
 // These are verified-intent classifications, not claims about acting last.
 ##f$DP_Origin_HeroRFI##
-WHEN user_DP_PF_RFIIntent AND BotRaisedBeforeFlop RETURN TRUE FORCE
+WHEN user_DP_PF_RFIIntent AND NOT user_DP_PF_ISOIntent AND BotRaisedBeforeFlop RETURN TRUE FORCE
 WHEN Others RETURN FALSE FORCE
 
 ##f$DP_Origin_HeroISO##
-WHEN user_DP_PF_ISOIntent AND BotRaisedBeforeFlop RETURN TRUE FORCE
+WHEN user_DP_PF_ISOIntent AND NOT user_DP_PF_RFIIntent AND BotRaisedBeforeFlop RETURN TRUE FORCE
 WHEN Others RETURN FALSE FORCE
 
 ##f$DP_Origin_HeroRaiseUnclassified##
@@ -303,7 +303,11 @@ WHEN Others RETURN FALSE FORCE
 // Legacy f$Init_Hero used only 'Hero bet sometime on prior street', which
 // is not enough if villain reraised later. No me_st_/me_re_ copies.
 ##f$DP_Init_Hero##
-WHEN (IsFlop OR IsTurn OR IsRiver) AND BotIsLastRaiser RETURN TRUE FORCE
+// Native "last raiser" must also match observed betting on prior street.
+// Contradictory native history => UNKNOWN, not attributed Hero initiative.
+WHEN IsFlop AND BotIsLastRaiser AND BotRaisedBeforeFlop RETURN TRUE FORCE
+WHEN IsTurn AND BotIsLastRaiser AND NOT NoBettingOnFlop RETURN TRUE FORCE
+WHEN IsRiver AND BotIsLastRaiser AND NOT NoBettingOnTurn RETURN TRUE FORCE
 WHEN Others RETURN FALSE FORCE
 
 ##f$DP_Init_Nobody##
