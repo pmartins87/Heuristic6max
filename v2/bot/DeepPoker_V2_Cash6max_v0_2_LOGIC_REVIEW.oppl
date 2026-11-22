@@ -337,9 +337,9 @@ WHEN AmountToCall = 0 AND f$DP_AnyDraw AND f$DP_HeadsUp AND f$DP_LastRaiser AND 
 WHEN AmountToCall = 0 AND f$DP_AnyDraw AND f$DP_HeadsUp AND f$DP_LastRaiser AND f$DP_IP AND randomhand < 0.40 BetThirdPot FORCE
 
 WHEN AmountToCall = 0 AND f$DP_LastRaiser AND f$DP_HeadsUp AND f$DP_IP AND NOT f$DP_ReraisedPot AND NOT f$DP_DynamicFlop AND f$DP_Air AND randomhand < 0.48 Set user_DP_FlopAirBet
-WHEN AmountToCall = 0 AND f$DP_LastRaiser AND f$DP_HeadsUp AND f$DP_IP AND NOT f$DP_DynamicFlop AND f$DP_Air AND randomhand < 0.48 BetThirdPot FORCE
+WHEN AmountToCall = 0 AND f$DP_LastRaiser AND f$DP_HeadsUp AND f$DP_IP AND NOT f$DP_ReraisedPot AND NOT f$DP_DynamicFlop AND f$DP_Air AND randomhand < 0.48 BetThirdPot FORCE
 WHEN AmountToCall = 0 AND f$DP_LastRaiser AND f$DP_HeadsUp AND f$DP_IP AND NOT f$DP_ReraisedPot AND f$DP_DynamicFlop AND f$DP_Air AND randomhand < 0.14 Set user_DP_FlopAirBet
-WHEN AmountToCall = 0 AND f$DP_LastRaiser AND f$DP_HeadsUp AND f$DP_IP AND f$DP_DynamicFlop AND f$DP_Air AND randomhand < 0.14 BetThirdPot FORCE
+WHEN AmountToCall = 0 AND f$DP_LastRaiser AND f$DP_HeadsUp AND f$DP_IP AND NOT f$DP_ReraisedPot AND f$DP_DynamicFlop AND f$DP_Air AND randomhand < 0.14 BetThirdPot FORCE
 
 WHEN AmountToCall = 0 Check FORCE
 WHEN Others Fold FORCE
