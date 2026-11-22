@@ -269,7 +269,7 @@ WHEN Raises = 0 AND Calls = 0 Fold FORCE
 WHEN Raises = 0 AND Calls > 0 AND listDP_3BET_VALUE RaiseTo (3.5 + Calls) FORCE
 WHEN Raises = 0 AND Calls > 0 AND NOT InBigBlind AND listDP_ISO AND StackSize >= 35 RaiseTo (3.5 + Calls) FORCE
 WHEN Raises = 0 AND Calls > 0 AND InBigBlind AND listDP_ISO AND StackSize >= 35 RaiseTo (4 + Calls) FORCE
-WHEN Raises = 0 AND Calls > 0 AND NOT InSmallBlind AND listDP_SMALL_CALL AND AmountToCall <= 1 AND StackSize >= 40 Call FORCE
+WHEN Raises = 0 AND Calls > 0 AND NOT InSmallBlind AND NOT InBigBlind AND listDP_SMALL_CALL AND AmountToCall > 0 AND AmountToCall <= 1 AND StackSize >= 40 Call FORCE
 WHEN Raises = 0 AND Calls > 0 AND InBigBlind Check FORCE
 WHEN Raises = 0 AND Calls > 0 AND AmountToCall = 0 Check FORCE
 WHEN AmountToCall = 0 Check FORCE
@@ -351,8 +351,14 @@ WHEN ncommoncardsknown != 4 Fold FORCE
 // Refuse to extrapolate this 6-max strategy to 7+ handed tables.
 WHEN OpponentsAtTable > 5 AND AmountToCall = 0 Check FORCE
 WHEN OpponentsAtTable > 5 Fold FORCE
+// Board quads on turn are NOT automatically Hero's strong-value quads.
+// All share the four quads; only the hole-card kicker differentiates strength.
+WHEN AmountToCall > 0 AND QuadsOnBoard AND NOT HaveNuts AND f$DP_Multiway Fold FORCE
+WHEN AmountToCall > 0 AND QuadsOnBoard AND NOT HaveNuts AND rankhiplayer >= 12 AND AmountToCall <= (0.6 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND QuadsOnBoard AND NOT HaveNuts AND AmountToCall <= (0.15 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND QuadsOnBoard AND NOT HaveNuts Fold FORCE
 // Facing action. No texture may automatically fold the premium showdown classes.
-WHEN AmountToCall > 0 AND (HaveStraightFlush OR HaveQuads) AND StackSize > (2 * AmountToCall) RaisePot FORCE
+WHEN AmountToCall > 0 AND ((HaveStraightFlush AND f$DP_BeatsBoard) OR (HaveQuads AND (NOT QuadsOnBoard OR HaveNuts))) AND StackSize > (2 * AmountToCall) RaisePot FORCE
 WHEN AmountToCall > 0 AND f$DP_Premium AND f$DP_HeadsUp AND NOT f$DP_Dangerous AND AmountToCall <= (0.50 * (PotSize - AmountToCall)) RaiseHalfPot FORCE
 WHEN AmountToCall > 0 AND f$DP_Premium Call FORCE
 WHEN AmountToCall > 0 AND f$DP_StrongMade AND f$DP_LowSPR AND NOT f$DP_Dangerous Call FORCE
@@ -367,6 +373,8 @@ WHEN AmountToCall > 0 AND f$DP_GoodPair AND f$DP_HeadsUp AND AmountToCall <= (0.
 WHEN AmountToCall > 0 AND f$DP_WeakPair AND f$DP_HeadsUp AND AmountToCall <= (0.10 * (PotSize - AmountToCall)) Call FORCE
 WHEN AmountToCall > 0 Fold FORCE
 
+// On a four-of-a-kind board without nut kicker, value-betting by category alone is wrong.
+WHEN AmountToCall = 0 AND QuadsOnBoard AND NOT HaveNuts Check FORCE
 // When checked to, value/protection and controlled semibluffs. Avoid over-barreling air.
 WHEN AmountToCall = 0 AND f$DP_Premium AND f$DP_Dangerous BetHalfPot FORCE
 WHEN AmountToCall = 0 AND f$DP_Premium BetTwoThirdPot FORCE
@@ -405,7 +413,7 @@ WHEN AmountToCall > 0 AND f$DP_Premium Call FORCE
 
 // Other made hands. Avoid blindly calling large polar bets on paired/four-flush runouts.
 WHEN AmountToCall > 0 AND HaveFlush AND f$DP_BeatsBoard AND HaveNutFlush AND NOT PairOnBoard AND AmountToCall <= (1.1 * (PotSize - AmountToCall)) Call FORCE
-WHEN AmountToCall > 0 AND HaveFlush AND f$DP_BeatsBoard AND HaveSecondNutFlush AND f$DP_BeatsBoard AND AmountToCall <= (0.8 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND HaveFlush AND f$DP_BeatsBoard AND HaveSecondNutFlush AND AmountToCall <= (0.8 * (PotSize - AmountToCall)) Call FORCE
 WHEN AmountToCall > 0 AND HaveFlush AND f$DP_BeatsBoard AND NOT PairOnBoard AND AmountToCall <= (0.42 * (PotSize - AmountToCall)) Call FORCE
 WHEN AmountToCall > 0 AND HaveStraight AND f$DP_BeatsBoard AND NOT FlushPossible AND NOT PairOnBoard AND AmountToCall <= (0.62 * (PotSize - AmountToCall)) Call FORCE
 WHEN AmountToCall > 0 AND HaveStraight AND f$DP_BeatsBoard AND AmountToCall <= (0.28 * (PotSize - AmountToCall)) Call FORCE
@@ -427,7 +435,7 @@ WHEN AmountToCall = 0 AND HaveNutFlush AND f$DP_BeatsBoard AND NOT PairOnBoard B
 WHEN AmountToCall = 0 AND HaveFlush AND f$DP_BeatsBoard AND NOT PairOnBoard AND (NOT OneCardFlushPossible OR HaveNutFlush) BetHalfPot FORCE
 WHEN AmountToCall = 0 AND HaveStraight AND f$DP_BeatsBoard AND NOT PairOnBoard AND NOT FlushPossible BetHalfPot FORCE
 WHEN AmountToCall = 0 AND (HaveSet OR HaveTwoPair) AND NOT f$DP_Dangerous AND f$DP_HeadsUp BetHalfPot FORCE
-WHEN AmountToCall = 0 AND f$DP_QualityPair AND f$DP_HeadsUp AND NOT f$DP_Dangerous AND f$DP_PreflopRFI AND f$DP_ReraisedPot AND randomhand < 0.60 BetThirdPot FORCE
+WHEN AmountToCall = 0 AND f$DP_QualityPair AND f$DP_HeadsUp AND NOT f$DP_Dangerous AND f$DP_LastRaiser AND f$DP_ReraisedPot AND randomhand < 0.60 BetThirdPot FORCE
 WHEN AmountToCall = 0 AND f$DP_QualityPair AND f$DP_HeadsUp AND NOT f$DP_Dangerous AND f$DP_PreflopRFI AND NOT f$DP_HighSPR AND randomhand < 0.65 BetThirdPot FORCE
 
 // Selected missed-draw bluffs from credible prior betting lines, HU/IP only.
