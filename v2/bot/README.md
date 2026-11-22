@@ -1,3 +1,5 @@
+> **AVISO CRÍTICO — 21/11/2026 / ADR-051:** a v0.1 descrita abaixo foi **reprovada para uso em mesas** após identificação de falhas objetivas graves. **NÃO carregue a v0.1 para jogar.** Este README é histórico da entrega prematura. [Revisão lógica](LOGIC_REVIEW_20261121.md) e [candidata v0.2 não liberada](DeepPoker_V2_Cash6max_v0_2_LOGIC_REVIEW.oppl). Não existe neste momento uma versão V2 pronta para operação.
+
 # DeepPoker Strategy V2 Cash6max — v0.1.0
 
 **Status:** primeira versão **completa quanto às quatro streets**, pronta para **teste do usuário** no OpenHoldem. **Não foi executada aqui no OpenHoldem real.** Não é solver, não afirma GTO exato, bb/100, lucro ou certificação científica.
