@@ -427,10 +427,9 @@ WHEN AmountToCall > 0 AND HaveTwoPair AND f$DP_HeadsUp AND AmountToCall <= (0.15
 // the common hand. Do not treat it as a weak shared straight or flush.
 WHEN AmountToCall > 0 AND StraightFlushOnBoard AND f$DP_HeadsUp AND AmountToCall <= (3.0 * (PotSize - AmountToCall)) Call FORCE
 WHEN AmountToCall > 0 AND StraightFlushOnBoard AND AmountToCall <= (0.6 * (PotSize - AmountToCall)) Call FORCE
-// On a full-house board, only rare quads may beat the common house. A generic
-// 12%-pot bluffcatcher cap would massively overfold splits against bluffs.
-WHEN AmountToCall > 0 AND FullHouseOnBoard AND f$DP_HeadsUp AND AmountToCall <= (1.0 * (PotSize - AmountToCall)) Call FORCE
-WHEN AmountToCall > 0 AND FullHouseOnBoard AND f$DP_Multiway AND AmountToCall <= (0.35 * (PotSize - AmountToCall)) Call FORCE
+// A full-house board is NOT necessarily close to nuts: opponents can improve
+// the *pair* of the boat with a higher pocket pair, or improve trips/quads.
+// No blanket pot-sized call without board ranks, blockers and opponent ranges.
 // A shared straight or ordinary five-card flush can be overtaken by far more
 // legal holecard combos; do not equate these cases to a shared straightflush.
 WHEN AmountToCall > 0 AND f$DP_BoardOnlyMade AND f$DP_HeadsUp AND AmountToCall <= (0.12 * (PotSize - AmountToCall)) Call FORCE
