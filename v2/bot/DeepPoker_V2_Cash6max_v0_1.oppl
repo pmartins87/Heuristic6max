@@ -175,6 +175,16 @@ WHEN Others RETURN FALSE FORCE
 WHEN Position = Last RETURN TRUE FORCE
 WHEN Others RETURN FALSE FORCE
 
+##f$DP_ReraisedPot##
+// Opponent raise exists in a pot in which Hero also raised, or >1 opponent raises.
+WHEN (BotRaisedBeforeFlop AND RaisesBeforeFlop) OR NumberOfRaisesBeforeFlop >= 2 RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_Commitment##
+// Heads-up only; approximate effective-stack commitment from public OH symbols.
+WHEN OpponentsLeft = 1 AND PotSize > 0 AND (StackSize <= (2 * PotSize) OR (OpponentStacksizeHeadsUp > 0 AND OpponentStacksizeHeadsUp <= (2 * PotSize))) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
 ##f$DP_RealPot##
 WHEN PotSize >= 1 AND StackSize > 0 RETURN TRUE FORCE
 WHEN Others RETURN FALSE FORCE
@@ -241,8 +251,11 @@ WHEN AmountToCall > 0 AND f$DP_StrongMade AND AmountToCall <= (0.8 * PotSize) Ca
 WHEN AmountToCall > 0 AND f$DP_StrongMade AND f$DP_HeadsUp AND AmountToCall <= (1.1 * PotSize) Call FORCE
 WHEN AmountToCall > 0 AND f$DP_StrongMade Fold FORCE
 
+// In reraised pots, value of TPTK/overpair rises when SPR is small.
+WHEN AmountToCall > 0 AND f$DP_ReraisedPot AND f$DP_Commitment AND f$DP_QualityPair AND f$DP_HeadsUp AND AmountToCall <= (0.85 * PotSize) Call FORCE
+
 // Strong draws: call price-sensitive; sometimes semibluff raise with range nut draws.
-WHEN AmountToCall > 0 AND f$DP_NutDraw AND f$DP_HeadsUp AND f$DP_IP = FALSE AND AmountToCall <= (0.34 * PotSize) AND randomhand < 0.22 RaiseThreeFourthPot FORCE
+WHEN AmountToCall > 0 AND f$DP_NutDraw AND f$DP_HeadsUp AND NOT f$DP_IP AND AmountToCall <= (0.34 * PotSize) AND randomhand < 0.22 RaiseThreeFourthPot FORCE
 WHEN AmountToCall > 0 AND f$DP_NutDraw AND AmountToCall <= (0.48 * PotSize) Call FORCE
 WHEN AmountToCall > 0 AND f$DP_AnyDraw AND AmountToCall <= (0.26 * PotSize) Call FORCE
 
@@ -263,6 +276,7 @@ WHEN AmountToCall = 0 AND f$DP_StrongMade AND f$DP_Dangerous BetThirdPot FORCE
 WHEN AmountToCall = 0 AND f$DP_StrongMade AND f$DP_DynamicFlop BetTwoThirdPot FORCE
 WHEN AmountToCall = 0 AND f$DP_StrongMade BetHalfPot FORCE
 
+WHEN AmountToCall = 0 AND f$DP_ReraisedPot AND f$DP_HeadsUp AND f$DP_QualityPair AND NOT f$DP_Dangerous BetThirdPot FORCE
 WHEN AmountToCall = 0 AND f$DP_GoodPair AND f$DP_Multiway AND f$DP_Dangerous Check FORCE
 WHEN AmountToCall = 0 AND f$DP_GoodPair AND f$DP_DynamicFlop AND NOT f$DP_QualityPair Check FORCE
 WHEN AmountToCall = 0 AND f$DP_GoodPair AND f$DP_PreflopAggressor AND f$DP_HeadsUp BetHalfPot FORCE
@@ -274,9 +288,9 @@ WHEN AmountToCall = 0 AND f$DP_NutDraw AND f$DP_HeadsUp AND f$DP_PreflopAggresso
 WHEN AmountToCall = 0 AND f$DP_AnyDraw AND f$DP_HeadsUp AND f$DP_PreflopAggressor AND f$DP_IP AND randomhand < 0.40 Set user_DP_FlopDrawBet
 WHEN AmountToCall = 0 AND f$DP_AnyDraw AND f$DP_HeadsUp AND f$DP_PreflopAggressor AND f$DP_IP AND randomhand < 0.40 BetThirdPot FORCE
 
-WHEN AmountToCall = 0 AND f$DP_PreflopAggressor AND f$DP_HeadsUp AND f$DP_IP AND NOT f$DP_DynamicFlop AND f$DP_Air AND randomhand < 0.48 Set user_DP_FlopAirBet
+WHEN AmountToCall = 0 AND f$DP_PreflopAggressor AND f$DP_HeadsUp AND f$DP_IP AND NOT f$DP_ReraisedPot AND NOT f$DP_DynamicFlop AND f$DP_Air AND randomhand < 0.48 Set user_DP_FlopAirBet
 WHEN AmountToCall = 0 AND f$DP_PreflopAggressor AND f$DP_HeadsUp AND f$DP_IP AND NOT f$DP_DynamicFlop AND f$DP_Air AND randomhand < 0.48 BetThirdPot FORCE
-WHEN AmountToCall = 0 AND f$DP_PreflopAggressor AND f$DP_HeadsUp AND f$DP_IP AND f$DP_DynamicFlop AND f$DP_Air AND randomhand < 0.14 Set user_DP_FlopAirBet
+WHEN AmountToCall = 0 AND f$DP_PreflopAggressor AND f$DP_HeadsUp AND f$DP_IP AND NOT f$DP_ReraisedPot AND f$DP_DynamicFlop AND f$DP_Air AND randomhand < 0.14 Set user_DP_FlopAirBet
 WHEN AmountToCall = 0 AND f$DP_PreflopAggressor AND f$DP_HeadsUp AND f$DP_IP AND f$DP_DynamicFlop AND f$DP_Air AND randomhand < 0.14 BetThirdPot FORCE
 
 WHEN AmountToCall = 0 Check FORCE
@@ -291,6 +305,7 @@ WHEN AmountToCall > 0 AND f$DP_StrongMade AND f$DP_LowSPR AND NOT f$DP_Dangerous
 WHEN AmountToCall > 0 AND f$DP_StrongMade AND f$DP_HeadsUp AND NOT f$DP_Dangerous AND AmountToCall <= (0.70 * PotSize) Call FORCE
 WHEN AmountToCall > 0 AND f$DP_StrongMade AND AmountToCall <= (0.50 * PotSize) Call FORCE
 WHEN AmountToCall > 0 AND f$DP_StrongMade Fold FORCE
+WHEN AmountToCall > 0 AND f$DP_ReraisedPot AND f$DP_Commitment AND f$DP_QualityPair AND NOT f$DP_Dangerous AND AmountToCall <= (0.68 * PotSize) Call FORCE
 WHEN AmountToCall > 0 AND f$DP_NutDraw AND AmountToCall <= (0.32 * PotSize) Call FORCE
 WHEN AmountToCall > 0 AND f$DP_AnyDraw AND AmountToCall <= (0.18 * PotSize) Call FORCE
 WHEN AmountToCall > 0 AND f$DP_QualityPair AND f$DP_HeadsUp AND NOT f$DP_Dangerous AND AmountToCall <= (0.36 * PotSize) Call FORCE
@@ -304,6 +319,7 @@ WHEN AmountToCall = 0 AND f$DP_Premium BetTwoThirdPot FORCE
 WHEN AmountToCall = 0 AND f$DP_StrongMade AND f$DP_Dangerous AND f$DP_Multiway Check FORCE
 WHEN AmountToCall = 0 AND f$DP_StrongMade AND f$DP_Dangerous BetThirdPot FORCE
 WHEN AmountToCall = 0 AND f$DP_StrongMade BetTwoThirdPot FORCE
+WHEN AmountToCall = 0 AND f$DP_QualityPair AND f$DP_ReraisedPot AND f$DP_HeadsUp AND NOT f$DP_Dangerous BetThirdPot FORCE
 WHEN AmountToCall = 0 AND f$DP_QualityPair AND f$DP_HeadsUp AND NOT f$DP_Dangerous AND f$DP_PreflopAggressor BetHalfPot FORCE
 WHEN AmountToCall = 0 AND f$DP_GoodPair AND f$DP_HeadsUp AND NOT f$DP_Dangerous AND f$DP_IP BetThirdPot FORCE
 WHEN AmountToCall = 0 AND f$DP_NutDraw AND f$DP_HeadsUp AND f$DP_PreflopAggressor AND randomhand < 0.55 Set user_DP_TurnDrawBet
@@ -346,7 +362,8 @@ WHEN AmountToCall = 0 AND HaveNutFlush AND NOT PairOnBoard AND NOT FlushOnBoard 
 WHEN AmountToCall = 0 AND HaveFlush AND NOT FlushOnBoard AND NOT PairOnBoard AND NOT OneCardFlushPossible BetHalfPot FORCE
 WHEN AmountToCall = 0 AND HaveStraight AND NOT StraightOnBoard AND NOT PairOnBoard AND NOT FlushPossible BetHalfPot FORCE
 WHEN AmountToCall = 0 AND (HaveSet OR HaveTwoPair) AND NOT f$DP_Dangerous AND f$DP_HeadsUp BetHalfPot FORCE
-WHEN AmountToCall = 0 AND f$DP_QualityPair AND f$DP_HeadsUp AND NOT f$DP_Dangerous AND f$DP_PreflopAggressor AND randomhand < 0.65 BetThirdPot FORCE
+WHEN AmountToCall = 0 AND f$DP_QualityPair AND f$DP_HeadsUp AND NOT f$DP_Dangerous AND f$DP_PreflopAggressor AND f$DP_ReraisedPot AND randomhand < 0.60 BetThirdPot FORCE
+WHEN AmountToCall = 0 AND f$DP_QualityPair AND f$DP_HeadsUp AND NOT f$DP_Dangerous AND f$DP_PreflopAggressor AND NOT f$DP_HighSPR AND randomhand < 0.65 BetThirdPot FORCE
 
 // Selected missed-draw bluffs from credible prior betting lines, HU/IP only.
 WHEN AmountToCall = 0 AND f$DP_Air AND f$DP_HeadsUp AND f$DP_IP AND f$DP_PreflopAggressor AND user_DP_TurnDrawBet AND randomhand < 0.21 BetTwoThirdPot FORCE
