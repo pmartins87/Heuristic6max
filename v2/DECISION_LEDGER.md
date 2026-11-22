@@ -1,6 +1,8 @@
+> **DIREÇÃO ATUAL ADR-054:** antes de futuras alterações **reler** [Plano Vivo](PLAN.md), este ledger, [DECISIONS.md](../DECISIONS.md), [matriz de reaproveitamento CrusherTBP/R10d](LEGACY_HISTORY_REUSE_20261122.md), [modelo nativo de histórico](HISTORY_MODEL.md) e [v0.5](bot/DeepPoker_V2_Cash6max_v0_5_CRUSHER_HISTORY_REUSE.oppl). A ADR-053 continua válida e foi **refinada**, não revogada. **Proibido** copiar `me_st_`, limiares de 25BB ou classificar pelo rótulo de um helper antigo sem semântica verificada. Sem execução OH e sem versão liberada para apostar.
+
 # V2 — Registro vivo de decisões e revisão obrigatória
 
-**Status:** fonte auxiliar vinculante do [Plano Vivo](PLAN.md). [DECISIONS.md](../DECISIONS.md) preserva o histórico integral das ADRs; este registro mantém seu **estado atual, conflitos e dependências**. Atualizado: **22/11/2026 — ADR-053**.
+**Status:** fonte auxiliar vinculante do [Plano Vivo](PLAN.md). [DECISIONS.md](../DECISIONS.md) preserva o histórico integral das ADRs; este registro mantém seu **estado atual, conflitos e dependências**. Atualizado: **22/11/2026 — ADR-054**.
 
 ## Protocolo permanente — antes de CADA nova decisão técnica
 
@@ -24,7 +26,8 @@
 | **ADR-051** — v0.1 retirada; corrigir lógica objetiva | **MANTIDA** | Histórico precisa ser baseado em semântica real de OpenPPL, não rótulos intuitivos ou memórias que não garantem ação final |
 | **ADR-052** — v0.3 corrige odds/SPR/nuts/draws, ainda candidata | **MANTIDA; v0.3 preservada** | Nova v0.4 é derivação, não sobrescrita; preserva correções de risco já aprovadas como necessárias |
 | **V1 HIST-1**, documentada em STRATEGY_ARCHITECTURE | **REFERÊNCIA DE ENGENHARIA, NÃO POLÍTICA IMPORTADA** | Conceito de histórico por sequência é aproveitável; não importar thresholds ou assumir 9 topologias V1 cobrem cash 6max |
-| **ADR-053** — histórico nativo com escopo de confiança | **VIGENTE, EM IMPLEMENTAÇÃO** | Ver [HISTORY_MODEL.md](HISTORY_MODEL.md); v0.4 marcada HISTORY_REVIEW, sem liberação para jogo |
+| **ADR-053** — histórico nativo com escopo de confiança | **MANTIDA, REFINADA PELA ADR-054** | Histórico nativo + intenção confirmada continua base; v0.5 usa roteadores consolidados de origem/iniciativa |
+| **ADR-054** — reaproveitar CrusherTBP/R10d seletivamente | **VIGENTE, IMPLEMENTADA PARCIALMENTE** | [Matriz com evidências](LEGACY_HISTORY_REUSE_20261122.md); [v0.5](bot/DeepPoker_V2_Cash6max_v0_5_CRUSHER_HISTORY_REUSE.oppl) separa origem, pot family e iniciativa, **sem** importar estratégia 25BB |
 
 **Nota sobre documentos legados:** banners antigos que dizem “ADR-050 VIGENTE” ou “v0.1 pronta” são **registros históricos superados**, não instruções atuais. A decisão atual é sempre a mais recente não revogada nesta tabela e no cabeçalho do Plano Vivo. Manter o histórico, mas eliminar ambiguidades em novos checkpoints.
 
@@ -45,3 +48,14 @@
 **O que mudaria a decisão:** prova de que a biblioteca nativa usada pelo usuário não atualiza os símbolos de histórico de forma consistente, necessidade operacional de tamanhos/ator que a engine não conserva, ou evidência de que um ramo de política histórica produz decisões piores. Só então justificar outro armazenamento, com reset, auditoria temporal e isolamento por mão.
 
 **Estado final desta ADR:** `HISTORY_REVIEW`, ainda sem prova de execução OpenHoldem, sem promoção para jogo e sem alteração do código V1.
+
+
+## ADR-054 — revisão concreta de antecedentes e decisão de integração seletiva (22/11/2026)
+
+**Decisões explicitamente revistas antes da mudança:** ADR-001/044 (sem solver, MANTIDA), ADR-002 (GitHub e revisões, MANTIDA), ADR-004 (desconhecido não é Fold/Check, MANTIDA), ADR-049 (transferir conceito amplo e não exemplo, MANTIDA), ADR-050/051 (não voltar a prometer bot v0.1 jogável, MANTIDA revogação), ADR-052 (força, risco, odds, MANTIDA), ADR-053 (fonte nativa + memória de intenção, **REFINADA**). Também lidos [DEEPCRUSHER_TRANSFER_AUDIT.md](DEEPCRUSHER_TRANSFER_AUDIT.md), [HISTORY_MODEL.md](HISTORY_MODEL.md), R10d **blob SHA 9f9cba79**, arquivos locais CrusherTBP e DeepCrusher.
+
+**Contraditório:** copiar CrusherTBP literal é rápido, mas os predicados `f$pot_Reraised` e `f$Init_Hero` não provam sempre o que seus nomes sugerem, e `me_st_` não tem reset automático. Inventar um segundo ledger de eventos da engine sem confirmação de autor/ordem/size seria caro e frágil. **Decisão vigente:** reutilizar a arquitetura de roteamento e separar **origem inicial RFI/ISO**, **família final do pote limp/SRP/reraised**, **iniciativa da street anterior Hero/nonHero/nenhuma**, com limites de confiança. Não copiar ações nem sizings do legado.
+
+**Implementação:** [v0.5](bot/DeepPoker_V2_Cash6max_v0_5_CRUSHER_HISTORY_REUSE.oppl) acrescenta roteadores com evidência nativa, uma tag ISO **de intenção**, depois validada por `BotRaisedBeforeFlop`; RFI e ISO mutuamente exclusivos; redireciona `DP_ReraisedPot`, `DP_LastRaiser` e `DP_PreflopRFI` a classificadores canônicos. Mantém ações e os 15 classificadores v0.4 sem substituí-los. R10d/CrusherTBP são **fontes de engenharia**, não fontes válidas para thresholds cash 100–200BB. 
+
+**Condições para alterar/revogar:** prova de semântica OpenHoldem incompatível, contradição em labels de pote, contadores históricos inconsistentes, falso atribuir o mesmo adversário a multiway→HU, erro de primeiro agressor, ou necessidade material de tamanhos históricos não observados. Próxima etapa: tornar roteadores relevantes para linhas de defesa/value com ranges e blockers, sem supor identidade que não temos. **v0.5 ainda não liberada para jogo.**
