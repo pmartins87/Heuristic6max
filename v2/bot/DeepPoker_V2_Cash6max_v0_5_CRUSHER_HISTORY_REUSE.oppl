@@ -325,7 +325,7 @@ WHEN Others RETURN FALSE FORCE
 // 'NonHero' at a multiway table does NOT identify the opponent who bet.
 // Only in a hand HU-from-flop is the same live opponent safely inferred.
 ##f$DP_Init_OpponentHU##
-WHEN f$DP_Init_NonHero AND IsFlop AND OpponentsLeft = 1 RETURN TRUE FORCE
+WHEN f$DP_Init_NonHero AND IsFlop AND OpponentsOnFlop = 1 AND OpponentsLeft = 1 RETURN TRUE FORCE
 WHEN f$DP_Init_NonHero AND f$DP_Hist_HUFromFlop RETURN TRUE FORCE
 WHEN Others RETURN FALSE FORCE
 
