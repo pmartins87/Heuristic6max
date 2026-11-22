@@ -391,10 +391,9 @@ WHEN AmountToCall > 0 AND f$DP_GoodPair AND f$DP_HeadsUp AND AmountToCall <= (0.
 WHEN AmountToCall > 0 AND f$DP_WeakPair AND f$DP_HeadsUp AND AmountToCall <= (0.10 * (PotSize - AmountToCall)) Call FORCE
 WHEN AmountToCall > 0 Fold FORCE
 
-// On a four-of-a-kind board without nut kicker, value-betting by category alone is wrong.
+// On board quads, category alone proves no extra value without a nut kicker.
 WHEN AmountToCall = 0 AND QuadsOnBoard AND NOT HaveNuts Check FORCE
-// When checked to, value/protection and controlled semibluffs. Avoid over-barreling air.
-WHEN AmountToCall = 0 AND QuadsOnBoard AND NOT HaveNuts Check FORCE
+// When checked to, value/protection and controlled semibluffs.
 WHEN AmountToCall = 0 AND f$DP_Premium AND f$DP_Dangerous BetHalfPot FORCE
 WHEN AmountToCall = 0 AND f$DP_Premium BetTwoThirdPot FORCE
 WHEN AmountToCall = 0 AND f$DP_StrongMade AND f$DP_Dangerous AND f$DP_Multiway Check FORCE
@@ -432,7 +431,8 @@ WHEN AmountToCall > 0 AND HaveStraightFlush AND f$DP_BeatsBoard AND AmountToCall
 WHEN AmountToCall > 0 AND HaveQuads AND f$DP_BeatsBoard AND AmountToCall <= (2.5 * (PotSize - AmountToCall)) Call FORCE
 // The professional concept is relative nut tier + price + range, not "full house=always call".
 WHEN AmountToCall > 0 AND HaveFullHouse AND f$DP_BeatsBoard AND NutFullHouseOrFourOfAKind <= 2 AND NOT OneCardStraightFlushPossible AND AmountToCall <= (2.5 * (PotSize - AmountToCall)) Call FORCE
-WHEN AmountToCall > 0 AND HaveFullHouse AND f$DP_BeatsBoard AND f$DP_HeadsUp AND AmountToCall <= (1.5 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND HaveFullHouse AND f$DP_BeatsBoard AND f$DP_HeadsUp AND NOT OneCardStraightFlushPossible AND AmountToCall <= (1.5 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND HaveFullHouse AND f$DP_BeatsBoard AND f$DP_HeadsUp AND AmountToCall <= (0.9 * (PotSize - AmountToCall)) Call FORCE
 WHEN AmountToCall > 0 AND HaveFullHouse AND f$DP_BeatsBoard AND AmountToCall <= (0.75 * (PotSize - AmountToCall)) Call FORCE
 WHEN AmountToCall > 0 AND HaveFullHouse AND f$DP_BeatsBoard Fold FORCE
 
