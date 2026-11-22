@@ -277,7 +277,9 @@ WHEN Others RETURN FALSE FORCE
 WHEN IsTurn AND AmountToCall > 0 AND f$DP_Hist_FlopVillainBetHeroCalled RETURN TRUE FORCE
 WHEN Others RETURN FALSE FORCE
 
-##f$DP_Hist_FacingTurnDonkAfterOurFlopBet##
+##f$DP_Hist_FacingTurnBetAfterOurFlopBetCalled##
+// A turn bet after Hero's flop bet was called; position is not checked, so
+// do NOT claim 'donk' (the villain may simply bet after Hero checks OOP).
 WHEN IsTurn AND AmountToCall > 0 AND f$DP_Hist_FlopHeroBetVillainCalled RETURN TRUE FORCE
 WHEN Others RETURN FALSE FORCE
 
