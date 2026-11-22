@@ -1,6 +1,6 @@
 # DeepCrusher R10d → cash 6-max V2 — auditoria transversal de reaproveitamento
 
-**Data:** 21/11/2026. **Estado:** triagem efetiva de funções; **NENHUMA política de aposta importada**. Controle por [Política ADR-049](GENERAL_POLICY.md) e [Plano Vivo](PLAN.md).
+**Data de origem:** 21/11/2026; **revisão:** 22/11/2026 (ADR-054). **Estado:** triagem efetiva de funções e integração seletiva de roteadores; **NENHUMA política de aposta SpinGo importada**. Controle por [Política ADR-049](GENERAL_POLICY.md) e [Plano Vivo](PLAN.md).
 
 ## Proveniência exata
 
@@ -69,3 +69,17 @@ A amostra acima **não limita** o universo de reaproveitamento. Prosseguir sobre
 **Recomendação de próximo incremento estratégico (F1/F2 paralelo ao OH):** contrato por *famílias de decisões*, começando por **defesa vs agressão em todas as streets** (made muito forte, valor vulnerável, bluffcatcher, draws, air), considerando posições, histórico, tamanho da aposta e número de adversários. É transversal e corrige a classe de erro ilustrada por full house four-flush **sem se limitar ao full house**.
 
 **Regra de parada:** não portar `f$move_flop_cbet`/módulos inteiros por quantidade de regras nem transformar cada item acima em projeto de microtestes. Só avançar código quando a primeira família estiver fundamentada, roteada e com contraexemplos estratégicos.
+
+
+## Revisão obrigatória concluída — ADR-054 (22/11/2026)
+
+**A auditoria anterior NÃO foi esquecida.** Sua classificação `A — REUSE_ARCH` foi aplicada à v0.5 após leitura do `CrusherTBP(2).txt`, `DeepCrusher(1).txt`, blob R10d `9f9cba79cdb9dc4438895770cf61a450fb55d17c` e manual OpenPPL. O resultado detalhado está na [nova matriz específica de histórico](LEGACY_HISTORY_REUSE_20261122.md) e [código v0.5](bot/DeepPoker_V2_Cash6max_v0_5_CRUSHER_HISTORY_REUSE.oppl). A matriz abaixo foi reavaliada: 
+
+- `f$pot_Limped` e `f$pot_SingleRaised`: **A**, com guarda pós-preflop e partição explícita para reraised; sem tratar unopened preflop como limped.
+- `f$pot_Reraised`: **A/E**, não copiado: antes do Hero decidir, `RaisesBeforeFlop AND NOT didcallround_preflop` pode descrever um open adversário ainda sem resposta, não uma 3bet consumada. A v0.5 usa dois raisers comprovados (Hero+vilão ou 2 raises oponentes) e não confunde inicial RFI com pote reraised resultante.
+- `f$Init_Hero`/`f$Init_Villain`/`f$Init_Nobody`: **A/E**, tradução para `BotIsLastRaiser` + evidência de bet/raise na street anterior, com identidade singular só quando `OpponentsOnFlop=1` e `OpponentsLeft=1`. A antiga checagem “Hero apostou em algum momento” não demonstra ter sido o agressor final.
+- `f$Init_GotRaised_Or_Isolated`: **A apenas como conceito**; não copiar registradores `me_st_`/`me_re_` sem reset nativo por mão comprovado. Classificar perda de iniciativa em HU quando houve agressão de ambos e Hero não terminou como último raiser, **sem inventar ordem de check-raise**.
+- `user_` histórico da R10d: **A com contrato ADR-053**, flag marca intenção e exige confirmação nativa para afirmar ação real. Na v0.5 foi acrescentado `user_DP_PF_ISOIntent`, ao lado de `user_DP_PF_RFIIntent`, para origem de pote — ambas devem ser mutuamente exclusivas.
+- `f$pot_Odds`, `f$stack_*`, `f$move_flop_cbet` e sizings 25BB: permanecem **C/B**, **nenhuma importação de estratégia de torneio**.
+
+**Status:** ADR-053 mantida e refinada; ADR-054 vigente; v0.5 ainda não foi carregada no OpenHoldem e não é liberada para jogar. **Próxima leitura obrigatória:** este documento, [Plano Vivo](PLAN.md), [Ledger](DECISION_LEDGER.md), [Modelo Histórico](HISTORY_MODEL.md) e fonte candidata, antes de alterar roteamento/decisões novamente.
