@@ -1,4 +1,4 @@
-> **ATENÇÃO V2 — ADR-046:** [Plano Vivo](v2/PLAN.md), [F2 estudo](v2/cases/BTN_BB_SRP_CBET_F2_PILOT.md). Dois spots de c-bet revisados qualitativamente; **apenas fragmento experimental [v2/pilot_01](v2/pilot_01/README.md) criado**, não completo nem operacional; nenhum runtime OH certificado. F0 PASS_CONCEPTUAL, F1 PASS_PILOT_CONTEXT, F2 OPEN, F3 DRAFT_SOURCE_ONLY; F4–F5 BLOCKED. Todo manifesto de código abaixo é histórico V1 LEGACY_UNVALIDATED, não release.
+> **ATENÇÃO V2 — ADR-048:** [Plano Vivo](v2/PLAN.md), [gate OH offline](v2/pilot_01/OH_OFFLINE_EVIDENCE_GATE.md). Apenas 2 fixtures nativas OpenPPL, 20 testes estáticos; **F3 STATIC_SYMBOLIC_VERIFIED/OH_PENDING**, F4–F5 BLOCKED. Nenhum release V2, nenhuma ação aceita por OpenHoldem demonstrada. O manifesto abaixo é histórico V1 LEGACY_UNVALIDATED.
 
 # Manifesto de versões (20/11/2026)
 
