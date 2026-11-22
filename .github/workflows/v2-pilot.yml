@@ -1,0 +1,23 @@
+name: V2 isolated OpenPPL source-contract checks
+
+on:
+  pull_request:
+    paths:
+      - 'v2/pilot_01/**'
+      - '.github/workflows/v2-pilot.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'v2/pilot_01/**'
+      - '.github/workflows/v2-pilot.yml'
+
+jobs:
+  static-only:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run isolated V2 source-contract tests (not OpenHoldem runtime)
+        run: python -m unittest discover -s v2/pilot_01 -p 'test_*.py' -v
