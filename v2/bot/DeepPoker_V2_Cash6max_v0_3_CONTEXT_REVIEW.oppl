@@ -149,7 +149,9 @@ WHEN Others RETURN FALSE FORCE
 // A regular OESD or double-gutshot is NOT automatically a NUT draw.
 // Do not give non-nut straight draws premium semi-bluff privileges.
 WHEN IsRiver RETURN FALSE FORCE
-WHEN HaveNutFlushDraw OR HaveNutStraightDraw OR HaveInsideNutStraightDraw RETURN TRUE FORCE
+// Being able to make the nuts does NOT mean having enough outs to call a big bet.
+// Inside-nut draws often have only four clean outs; handle as gutshots.
+WHEN HaveNutFlushDraw OR HaveNutStraightDraw RETURN TRUE FORCE
 WHEN Others RETURN FALSE FORCE
 
 ##f$DP_GoodDraw##
