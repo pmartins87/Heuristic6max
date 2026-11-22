@@ -1,6 +1,6 @@
 # DeepPoker Strategy V2 — Plano Vivo (evidência profissional, sem solver próprio)
 
-**Decisão atualizada:** 21/11/2026 — ADR-045 sobre a ADR-044. **Estado atual:** F0 **PASS_CONCEPTUAL** (referências independentes e direitos delimitados); importação de datasets **HOLD**; F1 **OPEN** (primeiro cenário BTN vs BB SRP); F2–F5 **BLOCKED**; nenhuma política estratégica V2 aprovada nem executada. **Fonte única de verdade** do projeto V2: este arquivo. Evidências/proveniência do F0 em [SOURCES.md](SOURCES.md). GitHub/engenharia V1 e DeepCrusher_R10d são preservados; a V1, inclusive as 2.016 instruções WHEN da última integração, é `LEGACY_UNVALIDATED` para qualidade estratégica.
+**Decisão atualizada:** 21/11/2026 — ADR-046 (continuidade ADR-044/045). **Estado atual:** F0 **PASS_CONCEPTUAL** (fontes públicas admissíveis conceitualmente); **DATASET_IMPORT_HOLD**; F1 **PASS_PILOT_CONTEXT** (BTN 2,5 BB, ~42% RFI, cash 6max/100BB, BTN vs BB SRP); F2 **OPEN** com 2 decisões pontuais STRATEGY_REVIEWED_HEURISTIC; F3–F5 **BLOCKED**. Nenhuma regra OpenPPL V2 nem bot operacional. **Fonte única de verdade** do projeto V2: este arquivo. Evidências/proveniência do F0 em [SOURCES.md](SOURCES.md). GitHub/engenharia V1 e DeepCrusher_R10d são preservados; a V1, inclusive as 2.016 instruções WHEN da última integração, é `LEGACY_UNVALIDATED` para qualidade estratégica.
 
 ## 1. Objetivo e correção da metodologia
 
@@ -57,13 +57,13 @@ FONTE profissional publicada / solução pública existente / lógica objetiva
 | Gate | Evidência mínima / aprovação | Estado atual | Se falhar |
 |---|---|---|---|
 | **F0 Fontes e viabilidade heurística** | Catálogo inicial de referências profissionais acessíveis, pressupostos/jogo, direitos de uso e critérios de admissibilidade. Comparar com escopo R10d. **Não executar solver.** | **PASS_CONCEPTUAL** (sem licença de importação de datasets) | Trocar fonte/limitar escopo; nenhuma regra nova |
-| **F1 Modelo de spot e invariantes** | Primeiro caso canônico com posições, pré-flop, 100BB alvo, ação e board, rake/sizing quando disponível, mãos possíveis, força relativa, histórico e limites de generalização | **OPEN** (BTN vs BB SRP, contexto ainda não calibrado) | Corrigir domínio, não inventar contexto |
-| **F2 Aprovação estratégica de módulo** | Proposta apoiada por fonte(s) e lógica verificável; revisão de alternativa/contraexemplo; casos críticos (full house, flush, nuts, blefes, preço, sizings); explicação das concessões e cobertura | **BLOCKED** | DRAFT/REJECTED, não criar módulo aprovado |
+| **F1 Modelo de spot e invariantes** | Primeiro caso canônico com posições, pré-flop, 100BB alvo, ação e board, rake/sizing quando disponível, mãos possíveis, força relativa, histórico e limites de generalização | **PASS_PILOT_CONTEXT** (rake real provisório) | Corrigir domínio, não inventar contexto |
+| **F2 Aprovação estratégica de módulo** | Proposta apoiada por fonte(s) e lógica verificável; revisão de alternativa/contraexemplo; casos críticos (full house, flush, nuts, blefes, preço, sizings); explicação das concessões e cobertura | **OPEN** (2 ações pontuais revisadas; nenhum módulo completo) | DRAFT/REJECTED, não criar módulo aprovado |
 | **F3 Fidelidade OpenPPL** | Uma fonte nativa, ação/precedência legal, símbolos e memória corretos, testes focados contra especificação independente, sem fallback ambíguo | **BLOCKED** | Corrigir tradução/routing sem reinterpretar fonte |
 | **F4 Replay offline OpenHoldem** | Decisão planejada = observada = ação aceita; histórico/scrape e comportamento de erro verificados em ambiente desconectado | **BLOCKED** | Não declarar operacional |
 | **F5 Produto / benchmark** | Abrangência real superior ao R10d nas 14 famílias; robustez e variações de stack/posição, avaliação de violações estratégicas, observabilidade e permissões de uso | **BLOCKED** | Não alegar superioridade, GTO ou prontidão |
 
-**Contagem V2 aprovada: ZERO.** 14/14 famílias benchmark sem certificação V2. Checkpoint V1 permanece apenas histórico e não muda a contagem. Cada gate precisa ter decisão registrada com evidência/revisão; não há exigência geral de EV quantificado.
+**Políticas V2 completas aprovadas: ZERO; decisões pontuais revisadas qualitativamente: 2.** 14/14 famílias benchmark sem certificação V2. Checkpoint V1 permanece apenas histórico e não muda a contagem. Cada gate precisa ter decisão registrada com evidência/revisão; não há exigência geral de EV quantificado.
 
 ## 6. Ordem concreta de construção (após F0)
 
@@ -107,3 +107,17 @@ Uma regra pequena e correta tem prioridade sobre 200 regras de cobertura superfi
 **Auditoria do DeepCrusher_R10d:** fonte Git blob `9f9cba79cdb9dc4438895770cf61a450fb55d17c` examinada no roteador `f$flop_Raise_SRP_Initiative` e `f$move_flop_cbet`. Herda-se a separação IP/OOP, pot family, ação do vilão e memória; rejeita-se copiar percentuais ou limites de stack (há exceções <=16BB) de Spin&Go para 6max cash 100BB.
 
 **Gates atuais:** F0 PASS_CONCEPTUAL; DATASET_IMPORT_HOLD; F1 OPEN; F2–F5 BLOCKED; **0 regras V2 aprovadas**. Nenhum solver e nenhuma ação OpenPPL nova foram executados/criados. Próxima ação: completar hipóteses pré-flop/rake e a matriz de mãos da c-bet por contexto; só depois F2. Sem ação local do usuário nesta rodada.
+
+
+## 11. ADR-046 — tolerância pragmática RFI e início da revisão F2 (21/11/2026)
+**Decisão explícita do usuário:** utilizar **2,5 BB para opens padrão** e tratar **41%–44% BTN RFI** como equivalentes para a finalidade heurística inicial; adotar **~42%** como alvo operacional de arquitetura. **Não** perder tempo escolhendo entre 41%, 42%, 43% ou 44% por detalhes sem impacto demonstrado. Não atribuir a mesma frequência às demais posições nem aprovar automaticamente o chart por combo.
+
+**Resultado F1:** o modelo BTN first-in 2,5 BB, cash 6-max de referência 100 BB, SB fold, BB call/check, BTN IP sem ação anterior no flop foi considerado **PASS_PILOT_CONTEXT**. O rake/cap real ficará como parâmetro de calibração do produto, não bloqueio para escrever e revisar heurísticas; calibração e operação em dinheiro real continuam restritas.
+
+**Primeira revisão estratégica F2:** [F2-PILOT-01](cases/BTN_BB_SRP_CBET_F2_PILOT.md) classifica duas ações pontuais como `STRATEGY_REVIEWED_HEURISTIC`: Q♥Q♣6♦ com Q♠J♠ -> BET_33%, A♠7♦3♣ com A♥5♥ -> CHECK, ambos após BB check, BTN RFI/BB-call no contexto acima. Ações respaldadas por tendências explicitadas na literatura, com contraprovas e limitações registradas. **Não** equivalem a mix GTO nem estão implementadas em OpenPPL.
+
+**Compressão piloto:** `CHECK/BET_33/BET_75` com BET_125 omitido inicialmente (trade-off consciente de precisão/custo). Famílias K♥J♥7♦ e Q♦J♦T♦ permanecem DRAFT por mão. `F2` segue **OPEN**; somente dois *spots* foram revisados, nenhum módulo estratégico completo.
+
+**F3–F5:** bloqueados até paridade de símbolos e precedência, replays OH desconectados e avaliação de cobertura. DeepCrusher_R10d continua referência de arquitetura/roteamento, não substituto de evidência estratégica. **Próximo passo:** implementação OpenPPL isolada dos dois casos sob controle de legalidade e ausência de fallback silencioso. Nenhum solver, código V1, testes ou executável de jogo alterado nesta revisão.
+
+**Regra contra burocracia:** só reabrir faixa BTN RFI, cap/rake do piloto ou 3º bet size se uma diferença material de decisão/cobertura for demonstrada; registrar a condição que faria mudar, não repetir discussões percentuais.
