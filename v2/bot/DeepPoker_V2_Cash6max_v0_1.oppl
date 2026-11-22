@@ -191,6 +191,9 @@ WHEN Others RETURN FALSE FORCE
 
 
 ##f$preflop##
+// Target is 6-max or fewer dealt; do not apply 6-max ranges to larger tables.
+WHEN OpponentsAtTable > 5 AND AmountToCall = 0 Check FORCE
+WHEN OpponentsAtTable > 5 Fold FORCE
 // In all states: explicit choices, no implicit default.bot / no Beep.
 // Hero faces a 4bet/5bet after having raised. First prefer strong value.
 WHEN BotRaisedBeforeFlop AND Raises >= 2 AND listDP_5BET AND StackSize <= 110 RaiseMax FORCE
@@ -205,7 +208,7 @@ WHEN BotRaisedBeforeFlop AND Raises >= 1 Fold FORCE
 
 // Facing an opening raise: 3bet for value first, selective late-position 3bet.
 WHEN Raises = 1 AND NOT BotRaisedBeforeFlop AND listDP_3BET_VALUE AND AmountToCall <= 9 AND NOT InSmallBlind AND NOT InBigBlind RaiseTo (3.2 * AmountToCall + TotalInvestedThisRound) FORCE
-WHEN Raises = 1 AND NOT BotRaisedBeforeFlop AND listDP_3BET_VALUE AND AmountToCall <= 9 AND (InSmallBlind OR InBigBlind) RaiseTo (3.8 * AmountToCall + TotalInvestedThisRound) FORCE
+WHEN Raises = 1 AND NOT BotRaisedBeforeFlop AND listDP_3BET_VALUE AND AmountToCall <= 9 AND (InSmallBlind OR InBigBlind) RaiseTo (3.8 * (AmountToCall + TotalInvestedThisRound)) FORCE
 WHEN Raises = 1 AND NOT BotRaisedBeforeFlop AND FirstRaiserPosition <= 3 AND listDP_3BET_LATE AND randomhand < 0.42 AND AmountToCall <= 6 RaiseTo (3.5 * AmountToCall + TotalInvestedThisRound) FORCE
 // Small blind: use 3bet-or-fold as the initial simplified defensive policy.
 WHEN Raises = 1 AND InSmallBlind Fold FORCE
@@ -238,6 +241,9 @@ WHEN Raises = 0 AND Calls > 0 AND AmountToCall = 0 Check FORCE
 WHEN Others Fold FORCE
 
 ##f$flop##
+// Refuse to extrapolate this 6-max strategy to 7+ handed tables.
+WHEN OpponentsAtTable > 5 AND AmountToCall = 0 Check FORCE
+WHEN OpponentsAtTable > 5 Fold FORCE
 // Facing a bet, check-raise or lead. Exception/super-premium BEFORE texture.
 WHEN AmountToCall > 0 AND (HaveStraightFlush OR HaveQuads) AND StackSize > (2 * AmountToCall) RaisePot FORCE
 WHEN AmountToCall > 0 AND f$DP_Premium AND (AmountToCall >= StackSize OR f$DP_LowSPR) Call FORCE
@@ -297,6 +303,9 @@ WHEN AmountToCall = 0 Check FORCE
 WHEN Others Fold FORCE
 
 ##f$turn##
+// Refuse to extrapolate this 6-max strategy to 7+ handed tables.
+WHEN OpponentsAtTable > 5 AND AmountToCall = 0 Check FORCE
+WHEN OpponentsAtTable > 5 Fold FORCE
 // Facing action. No texture may automatically fold the premium showdown classes.
 WHEN AmountToCall > 0 AND (HaveStraightFlush OR HaveQuads) AND StackSize > (2 * AmountToCall) RaisePot FORCE
 WHEN AmountToCall > 0 AND f$DP_Premium AND f$DP_HeadsUp AND NOT f$DP_Dangerous AND AmountToCall <= (0.50 * PotSize) RaiseHalfPot FORCE
@@ -332,6 +341,9 @@ WHEN AmountToCall = 0 Check FORCE
 WHEN Others Fold FORCE
 
 ##f$river##
+// Refuse to extrapolate this 6-max strategy to 7+ handed tables.
+WHEN OpponentsAtTable > 5 AND AmountToCall = 0 Check FORCE
+WHEN OpponentsAtTable > 5 Fold FORCE
 // Strong made hands: board texture alone is NEVER a fold reason.
 // Absolute nuts (including non-board straight flush/quads) can raise for value.
 WHEN AmountToCall > 0 AND (HaveStraightFlush OR HaveQuads) AND NOT NutsOnBoard AND StackSize > (2 * AmountToCall) RaisePot FORCE
