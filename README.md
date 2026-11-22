@@ -1,4 +1,4 @@
-> **REINÍCIO V2 (21/11/2026):** fonte de verdade atual para NOVO desenvolvimento: **[v2/PLAN.md](v2/PLAN.md)**. Toda a estratégia OpenPPL V1 descrita abaixo (incluindo M08-RIVER4, ranges v0.6.1 e 611 testes) é **LEGACY_UNVALIDATED para qualidade estratégica**. Nenhuma política V2 foi aprovada; não interpretar os checkpoints abaixo como plano vigente ou bot operacional. Objetivo: construir a partir de soluções solver rastreáveis, EV e cobertura, preservando a V1 somente como histórico. Não utilizar em jogos reais.
+> **REINÍCIO V2 — ADR-044 (21/11/2026):** [fonte de verdade: v2/PLAN.md](v2/PLAN.md). Nova estratégia **heurística fundamentada em charts públicos admissíveis, soluções publicadas e teoria profissional**, sem solver próprio obrigatório. F0 fontes OPEN, F1–F5 BLOCKED, nenhuma política V2 aprovada. V1 (2.016 WHEN, inclusive M08-RIVER4) é LEGACY_UNVALIDATED para qualidade estratégica; CI V1 não prova GTO/EV ou runtime. O restante do README é histórico.
 
 # Heuristic6max — fonte de verdade
 

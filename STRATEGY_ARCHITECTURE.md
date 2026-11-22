@@ -1,3 +1,5 @@
+> **ARQUITETURA V2 (ADR-044):** aplicar este contrato de contexto/histórico ao [Plano Vivo V2](v2/PLAN.md). Fonte estratégica agora é chart público admissível/teoria profissional revisada; não calcular solver próprio nem presumir que regras V1 são boas. O texto abaixo descreve exigências arquiteturais e histórico V1, não aprova política.
+
 # Heuristic6max — arquitetura de um bot COMPLETO, sensível ao histórico
 
 **Fonte de verdade do objetivo e escopo — 20/11/2026.** O projeto é **um bot de poker de engenharia complexa**, com milhares de caminhos de decisão e heurísticas inspiradas no GTO. Não é um solver nem um experimento científico. **Excelência estratégica é a meta**, nunca uma propriedade presumida pela quantidade de regras ou testes.

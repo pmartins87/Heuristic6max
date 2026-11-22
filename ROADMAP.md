@@ -1,4 +1,4 @@
-> **ROADMAP VIGENTE V2:** [v2/PLAN.md](v2/PLAN.md). O roadmap completo abaixo é **histórico V1, SUSPENSO**. A partir de 21/11/2026, gate prioritário **F0: viabilidade real de solver em cenário HU**, antes de implementar qualquer política nova. F1 jogo/ranges/rake; F2 EV e frequências; F3 OpenPPL; F4 replay offline; F5 abrangência/robustez. Proibida promoção estratégica sem evidência de referência.
+> **ROADMAP VIGENTE V2 — ADR-044:** [v2/PLAN.md](v2/PLAN.md). F0 **qualificação de charts/soluções públicas e fontes profissionais**, não execução de solver. F1 spot/ranges/textura/SPR; F2 revisão contraditória de estratégia; F3 OpenPPL; F4 OH offline; F5 benchmark R10d. O roadmap abaixo é histórico V1 e não está ativo.
 
 # Roadmap vivo — 21/11/2026 (M08-RIVER4 fonte-first + G1/G6 de certificação separados / DRAFT)
 

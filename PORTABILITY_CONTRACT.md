@@ -1,3 +1,5 @@
+> **PORTABILIDADE V2 (ADR-044):** este contrato continua aplicável às políticas **aprovadas estrategicamente** conforme [v2/PLAN.md](v2/PLAN.md). Testes estáticos não certificam estratégia nem comportamento no OH real; histórico V1 permanece não operacional.
+
 # Heuristic6max — contrato de portabilidade obrigatória OpenPPL (ADR-016)
 
 **2026-11-20 · Gate PORT-0 iniciado; NÃO operacional.** Contrato transversal ao roadmap; preserva G0/G1/G2 e não inicia antecipadamente a integração G6.

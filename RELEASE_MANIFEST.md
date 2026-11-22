@@ -1,4 +1,4 @@
-> **ATENÇÃO (21/11/2026):** nenhuma versão de estratégia V2 foi produzida ou liberada. [Reinício V2 e gates F0–F5](v2/PLAN.md). Tudo abaixo é manifesto histórico V1 **sem aprovação de qualidade estratégica**; não carregar em mesas reais nem inferir que CI verde qualifica EV/GTO.
+> **ATENÇÃO — ADR-044 (21/11/2026):** nenhuma estratégia V2 liberada. [Plano V2](v2/PLAN.md) prioriza charts/teoria profissional e auditoria sem solver próprio; F0 aberto, F1–F5 bloqueados. O inventário abaixo permanece histórico V1, não operacional e LEGACY_UNVALIDATED.
 
 # Manifesto de versões (20/11/2026)
 
