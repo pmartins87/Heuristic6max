@@ -310,6 +310,8 @@ WHEN AmountToCall > 0 AND (HaveStraightFlush OR (HaveQuads AND NOT QuadsOnBoard)
 // A very strong but non-nut hand is not an automatic call of arbitrary overbets.
 WHEN AmountToCall > 0 AND f$DP_Premium AND f$DP_HeadsUp AND AmountToCall <= (0.5 * (PotSize - AmountToCall)) AND f$DP_DynamicFlop AND OpponentsLeft > NumberOfOpponentsAllin RaiseThreeFourthPot FORCE
 WHEN AmountToCall > 0 AND (HaveStraightFlush OR (HaveQuads AND NOT QuadsOnBoard)) Call FORCE
+// Do not let non-nut price caps automatically fold a hand that is currently nuts.
+WHEN AmountToCall > 0 AND HaveNuts Call FORCE
 WHEN AmountToCall > 0 AND f$DP_Premium AND AmountToCall <= (2.0 * (PotSize - AmountToCall)) Call FORCE
 WHEN AmountToCall > 0 AND f$DP_Premium Fold FORCE
 
@@ -330,7 +332,8 @@ WHEN AmountToCall > 0 AND f$DP_NutDraw AND AmountToCall <= (0.48 * (PotSize - Am
 // draw and must NOT inherit the same pot-odds threshold.
 WHEN AmountToCall > 0 AND HaveFlushDraw AND AmountToCall <= (0.30 * (PotSize - AmountToCall)) Call FORCE
 WHEN AmountToCall > 0 AND HaveOpenEndedStraightDraw AND AmountToCall <= (0.28 * (PotSize - AmountToCall)) Call FORCE
-WHEN AmountToCall > 0 AND HaveInsideStraightDraw AND f$DP_IP AND AmountToCall <= (0.10 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND HaveDoubleGutshotDraw AND AmountToCall <= (0.25 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND (HaveInsideNutStraightDraw OR HaveInsideStraightDraw) AND f$DP_IP AND AmountToCall <= (0.10 * (PotSize - AmountToCall)) Call FORCE
 
 // Pair defenses; distinguish dry boards from the very dangerous texture and bet sizes.
 WHEN AmountToCall > 0 AND f$DP_GoodPair AND f$DP_HeadsUp AND NOT f$DP_Dangerous AND AmountToCall <= (0.48 * (PotSize - AmountToCall)) Call FORCE
@@ -392,6 +395,8 @@ WHEN AmountToCall > 0 AND QuadsOnBoard AND NOT HaveNuts Fold FORCE
 WHEN AmountToCall > 0 AND ((HaveStraightFlush AND f$DP_BeatsBoard) OR (HaveQuads AND NOT QuadsOnBoard)) AND StackSize > (2 * AmountToCall) AND OpponentsLeft > NumberOfOpponentsAllin RaisePot FORCE
 WHEN AmountToCall > 0 AND f$DP_Premium AND f$DP_HeadsUp AND NOT f$DP_Dangerous AND AmountToCall <= (0.50 * (PotSize - AmountToCall)) AND OpponentsLeft > NumberOfOpponentsAllin RaiseHalfPot FORCE
 WHEN AmountToCall > 0 AND (HaveStraightFlush OR (HaveQuads AND NOT QuadsOnBoard)) Call FORCE
+// Do not let non-nut price caps automatically fold a hand that is currently nuts.
+WHEN AmountToCall > 0 AND HaveNuts Call FORCE
 WHEN AmountToCall > 0 AND f$DP_Premium AND AmountToCall <= (2.0 * (PotSize - AmountToCall)) Call FORCE
 WHEN AmountToCall > 0 AND f$DP_Premium Fold FORCE
 WHEN AmountToCall > 0 AND f$DP_StrongMade AND f$DP_LowSPR AND NOT f$DP_Dangerous AND AmountToCall <= (0.6 * (PotSize - AmountToCall)) Call FORCE
@@ -403,7 +408,8 @@ WHEN AmountToCall > 0 AND f$DP_ReraisedPot AND f$DP_Commitment AND f$DP_QualityP
 WHEN AmountToCall > 0 AND f$DP_NutDraw AND AmountToCall <= (0.32 * (PotSize - AmountToCall)) Call FORCE
 WHEN AmountToCall > 0 AND HaveFlushDraw AND AmountToCall <= (0.26 * (PotSize - AmountToCall)) Call FORCE
 WHEN AmountToCall > 0 AND HaveOpenEndedStraightDraw AND AmountToCall <= (0.21 * (PotSize - AmountToCall)) Call FORCE
-WHEN AmountToCall > 0 AND HaveInsideStraightDraw AND f$DP_IP AND AmountToCall <= (0.10 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND HaveDoubleGutshotDraw AND AmountToCall <= (0.20 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND (HaveInsideNutStraightDraw OR HaveInsideStraightDraw) AND f$DP_IP AND AmountToCall <= (0.10 * (PotSize - AmountToCall)) Call FORCE
 WHEN AmountToCall > 0 AND f$DP_QualityPair AND f$DP_HeadsUp AND NOT f$DP_Dangerous AND AmountToCall <= (0.36 * (PotSize - AmountToCall)) Call FORCE
 WHEN AmountToCall > 0 AND f$DP_GoodPair AND f$DP_HeadsUp AND AmountToCall <= (0.22 * (PotSize - AmountToCall)) Call FORCE
 WHEN AmountToCall > 0 AND f$DP_WeakPair AND f$DP_HeadsUp AND AmountToCall <= (0.10 * (PotSize - AmountToCall)) Call FORCE
