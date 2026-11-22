@@ -1,3 +1,5 @@
+> **MANIFESTO ATUAL ADR-051:** **v0.1 REVOKED_FOR_PLAY**, preservada para rastreabilidade. [v0.2 LOGIC_REVIEW](v2/bot/DeepPoker_V2_Cash6max_v0_2_LOGIC_REVIEW.oppl) é uma candidata corretiva, não produto jogável nem resultado de OH. Falhas documentadas em [LOGIC_REVIEW_20261121](v2/bot/LOGIC_REVIEW_20261121.md). O manifesto abaixo é histórico anterior.
+
 > **MANIFESTO ATUAL — ADR-050:** [DeepPoker V2 Cash6max v0.1](v2/bot/DeepPoker_V2_Cash6max_v0_1.oppl) é **FIRST_COMPLETE_PROFILE_READY_FOR_USER_TEST**, não release comercial/GTO certificado. Quatro streets implementadas em arquivo OpenPPL autônomo; OH real ainda não executado aqui. [Instruções](v2/bot/README.md). Todo inventário V1 abaixo é histórico e permanece preservado.
 
 > **MANIFESTO V2 — ADR-049:** estratégia por famílias, com [Plano Vivo](v2/PLAN.md) e [Política geral](v2/GENERAL_POLICY.md). Nenhum módulo completo aprovado nem OpenHoldem runtime certificado. O piloto de duas mãos foi preservado apenas como engenharia estática; revisão transversal de R10d e estudo F1 não implicam release. Restante do manifesto é histórico V1.
