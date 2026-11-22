@@ -27,6 +27,6 @@ O Manual afirma também que `user_...` começa falso e reinicia por mão. A fixt
 
 `python -m unittest discover -s v2/pilot_01 -p 'test_*.py' -v`
 
-Quatro testes locais estáticos passaram, checando fonte OpenPPL, duas ações e guardas básicos; **não** simulam o motor C++ nem comprovam parsing, scrape, ação enviada/aceita ou default fallback. O histórico do projeto já demonstrou que testes estáticos verdes podem ocultar erros estratégicos; aqui o respaldo estratégico vem dos estudos profissionais **anteriores** à implementação.
+Quatro testes locais estáticos passaram, e [CI V2 isolada](../../.github/workflows/v2-pilot.yml) também executa exatamente essa suíte em PRs que alterem o piloto; a CI não usa OpenHoldem, checando fonte OpenPPL, duas ações e guardas básicos; **não** simulam o motor C++ nem comprovam parsing, scrape, ação enviada/aceita ou default fallback. O histórico do projeto já demonstrou que testes estáticos verdes podem ocultar erros estratégicos; aqui o respaldo estratégico vem dos estudos profissionais **anteriores** à implementação.
 
 Próximo gate `F3`: carregar em OpenHoldem em replay **desconectado de mesa real**, validar que `QsJs/QQ6r` gera bet de 33% e `Ah5h/A73r` gera check, que outras cartas ou apostas não geram ação perigosa, e que a memória não migra para a mão seguinte. **Não** publicar como bot completo nem habilitar jogo real. O modelo de 42% BTN e árvore pós-flop mais ampla serão incrementos separados.
