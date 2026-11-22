@@ -1,0 +1,587 @@
+// DeepPoker Strategy V2 | CASH6MAX v0.4.0 HISTORY-REVIEW | self-contained OpenPPL
+// Objective: CORRECTED LOGIC CANDIDATE, NOT APPROVED FOR PLAY, not a solver/GTO claim.
+// Cash 6max with 100bb baseline; accepts other stacks with conservative branches.
+// Source: professional published concepts + independent broad heuristic choices.
+// Default.bot is never relied upon: each street has a final explicit action.
+// Caution: respect poker platform rules; intended only where automation permitted.
+// Root status: v0.1 contained systemic hand-ranking, pot-price and initiative errors.
+// Preserve v0.3 pot/hand corrections; add native hand chronology with explicit HU reliability scope.
+
+##listDP_RFI_LJ##
+22 33 44 55 66 77 88 99 TT JJ QQ KK AA
+A2s A3s A4s A5s A6s A7s A8s A9s ATs AJs AQs AKs K9s
+KTs KJs KQs Q9s QTs QJs J9s JTs T9s 98s 87s 76s AJo
+AQo AKo KQo
+
+##listDP_RFI_HJ##
+22 33 44 55 66 77 88 99 TT JJ QQ KK AA
+A2s A3s A4s A5s A6s A7s A8s A9s ATs AJs AQs AKs K8s
+K9s KTs KJs KQs Q8s Q9s QTs QJs J8s J9s JTs T8s T9s
+97s 98s 86s 87s 75s 76s 65s 54s ATo AJo AQo AKo KJo
+KQo QJo
+
+##listDP_RFI_CO##
+22 33 44 55 66 77 88 99 TT JJ QQ KK AA
+A2s A3s A4s A5s A6s A7s A8s A9s ATs AJs AQs AKs K5s
+K6s K7s K8s K9s KTs KJs KQs Q6s Q7s Q8s Q9s QTs QJs
+J7s J8s J9s JTs T7s T8s T9s 96s 97s 98s 85s 86s 87s
+75s 76s 64s 65s 54s A8o A9o ATo AJo AQo AKo KTo KJo
+KQo QTo QJo JTo
+
+##listDP_RFI_BTN##
+22 33 44 55 66 77 88 99 TT JJ QQ KK AA
+A2s A3s A4s A5s A6s A7s A8s A9s ATs AJs AQs AKs K2s
+K3s K4s K5s K6s K7s K8s K9s KTs KJs KQs Q4s Q5s Q6s
+Q7s Q8s Q9s QTs QJs J6s J7s J8s J9s JTs T6s T7s T8s
+T9s 95s 96s 97s 98s 85s 86s 87s 75s 76s 64s 65s 54s
+A2o A3o A4o A5o A6o A7o A8o A9o ATo AJo AQo AKo K8o
+K9o KTo KJo KQo Q9o QTo QJo J9o JTo T9o 98o
+
+##listDP_RFI_SB##
+22 33 44 55 66 77 88 99 TT JJ QQ KK AA
+A2s A3s A4s A5s A6s A7s A8s A9s ATs AJs AQs AKs K2s
+K3s K4s K5s K6s K7s K8s K9s KTs KJs KQs Q5s Q6s Q7s
+Q8s Q9s QTs QJs J6s J7s J8s J9s JTs T6s T7s T8s T9s
+96s 97s 98s 85s 86s 87s 75s 76s 64s 65s 54s A2o A3o
+A4o A5o A6o A7o A8o A9o ATo AJo AQo AKo K9o KTo KJo
+KQo Q9o QTo QJo J9o JTo T9o
+
+##listDP_ISO##
+55 66 77 88 99 TT JJ QQ KK AA A2s A3s A4s
+A5s A6s A7s A8s A9s ATs AJs AQs AKs K8s K9s KTs KJs
+KQs Q9s QTs QJs J9s JTs T9s 98s 87s 76s ATo AJo AQo
+AKo KJo KQo QJo
+
+##listDP_3BET_VALUE##
+JJ QQ KK AA AQs AKs AKo AQo
+
+##listDP_3BET_LATE##
+TT JJ QQ KK AA ATs AJs AQs AKs KQs AJo AQo AKo
+A2s A3s A4s A5s
+
+##listDP_4BET##
+QQ KK AA AKs AKo
+
+##listDP_5BET##
+KK AA AKs
+
+##listDP_CALL_3BET##
+88 99 TT JJ AJs AQs AKs AQo KQs QJs JTs
+
+##listDP_CALL_EARLY##
+77 88 99 TT JJ AJs AQs AKs KQs QJs JTs T9s
+
+##listDP_CALL_LATE##
+22 33 44 55 66 77 88 99 TT JJ A2s A3s A4s
+A5s A6s A7s A8s A9s ATs AJs AQs AKs KTs KJs KQs QTs
+QJs JTs T9s 98s 87s 76s AJo AQo KQo
+
+##listDP_BB_DEF_EARLY##
+22 33 44 55 66 77 88 99 TT JJ A2s A3s A4s
+A5s A6s A7s A8s A9s ATs AJs AQs AKs K7s K8s K9s KTs
+KJs KQs Q8s Q9s QTs QJs J8s J9s JTs T8s T9s 97s 98s
+87s 76s 65s 54s ATo AJo AQo AKo KJo KQo QJo
+
+##listDP_BB_DEF_LATE##
+22 33 44 55 66 77 88 99 TT JJ A2s A3s A4s
+A5s A6s A7s A8s A9s ATs AJs AQs AKs K2s K3s K4s K5s
+K6s K7s K8s K9s KTs KJs KQs Q5s Q6s Q7s Q8s Q9s QTs
+QJs J6s J7s J8s J9s JTs T6s T7s T8s T9s 95s 96s 97s
+98s 85s 86s 87s 75s 76s 64s 65s 54s A2o A3o A4o A5o
+A6o A7o A8o A9o ATo AJo AQo AKo K8o K9o KTo KJo KQo
+Q9o QTo QJo J9o JTo T9o 98o
+
+##listDP_SMALL_CALL##
+22 33 44 55 66 77 88 99 TT JJ A2s A3s A4s
+A5s A6s A7s A8s A9s ATs AJs AQs AKs KTs KJs KQs QTs
+QJs JTs T9s 98s 87s 76s 65s 54s AJo AQo KQo
+
+// Decision classifications: hand rank > board texture; pot/history always contextual.
+##f$DP_HeadsUp##
+WHEN OpponentsLeft = 1 RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_Multiway##
+WHEN OpponentsLeft > 1 RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+// River showdown comparison, NOT a board-texture heuristic.
+// Board value is the BEST five community cards; hero value is best of seven.
+// OpenHoldem source uses an int for pokerval: straight-flush sign bit can be
+// negative, so compare SF-vs-nonSF by category before numerical comparison.
+// When both are SF the signed numeric ordering still preserves high-card rank.
+##f$DP_BeatsBoard##
+WHEN NOT IsRiver RETURN TRUE FORCE
+WHEN HaveStraightFlush AND NOT StraightFlushOnBoard RETURN TRUE FORCE
+WHEN pokerval > pokervalcommon RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_BoardOnlyMade##
+WHEN IsRiver AND NOT f$DP_BeatsBoard AND (StraightOnBoard OR FlushOnBoard OR FullHouseOnBoard OR QuadsOnBoard OR StraightFlushOnBoard) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_Premium##
+WHEN HaveStraightFlush AND f$DP_BeatsBoard RETURN TRUE FORCE
+WHEN HaveQuads AND NOT QuadsOnBoard AND f$DP_BeatsBoard RETURN TRUE FORCE
+WHEN HaveQuads AND HaveNuts AND f$DP_BeatsBoard RETURN TRUE FORCE
+WHEN HaveFullHouse AND f$DP_BeatsBoard RETURN TRUE FORCE
+WHEN HaveNuts AND NOT NutsOnBoard AND f$DP_BeatsBoard RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_StrongMade##
+WHEN f$DP_Premium RETURN TRUE FORCE
+// Shared board quads are not Hero-exclusive value.
+WHEN HaveQuads AND (NOT QuadsOnBoard OR (IsRiver AND f$DP_BeatsBoard)) RETURN TRUE FORCE
+WHEN HaveFlush AND f$DP_BeatsBoard RETURN TRUE FORCE
+WHEN HaveStraight AND f$DP_BeatsBoard RETURN TRUE FORCE
+WHEN HaveSet OR HaveTwoPair OR HaveTrips RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_GoodPair##
+WHEN HaveOverPair OR HaveTopPair RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_WeakPair##
+WHEN HaveSecondTopPair OR HaveBottomPair OR HaveUnderPair OR HaveThirdTopPair RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_NutDraw##
+// A regular OESD or double-gutshot is NOT automatically a NUT draw.
+// Do not give non-nut straight draws premium semi-bluff privileges.
+WHEN IsRiver RETURN FALSE FORCE
+// Being able to make the nuts does NOT mean having enough outs to call a big bet.
+// Inside-nut draws often have only four clean outs; handle as gutshots.
+WHEN HaveNutFlushDraw OR HaveNutStraightDraw RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_GoodDraw##
+WHEN IsRiver RETURN FALSE FORCE
+WHEN HaveFlushDraw OR HaveOpenEndedStraightDraw OR HaveDoubleGutshotDraw RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_AnyDraw##
+// On river a missed flush/straight draw is AIR, never a live draw.
+WHEN IsRiver RETURN FALSE FORCE
+WHEN HaveFlushDraw OR HaveStraightDraw OR HaveInsideStraightDraw RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_Dangerous##
+WHEN OneCardFlushPossible OR OneCardStraightPossible RETURN TRUE FORCE
+WHEN (PairOnBoard AND FlushPossible) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_DynamicFlop##
+WHEN FlushPossibleOnFlop OR StraightPossibleOnFlop OR TwoOfOneSuitPresentOnFlop RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_ValueProtected##
+WHEN HaveStraightFlush AND f$DP_BeatsBoard RETURN TRUE FORCE
+WHEN HaveQuads AND NOT QuadsOnBoard AND f$DP_BeatsBoard RETURN TRUE FORCE
+WHEN HaveNuts AND NOT NutsOnBoard AND f$DP_BeatsBoard RETURN TRUE FORCE
+WHEN HaveFullHouse AND f$DP_BeatsBoard RETURN TRUE FORCE
+WHEN HaveFlush AND f$DP_BeatsBoard AND NOT OneCardFlushPossible RETURN TRUE FORCE
+WHEN HaveStraight AND f$DP_BeatsBoard AND NOT PairOnBoard AND NOT FlushPossible RETURN TRUE FORCE
+WHEN HaveSet AND NOT FlushPossible AND NOT OneCardStraightPossible RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_QualityPair##
+WHEN HaveOverPair OR (HaveTopPair AND HaveBestKickerOrBetter) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_LowSPR##
+// PotSize already includes villain's wager. Use the matched pre-call base,
+// otherwise an oversize wager would FALSELY create "low SPR" and trigger calls.
+WHEN PotSize > AmountToCall AND StackSize <= (1.5 * (PotSize - AmountToCall)) RETURN TRUE FORCE
+WHEN PotSize > AmountToCall AND f$DP_HeadsUp AND OpponentStacksizeHeadsUp > 0 AND OpponentStacksizeHeadsUp <= (1.5 * (PotSize - AmountToCall)) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_HighSPR##
+WHEN PotSize > 0 AND f$DP_HeadsUp AND StackSize >= (6 * PotSize) AND OpponentStacksizeHeadsUp >= (6 * PotSize) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_Air##
+// Do not label a shared board straight/flush/fullhouse/quads as air to bluff.
+WHEN f$DP_BoardOnlyMade RETURN FALSE FORCE
+WHEN NOT f$DP_StrongMade AND NOT f$DP_GoodPair AND NOT f$DP_WeakPair AND NOT f$DP_AnyDraw AND NOT HavePocketPair RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_PreflopRFI##
+// A raise without opposing raise could have ISOLATED limpers, not be an RFI.
+// Store intentional first-in only at the preflop decision; also require native
+// proof that Hero did actually raise and was not later reraised by villain.
+WHEN user_DP_PF_RFIIntent AND BotRaisedBeforeFlop AND NOT RaisesBeforeFlop RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_LastRaiser##
+WHEN BotIsLastRaiser RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_IP##
+WHEN Position = Last RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_ReraisedPot##
+// Opponent raise exists in a pot in which Hero also raised, or >1 opponent raises.
+WHEN (BotRaisedBeforeFlop AND RaisesBeforeFlop) OR NumberOfRaisesBeforeFlop >= 2 RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_Commitment##
+// Evaluate stack compared with base pot BEFORE a call, not inflated PotSize.
+// This is a risk proxy, not a license to call any bet with a made pair.
+WHEN OpponentsLeft = 1 AND PotSize > AmountToCall AND (StackSize <= (2 * (PotSize - AmountToCall)) OR (OpponentStacksizeHeadsUp > 0 AND OpponentStacksizeHeadsUp <= (2 * (PotSize - AmountToCall)))) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_RealPot##
+WHEN PotSize >= 1 AND StackSize > 0 RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+
+// ================= HISTORY — NATIVE PERSISTENT OBSERVATIONS ================
+// OpenPPL "user" flags mark INTENT, never prove an action was accepted.
+// Native BotRaisedOnFlop/OpponentCalledOnFlop provide action confirmation.
+// A HU street later in a multiway pot is NOT enough to identify the same villain.
+// All actor-dependent longitudinal classifiers require HU FROM THE FLOP.
+##f$DP_PF_OpenCandidate##
+WHEN IsPreflop AND Raises = 0 AND Calls = 0 AND NOT BotRaisedBeforeFlop AND NOT BotCalledBeforeFlop AND ((InMiddlePosition2 AND listDP_RFI_LJ) OR (InMiddlePosition3 AND listDP_RFI_HJ) OR (InCutOff AND listDP_RFI_CO) OR (InButton AND listDP_RFI_BTN) OR (InSmallBlind AND listDP_RFI_SB)) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_Hist_HUFromFlop##
+WHEN (IsTurn OR IsRiver) AND OpponentsOnFlop = 1 AND OpponentsLeft = 1 RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_Hist_FlopCheckedThrough##
+WHEN (IsTurn OR IsRiver) AND NoBettingOnFlop RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_Hist_TurnCheckedThrough##
+WHEN IsRiver AND NoBettingOnTurn RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_Hist_FlopVillainBetHeroCalled##
+WHEN f$DP_Hist_HUFromFlop AND BotCalledOnFlop AND NOT NoVillainBetOrRaisedOnFlop AND NOT RaisesOnFlop RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_Hist_TurnVillainBetHeroCalled##
+WHEN IsRiver AND f$DP_Hist_HUFromFlop AND BotCalledOnTurn AND NOT NoVillainBetOrRaisedOnTurn AND NOT RaisesOnTurn RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_Hist_FlopHeroBetVillainCalled##
+WHEN f$DP_Hist_HUFromFlop AND BotRaisedOnFlop AND OpponentCalledOnFlop AND NoVillainBetOrRaisedOnFlop RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_Hist_TurnHeroBetVillainCalled##
+WHEN IsRiver AND f$DP_Hist_HUFromFlop AND BotRaisedOnTurn AND OpponentCalledOnTurn AND NoVillainBetOrRaisedOnTurn RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_Hist_FacingTurnSecondBarrel##
+WHEN IsTurn AND AmountToCall > 0 AND f$DP_Hist_FlopVillainBetHeroCalled RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_Hist_FacingTurnDonkAfterOurFlopBet##
+WHEN IsTurn AND AmountToCall > 0 AND f$DP_Hist_FlopHeroBetVillainCalled RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_Hist_FacingRiverThirdBarrel##
+WHEN IsRiver AND AmountToCall > 0 AND f$DP_Hist_FlopVillainBetHeroCalled AND f$DP_Hist_TurnVillainBetHeroCalled RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_Hist_FacingRiverTurnRiverAfterPassiveFlop##
+WHEN IsRiver AND AmountToCall > 0 AND f$DP_Hist_FlopCheckedThrough AND f$DP_Hist_TurnVillainBetHeroCalled AND f$DP_Hist_HUFromFlop RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_Hist_FacingRiverFirstPostflopBet##
+WHEN IsRiver AND AmountToCall > 0 AND f$DP_Hist_HUFromFlop AND f$DP_Hist_FlopCheckedThrough AND f$DP_Hist_TurnCheckedThrough RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_Hist_FacingRiverAfterFlopBetTurnCheck##
+WHEN IsRiver AND AmountToCall > 0 AND f$DP_Hist_FlopVillainBetHeroCalled AND f$DP_Hist_TurnCheckedThrough RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_Hist_OurDoubleBarrelWasCalled##
+WHEN IsRiver AND f$DP_Hist_FlopHeroBetVillainCalled AND f$DP_Hist_TurnHeroBetVillainCalled RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_Hist_VillainRaisedOurFlopBet##
+WHEN f$DP_Hist_HUFromFlop AND BotRaisedOnFlop AND RaisesOnFlop RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+// ================= END HISTORY / NO IMPUTED BET SIZES =======================
+
+##f$preflop##
+// Target is 6-max or fewer dealt; do not apply 6-max ranges to larger tables.
+WHEN OpponentsAtTable > 5 AND AmountToCall = 0 Check FORCE
+WHEN OpponentsAtTable > 5 Fold FORCE
+// Against only all-in opponents there is no legal extra raise/side-pot.
+// Decide calls from actual price and hand class, not a blind RaiseTo action.
+WHEN AmountToCall > 0 AND OpponentsLeft <= NumberOfOpponentsAllin AND (hand$AA OR hand$KK) Call FORCE
+WHEN AmountToCall > 0 AND OpponentsLeft <= NumberOfOpponentsAllin AND listDP_5BET AND AmountToCall <= 30 Call FORCE
+WHEN AmountToCall > 0 AND OpponentsLeft <= NumberOfOpponentsAllin AND AmountToCall <= 20 AND listDP_3BET_VALUE Call FORCE
+WHEN AmountToCall > 0 AND OpponentsLeft <= NumberOfOpponentsAllin AND AmountToCall <= 6 AND listDP_CALL_LATE Call FORCE
+WHEN AmountToCall > 0 AND OpponentsLeft <= NumberOfOpponentsAllin Fold FORCE
+// A free action must never be converted into Fold merely due to an earlier raise.
+WHEN Raises > 0 AND AmountToCall = 0 Check FORCE
+// In all states: explicit choices, no implicit default.bot / no Beep.
+// Hero faces a 4bet/5bet after having raised. First prefer strong value.
+WHEN BotRaisedBeforeFlop AND Raises >= 2 AND listDP_5BET AND StackSize <= 110 RaiseMax FORCE
+WHEN BotRaisedBeforeFlop AND Raises >= 2 AND listDP_4BET AND AmountToCall <= 20 AND StackSize > 110 Call FORCE
+WHEN BotRaisedBeforeFlop AND Raises >= 2 Fold FORCE
+
+// Hero opened or 3bet and now faces a re-raise.
+WHEN BotRaisedBeforeFlop AND Raises = 1 AND AmountToCall > 0 AND listDP_5BET AND StackSize <= 35 RaiseMax FORCE
+WHEN BotRaisedBeforeFlop AND Raises = 1 AND AmountToCall > 0 AND listDP_4BET AND StackSize >= 35 RaiseTo (TotalInvestedThisRound + (3 * AmountToCall)) FORCE
+WHEN BotRaisedBeforeFlop AND Raises = 1 AND AmountToCall <= 10 AND StackSize >= 40 AND listDP_CALL_3BET Call FORCE
+WHEN BotRaisedBeforeFlop AND Raises >= 1 Fold FORCE
+
+// Facing an opening raise: 3bet for value first, selective late-position 3bet.
+WHEN Raises = 1 AND NOT BotRaisedBeforeFlop AND listDP_3BET_VALUE AND AmountToCall <= 9 AND NOT InSmallBlind AND NOT InBigBlind RaiseTo (3.2 * AmountToCall + TotalInvestedThisRound) FORCE
+WHEN Raises = 1 AND NOT BotRaisedBeforeFlop AND listDP_3BET_VALUE AND AmountToCall <= 9 AND (InSmallBlind OR InBigBlind) RaiseTo (3.8 * (AmountToCall + TotalInvestedThisRound)) FORCE
+WHEN Raises = 1 AND NOT BotRaisedBeforeFlop AND FirstRaiserPosition <= 3 AND listDP_3BET_LATE AND randomhand < 0.42 AND AmountToCall <= 6 RaiseTo (3.5 * AmountToCall + TotalInvestedThisRound) FORCE
+// Small blind: use 3bet-or-fold as the initial simplified defensive policy.
+WHEN Raises = 1 AND InSmallBlind Fold FORCE
+// BB defends wider versus CO/BTN/SB than LJ/HJ. Do not defend to huge sizing.
+WHEN Raises = 1 AND InBigBlind AND AmountToCall <= 3.5 AND FirstRaiserPosition <= 3 AND listDP_BB_DEF_LATE Call FORCE
+WHEN Raises = 1 AND InBigBlind AND AmountToCall <= 3 AND FirstRaiserPosition > 3 AND listDP_BB_DEF_EARLY Call FORCE
+WHEN Raises = 1 AND InBigBlind Fold FORCE
+// IP calling ranges (controlled by price). Avoid dominated offsuit trash.
+WHEN Raises = 1 AND NOT InTheBlinds AND AmountToCall <= 4 AND StackSize >= 30 AND FirstRaiserPosition >= 4 AND listDP_CALL_EARLY Call FORCE
+WHEN Raises = 1 AND NOT InTheBlinds AND AmountToCall <= 4 AND StackSize >= 30 AND FirstRaiserPosition <= 3 AND listDP_CALL_LATE Call FORCE
+WHEN Raises >= 1 Fold FORCE
+
+// Unopened pot. 2.5bb first-in as a practical default, 3bb SB OOP.
+// Set before execution: origin INTENT, requiring later native proof BotRaisedBeforeFlop.
+WHEN f$DP_PF_OpenCandidate Set user_DP_PF_RFIIntent
+WHEN Raises = 0 AND Calls = 0 AND InMiddlePosition2 AND listDP_RFI_LJ RaiseTo 2.5 FORCE
+WHEN Raises = 0 AND Calls = 0 AND InMiddlePosition3 AND listDP_RFI_HJ RaiseTo 2.5 FORCE
+WHEN Raises = 0 AND Calls = 0 AND InCutOff AND listDP_RFI_CO RaiseTo 2.5 FORCE
+WHEN Raises = 0 AND Calls = 0 AND InButton AND listDP_RFI_BTN RaiseTo 2.5 FORCE
+WHEN Raises = 0 AND Calls = 0 AND InSmallBlind AND listDP_RFI_SB RaiseTo 3 FORCE
+WHEN Raises = 0 AND Calls = 0 AND InBigBlind Check FORCE
+WHEN Raises = 0 AND Calls = 0 AND AmountToCall = 0 Check FORCE
+WHEN Raises = 0 AND Calls = 0 Fold FORCE
+
+// Limped pots: isolation with value+playable hands, avoid over-limping garbage.
+WHEN Raises = 0 AND Calls > 0 AND listDP_3BET_VALUE RaiseTo (3.5 + Calls) FORCE
+WHEN Raises = 0 AND Calls > 0 AND NOT InBigBlind AND listDP_ISO AND StackSize >= 35 RaiseTo (3.5 + Calls) FORCE
+WHEN Raises = 0 AND Calls > 0 AND InBigBlind AND listDP_ISO AND StackSize >= 35 RaiseTo (4 + Calls) FORCE
+// Small blind may COMPLETE for a small price after limpers; 3bet-or-fold belongs
+// to facing a single open raise, not every limped pot.
+WHEN Raises = 0 AND Calls > 0 AND InSmallBlind AND listDP_SMALL_CALL AND AmountToCall > 0 AND AmountToCall <= 1 AND StackSize >= 40 Call FORCE
+WHEN Raises = 0 AND Calls > 0 AND NOT InSmallBlind AND NOT InBigBlind AND listDP_SMALL_CALL AND AmountToCall > 0 AND AmountToCall <= 1 AND StackSize >= 40 Call FORCE
+WHEN Raises = 0 AND Calls > 0 AND InBigBlind Check FORCE
+WHEN Raises = 0 AND Calls > 0 AND AmountToCall = 0 Check FORCE
+WHEN AmountToCall = 0 Check FORCE
+WHEN Others Fold FORCE
+
+##f$flop##
+// No voluntary bets without an opponent able to put more chips in the pot.
+WHEN AmountToCall = 0 AND OpponentsLeft <= NumberOfOpponentsAllin Check FORCE
+// Reject incomplete/unscraped community cards before any value/range logic.
+WHEN ncommoncardsknown != 3 AND AmountToCall = 0 Check FORCE
+WHEN ncommoncardsknown != 3 Fold FORCE
+// Refuse to extrapolate this 6-max strategy to 7+ handed tables.
+WHEN OpponentsAtTable > 5 AND AmountToCall = 0 Check FORCE
+WHEN OpponentsAtTable > 5 Fold FORCE
+// Facing a bet, check-raise or lead. Exception/super-premium BEFORE texture.
+WHEN AmountToCall > 0 AND (HaveStraightFlush OR (HaveQuads AND NOT QuadsOnBoard)) AND StackSize > (2 * AmountToCall) AND OpponentsLeft > NumberOfOpponentsAllin RaisePot FORCE
+// A very strong but non-nut hand is not an automatic call of arbitrary overbets.
+WHEN AmountToCall > 0 AND f$DP_Premium AND f$DP_HeadsUp AND AmountToCall <= (0.5 * (PotSize - AmountToCall)) AND f$DP_DynamicFlop AND OpponentsLeft > NumberOfOpponentsAllin RaiseThreeFourthPot FORCE
+WHEN AmountToCall > 0 AND (HaveStraightFlush OR (HaveQuads AND NOT QuadsOnBoard)) Call FORCE
+// Do not let non-nut price caps automatically fold a hand that is currently nuts.
+WHEN AmountToCall > 0 AND HaveNuts Call FORCE
+WHEN AmountToCall > 0 AND f$DP_Premium AND AmountToCall <= (2.0 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND f$DP_Premium Fold FORCE
+
+// Other strong made hands: nuanced by board, size, SPR, and multiway.
+WHEN AmountToCall > 0 AND f$DP_StrongMade AND f$DP_HeadsUp AND f$DP_LowSPR AND NOT f$DP_Dangerous AND AmountToCall <= (0.8 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND f$DP_StrongMade AND NOT f$DP_Dangerous AND f$DP_HeadsUp AND AmountToCall <= (0.55 * (PotSize - AmountToCall)) AND (HaveSet OR HaveTwoPair) AND OpponentsLeft > NumberOfOpponentsAllin RaiseThreeFourthPot FORCE
+WHEN AmountToCall > 0 AND f$DP_StrongMade AND f$DP_Dangerous AND AmountToCall <= (0.4 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND f$DP_StrongMade AND NOT f$DP_Dangerous AND AmountToCall <= (0.8 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND f$DP_StrongMade Fold FORCE
+
+// In reraised pots, value of TPTK/overpair rises when SPR is small.
+WHEN AmountToCall > 0 AND f$DP_ReraisedPot AND f$DP_Commitment AND f$DP_QualityPair AND f$DP_HeadsUp AND AmountToCall <= (0.85 * (PotSize - AmountToCall)) Call FORCE
+
+// Strong draws: call price-sensitive; sometimes semibluff raise with range nut draws.
+WHEN AmountToCall > 0 AND f$DP_NutDraw AND f$DP_HeadsUp AND NOT f$DP_IP AND AmountToCall <= (0.34 * (PotSize - AmountToCall)) AND randomhand < 0.22 AND OpponentsLeft > NumberOfOpponentsAllin RaiseThreeFourthPot FORCE
+WHEN AmountToCall > 0 AND f$DP_NutDraw AND AmountToCall <= (0.48 * (PotSize - AmountToCall)) Call FORCE
+// Draw classes have different direct equity; a bare gutshot is not a flush
+// draw and must NOT inherit the same pot-odds threshold.
+WHEN AmountToCall > 0 AND HaveFlushDraw AND AmountToCall <= (0.30 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND HaveOpenEndedStraightDraw AND AmountToCall <= (0.28 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND HaveDoubleGutshotDraw AND AmountToCall <= (0.25 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND (HaveInsideNutStraightDraw OR HaveInsideStraightDraw) AND f$DP_IP AND AmountToCall <= (0.10 * (PotSize - AmountToCall)) Call FORCE
+
+// Pair defenses; distinguish dry boards from the very dangerous texture and bet sizes.
+WHEN AmountToCall > 0 AND f$DP_GoodPair AND f$DP_HeadsUp AND NOT f$DP_Dangerous AND AmountToCall <= (0.48 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND f$DP_GoodPair AND f$DP_HeadsUp AND AmountToCall <= (0.27 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND f$DP_GoodPair AND f$DP_Multiway AND AmountToCall <= (0.28 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND f$DP_WeakPair AND AmountToCall <= (0.16 * (PotSize - AmountToCall)) AND f$DP_HeadsUp Call FORCE
+WHEN AmountToCall > 0 Fold FORCE
+
+// Not facing a bet. Made value and strong draws; avoid automatic air cbet on wet/multiway boards.
+WHEN AmountToCall = 0 AND f$DP_Premium AND f$DP_Dangerous BetHalfPot FORCE
+WHEN AmountToCall = 0 AND f$DP_Premium AND f$DP_Multiway BetHalfPot FORCE
+WHEN AmountToCall = 0 AND f$DP_Premium BetTwoThirdPot FORCE
+WHEN AmountToCall = 0 AND f$DP_StrongMade AND f$DP_Multiway AND f$DP_Dangerous Check FORCE
+WHEN AmountToCall = 0 AND f$DP_StrongMade AND f$DP_Multiway BetHalfPot FORCE
+WHEN AmountToCall = 0 AND f$DP_StrongMade AND f$DP_Dangerous BetThirdPot FORCE
+// Paired dry boards generally support smaller bets with a broad value range.
+WHEN AmountToCall = 0 AND f$DP_StrongMade AND PairOnFlop AND NOT f$DP_DynamicFlop BetThirdPot FORCE
+WHEN AmountToCall = 0 AND f$DP_StrongMade AND f$DP_DynamicFlop BetTwoThirdPot FORCE
+WHEN AmountToCall = 0 AND f$DP_StrongMade BetHalfPot FORCE
+
+WHEN AmountToCall = 0 AND f$DP_ReraisedPot AND f$DP_HeadsUp AND f$DP_QualityPair AND NOT f$DP_Dangerous BetThirdPot FORCE
+WHEN AmountToCall = 0 AND f$DP_GoodPair AND f$DP_Multiway AND f$DP_Dangerous Check FORCE
+// Weak Ax on dry A-high boards can realize value by checking back.
+WHEN AmountToCall = 0 AND f$DP_GoodPair AND AcePresentOnFlop AND NOT f$DP_QualityPair AND NOT f$DP_DynamicFlop Check FORCE
+WHEN AmountToCall = 0 AND f$DP_GoodPair AND f$DP_DynamicFlop AND NOT f$DP_QualityPair Check FORCE
+WHEN AmountToCall = 0 AND f$DP_GoodPair AND f$DP_LastRaiser AND f$DP_HeadsUp BetHalfPot FORCE
+WHEN AmountToCall = 0 AND f$DP_GoodPair AND f$DP_HeadsUp AND f$DP_IP BetThirdPot FORCE
+WHEN AmountToCall = 0 AND f$DP_GoodPair Check FORCE
+
+WHEN AmountToCall = 0 AND f$DP_NutDraw AND f$DP_HeadsUp AND f$DP_LastRaiser AND randomhand < 0.65 Set user_DP_FlopDrawBet
+WHEN AmountToCall = 0 AND f$DP_NutDraw AND f$DP_HeadsUp AND f$DP_LastRaiser AND randomhand < 0.65 BetHalfPot FORCE
+WHEN AmountToCall = 0 AND f$DP_GoodDraw AND f$DP_HeadsUp AND f$DP_LastRaiser AND f$DP_IP AND randomhand < 0.40 Set user_DP_FlopDrawBet
+WHEN AmountToCall = 0 AND f$DP_GoodDraw AND f$DP_HeadsUp AND f$DP_LastRaiser AND f$DP_IP AND randomhand < 0.40 BetThirdPot FORCE
+
+WHEN AmountToCall = 0 AND f$DP_LastRaiser AND f$DP_HeadsUp AND f$DP_IP AND NOT f$DP_ReraisedPot AND NOT f$DP_DynamicFlop AND f$DP_Air AND randomhand < 0.48 Set user_DP_FlopAirBet
+WHEN AmountToCall = 0 AND f$DP_LastRaiser AND f$DP_HeadsUp AND f$DP_IP AND NOT f$DP_ReraisedPot AND NOT f$DP_DynamicFlop AND f$DP_Air AND randomhand < 0.48 BetThirdPot FORCE
+WHEN AmountToCall = 0 AND f$DP_LastRaiser AND f$DP_HeadsUp AND f$DP_IP AND NOT f$DP_ReraisedPot AND f$DP_DynamicFlop AND f$DP_Air AND randomhand < 0.14 Set user_DP_FlopAirBet
+WHEN AmountToCall = 0 AND f$DP_LastRaiser AND f$DP_HeadsUp AND f$DP_IP AND NOT f$DP_ReraisedPot AND f$DP_DynamicFlop AND f$DP_Air AND randomhand < 0.14 BetThirdPot FORCE
+
+WHEN AmountToCall = 0 Check FORCE
+WHEN Others Fold FORCE
+
+##f$turn##
+// No voluntary bets without an opponent able to put more chips in the pot.
+WHEN AmountToCall = 0 AND OpponentsLeft <= NumberOfOpponentsAllin Check FORCE
+// Reject incomplete/unscraped community cards before any value/range logic.
+WHEN ncommoncardsknown != 4 AND AmountToCall = 0 Check FORCE
+WHEN ncommoncardsknown != 4 Fold FORCE
+// Refuse to extrapolate this 6-max strategy to 7+ handed tables.
+WHEN OpponentsAtTable > 5 AND AmountToCall = 0 Check FORCE
+WHEN OpponentsAtTable > 5 Fold FORCE
+// Board quads on turn are NOT automatically Hero's strong-value quads.
+// All share the four quads; only the hole-card kicker differentiates strength.
+WHEN AmountToCall > 0 AND QuadsOnBoard AND NOT HaveNuts AND f$DP_Multiway Fold FORCE
+WHEN AmountToCall > 0 AND QuadsOnBoard AND NOT HaveNuts AND rankhiplayer >= 12 AND AmountToCall <= (0.6 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND QuadsOnBoard AND NOT HaveNuts AND AmountToCall <= (0.15 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND QuadsOnBoard AND NOT HaveNuts Fold FORCE
+// Facing action. No texture may automatically fold the premium showdown classes.
+WHEN AmountToCall > 0 AND ((HaveStraightFlush AND f$DP_BeatsBoard) OR (HaveQuads AND NOT QuadsOnBoard)) AND StackSize > (2 * AmountToCall) AND OpponentsLeft > NumberOfOpponentsAllin RaisePot FORCE
+WHEN AmountToCall > 0 AND f$DP_Premium AND f$DP_HeadsUp AND NOT f$DP_Dangerous AND AmountToCall <= (0.50 * (PotSize - AmountToCall)) AND OpponentsLeft > NumberOfOpponentsAllin RaiseHalfPot FORCE
+WHEN AmountToCall > 0 AND (HaveStraightFlush OR (HaveQuads AND NOT QuadsOnBoard)) Call FORCE
+// Do not let non-nut price caps automatically fold a hand that is currently nuts.
+WHEN AmountToCall > 0 AND HaveNuts Call FORCE
+WHEN AmountToCall > 0 AND f$DP_Premium AND AmountToCall <= (2.0 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND f$DP_Premium Fold FORCE
+WHEN AmountToCall > 0 AND f$DP_StrongMade AND f$DP_LowSPR AND NOT f$DP_Dangerous AND AmountToCall <= (0.6 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND f$DP_StrongMade AND f$DP_HeadsUp AND NOT f$DP_Dangerous AND AmountToCall <= (0.70 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND f$DP_StrongMade AND f$DP_Dangerous AND AmountToCall <= (0.30 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND f$DP_StrongMade AND AmountToCall <= (0.50 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND f$DP_StrongMade Fold FORCE
+WHEN AmountToCall > 0 AND f$DP_ReraisedPot AND f$DP_Commitment AND f$DP_QualityPair AND NOT f$DP_Dangerous AND AmountToCall <= (0.68 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND f$DP_NutDraw AND AmountToCall <= (0.32 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND HaveFlushDraw AND AmountToCall <= (0.26 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND HaveOpenEndedStraightDraw AND AmountToCall <= (0.21 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND HaveDoubleGutshotDraw AND AmountToCall <= (0.20 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND (HaveInsideNutStraightDraw OR HaveInsideStraightDraw) AND f$DP_IP AND AmountToCall <= (0.10 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND f$DP_QualityPair AND f$DP_HeadsUp AND NOT f$DP_Dangerous AND AmountToCall <= (0.36 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND f$DP_GoodPair AND f$DP_HeadsUp AND AmountToCall <= (0.22 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND f$DP_WeakPair AND f$DP_HeadsUp AND AmountToCall <= (0.10 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 Fold FORCE
+
+// On board quads, category alone proves no extra value without a nut kicker.
+WHEN AmountToCall = 0 AND QuadsOnBoard AND NOT HaveNuts Check FORCE
+// When checked to, value/protection and controlled semibluffs.
+WHEN AmountToCall = 0 AND f$DP_Premium AND f$DP_Dangerous BetHalfPot FORCE
+WHEN AmountToCall = 0 AND f$DP_Premium BetTwoThirdPot FORCE
+WHEN AmountToCall = 0 AND f$DP_StrongMade AND f$DP_Dangerous AND f$DP_Multiway Check FORCE
+WHEN AmountToCall = 0 AND f$DP_StrongMade AND f$DP_Dangerous BetThirdPot FORCE
+WHEN AmountToCall = 0 AND f$DP_StrongMade BetTwoThirdPot FORCE
+WHEN AmountToCall = 0 AND f$DP_QualityPair AND f$DP_ReraisedPot AND f$DP_HeadsUp AND NOT f$DP_Dangerous BetThirdPot FORCE
+WHEN AmountToCall = 0 AND f$DP_QualityPair AND f$DP_HeadsUp AND NOT f$DP_Dangerous AND f$DP_LastRaiser BetHalfPot FORCE
+WHEN AmountToCall = 0 AND f$DP_GoodPair AND f$DP_HeadsUp AND NOT f$DP_Dangerous AND f$DP_IP BetThirdPot FORCE
+WHEN AmountToCall = 0 AND f$DP_NutDraw AND f$DP_HeadsUp AND f$DP_LastRaiser AND randomhand < 0.55 Set user_DP_TurnDrawBet
+WHEN AmountToCall = 0 AND f$DP_NutDraw AND f$DP_HeadsUp AND f$DP_LastRaiser AND randomhand < 0.55 BetTwoThirdPot FORCE
+WHEN AmountToCall = 0 AND f$DP_GoodDraw AND f$DP_HeadsUp AND f$DP_IP AND BotRaisedOnFlop AND randomhand < 0.30 Set user_DP_TurnDrawBet
+WHEN AmountToCall = 0 AND f$DP_GoodDraw AND f$DP_HeadsUp AND f$DP_IP AND BotRaisedOnFlop AND randomhand < 0.30 BetHalfPot FORCE
+// Delayed c-bet if we checked flop, rarely bluff dry boards in position.
+WHEN AmountToCall = 0 AND BotCheckedOnFlop AND f$DP_PreflopRFI AND f$DP_HeadsUp AND f$DP_IP AND f$DP_Air AND NOT f$DP_Dangerous AND randomhand < 0.15 BetThirdPot FORCE
+WHEN AmountToCall = 0 Check FORCE
+WHEN Others Fold FORCE
+
+##f$river##
+// No voluntary bets without an opponent able to put more chips in the pot.
+WHEN AmountToCall = 0 AND OpponentsLeft <= NumberOfOpponentsAllin Check FORCE
+// Reject incomplete/unscraped community cards before any value/range logic.
+WHEN ncommoncardsknown != 5 AND AmountToCall = 0 Check FORCE
+WHEN ncommoncardsknown != 5 Fold FORCE
+// Refuse to extrapolate this 6-max strategy to 7+ handed tables.
+WHEN OpponentsAtTable > 5 AND AmountToCall = 0 Check FORCE
+WHEN OpponentsAtTable > 5 Fold FORCE
+// Compare actual five-card showdown rank to board before deciding action.
+// NutsOnBoard is necessarily split: calling an unmatched bet cannot lose.
+WHEN AmountToCall > 0 AND NutsOnBoard Call FORCE
+// Strong made hands: board texture alone is NEVER a fold reason.
+// Absolute nuts (including non-board straight flush/quads) can raise for value.
+// True nuts can continue to any sized bet. Non-nut boats are NOT automatic calls.
+WHEN AmountToCall > 0 AND HaveNuts AND NOT NutsOnBoard AND (HaveStraightFlush OR (HaveQuads AND NOT QuadsOnBoard)) AND StackSize > (2 * AmountToCall) AND OpponentsLeft > NumberOfOpponentsAllin RaisePot FORCE
+WHEN AmountToCall > 0 AND HaveNuts AND NOT NutsOnBoard AND HaveFullHouse AND f$DP_HeadsUp AND AmountToCall <= (0.6 * (PotSize - AmountToCall)) AND OpponentsLeft > NumberOfOpponentsAllin RaiseHalfPot FORCE
+WHEN AmountToCall > 0 AND HaveNuts Call FORCE
+WHEN AmountToCall > 0 AND HaveStraightFlush AND f$DP_BeatsBoard AND AmountToCall <= (3.0 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND HaveQuads AND f$DP_BeatsBoard AND AmountToCall <= (2.5 * (PotSize - AmountToCall)) Call FORCE
+// The professional concept is relative nut tier + price + range, not "full house=always call".
+WHEN AmountToCall > 0 AND HaveFullHouse AND f$DP_BeatsBoard AND NutFullHouseOrFourOfAKind <= 2 AND NOT OneCardStraightFlushPossible AND AmountToCall <= (2.5 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND HaveFullHouse AND f$DP_BeatsBoard AND f$DP_HeadsUp AND NOT OneCardStraightFlushPossible AND AmountToCall <= (1.5 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND HaveFullHouse AND f$DP_BeatsBoard AND f$DP_HeadsUp AND AmountToCall <= (0.9 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND HaveFullHouse AND f$DP_BeatsBoard AND AmountToCall <= (0.75 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND HaveFullHouse AND f$DP_BeatsBoard Fold FORCE
+
+// Other made hands. Avoid blindly calling large polar bets on paired/four-flush runouts.
+WHEN AmountToCall > 0 AND HaveFlush AND f$DP_BeatsBoard AND HaveNutFlush AND NOT PairOnBoard AND AmountToCall <= (1.1 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND HaveFlush AND f$DP_BeatsBoard AND HaveSecondNutFlush AND AmountToCall <= (0.8 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND HaveFlush AND f$DP_BeatsBoard AND NOT PairOnBoard AND AmountToCall <= (0.42 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND HaveStraight AND f$DP_BeatsBoard AND NOT FlushPossible AND NOT PairOnBoard AND AmountToCall <= (0.62 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND HaveStraight AND f$DP_BeatsBoard AND AmountToCall <= (0.28 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND (HaveSet OR HaveTrips) AND NOT f$DP_Dangerous AND AmountToCall <= (0.48 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND HaveTwoPair AND NOT f$DP_Dangerous AND f$DP_HeadsUp AND AmountToCall <= (0.35 * (PotSize - AmountToCall)) Call FORCE
+// Narrow initial use of chronology: a first postflop river probe after two
+// checked-through streets represents a different range from a third barrel.
+// This is a DRAFT heuristic, not a solved calling frequency or universal rule.
+WHEN AmountToCall > 0 AND f$DP_Hist_FacingRiverFirstPostflopBet AND f$DP_QualityPair AND NOT f$DP_Dangerous AND AmountToCall <= (0.25 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND f$DP_QualityPair AND f$DP_HeadsUp AND NOT f$DP_Dangerous AND AmountToCall <= (0.28 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND f$DP_GoodPair AND f$DP_HeadsUp AND NOT f$DP_Dangerous AND AmountToCall <= (0.14 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND HaveTwoPair AND f$DP_HeadsUp AND AmountToCall <= (0.15 * (PotSize - AmountToCall)) Call FORCE
+// Different shared-board made hands are NOT strategically equivalent.
+// Shared straight-flush board: often only one specific higher suited rank can beat
+// the common hand. Do not treat it as a weak shared straight or flush.
+WHEN AmountToCall > 0 AND StraightFlushOnBoard AND NOT StraightFlushPossibleByOthers Call FORCE
+WHEN AmountToCall > 0 AND StraightFlushOnBoard AND f$DP_HeadsUp AND AmountToCall <= (1.0 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND StraightFlushOnBoard AND AmountToCall <= (0.35 * (PotSize - AmountToCall)) Call FORCE
+// A full-house board is NOT necessarily close to nuts: opponents can improve
+// the *pair* of the boat with a higher pocket pair, or improve trips/quads.
+// No blanket pot-sized call without board ranks, blockers and opponent ranges.
+// A shared straight or ordinary five-card flush can be overtaken by far more
+// legal holecard combos; do not equate these cases to a shared straightflush.
+WHEN AmountToCall > 0 AND f$DP_BoardOnlyMade AND f$DP_HeadsUp AND AmountToCall <= (0.12 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 Fold FORCE
+
+// River value, with checks to protect medium hands and avoid blockered nonsense.
+WHEN AmountToCall = 0 AND (HaveStraightFlush OR HaveQuads) AND f$DP_BeatsBoard AND HaveNuts AND NOT NutsOnBoard BetPot FORCE
+WHEN AmountToCall = 0 AND HaveFullHouse AND f$DP_BeatsBoard AND NOT OneCardStraightFlushPossible BetTwoThirdPot FORCE
+WHEN AmountToCall = 0 AND HaveFullHouse AND f$DP_BeatsBoard BetHalfPot FORCE
+WHEN AmountToCall = 0 AND f$DP_Premium AND f$DP_BeatsBoard AND NOT NutsOnBoard BetTwoThirdPot FORCE
+WHEN AmountToCall = 0 AND HaveNutFlush AND f$DP_BeatsBoard AND NOT PairOnBoard BetTwoThirdPot FORCE
+WHEN AmountToCall = 0 AND HaveFlush AND f$DP_BeatsBoard AND NOT PairOnBoard AND (NOT OneCardFlushPossible OR HaveNutFlush) BetHalfPot FORCE
+WHEN AmountToCall = 0 AND HaveStraight AND f$DP_BeatsBoard AND NOT PairOnBoard AND NOT FlushPossible BetHalfPot FORCE
+WHEN AmountToCall = 0 AND (HaveSet OR HaveTwoPair) AND NOT f$DP_Dangerous AND f$DP_HeadsUp BetHalfPot FORCE
+WHEN AmountToCall = 0 AND f$DP_QualityPair AND f$DP_HeadsUp AND NOT f$DP_Dangerous AND f$DP_LastRaiser AND f$DP_ReraisedPot AND randomhand < 0.60 BetThirdPot FORCE
+WHEN AmountToCall = 0 AND f$DP_QualityPair AND f$DP_HeadsUp AND NOT f$DP_Dangerous AND f$DP_PreflopRFI AND NOT f$DP_HighSPR AND randomhand < 0.65 BetThirdPot FORCE
+
+// Selected missed-draw bluffs from credible prior betting lines, HU/IP only.
+WHEN AmountToCall = 0 AND f$DP_Air AND f$DP_HeadsUp AND f$DP_IP AND f$DP_PreflopRFI AND user_DP_TurnDrawBet AND f$DP_Hist_TurnHeroBetVillainCalled AND NOT RaisesOnFlop AND NOT RaisesOnTurn AND randomhand < 0.21 BetTwoThirdPot FORCE
+WHEN AmountToCall = 0 AND f$DP_Air AND f$DP_HeadsUp AND f$DP_IP AND f$DP_PreflopRFI AND user_DP_FlopDrawBet AND f$DP_Hist_FlopHeroBetVillainCalled AND NOT RaisesOnFlop AND NOT RaisesOnTurn AND randomhand < 0.12 BetHalfPot FORCE
+
+WHEN AmountToCall = 0 Check FORCE
+WHEN Others Fold FORCE
