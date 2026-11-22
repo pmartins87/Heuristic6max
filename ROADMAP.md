@@ -1,4 +1,4 @@
-> **ROADMAP VIGENTE V2 — ADR-044:** [v2/PLAN.md](v2/PLAN.md). F0 **qualificação de charts/soluções públicas e fontes profissionais**, não execução de solver. F1 spot/ranges/textura/SPR; F2 revisão contraditória de estratégia; F3 OpenPPL; F4 OH offline; F5 benchmark R10d. O roadmap abaixo é histórico V1 e não está ativo.
+> **ROADMAP ATUAL V2 — ADR-046:** [Plano Vivo](v2/PLAN.md). F0 PASS_CONCEPTUAL; F1 PASS_PILOT_CONTEXT (2,5BB BTN first-in, 100BB BTN vs BB check); F2 OPEN com [2 decisões heurísticas revisadas](v2/cases/BTN_BB_SRP_CBET_F2_PILOT.md); F3–F5 bloqueados. Open 41–44% BTN tratado como faixa aceitável (~42%) sem novas rodadas de otimização marginal. R10d é baseline técnico/abrangência, não GTO. O restante abaixo é histórico V1.
 
 # Roadmap vivo — 21/11/2026 (M08-RIVER4 fonte-first + G1/G6 de certificação separados / DRAFT)
 

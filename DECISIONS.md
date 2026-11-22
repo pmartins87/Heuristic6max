@@ -1,4 +1,4 @@
-> **V2 vigente: ADR-044 (21/11/2026).** [v2/PLAN.md](v2/PLAN.md) continua sendo a fonte de verdade. A ADR-043 mantém a preservação V1 e o princípio de evidência independente, mas **não** a exigência de executar solver. F0 agora qualifica fontes profissionais e charts públicos; estratégia V1 permanece LEGACY_UNVALIDATED. O histórico abaixo continua registrado.
+> **V2 vigente: ADR-046 (21/11/2026).** [v2/PLAN.md](v2/PLAN.md) é fonte de verdade. F0 referências PASS_CONCEPTUAL, importação de dados HOLD; F1 contexto piloto PASS; F2 2 heurísticas estreitas revisadas, nenhum módulo completo; F3–F5 bloqueados. V1 LEGACY_UNVALIDATED. A ADR-044 já dispensa solver próprio.
 
 # Registro de decisões técnicas — Heuristic6max
 
@@ -122,3 +122,8 @@
 **Risco e resposta:** “sem solver” não certifica GTO quantitativamente. Vetar alegações de EV/exploitabilidade/lucro não medidos; exigir análise de mão real, nuts, blockers, preço, ação, história e board. Four-flush não transforma full house em flush; full house pode excepcionalmente perder para mão superior. Sem nunca-fold absoluto.
 **Gates:** F0 referências/licenças; F1 spot/invariantes; F2 revisão estratégica independente; F3 portabilidade; F4 OH offline; F5 benchmark. **Zero** políticas V2 aprovadas; V1 integral preservada.
 **Execução:** somente documentação nesta revisão; nenhum .oppl alterado; detalhes e critérios permanentes em [v2/PLAN.md](v2/PLAN.md).
+
+
+**ADR-045 — F0 conceitual e primeiro cenário F1 (21/11/2026).** Referências independentes de c-bet cash BTN vs BB publicadas (GTO Wizard e ART/GTO) permitem construir heurística qualitativa sem resolver solver; datasets de terceiros permanecem em HOLD por permissões. DeepCrusher_R10d examinado via Git blob para roteamento IP/OOP, iniciativa, memória e exceções de stack; não transplantar Spin&Go para cash 100BB. Primeiro F1 BTN RFI 2,5 BB, BB call/check, 100BB, flops Q♥Q♣6♦, K♥J♥7♦, Q♦J♦T♦ e A♠7♦3♣.
+
+**ADR-046 — Parâmetros pragmáticos e dois casos F2 (21/11/2026).** O usuário definiu raise first-in **2,5 BB** e tolerância **BTN RFI 41%–44%** (aproximação ~42%); sem novos ciclos para diferença marginal, nem extrapolar 42% para todas as posições. F1 PASS_PILOT_CONTEXT com rake real provisório; F2 OPEN, com [2 decisões pontuais STRATEGY_REVIEWED_HEURISTIC](v2/cases/BTN_BB_SRP_CBET_F2_PILOT.md): QQ6r Q♠J♠ -> bet33 depois de BB check; A73r A♥5♥ -> check. Ações determinísticas simplificadas do princípio profissional, não estratégia GTO pura nem módulo inteiro aprovado. Flop sizes piloto check/bet33/bet75; overbet125 adiada por custo de complexidade, com limite explícito. F3–F5 continuam bloqueados; nenhum solver executado, nenhum OpenPPL V2 escrito e nenhuma alegação de EV/lucro.

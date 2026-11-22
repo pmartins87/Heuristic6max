@@ -1,4 +1,4 @@
-> **ATENÇÃO — ADR-044 (21/11/2026):** nenhuma estratégia V2 liberada. [Plano V2](v2/PLAN.md) prioriza charts/teoria profissional e auditoria sem solver próprio; F0 aberto, F1–F5 bloqueados. O inventário abaixo permanece histórico V1, não operacional e LEGACY_UNVALIDATED.
+> **ATENÇÃO V2 — ADR-046:** [Plano Vivo](v2/PLAN.md), [F2 estudo](v2/cases/BTN_BB_SRP_CBET_F2_PILOT.md). Dois spots de c-bet revisados qualitativamente; **nenhuma versão OpenPPL V2 criada** e nenhum runtime OH certificado. F0 PASS_CONCEPTUAL, F1 PASS_PILOT_CONTEXT, F2 OPEN, F3–F5 BLOCKED. Todo manifesto de código abaixo é histórico V1 LEGACY_UNVALIDATED, não release.
 
 # Manifesto de versões (20/11/2026)
 

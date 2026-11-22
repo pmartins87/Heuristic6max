@@ -1,4 +1,4 @@
-> **REINÍCIO V2 — ADR-044 (21/11/2026):** [fonte de verdade: v2/PLAN.md](v2/PLAN.md). Nova estratégia **heurística fundamentada em charts públicos admissíveis, soluções publicadas e teoria profissional**, sem solver próprio obrigatório. F0 fontes OPEN, F1–F5 BLOCKED, nenhuma política V2 aprovada. V1 (2.016 WHEN, inclusive M08-RIVER4) é LEGACY_UNVALIDATED para qualidade estratégica; CI V1 não prova GTO/EV ou runtime. O restante do README é histórico.
+> **V2 vigente — ADR-046:** [Plano Vivo](v2/PLAN.md). Bot heurístico por fontes profissionais sem solver próprio. **RFI padrão 2,5BB; BTN ~42% (aceita 41–44%)**. F0 PASS_CONCEPTUAL, fontes de dados sem permissão de importação em HOLD, F1 PASS_PILOT_CONTEXT, F2 OPEN com [2 ações pontuais de c-bet revisadas](v2/cases/BTN_BB_SRP_CBET_F2_PILOT.md); F3–F5 bloqueados. Nenhum .oppl V2 aprovado. V1 (2.016 WHEN) LEGACY_UNVALIDATED; CI não certifica estratégia ou execução OH.
 
 # Heuristic6max — fonte de verdade
 
