@@ -1,6 +1,6 @@
 # F1-PILOT-01 — BTN vs BB SRP: contrato de evidência para c-bet no flop
 
-**Criado:** 21/11/2026. **Estado:** MODELO DE SPOT ABERTO (F1), sem política F2 aprovada, sem OpenPPL novo. Subordinado a [../PLAN.md](../PLAN.md) e [../SOURCES.md](../SOURCES.md).
+**Criado:** 21/11/2026. **Estado atualizado ADR-046:** F1 PASS_PILOT_CONTEXT para BTN RFI 2,5 BB / ~42% (faixa aceita 41–44%); 2 decisões F2 pontuais revisadas em [CBET_F2_PILOT.md](BTN_BB_SRP_CBET_F2_PILOT.md); F2 global OPEN, sem OpenPPL novo. Subordinado a [../PLAN.md](../PLAN.md) e [../SOURCES.md](../SOURCES.md).
 
 ## 1. Qual o cenário que queremos cobrir?
 
@@ -59,7 +59,7 @@ Chave de estado sugerida (não código): `cash6max/100bb/BTN_RFI_2p5/BB_CALL/SB_
 
 **Checks sintéticos futuros (apenas contrato):** BTN preflop RFI 2.5 com BB call e SB fold, 5.5bb pot, 97.5bb stack; comparar Q♥Q♣6♦ / K♥J♥7♦ / Q♦J♦T♦ / A♠7♦2♣, alternando Hero nut made/medium/draw/air. Para cada caso registrar ação e explicação que considere ranges/BB check-raise, e os eventos permitidos na árvore.
 
-## 5. Gate e critérios de parada
+## 5. Gate e critérios de parada (histórico anterior à escolha pragmática ADR-046)
 
 - **F0 conceptual PASS restrito:** há fontes profissionais suficientes e compatíveis *em princípios gerais* para prosseguir ao estudo heurístico; **não há licença verificada para importar tabelas/árvores de GTO Wizard, ART/GTO ou Upswing como datasets em código**.
 - **F1 OPEN:** cenário e primeiros quatro boards definidos; pendente economia-alvo operativa, premissas pré-flop exatas por combo, semântica dos sizings de OH e escolha explícita da árvore comprimida para primeira política.
@@ -68,3 +68,11 @@ Chave de estado sugerida (não código): `cash6max/100bb/BTN_RFI_2p5/BB_CALL/SB_
 - **Stop:** se os inputs reais não forem observáveis (BB check/histórico, stack, origem SRP, board), rejeitar automação em vez de produzir fallback silencioso. Se chart/solução não for reutilizável, extrair *princípio qualitativo original* e não reproduzir banco de dados protegido.
 
 **Próximo passo concreto F1:** fixar ou manter explicitamente provisório o regime de rake/cap do produto-alvo; registrar ancestral RFI/BB-call compatível e política de compressão de sizing em `v2/` antes da revisão F2 dos quatro boards. Sem executar solver.
+
+
+## 6. ADR-046 — escopo aceito pelo usuário e novo estado de gate
+- **RFI padrão do piloto = 2,5 BB; BTN ~42% de abertura com tolerância 41%–44%**. Não investigar diferenças percentuais dentro desta banda sem nova evidência que altere decisões materialmente. Outras posições não recebem a mesma taxa de RFI.
+- Modelo de 100 BB e BTN vs BB SRP mantém os requisitos de **estado real** (posição, BB check, limpers/3bets ausentes, cartas e sizing); rake exato é **premissa provisória de calibração**, não impedimento para protótipo educativo.
+- **F1 PASS_PILOT_CONTEXT** para os quatro boards descritos; exceções de rake, múltiplos jogadores, stack curto e mudanças de linha continuam fora do domínio.
+- **F2 OPEN**: [dois spots pontuais revisados](BTN_BB_SRP_CBET_F2_PILOT.md), vários comportamentos de classe DRAFT. Não generalizar um spot aprovado a todos os combos.
+- F3–F5 BLOCKED; próximo passo **não** é mais comparar 40,9% versus 43,1%, mas traduzir os dois primeiros contratos estratégicos com semântica OpenPPL inspecionada e testes offline.
