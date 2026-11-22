@@ -90,3 +90,6 @@ Consulte [DECISIONS.md](DECISIONS.md) para justificativas e [RELEASE_MANIFEST.md
 
 
 - **ADR-049 — Generalização estratégica (21/11/2026):** corrigida a interpretação literal de frequências BTN e casos isolados de full house/c-bet. Criada política de abstração de exemplos para critérios em todas as streets/potes/stacks; triagem direta de **16 mecanismos** do R10d (arquitetura reutilizável, estratégia a requalificar, stack-bound, mecânica, plataforma). Criada família F1 de defesa/agressão, sem solver, sem importar estratégia ou alterar OpenPPL. F1/F2 pesquisa independente da pendência OH; F3/F4 continuam bloqueios de promoção operacional. ZERO módulos completos aprovados.
+
+
+- **DeepPoker V2 Cash6max v0.1.0 / ADR-050 (21/11/2026):** primeira fórmula OpenPPL autônoma que cobre pré-flop, flop, turn e river, 16 listas por classe/situação e helpers de contexto/força/SPR. RFI por posições 6-max, 3bet/4bet/5bet, defesa de BB, iso; pós-flop valor, cbet, delayed, semi-bluff, bluffcatching de river, heads-up/multiway e fallback explícito. Estratégia aproximada sem executar solver. Mudança de processo: **entrega para teste direto do usuário**, não exigência de certificações formais por regra. OpenHoldem real e rentabilidade ainda não observados, V1 intacta.
