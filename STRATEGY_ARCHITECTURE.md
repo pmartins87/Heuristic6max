@@ -1,3 +1,5 @@
+> **ARQUITETURA V2 — ADR-049:** interpretar exemplos como princípios gerais via [política geral](v2/GENERAL_POLICY.md); consultar [auditoria R10d](v2/DEEPCRUSHER_TRANSFER_AUDIT.md). A unidade de avanço é **família de estados alcançáveis com decisões por classes/contexto**, não duas cartas físicas ou percentual fixo. Priorizar integridade de mão/história, ranges, preços, SPR e coerência entre streets; F1/F2 paralelos à validação OH. O texto abaixo conserva arquitetura e histórico anterior.
+
 > **ARQUITETURA V2 — ADR-048:** [Plano Vivo](v2/PLAN.md). Separação de contexto/ação mantida; [duas ações exatas OpenPPL](v2/pilot_01/README.md) passam 20 testes simbólicos de precedência e exclusão, mas falta [replay OH real](v2/pilot_01/OH_OFFLINE_EVIDENCE_GATE.md). Não generalizar os 2 spots, não copiar V1 nem tratar no-match Beep como proteção suficiente.
 
 # Heuristic6max — arquitetura de um bot COMPLETO, sensível ao histórico
