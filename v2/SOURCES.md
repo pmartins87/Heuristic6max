@@ -1,5 +1,5 @@
 # V2 — Catálogo F0 de evidência estratégica independente
-**Criado:** 21/11/2026 • **Status:** TRIAGEM, NÃO APROVA REGRAS. Documento subordinado a [PLAN.md](PLAN.md). Atualizar este catálogo quando fonte, premissa, direito de uso ou conclusão mudar.
+**Criado:** 21/11/2026 • **Status atual ADR-046:** F0 PASS_CONCEPTUAL; DATASET_IMPORT_HOLD; F1 PASS_PILOT_CONTEXT; F2 OPEN com 2 decisões pontuais revisadas (não código OpenPPL). O restante inclui snapshots de triagem. Documento subordinado a [PLAN.md](PLAN.md). Atualizar este catálogo quando fonte, premissa, direito de uso ou conclusão mudar.
 
 ## Protocolo
 Registrar fonte + link + cenário efetivamente analisado + hipóteses (NLHE cash/tournament, 6max/HU, stacks, rake, sizings) + qual informação é **evidência textual** e qual é **nossa inferência** + direito de incorporar dados + decisão adotada/controversa. Não converter tabela pública em asset distribuído automaticamente; usar acesso público para pesquisa não cria licença. Não executar solver próprio nem exigir outputs por combo.
@@ -74,3 +74,7 @@ F0 fica **OPEN**, com comprovação da existência de fontes profissionais e de 
 **Conclusão metodológica F0:** **PASS_CONCEPTUAL** — fontes externas suficientemente pertinentes, rastreáveis e independentes estão disponíveis para iniciar modelagem heurística **sem solver próprio**. **DATASET_IMPORT_HOLD** — não há autorização comprovada para copiar/distribuir soluções de terceiros como tabelas internas do bot. Não interpretar PASS_CONCEPTUAL como liberação de uso comercial nem como aprovação de frequências.
 
 **Primeira peça F1:** [Contrato BTN RFI / BB Call / flop c-bet IP em quatro boards](cases/BTN_BB_SRP_FLOP_CBET_SOURCE_CONTRACT.md), com alternativas, economia e exceções explicitadas. Nenhum action table ou código OpenPPL V2 aprovado.
+
+
+## ADR-046 — encerramento pragmático da discussão marginal de RFI
+O usuário escolheu **2,5 BB como open padrão** e aceita **BTN RFI 41%–44%** como faixa de planejamento, tomando **~42%** como aproximação. Esta é tolerância de produto, não uma reprodução do range exato por combo nem licença de charts. Fontes e os flops do piloto foram examinados em [F1](cases/BTN_BB_SRP_FLOP_CBET_SOURCE_CONTRACT.md) e [F2](cases/BTN_BB_SRP_CBET_F2_PILOT.md). Não repetir busca por pequenas diferenças sem hipótese que altere a política.
