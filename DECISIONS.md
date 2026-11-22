@@ -1,3 +1,5 @@
+> **DIREÇÃO VIGENTE ADR-052 (22/11/2026):** [Plano Vivo](v2/PLAN.md), [v0.3 candidata](v2/bot/DeepPoker_V2_Cash6max_v0_3_CONTEXT_REVIEW.oppl) e [relatório de falhas sistêmicas](v2/bot/LOGIC_REVIEW_20261122.md). A v0.1 segue REVOGADA; v0.2 é histórico. Corrigir lógica de risco por pot/size, nut tier, número de outs, agressão e sidepot antes de liberar versão jogável. Não exigir certificações acadêmicas; **não presumir GTO/EV**.
+
 > **ADR-051 ATUAL (21/11/2026):** a v0.1 foi **REPROVADA PARA JOGO** por erros objetivos de pôquer; [revisão](v2/bot/LOGIC_REVIEW_20261121.md), [v0.2 candidata](v2/bot/DeepPoker_V2_Cash6max_v0_2_LOGIC_REVIEW.oppl) e [Plano Vivo](v2/PLAN.md). Não confundir fonte completa com lógica correta. ADR-050 é histórico, não autorização vigente de uso.
 
 > **Direção vigente: ADR-050 (21/11/2026).** [Plano Vivo](v2/PLAN.md) e [DeepPoker V2 Cash6max v0.1](v2/bot/DeepPoker_V2_Cash6max_v0_1.oppl). Priorizar bot completo testável e correções por feedback, sem certificações formais a cada passo. Fontes profissionais e lógica poker continuam como referência, sem solver próprio ou alegação de GTO exato.
@@ -167,3 +169,8 @@
 
 
 **Emenda ADR-051 (full house no board):** mais um erro de raciocínio identificado: em QQQ99 com hole AA, Hero tem QQQAA (full house maior), mesmo com FullHouseOnBoard TRUE. A hipótese de que só quadras podem vencer um full house comunitário também é falsa: um pocket pair maior pode formar full house superior. Removido ramo da candidata que tratava toda FH compartilhada como quase nuts; [12 exemplos independentes](v2/bot/check_showdown_examples.py) guardam essas distinções.
+
+
+**ADR-052 — Corrigir política de risco sem criar novos erros de pôquer (22/11/2026). VIGENTE.** Após nova leitura da fonte v0.2 e dos manuais fornecidos, verificou-se que PotSize inclui a aposta atual e que os antigos DP_LowSPR/DP_Commitment criavam compromisso artificial quando vilão apostava muito. A nova [v0.3 CONTEXT_REVIEW](v2/bot/DeepPoker_V2_Cash6max_v0_3_CONTEXT_REVIEW.oppl) corrige o pote-base, remove calls sem limite de preço com mãos premium não-nuts, distingue classificação nuts de outs limpos, controla draw semi-bluffs, evita bets/raises quando não há adversário elegível e limita blefes após raise prévio. SB também pode completar limp pot. [Relatório](v2/bot/LOGIC_REVIEW_20261122.md). Não é solver/GTO, não há EV nem execução OH comprovados e **v0.3 não é liberação para jogar**. Próximo trabalho: estratégias por famílias de agressão e range realista; manter v0.1 revogada, v0.2 arquivada e documentação viva.
+
+**Emenda ADR-052 (22/11/2026):** preservar prioridade de nuts atuais sobre limite de non-nut em flop/turn; tratar double-gutshot (oito outs potencialmente) separadamente de inside-nut (quatro outs potenciais). Correções na v0.3 candidata e no relatório, sem release de jogo.

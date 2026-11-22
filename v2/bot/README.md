@@ -1,3 +1,5 @@
+> **VERSÕES (22/11/2026):** v0.1 **REVOKED_FOR_PLAY**; v0.2 **LOGIC_REVIEW histórica**; [v0.3 CONTEXT_REVIEW](DeepPoker_V2_Cash6max_v0_3_CONTEXT_REVIEW.oppl) é **candidata com correções estruturais, ainda não recomendada para jogo**. [O que mudou e o que falta](LOGIC_REVIEW_20261122.md). As instruções de carregamento da v0.1 abaixo são HISTÓRICAS, não devem ser seguidas.
+
 > **AVISO CRÍTICO — 21/11/2026 / ADR-051:** a v0.1 descrita abaixo foi **reprovada para uso em mesas** após identificação de falhas objetivas graves. **NÃO carregue a v0.1 para jogar.** Este README é histórico da entrega prematura. [Revisão lógica](LOGIC_REVIEW_20261121.md) e [candidata v0.2 não liberada](DeepPoker_V2_Cash6max_v0_2_LOGIC_REVIEW.oppl). Não existe neste momento uma versão V2 pronta para operação.
 
 # DeepPoker Strategy V2 Cash6max — v0.1.0
