@@ -1,6 +1,6 @@
 # DeepPoker Strategy V2 — Plano Vivo (evidência profissional, sem solver próprio)
 
-**Decisão atualizada:** 21/11/2026 — ADR-044. **Estado:** V2 metodologicamente redefinida; nenhuma política estratégica V2 aprovada nem executada. **Fonte única de verdade** do projeto V2: este arquivo. Evidências/proveniência do F0 em [SOURCES.md](SOURCES.md). GitHub/engenharia V1 e DeepCrusher_R10d são preservados; a V1, inclusive as 2.016 instruções WHEN da última integração, é `LEGACY_UNVALIDATED` para qualidade estratégica.
+**Decisão atualizada:** 21/11/2026 — ADR-045 sobre a ADR-044. **Estado atual:** F0 **PASS_CONCEPTUAL** (referências independentes e direitos delimitados); importação de datasets **HOLD**; F1 **OPEN** (primeiro cenário BTN vs BB SRP); F2–F5 **BLOCKED**; nenhuma política estratégica V2 aprovada nem executada. **Fonte única de verdade** do projeto V2: este arquivo. Evidências/proveniência do F0 em [SOURCES.md](SOURCES.md). GitHub/engenharia V1 e DeepCrusher_R10d são preservados; a V1, inclusive as 2.016 instruções WHEN da última integração, é `LEGACY_UNVALIDATED` para qualidade estratégica.
 
 ## 1. Objetivo e correção da metodologia
 
@@ -56,8 +56,8 @@ FONTE profissional publicada / solução pública existente / lógica objetiva
 
 | Gate | Evidência mínima / aprovação | Estado atual | Se falhar |
 |---|---|---|---|
-| **F0 Fontes e viabilidade heurística** | Catálogo inicial de referências profissionais acessíveis, pressupostos/jogo, direitos de uso e critérios de admissibilidade. Comparar com escopo R10d. **Não executar solver.** | **OPEN** | Trocar fonte/limitar escopo; nenhuma regra nova |
-| **F1 Modelo de spot e invariantes** | Primeiro caso canônico com posições, pré-flop, 100BB alvo, ação e board, rake/sizing quando disponível, mãos possíveis, força relativa, histórico e limites de generalização | **BLOCKED** | Corrigir domínio, não inventar contexto |
+| **F0 Fontes e viabilidade heurística** | Catálogo inicial de referências profissionais acessíveis, pressupostos/jogo, direitos de uso e critérios de admissibilidade. Comparar com escopo R10d. **Não executar solver.** | **PASS_CONCEPTUAL** (sem licença de importação de datasets) | Trocar fonte/limitar escopo; nenhuma regra nova |
+| **F1 Modelo de spot e invariantes** | Primeiro caso canônico com posições, pré-flop, 100BB alvo, ação e board, rake/sizing quando disponível, mãos possíveis, força relativa, histórico e limites de generalização | **OPEN** (BTN vs BB SRP, contexto ainda não calibrado) | Corrigir domínio, não inventar contexto |
 | **F2 Aprovação estratégica de módulo** | Proposta apoiada por fonte(s) e lógica verificável; revisão de alternativa/contraexemplo; casos críticos (full house, flush, nuts, blefes, preço, sizings); explicação das concessões e cobertura | **BLOCKED** | DRAFT/REJECTED, não criar módulo aprovado |
 | **F3 Fidelidade OpenPPL** | Uma fonte nativa, ação/precedência legal, símbolos e memória corretos, testes focados contra especificação independente, sem fallback ambíguo | **BLOCKED** | Corrigir tradução/routing sem reinterpretar fonte |
 | **F4 Replay offline OpenHoldem** | Decisão planejada = observada = ação aceita; histórico/scrape e comportamento de erro verificados em ambiente desconectado | **BLOCKED** | Não declarar operacional |
@@ -67,8 +67,8 @@ FONTE profissional publicada / solução pública existente / lógica objetiva
 
 ## 6. Ordem concreta de construção (após F0)
 
-1. **Primeiro contrato completo simples:** RFI BTN 6-max 100BB, confrontando chart público admissível e baseline histórica por classes/combos; explicitar premissas de rake/sizing e política de mix; não transplantar valores ainda.
-2. **Módulo pós-flop de maior retorno de generalização:** BTN PFR vs BB caller, SRP HU, c-bet IP em famílias de flop seco, wet e monotone; documentar valor, blefe, checks e sizes com fonte profissional. Reutilizar conceitos do DeepCrusher quando independentes de stack, isolando exceções por SPR.
+1. **F1 prioritário, pós-flop:** BTN PFR vs BB caller, SRP HU, c-bet IP nas famílias dry/paired, wet/two-tone, connected/monotone e A-high; documento-fonte [BTN_BB_SRP_FLOP_CBET_SOURCE_CONTRACT.md](cases/BTN_BB_SRP_FLOP_CBET_SOURCE_CONTRACT.md). A disponibilidade de fontes qualitativas profissionais evita travar o desenvolvimento pela ausência de licença para importar charts.
+2. **F1 paralelo, pré-flop:** RFI BTN 6-max 100BB e 2,5BB, confrontando referência pública que explicita stack/size/no-ante (SRC-015) e histórico V1 por classes, sem copiar chart de terceiro ou escolher porcentagem por média. Ações precisas por mão/mix permanecem bloqueadas até F2.
 3. **Sentinela anti-erro:** river four-flush com board pareado e full house; e sem board pareado com flush alto/baixo e bluff-catcher, incluindo check grátis, bets, raises e blefes. **Não criar percentual genérico de call** sem justificativa.
 4. Expandir respostas a c-bets, turn barrel/probe/delayed c-bet, river value/bluff, 3bet HU, limped/iso, multiway, 4bet/5bet, profundidades e perfis. Sempre relacionar cenário, fonte, execução e lacuna frente ao R10d.
 
@@ -82,7 +82,7 @@ Uma regra pequena e correta tem prioridade sobre 200 regras de cobertura superfi
 - Regra de stop de compute: após duas análises repetidas que não acrescentem evidência, interromper e definir a próxima hipótese útil. Uma CI integral por incremento integrado; testes locais focados durante desenvolvimento.
 - **Não** declarar bot GTO, performance em bb/100, winrate, exploitabilidade ou EV sem medição aplicável. Sem execução com dinheiro real em plataformas que proíbam bots/RTA.
 
-## 8. Estado de retomada
+## 8. Registro histórico do reinício ADR-044 (substituído para status atual pela seção 10)
 
 - **ADR-044** substitui somente o requisito metodológico `solver-first` da ADR-043; mantém preservação V1, independência de evidência, controles OpenPPL/OH, benchmark R10d e gates de produto.
 - F0 **OPEN**; F1–F5 **BLOCKED**; nenhuma política V2 aprovada. GTOpen/TexasSolver não são obrigatórios nem próximos passos.
@@ -90,8 +90,20 @@ Uma regra pequena e correta tem prioridade sobre 200 regras de cobertura superfi
 - **Ação local do usuário:** nenhuma para a revisão de fontes/documentos; futura execução no OH só mediante necessidade concreta de F4.
 
 
-## 9. F0 — evidência efetivamente examinada (21/11/2026)
+## 9. F0 — evidência examinada na primeira revisão (snapshot histórico, não status atual)
 - [Catálogo SRC-001–SRC-006 e fontes adicionais verificadas](SOURCES.md) contém **divergência não reconciliada** BTN RFI: Upswing 100BB 40,9%, Upswing online 6max 43,1% (profundidade não exposta no resumo), ART/GTO 100BB **2BB open** 46,5%. Não importar percentuais entre sizings, nem declarar qualquer um GTO da V2. Direitos de chart ainda em exame.
 - [Caso de auditoria objetiva RIVER4_PAIRED_Q9_FULLHOUSE](cases/RIVER4_PAIRED_Q9_FULLHOUSE.md) identifica todos os tipos superiores plausíveis no board Q♠ J♠ T♠ 9♠ Q♥ com Q♦9♦: straight flush com K♠/8♠ e full houses superiores com Q♣Jx/Q♣Tx; Q♣9x empata. Invariante de ranking confirmado por raciocínio de cartas; **não** é EV/solver nem ação CALL universal.
 - Defeito legado comprovado: `f$SRPStrongMade` retorna TRUE para `HaveFullHouse`; o seletor `NOT HaveFlush AND NOT HaveNuts` captura full house não-nuts; `Fold FORCE` genérico ocorre acima de 20% PotSize. A regra V1 continua arquivada, não corrigida in-place.
 - Fontes profissionais de c-bet e bluff-catching apoiam contexto, preço, combos e histórico; nenhuma publicou a solução exata do caso ilustrativo. O projeto continua **F0 OPEN, F1–F5 BLOCKED, 0 regras V2 aprovadas**.
+
+
+## 10. ADR-045: passagem de F0 conceitual para F1 do primeiro cenário (21/11/2026)
+**Resultado:** F0 = **PASS_CONCEPTUAL** restrito a **pesquisa/arquitetura com fontes profissionais**; `DATASET_IMPORT_HOLD` porque direitos para copiar e incorporar charts/soluções proprietárias não foram concedidos. Não é PASS de licença, de EV, de solver, de capacidade estratégica, nem de uso em mesa real.
+
+**Referências concretas que mudaram o gate:** [SRC-010..016 no catálogo](SOURCES.md), sobretudo GTO Wizard BTN cash 6max **100BB, raise 2,5BB, sem ante** (~42% BTN RFI), GTO Wizard classificação qualitativa de quatro flops BTN vs BB SRP, ART/GTO 100BB 5% cap3BB e bets 33/75, e a prova documental de que sizing/ranges diferentes dão frequências de c-bet diferentes. O conjunto é suficiente para começar a **especificar** uma heurística, mas não uma tabela de decisões por combo.
+
+**Primeiro F1 aberto:** [BTN vs BB SRP — contrato de estudo das c-bets](cases/BTN_BB_SRP_FLOP_CBET_SOURCE_CONTRACT.md). Quatro flops de referência, histórico e ator exatos, limite de stacks, pot e rake explícitos, exceções, opções candidatas e contraexemplos. O documento registra **o modelo econômico de referência como comparativo, não como rake real da plataforma final**.
+
+**Auditoria do DeepCrusher_R10d:** fonte Git blob `9f9cba79cdb9dc4438895770cf61a450fb55d17c` examinada no roteador `f$flop_Raise_SRP_Initiative` e `f$move_flop_cbet`. Herda-se a separação IP/OOP, pot family, ação do vilão e memória; rejeita-se copiar percentuais ou limites de stack (há exceções <=16BB) de Spin&Go para 6max cash 100BB.
+
+**Gates atuais:** F0 PASS_CONCEPTUAL; DATASET_IMPORT_HOLD; F1 OPEN; F2–F5 BLOCKED; **0 regras V2 aprovadas**. Nenhum solver e nenhuma ação OpenPPL nova foram executados/criados. Próxima ação: completar hipóteses pré-flop/rake e a matriz de mãos da c-bet por contexto; só depois F2. Sem ação local do usuário nesta rodada.
