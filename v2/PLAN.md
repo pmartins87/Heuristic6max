@@ -88,3 +88,10 @@ Uma regra pequena e correta tem prioridade sobre 200 regras de cobertura superfi
 - F0 **OPEN**; F1–F5 **BLOCKED**; nenhuma política V2 aprovada. GTOpen/TexasSolver não são obrigatórios nem próximos passos.
 - **Próxima tarefa:** construir o **catálogo F0 de fontes e premissas**, anotar incompatibilidades/licenças, e selecionar o primeiro spot de referência pública. Nenhum OpenPPL novo antes de F0/F1/F2.
 - **Ação local do usuário:** nenhuma para a revisão de fontes/documentos; futura execução no OH só mediante necessidade concreta de F4.
+
+
+## 9. F0 — evidência efetivamente examinada (21/11/2026)
+- [Catálogo SRC-001–SRC-006 e fontes adicionais verificadas](SOURCES.md) contém **divergência não reconciliada** BTN RFI: Upswing 100BB 40,9%, Upswing online 6max 43,1% (profundidade não exposta no resumo), ART/GTO 100BB **2BB open** 46,5%. Não importar percentuais entre sizings, nem declarar qualquer um GTO da V2. Direitos de chart ainda em exame.
+- [Caso de auditoria objetiva RIVER4_PAIRED_Q9_FULLHOUSE](cases/RIVER4_PAIRED_Q9_FULLHOUSE.md) identifica todos os tipos superiores plausíveis no board Q♠ J♠ T♠ 9♠ Q♥ com Q♦9♦: straight flush com K♠/8♠ e full houses superiores com Q♣Jx/Q♣Tx; Q♣9x empata. Invariante de ranking confirmado por raciocínio de cartas; **não** é EV/solver nem ação CALL universal.
+- Defeito legado comprovado: `f$SRPStrongMade` retorna TRUE para `HaveFullHouse`; o seletor `NOT HaveFlush AND NOT HaveNuts` captura full house não-nuts; `Fold FORCE` genérico ocorre acima de 20% PotSize. A regra V1 continua arquivada, não corrigida in-place.
+- Fontes profissionais de c-bet e bluff-catching apoiam contexto, preço, combos e histórico; nenhuma publicou a solução exata do caso ilustrativo. O projeto continua **F0 OPEN, F1–F5 BLOCKED, 0 regras V2 aprovadas**.
