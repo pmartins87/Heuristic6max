@@ -352,8 +352,8 @@ WHEN AmountToCall = 0 AND f$DP_GoodPair Check FORCE
 
 WHEN AmountToCall = 0 AND f$DP_NutDraw AND f$DP_HeadsUp AND f$DP_LastRaiser AND randomhand < 0.65 Set user_DP_FlopDrawBet
 WHEN AmountToCall = 0 AND f$DP_NutDraw AND f$DP_HeadsUp AND f$DP_LastRaiser AND randomhand < 0.65 BetHalfPot FORCE
-WHEN AmountToCall = 0 AND f$DP_AnyDraw AND f$DP_HeadsUp AND f$DP_LastRaiser AND f$DP_IP AND randomhand < 0.40 Set user_DP_FlopDrawBet
-WHEN AmountToCall = 0 AND f$DP_AnyDraw AND f$DP_HeadsUp AND f$DP_LastRaiser AND f$DP_IP AND randomhand < 0.40 BetThirdPot FORCE
+WHEN AmountToCall = 0 AND f$DP_GoodDraw AND f$DP_HeadsUp AND f$DP_LastRaiser AND f$DP_IP AND randomhand < 0.40 Set user_DP_FlopDrawBet
+WHEN AmountToCall = 0 AND f$DP_GoodDraw AND f$DP_HeadsUp AND f$DP_LastRaiser AND f$DP_IP AND randomhand < 0.40 BetThirdPot FORCE
 
 WHEN AmountToCall = 0 AND f$DP_LastRaiser AND f$DP_HeadsUp AND f$DP_IP AND NOT f$DP_ReraisedPot AND NOT f$DP_DynamicFlop AND f$DP_Air AND randomhand < 0.48 Set user_DP_FlopAirBet
 WHEN AmountToCall = 0 AND f$DP_LastRaiser AND f$DP_HeadsUp AND f$DP_IP AND NOT f$DP_ReraisedPot AND NOT f$DP_DynamicFlop AND f$DP_Air AND randomhand < 0.48 BetThirdPot FORCE
@@ -410,8 +410,8 @@ WHEN AmountToCall = 0 AND f$DP_QualityPair AND f$DP_HeadsUp AND NOT f$DP_Dangero
 WHEN AmountToCall = 0 AND f$DP_GoodPair AND f$DP_HeadsUp AND NOT f$DP_Dangerous AND f$DP_IP BetThirdPot FORCE
 WHEN AmountToCall = 0 AND f$DP_NutDraw AND f$DP_HeadsUp AND f$DP_LastRaiser AND randomhand < 0.55 Set user_DP_TurnDrawBet
 WHEN AmountToCall = 0 AND f$DP_NutDraw AND f$DP_HeadsUp AND f$DP_LastRaiser AND randomhand < 0.55 BetTwoThirdPot FORCE
-WHEN AmountToCall = 0 AND f$DP_AnyDraw AND f$DP_HeadsUp AND f$DP_IP AND BotRaisedOnFlop AND randomhand < 0.30 Set user_DP_TurnDrawBet
-WHEN AmountToCall = 0 AND f$DP_AnyDraw AND f$DP_HeadsUp AND f$DP_IP AND BotRaisedOnFlop AND randomhand < 0.30 BetHalfPot FORCE
+WHEN AmountToCall = 0 AND f$DP_GoodDraw AND f$DP_HeadsUp AND f$DP_IP AND BotRaisedOnFlop AND randomhand < 0.30 Set user_DP_TurnDrawBet
+WHEN AmountToCall = 0 AND f$DP_GoodDraw AND f$DP_HeadsUp AND f$DP_IP AND BotRaisedOnFlop AND randomhand < 0.30 BetHalfPot FORCE
 // Delayed c-bet if we checked flop, rarely bluff dry boards in position.
 WHEN AmountToCall = 0 AND BotCheckedOnFlop AND f$DP_PreflopRFI AND f$DP_HeadsUp AND f$DP_IP AND f$DP_Air AND NOT f$DP_Dangerous AND randomhand < 0.15 BetThirdPot FORCE
 WHEN AmountToCall = 0 Check FORCE
@@ -480,8 +480,8 @@ WHEN AmountToCall = 0 AND f$DP_QualityPair AND f$DP_HeadsUp AND NOT f$DP_Dangero
 WHEN AmountToCall = 0 AND f$DP_QualityPair AND f$DP_HeadsUp AND NOT f$DP_Dangerous AND f$DP_PreflopRFI AND NOT f$DP_HighSPR AND randomhand < 0.65 BetThirdPot FORCE
 
 // Selected missed-draw bluffs from credible prior betting lines, HU/IP only.
-WHEN AmountToCall = 0 AND f$DP_Air AND f$DP_HeadsUp AND f$DP_IP AND f$DP_PreflopRFI AND user_DP_TurnDrawBet AND randomhand < 0.21 BetTwoThirdPot FORCE
-WHEN AmountToCall = 0 AND f$DP_Air AND f$DP_HeadsUp AND f$DP_IP AND f$DP_PreflopRFI AND user_DP_FlopDrawBet AND randomhand < 0.12 BetHalfPot FORCE
+WHEN AmountToCall = 0 AND f$DP_Air AND f$DP_HeadsUp AND f$DP_IP AND f$DP_PreflopRFI AND user_DP_TurnDrawBet AND NOT RaisesOnFlop AND NOT RaisesOnTurn AND randomhand < 0.21 BetTwoThirdPot FORCE
+WHEN AmountToCall = 0 AND f$DP_Air AND f$DP_HeadsUp AND f$DP_IP AND f$DP_PreflopRFI AND user_DP_FlopDrawBet AND NOT RaisesOnFlop AND NOT RaisesOnTurn AND randomhand < 0.12 BetHalfPot FORCE
 
 WHEN AmountToCall = 0 Check FORCE
 WHEN Others Fold FORCE
