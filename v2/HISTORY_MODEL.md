@@ -42,7 +42,7 @@ Fontes: **OpenPPL Manual.pdf**, seções *BettingAction Symbols* e *User-Defined
 | `DP_Hist_FlopHeroBetVillainCalled` | HU desde flop; Hero bet/raised; o mesmo vilão pagou, sem bet adversária | Não prova iniciativa pré-flop |
 | `DP_Hist_TurnHeroBetVillainCalled` | HU desde flop; Hero bet/raised turn; vilão pagou | Não provaria mesma pessoa em multiway |
 | `DP_Hist_FacingTurnSecondBarrel` | Hero pagou aposta flop e enfrenta aposta turn no mesmo HU | Não assume necessariamente mesmo size |
-| `DP_Hist_FacingTurnDonkAfterOurFlopBet` | Hero bet flop/vilão call, no turn vilão aposta primeiro | A localização exata da iniciativa depende de ação prévia |
+| `DP_Hist_FacingTurnBetAfterOurFlopBetCalled` | Hero bet flop, vilão pagou e há aposta adversária para pagar no turn | **NÃO** afirmar donk; Hero pode ter dado check OOP no turn |
 | `DP_Hist_FacingRiverThirdBarrel` | HU desde flop; Hero call flop, call turn, vilão aposta river, sem raises anteriores | Reconhece pressão; **ainda não calcula distribuição valor/blefe** |
 | `DP_Hist_FacingRiverTurnRiverAfterPassiveFlop` | Flop check-through, Hero paga bet turn, vilão aposta river | Linha diferente de triplo barrel |
 | `DP_Hist_FacingRiverFirstPostflopBet` | Flop e turn sem apostas; primeira agressão aparece no river, HU desde flop | Não é sempre bluff: pode ser trap/value tardio |
