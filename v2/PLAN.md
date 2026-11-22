@@ -1,6 +1,6 @@
 # DeepPoker Strategy V2 — Plano Vivo (evidência profissional, sem solver próprio)
 
-**Decisão atualizada:** 21/11/2026 — ADR-048 (continuidade ADR-044 a 047). **Estado atual:** F0 **PASS_CONCEPTUAL** (fontes públicas admissíveis conceitualmente); **DATASET_IMPORT_HOLD**; F1 **PASS_PILOT_CONTEXT** (BTN 2,5 BB, ~42% RFI, cash 6max/100BB, BTN vs BB SRP); F2 **OPEN** com 2 decisões pontuais STRATEGY_REVIEWED_HEURISTIC; F3 **STATIC_SYMBOLIC_VERIFIED / OH_PENDING** (20 testes, nenhum parser C++/OH validado); F4–F5 **BLOCKED**. Nenhum bot operacional. **Fonte única de verdade** do projeto V2: este arquivo. Evidências/proveniência do F0 em [SOURCES.md](SOURCES.md). GitHub/engenharia V1 e DeepCrusher_R10d são preservados; a V1, inclusive as 2.016 instruções WHEN da última integração, é `LEGACY_UNVALIDATED` para qualidade estratégica.
+**Decisão atualizada:** 21/11/2026 — ADR-049 (generalização; preserva ADR-044–048). **Estado atual:** F0 **PASS_CONCEPTUAL** (fontes públicas admissíveis conceitualmente); **DATASET_IMPORT_HOLD**; F1 **PASS_PILOT_CONTEXT** (BTN 2,5 BB, ~42% RFI, cash 6max/100BB, BTN vs BB SRP); F2 **OPEN** com 2 decisões pontuais STRATEGY_REVIEWED_HEURISTIC; F3 **STATIC_SYMBOLIC_VERIFIED / OH_PENDING** (20 testes, nenhum parser C++/OH validado); F4–F5 **BLOCKED**. Nenhum bot operacional. **Fonte única de verdade** do projeto V2: este arquivo; [política geral de interpretação](GENERAL_POLICY.md), [auditoria transversal do DeepCrusher](DEEPCRUSHER_TRANSFER_AUDIT.md) e [família F1 de defesa/agressão](families/DEFENDING_VS_AGGRESSION_F1.md) são anexos operacionais vigentes. Evidências/proveniência do F0 em [SOURCES.md](SOURCES.md). GitHub/engenharia V1 e DeepCrusher_R10d são preservados; a V1, inclusive as 2.016 instruções WHEN da última integração, é `LEGACY_UNVALIDATED` para qualidade estratégica.
 
 ## 1. Objetivo e correção da metodologia
 
@@ -65,7 +65,7 @@ FONTE profissional publicada / solução pública existente / lógica objetiva
 
 **Políticas V2 completas aprovadas: ZERO; decisões pontuais revisadas qualitativamente: 2.** 14/14 famílias benchmark sem certificação V2. Checkpoint V1 permanece apenas histórico e não muda a contagem. Cada gate precisa ter decisão registrada com evidência/revisão; não há exigência geral de EV quantificado.
 
-## 6. Ordem concreta de construção (após F0)
+## 6. Sequência histórica do piloto (não é prioridade exclusiva após ADR-049)
 
 1. **F1 prioritário, pós-flop:** BTN PFR vs BB caller, SRP HU, c-bet IP nas famílias dry/paired, wet/two-tone, connected/monotone e A-high; documento-fonte [BTN_BB_SRP_FLOP_CBET_SOURCE_CONTRACT.md](cases/BTN_BB_SRP_FLOP_CBET_SOURCE_CONTRACT.md). A disponibilidade de fontes qualitativas profissionais evita travar o desenvolvimento pela ausência de licença para importar charts.
 2. **F1 paralelo, pré-flop:** RFI BTN 6-max 100BB e 2,5BB, confrontando referência pública que explicita stack/size/no-ante (SRC-015) e histórico V1 por classes, sem copiar chart de terceiro ou escolher porcentagem por média. Ações precisas por mão/mix permanecem bloqueadas até F2.
@@ -138,3 +138,25 @@ Uma regra pequena e correta tem prioridade sobre 200 regras de cobertura superfi
 - **Limite descoberto:** o piloto verifica somente stack do Hero, não o stack efetivo do BB. O modelo de 100 BB é contexto de estudo, não observabilidade provada. Não há executável Windows/ManualMode ou logs de OH real disponíveis neste ambiente.
 - **Estado:** F0 PASS_CONCEPTUAL / DATASET_IMPORT_HOLD; F1 PASS_PILOT_CONTEXT; F2 OPEN (2 decisões); **F3 STATIC_SYMBOLIC_VERIFIED / OH_PENDING**; F4–F5 BLOCKED; zero módulos completos liberados. Sem solver, sem alteração V1.
 - **Próxima dependência:** teste ManualMode/OHReplay **offline** com build identificado no computador do usuário, replay desde o pré-flop e logs separados de estado, fórmula e ação tomada. Pesquisa de novas classes pode continuar, mas promoção/expansão automática da política executável aguarda F3 no runtime.
+
+
+## 14. ADR-049 — exemplos não são requisitos literais (21/11/2026)
+
+**Correção explícita do usuário:** todos os exemplos anteriores — faixa ilustrativa de BTN 41/42/43/44%, full house no four-flush e c-bet SRP do DeepCrusher — pretendiam expressar **princípios gerais**, não restrições permanentes de percentual, mão/board/street ou única função reaproveitável. O objetivo é jogar bem em **toda a distribuição de estados alcançáveis**, com aproximações razoáveis à literatura profissional, evitando erros graves e aproveitando o legado quando o fundamento for transferível.
+
+**Regra vinculante:** consultar [GENERAL_POLICY.md](GENERAL_POLICY.md) antes de criar nova estratégia, [DEEPCRUSHER_TRANSFER_AUDIT.md](DEEPCRUSHER_TRANSFER_AUDIT.md) antes de importar mecânica do R10d, e [DEFENDING_VS_AGGRESSION_F1.md](families/DEFENDING_VS_AGGRESSION_F1.md) como **primeira família transversal de estudo**, não como limitação do projeto. Os exemplos de duas cartas físicas continuam apenas smoke tests do OPPL e não são o produto final.
+
+**Generalização estratégica e frequências:**
+- Não impor tolerância global de 4 p.p. nem fixar precisamente 42% para BTN: era **ilustração de irrelevância de microdiferenças**. A escolha de 2,5 BB permanece preferência prática contextual para opens, não universal a todos os potes/posições.
+- Discretizar frequências legítimas de solução publicada **quando aceitável pelo risco/contexto**, preservando valor/blefe/check e evitando deslocar decisões caras de stack-off ou distribuição de ranges. Precisão adicional somente diante de evidência material de impacto.
+- Erros absurdos são **transversais**: mão mal classificada, call/fold/raise sem preço/range, confusão de histórico, blockers, nuts, size, multiway, stack/SPR e ação ilegal. Não transformar o exemplo full house em invariável "never fold" universal.
+- R10d: **16 mecanismos concretos triados**, de roteamento e história até avaliação, pot odds, sizing, stack, perfis e c-bet. Potenciais *invariantes de arquitetura* podem ser transferidas; estratégias e limiares Spin&Go exigem revalidação; PT/network não viram estratégia padrão cash. Nenhuma regra estratégica do R10d foi importada.
+
+**Caminho de construção independente do piloto:**
+- **Trilha estratégica F1/F2:** estudar e especificar famílias completas em paralelo (pré-flop, HU/multiway, 3bet/4bet, limp/iso, decisões flop/turn/river, defesa contra bet/raise, blockers, equilíbrio entre valor e blefe). A primeira família nova foi documentada como **F1_SPECIFICATION**, sem ações F2 promovidas.
+- **Trilha de execução F3/F4:** os dois casos específicos continuam **F3 STATIC_SYMBOLIC_VERIFIED/OH_PENDING**; replay OH real é obrigatório para certificar **operação**, mas **não bloqueia pesquisa F1/F2 em outras famílias**.
+- **Trilha de produto F5:** integrar apenas famílias cujo contrato estratégico e ação OpenHoldem convergirem. Não alegar que 14 famílias R10d foram cobertas por 2 casos.
+
+**Estado preservado:** F0 PASS_CONCEPTUAL e DATASET_IMPORT_HOLD; F1 PASS_PILOT_CONTEXT no spot piloto + novas famílias em estudo; F2 OPEN (2 decisões pontuais antigas revisadas, nenhum novo módulo); F3 STATIC_SYMBOLIC_VERIFIED/OH_PENDING; F4/F5 BLOCKED. **0 módulos completos estrategicamente aprovados, 0 módulo operacional certificado.** Sem solver próprio, sem operação real, sem alteração do código V1 ou do piloto nesta revisão.
+
+**Critério de parada:** parar calibrações de décimos não materiais, desviar de testes autorreferenciais e avançar cobertura de família com fonte profissional e contraditório. Mudar estratégia quando uma evidência nova mostrar erro ou materialidade. **Próxima tarefa concreta:** F2 das subfamílias de maior risco da [defesa vs agressão](families/DEFENDING_VS_AGGRESSION_F1.md), com decisões por classes/contexto; prosseguir OH manual offline separadamente quando houver oportunidade. Nenhuma ação local exigida para a trilha F1/F2.
