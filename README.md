@@ -1,4 +1,4 @@
-> **V2 vigente — ADR-046:** [Plano Vivo](v2/PLAN.md). Bot heurístico por fontes profissionais sem solver próprio. **RFI padrão 2,5BB; BTN ~42% (aceita 41–44%)**. F0 PASS_CONCEPTUAL, fontes de dados sem permissão de importação em HOLD, F1 PASS_PILOT_CONTEXT, F2 OPEN com [2 ações pontuais de c-bet revisadas](v2/cases/BTN_BB_SRP_CBET_F2_PILOT.md); F3 DRAFT_SOURCE_ONLY ([2 spots em OpenPPL](v2/pilot_01/README.md)); F4–F5 bloqueados. Nenhum OPPL V2 operacional aprovado. V1 (2.016 WHEN) LEGACY_UNVALIDATED; CI não certifica estratégia ou execução OH.
+> **V2 — ADR-048 (21/11/2026):** [Plano Vivo](v2/PLAN.md). Bot heurístico a partir de fontes profissionais; opens padrão 2,5BB, BTN ~42% (faixa 41–44%). F0 fontes PASS_CONCEPTUAL, importação de dados HOLD; F1 piloto PASS; F2 2 decisões revisadas; F3 **STATIC_SYMBOLIC_VERIFIED/OH_PENDING** com [20 testes Python](v2/pilot_01/README.md) e [gate ManualMode](v2/pilot_01/OH_OFFLINE_EVIDENCE_GATE.md). Nenhuma ação V2 comprovada no OpenHoldem real; F4–F5 bloqueados. V1 preservada LEGACY_UNVALIDATED, sem solver próprio.
 
 # Heuristic6max — fonte de verdade
 
