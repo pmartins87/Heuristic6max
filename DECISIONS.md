@@ -1,4 +1,4 @@
-> **V2 é o processo vigente após ADR-043.** Fonte de verdade para nova construção: [v2/PLAN.md](v2/PLAN.md). Todas as decisões operacionais de política V1, incluindo ADR-042, estão suspensas enquanto não forem requalificadas por evidência solver. O histórico permanece consultável, não apagado.
+> **V2 vigente: ADR-044 (21/11/2026).** [v2/PLAN.md](v2/PLAN.md) continua sendo a fonte de verdade. A ADR-043 mantém a preservação V1 e o princípio de evidência independente, mas **não** a exigência de executar solver. F0 agora qualifica fontes profissionais e charts públicos; estratégia V1 permanece LEGACY_UNVALIDATED. O histórico abaixo continua registrado.
 
 # Registro de decisões técnicas — Heuristic6max
 
@@ -114,3 +114,11 @@
 **Novo requisito explícito:** reiniciar o desenvolvimento corretamente após erro estratégico confirmado de M08-RIVER4, que podia foldar full house apesar de CI verde. O erro invalida a presunção de qualidade de V1 e demonstra que validar correspondência de código com regra arbitrária não valida regra de poker.
 **Decisão:** manter repo/histórico, colocar todas as políticas V1 em estado LEGACY_UNVALIDATED; não usar faixas/rules V1 por padrão. V2 terá fonte única [v2/PLAN.md](v2/PLAN.md), começará com **F0 viabilidade de solver e evidência EV por combo**, F1 inputs/ranges/regras, F2 validação de estratégia, F3 implementação OpenPPL, F4 paridade offline OH e F5 produto. Nenhuma linha estratégica nova antes de evidência de referência, não pedir hash/instalação particular para construção. Investigação de GTOpen e TexasSolver é provisória, não comprovação. Preservar os antigos gates de promoção fechados e o requisito eventual superioridade ao DeepCrusher_R10d.
 **Critério de parada:** não prosseguir de F0 se nenhum solver entregar solução reproduzível com dados de decisão e EV, ou se a fonte não tiver licença adequada. Não mentir sobre qualidade nem substituir erro por mais testes autorreferenciais.
+
+
+**ADR-044 — V2 heurística sustentada por fontes profissionais, sem solver próprio (21/11/2026). APROVADA COMO DIREÇÃO METODOLÓGICA, NÃO COMO ESTRATÉGIA DE PÔQUER.**
+**Decisão explícita do usuário:** utilizar soluções já publicadas, charts pré-flop e teoria profissional consolidada, confrontadas com DeepCrusher_R10d e lógica objetiva do jogo, para construir um bot heurístico de inspiração GTO. Não calcular soluções em GTOpen/TexasSolver nem exigir EV novo por combo/solver como condição de autoria.
+**Justificativa:** a ADR-043 solucionou corretamente a autoaprovação da V1, mas trocar testes autorreferenciais por solver obrigatório desviou do objetivo de produto. Evidência independente continua obrigatória; charts podem servir de referência situacional com premissas e direitos declarados. A IA faz interpretação contraditória, não inventa porcentagens sem fonte. O DeepCrusher é referência funcional/fonte de técnicas, não gabarito estratégico.
+**Risco e resposta:** “sem solver” não certifica GTO quantitativamente. Vetar alegações de EV/exploitabilidade/lucro não medidos; exigir análise de mão real, nuts, blockers, preço, ação, história e board. Four-flush não transforma full house em flush; full house pode excepcionalmente perder para mão superior. Sem nunca-fold absoluto.
+**Gates:** F0 referências/licenças; F1 spot/invariantes; F2 revisão estratégica independente; F3 portabilidade; F4 OH offline; F5 benchmark. **Zero** políticas V2 aprovadas; V1 integral preservada.
+**Execução:** somente documentação nesta revisão; nenhum .oppl alterado; detalhes e critérios permanentes em [v2/PLAN.md](v2/PLAN.md).
