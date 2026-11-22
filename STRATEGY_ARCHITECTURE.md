@@ -1,4 +1,4 @@
-> **ARQUITETURA V2 (ADR-044):** aplicar este contrato de contexto/histórico ao [Plano Vivo V2](v2/PLAN.md). Fonte estratégica agora é chart público admissível/teoria profissional revisada; não calcular solver próprio nem presumir que regras V1 são boas. O texto abaixo descreve exigências arquiteturais e histórico V1, não aprova política.
+> **ARQUITETURA V2 — ADR-046:** [Plano Vivo](v2/PLAN.md) e [F2 piloto de c-bets](v2/cases/BTN_BB_SRP_CBET_F2_PILOT.md). Manter grade de (pote/posição/história/stack/board/mão/size), não copiar thresholds DeepCrusher 16BB de Spin&Go para 100BB. First-in padrão 2,5BB; BTN ~42% (41–44% tolerado). Duas ações exatas revisadas estrategicamente, F3 portabilidade ainda bloqueada. Abaixo: arquitetura histórica V1 e requisitos válidos.
 
 # Heuristic6max — arquitetura de um bot COMPLETO, sensível ao histórico
 
