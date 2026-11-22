@@ -273,6 +273,9 @@ WHEN Raises = 0 AND Calls = 0 Fold FORCE
 WHEN Raises = 0 AND Calls > 0 AND listDP_3BET_VALUE RaiseTo (3.5 + Calls) FORCE
 WHEN Raises = 0 AND Calls > 0 AND NOT InBigBlind AND listDP_ISO AND StackSize >= 35 RaiseTo (3.5 + Calls) FORCE
 WHEN Raises = 0 AND Calls > 0 AND InBigBlind AND listDP_ISO AND StackSize >= 35 RaiseTo (4 + Calls) FORCE
+// Small blind may COMPLETE for a small price after limpers; 3bet-or-fold belongs
+// to facing a single open raise, not every limped pot.
+WHEN Raises = 0 AND Calls > 0 AND InSmallBlind AND listDP_SMALL_CALL AND AmountToCall > 0 AND AmountToCall <= 1 AND StackSize >= 40 Call FORCE
 WHEN Raises = 0 AND Calls > 0 AND NOT InSmallBlind AND NOT InBigBlind AND listDP_SMALL_CALL AND AmountToCall > 0 AND AmountToCall <= 1 AND StackSize >= 40 Call FORCE
 WHEN Raises = 0 AND Calls > 0 AND InBigBlind Check FORCE
 WHEN Raises = 0 AND Calls > 0 AND AmountToCall = 0 Check FORCE
@@ -307,7 +310,11 @@ WHEN AmountToCall > 0 AND f$DP_ReraisedPot AND f$DP_Commitment AND f$DP_QualityP
 // Strong draws: call price-sensitive; sometimes semibluff raise with range nut draws.
 WHEN AmountToCall > 0 AND f$DP_NutDraw AND f$DP_HeadsUp AND NOT f$DP_IP AND AmountToCall <= (0.34 * (PotSize - AmountToCall)) AND randomhand < 0.22 RaiseThreeFourthPot FORCE
 WHEN AmountToCall > 0 AND f$DP_NutDraw AND AmountToCall <= (0.48 * (PotSize - AmountToCall)) Call FORCE
-WHEN AmountToCall > 0 AND f$DP_AnyDraw AND AmountToCall <= (0.26 * (PotSize - AmountToCall)) Call FORCE
+// Draw classes have different direct equity; a bare gutshot is not a flush
+// draw and must NOT inherit the same pot-odds threshold.
+WHEN AmountToCall > 0 AND HaveFlushDraw AND AmountToCall <= (0.30 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND HaveOpenEndedStraightDraw AND AmountToCall <= (0.28 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND HaveInsideStraightDraw AND f$DP_IP AND AmountToCall <= (0.10 * (PotSize - AmountToCall)) Call FORCE
 
 // Pair defenses; distinguish dry boards from the very dangerous texture and bet sizes.
 WHEN AmountToCall > 0 AND f$DP_GoodPair AND f$DP_HeadsUp AND NOT f$DP_Dangerous AND AmountToCall <= (0.48 * (PotSize - AmountToCall)) Call FORCE
@@ -376,7 +383,9 @@ WHEN AmountToCall > 0 AND f$DP_StrongMade AND AmountToCall <= (0.50 * (PotSize -
 WHEN AmountToCall > 0 AND f$DP_StrongMade Fold FORCE
 WHEN AmountToCall > 0 AND f$DP_ReraisedPot AND f$DP_Commitment AND f$DP_QualityPair AND NOT f$DP_Dangerous AND AmountToCall <= (0.68 * (PotSize - AmountToCall)) Call FORCE
 WHEN AmountToCall > 0 AND f$DP_NutDraw AND AmountToCall <= (0.32 * (PotSize - AmountToCall)) Call FORCE
-WHEN AmountToCall > 0 AND f$DP_AnyDraw AND AmountToCall <= (0.18 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND HaveFlushDraw AND AmountToCall <= (0.26 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND HaveOpenEndedStraightDraw AND AmountToCall <= (0.21 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND HaveInsideStraightDraw AND f$DP_IP AND AmountToCall <= (0.10 * (PotSize - AmountToCall)) Call FORCE
 WHEN AmountToCall > 0 AND f$DP_QualityPair AND f$DP_HeadsUp AND NOT f$DP_Dangerous AND AmountToCall <= (0.36 * (PotSize - AmountToCall)) Call FORCE
 WHEN AmountToCall > 0 AND f$DP_GoodPair AND f$DP_HeadsUp AND AmountToCall <= (0.22 * (PotSize - AmountToCall)) Call FORCE
 WHEN AmountToCall > 0 AND f$DP_WeakPair AND f$DP_HeadsUp AND AmountToCall <= (0.10 * (PotSize - AmountToCall)) Call FORCE
@@ -385,6 +394,7 @@ WHEN AmountToCall > 0 Fold FORCE
 // On a four-of-a-kind board without nut kicker, value-betting by category alone is wrong.
 WHEN AmountToCall = 0 AND QuadsOnBoard AND NOT HaveNuts Check FORCE
 // When checked to, value/protection and controlled semibluffs. Avoid over-barreling air.
+WHEN AmountToCall = 0 AND QuadsOnBoard AND NOT HaveNuts Check FORCE
 WHEN AmountToCall = 0 AND f$DP_Premium AND f$DP_Dangerous BetHalfPot FORCE
 WHEN AmountToCall = 0 AND f$DP_Premium BetTwoThirdPot FORCE
 WHEN AmountToCall = 0 AND f$DP_StrongMade AND f$DP_Dangerous AND f$DP_Multiway Check FORCE
@@ -421,7 +431,7 @@ WHEN AmountToCall > 0 AND HaveNuts Call FORCE
 WHEN AmountToCall > 0 AND HaveStraightFlush AND f$DP_BeatsBoard AND AmountToCall <= (3.0 * (PotSize - AmountToCall)) Call FORCE
 WHEN AmountToCall > 0 AND HaveQuads AND f$DP_BeatsBoard AND AmountToCall <= (2.5 * (PotSize - AmountToCall)) Call FORCE
 // The professional concept is relative nut tier + price + range, not "full house=always call".
-WHEN AmountToCall > 0 AND HaveFullHouse AND f$DP_BeatsBoard AND NutFullHouseOrFourOfAKind <= 2 AND AmountToCall <= (2.5 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND HaveFullHouse AND f$DP_BeatsBoard AND NutFullHouseOrFourOfAKind <= 2 AND NOT OneCardStraightFlushPossible AND AmountToCall <= (2.5 * (PotSize - AmountToCall)) Call FORCE
 WHEN AmountToCall > 0 AND HaveFullHouse AND f$DP_BeatsBoard AND f$DP_HeadsUp AND AmountToCall <= (1.5 * (PotSize - AmountToCall)) Call FORCE
 WHEN AmountToCall > 0 AND HaveFullHouse AND f$DP_BeatsBoard AND AmountToCall <= (0.75 * (PotSize - AmountToCall)) Call FORCE
 WHEN AmountToCall > 0 AND HaveFullHouse AND f$DP_BeatsBoard Fold FORCE
