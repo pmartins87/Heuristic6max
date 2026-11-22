@@ -549,7 +549,7 @@ WHEN AmountToCall > 0 AND HaveTwoPair AND NOT f$DP_Dangerous AND f$DP_HeadsUp AN
 // Narrow initial use of chronology: a first postflop river probe after two
 // checked-through streets represents a different range from a third barrel.
 // This is a DRAFT heuristic, not a solved calling frequency or universal rule.
-WHEN AmountToCall > 0 AND f$DP_Hist_FacingRiverFirstPostflopBet AND f$DP_QualityPair AND NOT f$DP_Dangerous AND AmountToCall <= (0.25 * (PotSize - AmountToCall)) Call FORCE
+WHEN AmountToCall > 0 AND f$DP_Hist_FacingRiverFirstPostflopBet AND f$DP_QualityPair AND NOT f$DP_Dangerous AND AmountToCall <= (0.45 * (PotSize - AmountToCall)) Call FORCE
 WHEN AmountToCall > 0 AND f$DP_QualityPair AND f$DP_HeadsUp AND NOT f$DP_Dangerous AND AmountToCall <= (0.28 * (PotSize - AmountToCall)) Call FORCE
 WHEN AmountToCall > 0 AND f$DP_GoodPair AND f$DP_HeadsUp AND NOT f$DP_Dangerous AND AmountToCall <= (0.14 * (PotSize - AmountToCall)) Call FORCE
 WHEN AmountToCall > 0 AND HaveTwoPair AND f$DP_HeadsUp AND AmountToCall <= (0.15 * (PotSize - AmountToCall)) Call FORCE
