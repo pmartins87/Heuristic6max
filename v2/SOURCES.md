@@ -1,5 +1,5 @@
 # V2 — Catálogo F0 de evidência estratégica independente
-**Criado:** 21/11/2026 • **Status atual ADR-046:** F0 PASS_CONCEPTUAL; DATASET_IMPORT_HOLD; F1 PASS_PILOT_CONTEXT; F2 OPEN com 2 decisões pontuais revisadas (não código OpenPPL). O restante inclui snapshots de triagem. Documento subordinado a [PLAN.md](PLAN.md). Atualizar este catálogo quando fonte, premissa, direito de uso ou conclusão mudar.
+**Criado:** 21/11/2026 • **Status histórico ADR-046 (substituído metodologicamente por ADR-049):** F0 PASS_CONCEPTUAL; DATASET_IMPORT_HOLD; F1 PASS_PILOT_CONTEXT; F2 OPEN com 2 decisões pontuais revisadas (não código OpenPPL). O restante inclui snapshots de triagem. Documento subordinado a [PLAN.md](PLAN.md). Atualizar este catálogo quando fonte, premissa, direito de uso ou conclusão mudar.
 
 ## Protocolo
 Registrar fonte + link + cenário efetivamente analisado + hipóteses (NLHE cash/tournament, 6max/HU, stacks, rake, sizings) + qual informação é **evidência textual** e qual é **nossa inferência** + direito de incorporar dados + decisão adotada/controversa. Não converter tabela pública em asset distribuído automaticamente; usar acesso público para pesquisa não cria licença. Não executar solver próprio nem exigir outputs por combo.
@@ -78,3 +78,16 @@ F0 fica **OPEN**, com comprovação da existência de fontes profissionais e de 
 
 ## ADR-046 — encerramento pragmático da discussão marginal de RFI
 O usuário escolheu **2,5 BB como open padrão** e aceita **BTN RFI 41%–44%** como faixa de planejamento, tomando **~42%** como aproximação. Esta é tolerância de produto, não uma reprodução do range exato por combo nem licença de charts. Fontes e os flops do piloto foram examinados em [F1](cases/BTN_BB_SRP_FLOP_CBET_SOURCE_CONTRACT.md) e [F2](cases/BTN_BB_SRP_CBET_F2_PILOT.md). Não repetir busca por pequenas diferenças sem hipótese que altere a política.
+
+
+## ADR-049 — fontes para a generalização transversal e tamanho das diferenças
+
+- [Upswing — How to Simplify Your Poker Strategy Without Sacrificing Value](https://upswingpoker.com/simplify-your-poker-strategy/) mostra, num **T72 rainbow particular**, que três graus de simplificação tiveram EV próximo no exemplo publicado. **Não** prova que mix preciso é irrelevante em todos os potes; fundamenta avaliar materialidade, não porcentagem.
+- [GTO Wizard — Stack-to-Pot Ratio](https://blog.gtowizard.com/stack-to-pot-ratio/) demonstra stacks e SPR alterando drasticamente o valor de stack-off com made hands; impede a conclusão "tudo de Spin&Go funciona no cash".
+- [GTO Wizard — The Right Way To Think About Protection](https://blog.gtowizard.com/the-right-way-to-think-about-protection/) destaca robustez/equity retention e effective nuts dependentes de stack.
+- [GTO Wizard — Understanding Blockers in Poker](https://blog.gtowizard.com/understanding-blockers-in-poker/) e [How to Analyze Turn Textures](https://blog.gtowizard.com/how-to-analyze-turn-textures-in-poker/) sustentam a necessidade de combos e cronologia, não apenas força absoluta ou textura.
+- [GTO Wizard — Playing In Position Against Two Callers](https://blog.gtowizard.com/playing-in-position-against-two-callers/) compara HU e multiway e rejeita transferir c-bet HU universalmente.
+- [GTO Wizard — Why Your Poker Range Is a Team](https://blog.gtowizard.com/why_your_poker_range_is_a_team/) reforça construção conjunta de range de valor/blefe/check.
+- [Git blob do DeepCrusher_R10d](https://github.com/pmartins87/DeepCrusher/blob/main/artifacts/r10/DeepCrusher_R10d_TBP_HARDENING_20261001.txt) inspecionado por funções, classificadas em [auditoria de transferência](DEEPCRUSHER_TRANSFER_AUDIT.md), sem inferir qualidade estratégica da quantidade de regras.
+
+**Política vigente:** em qualquer spot, aproximar frequências profissionais com critério de **materialidade estratégica**; nenhuma banda numérica universal de tolerância. Não repetir busca de décimos sem hipótese que mude ação/range/risco. Direitos de dados proprietários permanecem em HOLD. Ler [GENERAL_POLICY.md](GENERAL_POLICY.md).

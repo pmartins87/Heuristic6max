@@ -1,3 +1,5 @@
+> **PORTABILIDADE V2 — ADR-049:** [Plano Vivo](v2/PLAN.md) e [Política geral](v2/GENERAL_POLICY.md). Os dois spots OpenPPL seguem como smoke tests; a arquitetura deve servir a famílias estratégicas diversas, sem copiar ações short-stack do DeepCrusher. Pesquisa F1/F2 não depende do OH instalado, mas **qualquer promoção operacional** exige parser/ação final/legibilidade do histórico comprovados. O texto abaixo contém contrato e histórico prévio.
+
 > **PORTABILIDADE V2 — ADR-048:** [piloto source-driven](v2/pilot_01/README.md) passou 20 testes Python com modelo simbólico restrito, **não** parser OH. [Gate obrigatório de replay real](v2/pilot_01/OH_OFFLINE_EVIDENCE_GATE.md): histórico desde RFI, user_ por mão, stack do BB, tamanho de aposta e Best action vs Action taken. **F3 OH_PENDING, F4–F5 bloqueados.** Abaixo, contrato histórico de portabilidade V1 ainda válido no que couber.
 
 # Heuristic6max — contrato de portabilidade obrigatória OpenPPL (ADR-016)

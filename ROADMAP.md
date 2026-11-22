@@ -1,3 +1,5 @@
+> **ROADMAP V2 — ADR-049:** [Plano](v2/PLAN.md). Priorizar **famílias estratégicas por risco, impacto e abrangência**, não percentuais exatos, dois flops ou full house. [Defesa/agressão em todas as streets](v2/families/DEFENDING_VS_AGGRESSION_F1.md) é primeiro F1 transversal; [16 mecanismos R10d triados](v2/DEEPCRUSHER_TRANSFER_AUDIT.md). A trilha F1/F2 evolui sem depender da instalação local do OH; a trilha F3/F4 permanece OH_PENDING para certificação. F5 BLOCKED; 0 módulos completos certificados. Abaixo: histórico do roadmap anterior.
+
 > **ROADMAP V2 ATUAL — ADR-048:** [Plano Vivo](v2/PLAN.md). F0 PASS_CONCEPTUAL; F1 piloto BTN 2,5BB/100BB PASS_PILOT_CONTEXT; F2 OPEN com 2 decisões de c-bet revisadas; F3 **STATIC_SYMBOLIC_VERIFIED/OH_PENDING** (20 testes, [protocolo OH](v2/pilot_01/OH_OFFLINE_EVIDENCE_GATE.md)); F4–F5 BLOCKED. Próximo gate depende de OpenHoldem real em ManualMode/OHReplay, não de novos testes autorreferenciais. Histórico V1 abaixo inativo.
 
 # Roadmap vivo — 21/11/2026 (M08-RIVER4 fonte-first + G1/G6 de certificação separados / DRAFT)

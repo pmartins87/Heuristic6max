@@ -1,3 +1,5 @@
+> **DIRETRIZ V2 VIGENTE — ADR-049:** [Plano Vivo](v2/PLAN.md), [princípios gerais](v2/GENERAL_POLICY.md), [reaproveitamento transversal do DeepCrusher](v2/DEEPCRUSHER_TRANSFER_AUDIT.md). Desenvolvimento por **famílias de poker e riscos estratégicos**, não por casos exemplificativos isolados ou décimos de frequência. Duas decisões OpenPPL são apenas smoke tests; F1/F2 continuam em paralelo ao replay OH F3/F4. F3 STATIC_SYMBOLIC_VERIFIED/OH_PENDING; F4/F5 blocked; nenhum bot completo. A V1 LEGACY_UNVALIDATED continua preservada.
+
 > **V2 — ADR-048 (21/11/2026):** [Plano Vivo](v2/PLAN.md). Bot heurístico a partir de fontes profissionais; opens padrão 2,5BB, BTN ~42% (faixa 41–44%). F0 fontes PASS_CONCEPTUAL, importação de dados HOLD; F1 piloto PASS; F2 2 decisões revisadas; F3 **STATIC_SYMBOLIC_VERIFIED/OH_PENDING** com [20 testes Python](v2/pilot_01/README.md) e [gate ManualMode](v2/pilot_01/OH_OFFLINE_EVIDENCE_GATE.md). Nenhuma ação V2 comprovada no OpenHoldem real; F4–F5 bloqueados. V1 preservada LEGACY_UNVALIDATED, sem solver próprio.
 
 # Heuristic6max — fonte de verdade

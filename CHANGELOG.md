@@ -87,3 +87,6 @@ Consulte [DECISIONS.md](DECISIONS.md) para justificativas e [RELEASE_MANIFEST.md
 
 
 - **ADR-048 — F3 source-driven adversarial (21/11/2026):** fonte OpenPPL V2 original preservada, avaliador estrito do subconjunto atual, 16 testes negativos/positivos novos + 4 prévios = 20 locais. Preparado checklist de OH ManualMode/OHReplay com logging e stop rules. Nenhuma observação do OpenHoldem real, F3 OH_PENDING e F4–F5 bloqueados. A V1 permanece intocada; nenhum solver ou chart proprietário importado.
+
+
+- **ADR-049 — Generalização estratégica (21/11/2026):** corrigida a interpretação literal de frequências BTN e casos isolados de full house/c-bet. Criada política de abstração de exemplos para critérios em todas as streets/potes/stacks; triagem direta de **16 mecanismos** do R10d (arquitetura reutilizável, estratégia a requalificar, stack-bound, mecânica, plataforma). Criada família F1 de defesa/agressão, sem solver, sem importar estratégia ou alterar OpenPPL. F1/F2 pesquisa independente da pendência OH; F3/F4 continuam bloqueios de promoção operacional. ZERO módulos completos aprovados.
