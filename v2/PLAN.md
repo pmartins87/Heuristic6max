@@ -184,12 +184,15 @@ Uma regra pequena e correta tem prioridade sobre 200 regras de cobertura superfi
 **Verificação na fonte exata:** o erro é real. Foram identificadas falhas análogas em flush melhor que o board, quadra compartilhada no turn/river, apostas com percepção errada de PotSize, BotRaisedBeforeFlop confundido com agressor real, draws river sem carta futura, BB recebendo Call mesmo com preço zero, SPR usando apenas stack Hero, divergência Set user versus aposta e um ramo de decisão inalcançável.
 
 **Documentos/entregas:**
-- [Relatório e 11 exemplos independentes de showdown](bot/LOGIC_REVIEW_20261121.md); origem: manuais de OpenPPL/OpenHoldem e C++ CSymbolEnginePokerval.cpp fornecidos pelo usuário.
+- [Relatório e 12 exemplos independentes de showdown](bot/LOGIC_REVIEW_20261121.md); origem: manuais de OpenPPL/OpenHoldem e C++ CSymbolEnginePokerval.cpp fornecidos pelo usuário.
 - [Fonte v0.2_LOGIC_REVIEW](bot/DeepPoker_V2_Cash6max_v0_2_LOGIC_REVIEW.oppl): usa avaliação efetiva de cinco melhores do Hero vs board quando river, tratamento separado para categoria straight flush potencialmente assinada, elimina vetos genéricos NOT StraightOnBoard / NOT FlushOnBoard / NOT FullHouseOnBoard, corrige comparações de preço, iniciativa histórica, quads do board, draw river, cartas faltantes, BB free-check, matching Set/bet.
 - A v0.1 permanece versionada **como caso de falha, NÃO bot recomendado**. A V1 antiga permanece intacta.
 
 **Decisão de liderança técnica:** ADR-050 quis corretamente reduzir formalismo e entregar rapidamente, mas **errou ao chamar a v0.1 de pronta sem atender regras elementares de pôquer**. Esta evidência justifica retirar a indicação de uso. Não voltar ao extremo oposto de certificações acadêmicas: corrigir avaliação de mão, preço e histórico com o próprio OpenHoldem, depois revisar políticas de valor/blefe/defesa por famílias com conhecimento profissional, usando poucos contraexemplos críticos.
 
-**Gate material (sem burocracia):** uma nova versão só será recomendada ao usuário após remover erros objetivos de ranking de mão, preço e fluxo. Não declarar que 11 exemplos provam 226 WHEN bons. O v0.2 está em LOGIC_REVIEW e não foi executado no OH real. Desenvolvimento contínuo permitido. **Próximo trabalho:** examinar decisões restantes de call/raise/fold e contratos de tipos de pote/SPR; evitar usar atalhos de "categoria da mão = ação".
+**Gate material (sem burocracia):** uma nova versão só será recomendada ao usuário após remover erros objetivos de ranking de mão, preço e fluxo. Não declarar que 12 exemplos provam 226 WHEN bons. O v0.2 está em LOGIC_REVIEW e não foi executado no OH real. Desenvolvimento contínuo permitido. **Próximo trabalho:** examinar decisões restantes de call/raise/fold e contratos de tipos de pote/SPR; evitar usar atalhos de "categoria da mão = ação".
 
-**Ação do usuário neste momento:** **não usar v0.1**. Nenhuma necessidade de instalar solver, certificação científica ou reproduzir 11 casos no computador.
+**Ação do usuário neste momento:** **não usar v0.1**. Nenhuma necessidade de instalar solver, certificação científica ou reproduzir 12 casos no computador.
+
+
+**Contraexemplo adicional crítico:** Q♣Q♦Q♥9♠9♦ com A♠A♥ produz QQQAA, maior que QQQ99 do board sem formar quadras. Logo, em board de full house também é absurdo negar automaticamente a melhora, e é igualmente errado presumir que apenas quadras possam vencer o board. A candidata v0.2 não possui regra universal de call grande para FullHouseOnBoard. Referência reprodutível: [check_showdown_examples.py](bot/check_showdown_examples.py), **12 casos**. Isto não aprova automaticamente os ranges do vilão.
