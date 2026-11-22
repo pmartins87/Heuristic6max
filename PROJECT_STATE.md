@@ -1,4 +1,5 @@
 > **ESTADO V2 ATUALIZADO — ADR-044 (21/11/2026): F0 fontes profissionais OPEN; F1–F5 BLOCKED.** [Plano Vivo](v2/PLAN.md). Sem calcular solvers próprios, sem regras estratégicas V2 aprovadas. Todo o restante é histórico V1: 2.016 WHEN e CI preservadas, qualidade estratégica LEGACY_UNVALIDATED, OH runtime não certificado; proibição de bot operacional permanece.
+> **F0 progresso documental:** [fontes comparadas](v2/SOURCES.md) e [sentinela river full house](v2/cases/RIVER4_PAIRED_Q9_FULLHOUSE.md) verificadas; divergências de charts/licenças abertas. Gates e contagem de estratégias V2 inalterados.
 
 # Estado atual — Heuristic6max
 **Data:** 21/11/2026 | **Checkpoint:** M08-RIVER4 DRAFT / CI-LEAN1 (CI anterior OH-SRC1: 616 execuções, 604 deduplicadas) | **Estado:** G2-a HOLD; R10d floor NÃO ATINGIDO; não operacional.
