@@ -194,6 +194,8 @@ WHEN Others RETURN FALSE FORCE
 // Target is 6-max or fewer dealt; do not apply 6-max ranges to larger tables.
 WHEN OpponentsAtTable > 5 AND AmountToCall = 0 Check FORCE
 WHEN OpponentsAtTable > 5 Fold FORCE
+// A free action must never be converted into Fold merely due to an earlier raise.
+WHEN Raises > 0 AND AmountToCall = 0 Check FORCE
 // In all states: explicit choices, no implicit default.bot / no Beep.
 // Hero faces a 4bet/5bet after having raised. First prefer strong value.
 WHEN BotRaisedBeforeFlop AND Raises >= 2 AND listDP_5BET AND StackSize <= 110 RaiseMax FORCE
@@ -238,6 +240,7 @@ WHEN Raises = 0 AND Calls > 0 AND InBigBlind AND listDP_ISO AND StackSize >= 35 
 WHEN Raises = 0 AND Calls > 0 AND NOT InSmallBlind AND listDP_SMALL_CALL AND AmountToCall <= 1 AND StackSize >= 40 Call FORCE
 WHEN Raises = 0 AND Calls > 0 AND InBigBlind Check FORCE
 WHEN Raises = 0 AND Calls > 0 AND AmountToCall = 0 Check FORCE
+WHEN AmountToCall = 0 Check FORCE
 WHEN Others Fold FORCE
 
 ##f$flop##
