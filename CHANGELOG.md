@@ -84,3 +84,6 @@ Consulte [DECISIONS.md](DECISIONS.md) para justificativas e [RELEASE_MANIFEST.md
 - **ADR-045/046 — F0→F1→F2 parcial (21/11/2026):** referências GTO Wizard/ART-GTO, contraste de modelos, verificação do roteamento R10d. User aceita first-in 2,5 BB, BTN ~42% com tolerância 41–44%; eliminada micro-otimização marginal. F1 PASS_PILOT_CONTEXT; F2 OPEN com duas decisões pontuais revisadas (QQ6r trips BET33; A73r weak Ax CHECK), compressão CHECK/BET33/BET75, sem solver nem implementação OPPL. F3–F5 bloqueados, V1 preservada.
 
 - **F3-PILOT-01 / ADR-047 (21/11/2026):** primeiro fonte OpenPPL V2 autônoma apenas para 2 fixtures Q♠J♠/QQ6r bet33 e A♥5♥/A73r check; duas mãos pré-flop de fixture usam raise2,5BB, não chart BTN ~42%. Expressões e memória verificadas contra manual OpenPPL e C++ fornecidos. 4/4 checks estáticos; código não é bot completo, `Beep FORCE` fora de domínio. Sem load do parser/runtime real, nenhum release; V1 intacta.
+
+
+- **ADR-048 — F3 source-driven adversarial (21/11/2026):** fonte OpenPPL V2 original preservada, avaliador estrito do subconjunto atual, 16 testes negativos/positivos novos + 4 prévios = 20 locais. Preparado checklist de OH ManualMode/OHReplay com logging e stop rules. Nenhuma observação do OpenHoldem real, F3 OH_PENDING e F4–F5 bloqueados. A V1 permanece intocada; nenhum solver ou chart proprietário importado.
