@@ -1,3 +1,5 @@
+> **RELEASE STATUS ADR-053 (22/11/2026):** não há fórmula V2 aprovada para jogar. v0.1 REVOKED_FOR_PLAY, v0.2 LOGIC_REVIEW, v0.3 CONTEXT_REVIEW e [v0.4 HISTORY_REVIEW](v2/bot/DeepPoker_V2_Cash6max_v0_4_HISTORY_REVIEW.oppl) em desenvolvimento. O novo histórico é estrutural e parcialmente usado em river, **não** é certificação de EV ou execução no OpenHoldem. [Plano](v2/PLAN.md), [Registro Vivo](v2/DECISION_LEDGER.md).
+
 > **RELEASE ADR-052:** v0.1 continua REVOKED_FOR_PLAY; v0.2 é correção histórica; [v0.3](v2/bot/DeepPoker_V2_Cash6max_v0_3_CONTEXT_REVIEW.oppl) é candidata NÃO liberada. Corrigidas classes de falhas em risco do pote, made hands não-nuts, projetos e side pot. Nenhum resultado de OpenHoldem instalado ou EV publicado. [Plano Vivo](v2/PLAN.md) e [relatório](v2/bot/LOGIC_REVIEW_20261122.md).
 
 > **MANIFESTO ATUAL ADR-051:** **v0.1 REVOKED_FOR_PLAY**, preservada para rastreabilidade. [v0.2 LOGIC_REVIEW](v2/bot/DeepPoker_V2_Cash6max_v0_2_LOGIC_REVIEW.oppl) é uma candidata corretiva, não produto jogável nem resultado de OH. Falhas documentadas em [LOGIC_REVIEW_20261121](v2/bot/LOGIC_REVIEW_20261121.md). O manifesto abaixo é histórico anterior.
