@@ -1,6 +1,6 @@
 # DeepPoker Strategy V2 — Plano Vivo (evidência profissional, sem solver próprio)
 
-**Decisão atualizada:** 21/11/2026 — ADR-044. **Estado:** V2 metodologicamente redefinida; nenhuma política estratégica V2 aprovada nem executada. **Fonte única de verdade** do projeto V2: este arquivo. GitHub/engenharia V1 e DeepCrusher_R10d são preservados; a V1, inclusive as 2.016 instruções WHEN da última integração, é `LEGACY_UNVALIDATED` para qualidade estratégica.
+**Decisão atualizada:** 21/11/2026 — ADR-044. **Estado:** V2 metodologicamente redefinida; nenhuma política estratégica V2 aprovada nem executada. **Fonte única de verdade** do projeto V2: este arquivo. Evidências/proveniência do F0 em [SOURCES.md](SOURCES.md). GitHub/engenharia V1 e DeepCrusher_R10d são preservados; a V1, inclusive as 2.016 instruções WHEN da última integração, é `LEGACY_UNVALIDATED` para qualidade estratégica.
 
 ## 1. Objetivo e correção da metodologia
 
