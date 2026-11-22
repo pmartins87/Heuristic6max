@@ -1,4 +1,4 @@
-> **PORTABILIDADE V2 (ADR-044):** este contrato continua aplicável às políticas **aprovadas estrategicamente** conforme [v2/PLAN.md](v2/PLAN.md). Testes estáticos não certificam estratégia nem comportamento no OH real; histórico V1 permanece não operacional.
+> **PORTABILIDADE V2 — ADR-046:** antes de introduzir [dois casos heurísticos F2 revisados](v2/cases/BTN_BB_SRP_CBET_F2_PILOT.md), demonstrar semântica de hole/board/posição, sizing 33% e CHECK em fonte OpenPPL, no-match seguro, precedência e ação final OH offline. Não converter tendências por classe em regras universais. [Plano Vivo](v2/PLAN.md). O contrato histórico abaixo continua válido.
 
 # Heuristic6max — contrato de portabilidade obrigatória OpenPPL (ADR-016)
 
