@@ -1,4 +1,4 @@
-> **ARQUITETURA V2 — ADR-046:** [Plano Vivo](v2/PLAN.md) e [F2 piloto de c-bets](v2/cases/BTN_BB_SRP_CBET_F2_PILOT.md). Manter grade de (pote/posição/história/stack/board/mão/size), não copiar thresholds DeepCrusher 16BB de Spin&Go para 100BB. First-in padrão 2,5BB; BTN ~42% (41–44% tolerado). Duas ações exatas revisadas estrategicamente, F3 portabilidade ainda bloqueada. Abaixo: arquitetura histórica V1 e requisitos válidos.
+> **ARQUITETURA V2 — ADR-048:** [Plano Vivo](v2/PLAN.md). Separação de contexto/ação mantida; [duas ações exatas OpenPPL](v2/pilot_01/README.md) passam 20 testes simbólicos de precedência e exclusão, mas falta [replay OH real](v2/pilot_01/OH_OFFLINE_EVIDENCE_GATE.md). Não generalizar os 2 spots, não copiar V1 nem tratar no-match Beep como proteção suficiente.
 
 # Heuristic6max — arquitetura de um bot COMPLETO, sensível ao histórico
 

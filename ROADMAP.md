@@ -1,4 +1,4 @@
-> **ROADMAP ATUAL V2 — ADR-046:** [Plano Vivo](v2/PLAN.md). F0 PASS_CONCEPTUAL; F1 PASS_PILOT_CONTEXT (2,5BB BTN first-in, 100BB BTN vs BB check); F2 OPEN com [2 decisões heurísticas revisadas](v2/cases/BTN_BB_SRP_CBET_F2_PILOT.md); F3 DRAFT_SOURCE_ONLY [2 fixtures OPPL](v2/pilot_01/README.md) com 4 checks estáticos; F4–F5 bloqueados. Open 41–44% BTN tratado como faixa aceitável (~42%) sem novas rodadas de otimização marginal. R10d é baseline técnico/abrangência, não GTO. O restante abaixo é histórico V1.
+> **ROADMAP V2 ATUAL — ADR-048:** [Plano Vivo](v2/PLAN.md). F0 PASS_CONCEPTUAL; F1 piloto BTN 2,5BB/100BB PASS_PILOT_CONTEXT; F2 OPEN com 2 decisões de c-bet revisadas; F3 **STATIC_SYMBOLIC_VERIFIED/OH_PENDING** (20 testes, [protocolo OH](v2/pilot_01/OH_OFFLINE_EVIDENCE_GATE.md)); F4–F5 BLOCKED. Próximo gate depende de OpenHoldem real em ManualMode/OHReplay, não de novos testes autorreferenciais. Histórico V1 abaixo inativo.
 
 # Roadmap vivo — 21/11/2026 (M08-RIVER4 fonte-first + G1/G6 de certificação separados / DRAFT)
 

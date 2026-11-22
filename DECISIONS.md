@@ -1,4 +1,4 @@
-> **V2 vigente: ADR-046 (21/11/2026).** [v2/PLAN.md](v2/PLAN.md) é fonte de verdade. F0 referências PASS_CONCEPTUAL, importação de dados HOLD; F1 contexto piloto PASS; F2 2 heurísticas estreitas revisadas, nenhum módulo completo; F3 DRAFT_SOURCE_ONLY, F4–F5 bloqueados. V1 LEGACY_UNVALIDATED. A ADR-044 já dispensa solver próprio.
+> **V2 vigente ADR-048 (21/11/2026).** [Plano Vivo](v2/PLAN.md). F3 **STATIC_SYMBOLIC_VERIFIED/OH_PENDING** (20 testes de fonte, nenhum OpenHoldem real). F4–F5 bloqueados; V1 LEGACY_UNVALIDATED.
 
 # Registro de decisões técnicas — Heuristic6max
 
@@ -130,3 +130,8 @@
 
 
 **ADR-047 — F3 primeiro OpenPPL V2, prova isolada (21/11/2026).** Após a revisão profissional F2, criar somente [duas fixtures OpenPPL](v2/pilot_01/README.md) Q♠J♠/Q♥Q♣6♦ BET33 e A♥5♥/A♠7♦3♣ CHECK. RFI 2,5 BB apenas para essas duas mãos; nenhum chart ~42% foi implantado. A fonte possui guards BTN/BB SRP/história e fallback `Beep FORCE` sem ação, somente laboratório. Expressões de suits e memória `user_` verificadas no manual/fonte C++ fornecidos. Quatro testes estáticos passaram, **sem** OpenHoldem real, não prova paridade, EV, GTO ou operação; V1 congelada, F3 DRAFT_SOURCE_ONLY, F4/F5 bloqueados. Próxima ação é replay offline com o executável-alvo.
+
+
+**ADR-048 — Contrato adversarial de F3, sem aprovação operacional (21/11/2026).**
+**Decisão:** não ampliar a política OpenPPL antes de verificar que as duas decisões estreitas não acionam em estados errados. Criado avaliador **estritamente orientado à fonte** e 16 testes adversariais além dos 4 básicos (20 totais), com negativos por board/mão/oponente/3bet/multiway/stack/posição/donk e memória; nenhum solver e nenhuma estratégia V1 alterados. Manual e código fonte comprovam expressão de cartas por suit, uso da memória e significado de Beep, mas **não** equivalência ao executável OH-alvo.
+**Limitação:** stack do Hero filtrado, do vilão não; Beep/no-match não prova ausência de ação do autoplayer. [Gate de evidência OH offline](v2/pilot_01/OH_OFFLINE_EVIDENCE_GATE.md) exigirá build identificado, estado cronológico, valores de símbolos e comparação entre Best action, Action taken e sizing aceito. F3 STATIC_SYMBOLIC_VERIFIED/OH_PENDING, F4/F5 bloqueados. Não chamar de bot operacional nem calcular EV.
