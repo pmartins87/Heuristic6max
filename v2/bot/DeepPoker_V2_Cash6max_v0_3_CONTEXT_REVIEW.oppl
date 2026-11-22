@@ -237,7 +237,8 @@ WHEN OpponentsAtTable > 5 AND AmountToCall = 0 Check FORCE
 WHEN OpponentsAtTable > 5 Fold FORCE
 // Against only all-in opponents there is no legal extra raise/side-pot.
 // Decide calls from actual price and hand class, not a blind RaiseTo action.
-WHEN AmountToCall > 0 AND OpponentsLeft <= NumberOfOpponentsAllin AND listDP_5BET Call FORCE
+WHEN AmountToCall > 0 AND OpponentsLeft <= NumberOfOpponentsAllin AND (hand$AA OR hand$KK) Call FORCE
+WHEN AmountToCall > 0 AND OpponentsLeft <= NumberOfOpponentsAllin AND listDP_5BET AND AmountToCall <= 30 Call FORCE
 WHEN AmountToCall > 0 AND OpponentsLeft <= NumberOfOpponentsAllin AND AmountToCall <= 20 AND listDP_3BET_VALUE Call FORCE
 WHEN AmountToCall > 0 AND OpponentsLeft <= NumberOfOpponentsAllin AND AmountToCall <= 6 AND listDP_CALL_LATE Call FORCE
 WHEN AmountToCall > 0 AND OpponentsLeft <= NumberOfOpponentsAllin Fold FORCE
