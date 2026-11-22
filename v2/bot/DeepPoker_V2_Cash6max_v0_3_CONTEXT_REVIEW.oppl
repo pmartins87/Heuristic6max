@@ -155,7 +155,6 @@ WHEN Others RETURN FALSE FORCE
 ##f$DP_GoodDraw##
 WHEN IsRiver RETURN FALSE FORCE
 WHEN HaveFlushDraw OR HaveOpenEndedStraightDraw OR HaveDoubleGutshotDraw RETURN TRUE FORCE
-WHEN HaveFlushDraw AND HaveStraightDraw RETURN TRUE FORCE
 WHEN Others RETURN FALSE FORCE
 
 ##f$DP_AnyDraw##
@@ -233,15 +232,15 @@ WHEN Others RETURN FALSE FORCE
 
 
 ##f$preflop##
+// Target is 6-max or fewer dealt; do not apply 6-max ranges to larger tables.
+WHEN OpponentsAtTable > 5 AND AmountToCall = 0 Check FORCE
+WHEN OpponentsAtTable > 5 Fold FORCE
 // Against only all-in opponents there is no legal extra raise/side-pot.
 // Decide calls from actual price and hand class, not a blind RaiseTo action.
 WHEN AmountToCall > 0 AND OpponentsLeft <= NumberOfOpponentsAllin AND listDP_5BET Call FORCE
 WHEN AmountToCall > 0 AND OpponentsLeft <= NumberOfOpponentsAllin AND AmountToCall <= 20 AND listDP_3BET_VALUE Call FORCE
 WHEN AmountToCall > 0 AND OpponentsLeft <= NumberOfOpponentsAllin AND AmountToCall <= 6 AND listDP_CALL_LATE Call FORCE
 WHEN AmountToCall > 0 AND OpponentsLeft <= NumberOfOpponentsAllin Fold FORCE
-// Target is 6-max or fewer dealt; do not apply 6-max ranges to larger tables.
-WHEN OpponentsAtTable > 5 AND AmountToCall = 0 Check FORCE
-WHEN OpponentsAtTable > 5 Fold FORCE
 // A free action must never be converted into Fold merely due to an earlier raise.
 WHEN Raises > 0 AND AmountToCall = 0 Check FORCE
 // In all states: explicit choices, no implicit default.bot / no Beep.
