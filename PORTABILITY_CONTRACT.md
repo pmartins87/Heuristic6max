@@ -1,4 +1,4 @@
-> **PORTABILIDADE V2 — ADR-046:** antes de introduzir [dois casos heurísticos F2 revisados](v2/cases/BTN_BB_SRP_CBET_F2_PILOT.md), demonstrar semântica de hole/board/posição, sizing 33% e CHECK em fonte OpenPPL, no-match seguro, precedência e ação final OH offline. Não converter tendências por classe em regras universais. [Plano Vivo](v2/PLAN.md). O contrato histórico abaixo continua válido.
+> **PORTABILIDADE V2 — ADR-046:** para promover [duas fixtures OpenPPL experimentais](v2/pilot_01/README.md) derivadas de [F2](v2/cases/BTN_BB_SRP_CBET_F2_PILOT.md), demonstrar semântica de hole/board/posição, sizing 33% e CHECK em fonte OpenPPL, no-match seguro, precedência e ação final OH offline. Não converter tendências por classe em regras universais. [Plano Vivo](v2/PLAN.md). O contrato histórico abaixo continua válido.
 
 # Heuristic6max — contrato de portabilidade obrigatória OpenPPL (ADR-016)
 

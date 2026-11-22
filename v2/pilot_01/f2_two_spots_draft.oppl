@@ -1,0 +1,30 @@
+// DeepPoker Strategy V2 - isolated proof-of-translation (NOT A COMPLETE BOT).
+// Source: v2/cases/BTN_BB_SRP_CBET_F2_PILOT.md, ADR-046.
+// Two *physical* hand+flop fixtures only, not a 42%-BTN preflop chart.
+// DO NOT LOAD INTO LIVE TABLES. No-match deliberately uses Beep (no action).
+// Non-target preflop/flop/turn/river states have no poker policy.
+// All actions follow external professional strategy study, not solver outputs here.
+
+##f$V2PilotBTNOpenRFIContext##
+WHEN (IsFlop AND nplayersdealt = 6 AND InButton AND Position = Last AND OpponentsOnFlop = 1 AND OpponentsLeft = 1 AND headsupchair = bigblindchair AND user_V2PilotBTNOpen AND BotRaisedBeforeFlop AND NumberOfRaisesBeforeFlop = 0 AND NoBettingOnFlop AND AmountToCall = 0 AND StackSize >= 90 AND StackSize <= 105) RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$preflop##
+// Hand-specific fixture opener establishes a genuine source-of-initiative marker.
+// In the complete policy, RFI handlists will replace this exact-two-hand fixture.
+WHEN (IsPreflop AND nplayersdealt = 6 AND InButton AND Calls = 0 AND Raises = 0 AND StackSize >= 95 AND StackSize <= 105 AND (hand$QsJs OR hand$Ah5h)) Set user_V2PilotBTNOpen
+WHEN (IsPreflop AND nplayersdealt = 6 AND InButton AND Calls = 0 AND Raises = 0 AND StackSize >= 95 AND StackSize <= 105 AND (hand$QsJs OR hand$Ah5h)) RaiseTo 2.5 FORCE
+WHEN Others Beep FORCE
+
+##f$flop##
+// SPOT-001: Qh Qc 6d, Hero Qs Js = trips with strong kicker. 33% pot value bet.
+WHEN (f$V2PilotBTNOpenRFIContext AND board$QhQc6d AND hand$QsJs AND HaveTrips) BetThirdPot FORCE
+// SPOT-002: As 7d 3c, Hero Ah 5h = weak top pair. Check back for pot control.
+WHEN (f$V2PilotBTNOpenRFIContext AND board$As7d3c AND hand$Ah5h AND HaveTopPair) Check FORCE
+WHEN Others Beep FORCE
+
+##f$turn##
+WHEN Others Beep FORCE
+
+##f$river##
+WHEN Others Beep FORCE
