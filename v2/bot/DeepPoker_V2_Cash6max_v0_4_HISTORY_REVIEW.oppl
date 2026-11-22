@@ -301,7 +301,9 @@ WHEN Others RETURN FALSE FORCE
 WHEN IsRiver AND f$DP_Hist_FlopHeroBetVillainCalled AND f$DP_Hist_TurnHeroBetVillainCalled RETURN TRUE FORCE
 WHEN Others RETURN FALSE FORCE
 
-##f$DP_Hist_VillainRaisedOurFlopBet##
+##f$DP_Hist_FlopMutualRaising##
+// Both Hero and opponent raised/bet on flop; native counts do NOT prove order.
+// Do not mislabel this as "villain check-raised our cbet" without evidence.
 WHEN f$DP_Hist_HUFromFlop AND BotRaisedOnFlop AND RaisesOnFlop RETURN TRUE FORCE
 WHEN Others RETURN FALSE FORCE
 
