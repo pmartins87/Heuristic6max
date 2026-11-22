@@ -27,3 +27,32 @@ Registrar fonte + link + cenário efetivamente analisado + hipóteses (NLHE cash
 **Ainda não resolvido:** correspondência exata de rake/cap e sizes, licenças, direitos de transcrição, cobertura de calls/3bets e versão de solução por combo. **F0 = OPEN; F1–F5 = BLOCKED; regras aprovadas = 0.**
 
 **Critério de parada F0:** se uma fonte não autorizar incorporação de charts, usar os artigos apenas como orientação de princípios, buscar fontes reutilizáveis explicitamente licenciadas e/ou elaborar heurística original com demonstração por lógica e contraditório; não copiar o dataset. Se duas fontes conflitarem materialmente, registrar divergência e não aprovar a ação até reconciliar hipóteses.
+
+## F0-A: divergência objetiva entre referências pré-flop BTN (verificação 21/11/2026)
+
+| Fonte | Jogo explicitado | Abertura BTN RFI | Limitador |
+|---|---|---|---|
+| [Upswing/Ryan Fee, *My Unexploitable Preflop Opening Strategy Explained*](https://upswingpoker.com/preflop-open-strategy-rfi-explained/) | **6-max cash, 100BB efetivos** na tabela | **40,9%** | Artigo explica contexto 100BB; estratégia introdutória, não certificação GTO. |
+| [Upswing, *Preflop Poker Charts and Ranges*](https://upswingpoker.com/charts/) | **online cash 6-max**; o excerto público **não especifica stack/rake** | **43,1%, open 2,5 BB** | Não afirmar que é o mesmo modelo de 100BB. |
+| [ART/GTO, *Free GTO preflop ranges*](https://artgto.com/learn/ranges/) | **6-max cash, 100BB**, com **open BTN 2BB** | **46,5%** | Sizing diferente; proíbe uso comercial sem permissão. Não combinar com range de abertura 2,5BB como se fosse mesmo nó. |
+
+**Conclusão F0-A:** o desacordo numérico **não** demonstra erro em nenhuma fonte. Pode refletir árvore/sizing/rake, atualização e nível de simplificação. Para um primeiro nó BTN RFI com 100BB e sizing 2,5BB, o artigo Upswing/Ryan Fee é a referência contextual inicial mais explícita das duas Upswing; ainda **não é autorizado importar o chart** nem declarar política aprovada. Atribuir cada número à sua fonte, não escolher uma média, nem substituir chart sem premissas.
+
+## F0-B: referência publicada para estratégia pós-flop sem resolver solver
+
+- [GTO Wizard, *Flop Heuristics: IP C-Betting in Cash Games*](https://blog.gtowizard.com/flop-heuristics-ip-c-betting-in-cash-games/) — estuda BTN vs BB SRP, ressalvando que a referência exibida é uma solução `Simple` em que BB não pode donkar; paired/high/dry mudam frequência, A-high não implica cbet máxima; connected/monotone diminuem frequência e/ou size. **Admissível como orientação condicional, não regra universal nem output reutilizável**.
+- [GTO Wizard, *The Art of Bluff Catching*](https://blog.gtowizard.com/the-art-of-bluff-catching-2/) — documenta composição de value/bluffs, blockers, pot odds e histórico; ensina que mãos fortes podem virar bluffcatchers se não vencerem o range de valor, mas também que calls podem vencer valor pior. **Não é solve do nosso caso full house**.
+- [GTO Wizard, *Principles of River Play*](https://blog.gtowizard.com/principles-of-river-play/) — referência suplementar sobre ranges, blockers e sizing no river.
+- [Estudo de caso V2 do four-flush pareado](cases/RIVER4_PAIRED_Q9_FULLHOUSE.md) — enumera testemunhas objetivas e demonstra falha de precedência `!HaveFlush && !HaveNuts` sobre full house; **aprova fatos do jogo, não ação específica**.
+
+## F0-C: licenças e admissibilidade de datasets
+
+- [ART/GTO](https://artgto.com/learn/ranges/) oferece 2.606 arquivos públicos para **uso pessoal**, proíbe uso comercial sem permissão. Não importa-los no bot com finalidade comercial nem redistribuí-los sem autorização.
+- [jensbaagaard/poker-practice](https://github.com/jensbaagaard/poker-practice) declara MIT e dados `openSourcePokerData` livres. [Proveniência](https://github.com/jensbaagaard/poker-practice/blob/main/data/openSourcePokerData/README.md) indica extração de chunks de um aplicativo externo. **O rótulo MIT do repositório não comprova licença dos ranges extraídos**; marcar QUARANTINED_RIGHTS até esclarecer titularidade original. O próprio repositório contém exemplos pós-flop gerados por TexasSolver; não precisamos executar esse solver.
+- [marcbara/jev-preflop-poker](https://github.com/marcbara/jev-preflop-poker) tem código MIT com ranges **manualmente aproximados**, e ressalva que não são solver exato; pode servir de **checagem heurística** depois de confirmar escopo/licença, nunca como GTO comprovado.
+- [RubberDucke825/PokerNow-Analysis-and-Trainer](https://github.com/RubberDucke825/PokerNow-Analysis-and-Trainer) distingue explicitamente código MIT de charts transcritos de PokerCoaching/GTO Wizard que **não são MIT**. Usar como exemplo de cuidado jurídico, não como banco V2.
+
+**Stop-rule:** fontes descritivas bastam para princípios gerais, **não** para reproduzir frequências exatas por combo sem licença e premissas. Não iniciar importação automatizada até superar esse ponto.
+
+## Próxima decisão vinculada ao F0
+F0 fica **OPEN**, com comprovação da existência de fontes profissionais e de divergências reais entre cenários. Primeiro candidato **BTN RFI ~100BB/2,5BB** em revisão; a sentinela **RIVER4_PAIRED_Q9_FULLHOUSE** foi auditada por hierarquia, não por solver. F1/F2 permanecem bloqueados para decisões estratégicas concretas. Nenhuma `.oppl` V2 criada.

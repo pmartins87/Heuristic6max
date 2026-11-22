@@ -1,4 +1,5 @@
 > **RETOMADA V2 — ADR-044:** ler [v2/PLAN.md](v2/PLAN.md) + ADR-044 em DECISIONS.md. F0 agora é catálogo de fontes profissionais, charts e permissões; **não** rodar solvers, calcular EV novo ou começar OpenPPL. V1 histórica não certificada; nenhum código estratégico V2 aprovado. O handoff abaixo é histórico e suspenso.
+> **F0 evidências:** antes de autorar qualquer estratégia, ler [SOURCES.md](v2/SOURCES.md) e [auditoria river4/fullhouse](v2/cases/RIVER4_PAIRED_Q9_FULLHOUSE.md). Os dados de fonte não equivalentes (40,9/43,1/46,5%) não autorizam média nem transplantação; sem políticas V2 publicadas.
 
 # Handoff — retomar em outro chat, computador ou IA
 
