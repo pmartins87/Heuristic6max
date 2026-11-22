@@ -1,3 +1,6 @@
+// REVOKED FOR PLAY (ADR-051): THIS SOURCE CONTAINS SYSTEMIC POKER LOGIC ERRORS.
+// DO NOT LOAD INTO LIVE OR DEMONSTRATION TABLES AS A STRATEGY.
+// See v2/bot/LOGIC_REVIEW_20261121.md and candidate v0.2 before any future use.
 // DeepPoker Strategy V2 | CASH6MAX v0.1.0 | self-contained OpenPPL
 // Objective: FIRST COMPLETE PLAYABLE HEURISTIC PROFILE, not a solver/GTO claim.
 // Cash 6max with 100bb baseline; accepts other stacks with conservative branches.

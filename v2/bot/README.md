@@ -1,6 +1,8 @@
+> **AVISO CRÍTICO — 21/11/2026 / ADR-051:** a v0.1 descrita abaixo foi **reprovada para uso em mesas** após identificação de falhas objetivas graves. **NÃO carregue a v0.1 para jogar.** Este README é histórico da entrega prematura. [Revisão lógica](LOGIC_REVIEW_20261121.md) e [candidata v0.2 não liberada](DeepPoker_V2_Cash6max_v0_2_LOGIC_REVIEW.oppl). Não existe neste momento uma versão V2 pronta para operação.
+
 # DeepPoker Strategy V2 Cash6max — v0.1.0
 
-**Status:** primeira versão **completa quanto às quatro streets**, pronta para **teste do usuário** no OpenHoldem. **Não foi executada aqui no OpenHoldem real.** Não é solver, não afirma GTO exato, bb/100, lucro ou certificação científica.
+**STATUS HISTÓRICO REPROVADO:** a v0.1 possui quatro streets preenchidas, mas demonstrou falhas graves na lógica do pôquer e **NÃO é recomendada para testes em mesas**. **Não foi executada aqui no OpenHoldem real.** Não é solver, não afirma GTO exato, bb/100, lucro ou certificação científica.
 
 **Arquivo único para carregar:** [DeepPoker_V2_Cash6max_v0_1.oppl](DeepPoker_V2_Cash6max_v0_1.oppl)
 
@@ -20,14 +22,14 @@ As **listas RFI foram escritas como uma aproximação heurística original** à 
 
 Os conceitos de c-bet/check em boards dinâmicos e multiway foram informados por [GTO Wizard — IP C-bet heuristics](https://blog.gtowizard.com/flop-heuristics-ip-c-betting-in-cash-games/) e [GTO Wizard — blockers](https://blog.gtowizard.com/understanding-blockers-in-poker/). As ações e limiares específicos restantes são **heurísticas da V2 ainda não comparadas a uma estratégia profissional por nó**. Não inferir EV positivo só porque a ideia é coerente. A arquitetura foi inspirada na separação histórica/pot/hand do [DeepCrusher_R10d](https://github.com/pmartins87/DeepCrusher/blob/main/artifacts/r10/DeepCrusher_R10d_TBP_HARDENING_20261001.txt) **sem** copiar regras short-stack de Spin & Go.
 
-## Como carregar e testar diretamente no OpenHoldem
+## Procedimento histórico de v0.1 — NÃO seguir; versão revogada
 
-1. Baixe **somente** o arquivo `.oppl` acima (GitHub → Raw/Download), preservando a extensão.
+1. **NÃO EXECUTAR ESTES PASSOS NA v0.1.** O trecho seguinte permanece apenas para registrar instruções que foram dadas prematuramente. Referência antiga: o arquivo `.oppl` acima (GitHub → Raw/Download), preservando a extensão.
 2. Abra o OpenHoldem, use **File → Open** (ou o editor de fórmulas) e selecione o arquivo. Com `f$preflop` não vazia, a documentação do OpenHoldem informa que a fórmula entra no modo **OpenPPL**; a biblioteca OpenPPL integrada precisa estar presente.
 3. Se quiser conferir antes de habilitar ações, mantenha o **autoplayer desligado** no início e observe as decisões em uma mesa de demonstração ou ManualMode. Depois faça o seu teste somente em um ambiente em que o uso de bots seja permitido.
 4. Se houver erro, envie **a mensagem literal do parser**, a versão do OpenHoldem e, de preferência, a linha/estado de uma mão em que a decisão foi inadequada. Eu corrigirei a fonte e publicarei a versão seguinte no mesmo repositório.
 
-**Não precisa fazer um procedimento de certificação.** O fluxo de desenvolvimento é **entregar → testar → observar problema concreto → corrigir**, com checagem básica de sintaxe ao editar para evitar erros óbvios.
+**Não precisa de certificação acadêmica, mas a estratégia precisa respeitar as regras objetivas do pôquer antes de ser usada.** O fluxo pretendido era **entregar → testar → observar problema concreto → corrigir**, com checagem básica de sintaxe ao editar para evitar erros óbvios.
 
 ## Limites e riscos conhecidos (não escondidos)
 
