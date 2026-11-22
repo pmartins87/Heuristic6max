@@ -146,9 +146,15 @@ WHEN HaveSecondTopPair OR HaveBottomPair OR HaveUnderPair OR HaveThirdTopPair RE
 WHEN Others RETURN FALSE FORCE
 
 ##f$DP_NutDraw##
-// There are no future draw outs on the river.
+// A regular OESD or double-gutshot is NOT automatically a NUT draw.
+// Do not give non-nut straight draws premium semi-bluff privileges.
 WHEN IsRiver RETURN FALSE FORCE
-WHEN HaveNutFlushDraw OR HaveOpenEndedStraightDraw OR HaveDoubleGutshotDraw RETURN TRUE FORCE
+WHEN HaveNutFlushDraw OR HaveNutStraightDraw OR HaveInsideNutStraightDraw RETURN TRUE FORCE
+WHEN Others RETURN FALSE FORCE
+
+##f$DP_GoodDraw##
+WHEN IsRiver RETURN FALSE FORCE
+WHEN HaveFlushDraw OR HaveOpenEndedStraightDraw OR HaveDoubleGutshotDraw RETURN TRUE FORCE
 WHEN HaveFlushDraw AND HaveStraightDraw RETURN TRUE FORCE
 WHEN Others RETURN FALSE FORCE
 
