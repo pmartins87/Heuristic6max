@@ -1,3 +1,5 @@
+> **ESTADO V2 — ADR-049 (21/11/2026):** [Plano Vivo](v2/PLAN.md) · [Política geral](v2/GENERAL_POLICY.md) · [Transferência DeepCrusher](v2/DEEPCRUSHER_TRANSFER_AUDIT.md) · [Defesa/agressão F1](v2/families/DEFENDING_VS_AGGRESSION_F1.md). Exemplos de RFI, full house e c-bet **não são escopo exclusivo**. F1/F2 seguem em famílias paralelamente ao piloto F3; F3 STATIC_SYMBOLIC_VERIFIED/OH_PENDING e F4/F5 BLOCKED. Zero módulos estratégicos completos ou runtime OH certificados. O texto abaixo é histórico V1/ADR-048.
+
 > **ESTADO V2 — ADR-048 (21/11/2026):** F0 PASS_CONCEPTUAL / DATASET_IMPORT_HOLD; F1 PASS_PILOT_CONTEXT; F2 OPEN (2 decisões revisadas); **F3 STATIC_SYMBOLIC_VERIFIED / OH_PENDING** (20 testes Python, sem parser C++); F4–F5 BLOCKED. [Plano Vivo](v2/PLAN.md), [piloto](v2/pilot_01/README.md) e [gate OH offline](v2/pilot_01/OH_OFFLINE_EVIDENCE_GATE.md). Nenhum módulo completo, runtime ou lucro validado; V1 LEGACY_UNVALIDATED e imutável.
 
 # Estado atual — Heuristic6max
