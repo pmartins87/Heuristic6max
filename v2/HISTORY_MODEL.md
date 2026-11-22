@@ -1,6 +1,6 @@
 # V2 — Modelo de histórico das ações e limite de confiança (ADR-053)
 
-**Fonte:** [v0.4 HISTORY_REVIEW](bot/DeepPoker_V2_Cash6max_v0_4_HISTORY_REVIEW.oppl). **Estado:** implementado em fórmula, **não observado em OpenHoldem real**, sem modelagem completa de ranges ou sizing passado. Consulte **antes de alterar o código** o [Plano Vivo](PLAN.md), [Registro Vivo de Decisões](DECISION_LEDGER.md) e [DECISIONS.md](../DECISIONS.md).
+**Fonte atual:** [v0.5 CRUSHER_HISTORY_REUSE](bot/DeepPoker_V2_Cash6max_v0_5_CRUSHER_HISTORY_REUSE.oppl); v0.4 preservada [aqui](bot/DeepPoker_V2_Cash6max_v0_4_HISTORY_REVIEW.oppl). **Estado:** implementado em fórmula, **não observado em OpenHoldem real**, sem modelagem completa de ranges ou sizing passado. Consulte **antes de alterar o código** o [Plano Vivo](PLAN.md), [Registro Vivo de Decisões](DECISION_LEDGER.md) e [DECISIONS.md](../DECISIONS.md).
 
 ## 1. Por que esta arquitetura é necessária
 
@@ -69,3 +69,24 @@ As classes são **não exaustivas** e algumas se sobrepõem quando há ações m
 - **Contraexemplo de contadores:** uma falha no reset da mão ou na atualização pós-autoplayer pode alterar símbolos históricos, mesmo com fórmula correta.
 
 **Próximo desenvolvimento:** atribuição segura de agressor e sequência com tamanhos por street quando o runtime fornecer dados, classificar check-raise e linhas multiway→HU sem inventar vilão, e aplicar `DP_Hist_...` a famílias inteiras de defesa e value em turn/river usando ranges adversários e blockers. Não construir um segundo sistema de memória nem configurar um solver sem nova evidência.
+
+
+## 6. ADR-054 — reaproveitamento seletivo do CrusherTBP e DeepCrusher R10d
+
+**Fontes concretas:** `CrusherTBP(2).txt`, `DeepCrusher(1).txt`, R10d blob `9f9cba79cdb9dc4438895770cf61a450fb55d17c`. [Auditoria rastreável](LEGACY_HISTORY_REUSE_20261122.md), [revisão das decisões](DECISION_LEDGER.md).
+
+**Separar três eixos, nunca inferir um do outro:**
+
+| Eixo | Helpers canônicos da v0.5 | Informação que NÃO se pode inferir |
+|---|---|---|
+| **Origem inicial** | `DP_Origin_HeroRFI`, `DP_Origin_HeroISO`, `DP_Origin_HeroRaiseUnclassified` | Que Hero ainda tem iniciativa; que um `Set user_` foi ação efetiva |
+| **Família do pote concluído** | `DP_Pot_Limped`, `DP_Pot_SingleRaised`, `DP_Pot_Reraised`, `DP_Pot_Unknown` | Qual ação exata o vilão fez, nem número completo de agressões ao longo da mão |
+| **Agressor da street anterior** | `DP_Init_Hero`, `DP_Init_NonHero`, `DP_Init_Nobody`, `DP_Init_OpponentHU`, `DP_Init_HeroLostAfterMutualRaiseHU` | Apostas do mesmo jogador em multiway; ordem detalhada de raise/check-raise |
+
+**Proveniência RFI/ISO:** `f$DP_PF_ISOCandidate` usa `Raises=0`, `Calls>0` e as mesmas listas/condições que habilitam os raises de isolamento; antes das ações o código faz `Set user_DP_PF_ISOIntent`. No pós-flop, `BotRaisedBeforeFlop` confirma o raise; se ambas flags de intenção RFI e ISO forem true, **nenhuma** recebe atribuição. Caso o Hero tenha aberto e outro jogador dado 3bet, `DP_Origin_HeroRFI` permanece a origem, enquanto `DP_Pot_Reraised` é o pote atual: isso NÃO é contradição.
+
+**Semântica de iniciativa:** no legacy `f$Init_Hero` usa se Hero apostou em qualquer momento da street anterior; isso pode perder informação quando outro adversário aumenta depois. A V2 usa `BotIsLastRaiser` *e* evidência de que a street anterior teve aposta/raise. A categoria `NonHero` é intencionalmente impessoal em multiway; `OpponentHU` só atribui ao vilão quando a mão é HU desde flop. `HeroLostAfterMutualRaiseHU` não presume quem fez check-raise, pois os contadores não fornecem ordem.
+
+**Estratégia preservada:** o roteador `DP_ReraisedPot` agora delega ao classificador de pote e `DP_LastRaiser` à classe de iniciativa; o anterior `DP_PreflopRFI` remete à origem canônica. Não foram importados limites de size, stacks ou ranges da modalidade Spin&Go. Os 15 classificadores de história da v0.4 foram preservados e continuam delimitados a HU desde flop.
+
+**Escopo não resolvido:** identidade e ordem de ações em potes que começam multiway, bet sizing histórico por street, confirmação runtime da atualização dos contadores no executável instalado e modelagem de ranges filtrados por agressão. Sem essas informações, `UNKNOWN` é preferível a uma narrativa falsa sobre a mão. **v0.5 permanece candidata.**
