@@ -233,6 +233,12 @@ WHEN Others RETURN FALSE FORCE
 
 
 ##f$preflop##
+// Against only all-in opponents there is no legal extra raise/side-pot.
+// Decide calls from actual price and hand class, not a blind RaiseTo action.
+WHEN AmountToCall > 0 AND OpponentsLeft <= NumberOfOpponentsAllin AND listDP_5BET Call FORCE
+WHEN AmountToCall > 0 AND OpponentsLeft <= NumberOfOpponentsAllin AND AmountToCall <= 20 AND listDP_3BET_VALUE Call FORCE
+WHEN AmountToCall > 0 AND OpponentsLeft <= NumberOfOpponentsAllin AND AmountToCall <= 6 AND listDP_CALL_LATE Call FORCE
+WHEN AmountToCall > 0 AND OpponentsLeft <= NumberOfOpponentsAllin Fold FORCE
 // Target is 6-max or fewer dealt; do not apply 6-max ranges to larger tables.
 WHEN OpponentsAtTable > 5 AND AmountToCall = 0 Check FORCE
 WHEN OpponentsAtTable > 5 Fold FORCE
@@ -289,6 +295,8 @@ WHEN AmountToCall = 0 Check FORCE
 WHEN Others Fold FORCE
 
 ##f$flop##
+// No voluntary bets without an opponent able to put more chips in the pot.
+WHEN AmountToCall = 0 AND OpponentsLeft <= NumberOfOpponentsAllin Check FORCE
 // Reject incomplete/unscraped community cards before any value/range logic.
 WHEN ncommoncardsknown != 3 AND AmountToCall = 0 Check FORCE
 WHEN ncommoncardsknown != 3 Fold FORCE
@@ -296,16 +304,16 @@ WHEN ncommoncardsknown != 3 Fold FORCE
 WHEN OpponentsAtTable > 5 AND AmountToCall = 0 Check FORCE
 WHEN OpponentsAtTable > 5 Fold FORCE
 // Facing a bet, check-raise or lead. Exception/super-premium BEFORE texture.
-WHEN AmountToCall > 0 AND (HaveStraightFlush OR (HaveQuads AND NOT QuadsOnBoard)) AND StackSize > (2 * AmountToCall) RaisePot FORCE
+WHEN AmountToCall > 0 AND (HaveStraightFlush OR (HaveQuads AND NOT QuadsOnBoard)) AND StackSize > (2 * AmountToCall) AND OpponentsLeft > NumberOfOpponentsAllin RaisePot FORCE
 // A very strong but non-nut hand is not an automatic call of arbitrary overbets.
-WHEN AmountToCall > 0 AND f$DP_Premium AND f$DP_HeadsUp AND AmountToCall <= (0.5 * (PotSize - AmountToCall)) AND f$DP_DynamicFlop RaiseThreeFourthPot FORCE
+WHEN AmountToCall > 0 AND f$DP_Premium AND f$DP_HeadsUp AND AmountToCall <= (0.5 * (PotSize - AmountToCall)) AND f$DP_DynamicFlop AND OpponentsLeft > NumberOfOpponentsAllin RaiseThreeFourthPot FORCE
 WHEN AmountToCall > 0 AND (HaveStraightFlush OR (HaveQuads AND NOT QuadsOnBoard)) Call FORCE
 WHEN AmountToCall > 0 AND f$DP_Premium AND AmountToCall <= (2.0 * (PotSize - AmountToCall)) Call FORCE
 WHEN AmountToCall > 0 AND f$DP_Premium Fold FORCE
 
 // Other strong made hands: nuanced by board, size, SPR, and multiway.
 WHEN AmountToCall > 0 AND f$DP_StrongMade AND f$DP_HeadsUp AND f$DP_LowSPR AND NOT f$DP_Dangerous AND AmountToCall <= (0.8 * (PotSize - AmountToCall)) Call FORCE
-WHEN AmountToCall > 0 AND f$DP_StrongMade AND NOT f$DP_Dangerous AND f$DP_HeadsUp AND AmountToCall <= (0.55 * (PotSize - AmountToCall)) AND (HaveSet OR HaveTwoPair) RaiseThreeFourthPot FORCE
+WHEN AmountToCall > 0 AND f$DP_StrongMade AND NOT f$DP_Dangerous AND f$DP_HeadsUp AND AmountToCall <= (0.55 * (PotSize - AmountToCall)) AND (HaveSet OR HaveTwoPair) AND OpponentsLeft > NumberOfOpponentsAllin RaiseThreeFourthPot FORCE
 WHEN AmountToCall > 0 AND f$DP_StrongMade AND f$DP_Dangerous AND AmountToCall <= (0.4 * (PotSize - AmountToCall)) Call FORCE
 WHEN AmountToCall > 0 AND f$DP_StrongMade AND NOT f$DP_Dangerous AND AmountToCall <= (0.8 * (PotSize - AmountToCall)) Call FORCE
 WHEN AmountToCall > 0 AND f$DP_StrongMade Fold FORCE
@@ -314,7 +322,7 @@ WHEN AmountToCall > 0 AND f$DP_StrongMade Fold FORCE
 WHEN AmountToCall > 0 AND f$DP_ReraisedPot AND f$DP_Commitment AND f$DP_QualityPair AND f$DP_HeadsUp AND AmountToCall <= (0.85 * (PotSize - AmountToCall)) Call FORCE
 
 // Strong draws: call price-sensitive; sometimes semibluff raise with range nut draws.
-WHEN AmountToCall > 0 AND f$DP_NutDraw AND f$DP_HeadsUp AND NOT f$DP_IP AND AmountToCall <= (0.34 * (PotSize - AmountToCall)) AND randomhand < 0.22 RaiseThreeFourthPot FORCE
+WHEN AmountToCall > 0 AND f$DP_NutDraw AND f$DP_HeadsUp AND NOT f$DP_IP AND AmountToCall <= (0.34 * (PotSize - AmountToCall)) AND randomhand < 0.22 AND OpponentsLeft > NumberOfOpponentsAllin RaiseThreeFourthPot FORCE
 WHEN AmountToCall > 0 AND f$DP_NutDraw AND AmountToCall <= (0.48 * (PotSize - AmountToCall)) Call FORCE
 // Draw classes have different direct equity; a bare gutshot is not a flush
 // draw and must NOT inherit the same pot-odds threshold.
@@ -364,6 +372,8 @@ WHEN AmountToCall = 0 Check FORCE
 WHEN Others Fold FORCE
 
 ##f$turn##
+// No voluntary bets without an opponent able to put more chips in the pot.
+WHEN AmountToCall = 0 AND OpponentsLeft <= NumberOfOpponentsAllin Check FORCE
 // Reject incomplete/unscraped community cards before any value/range logic.
 WHEN ncommoncardsknown != 4 AND AmountToCall = 0 Check FORCE
 WHEN ncommoncardsknown != 4 Fold FORCE
@@ -377,8 +387,8 @@ WHEN AmountToCall > 0 AND QuadsOnBoard AND NOT HaveNuts AND rankhiplayer >= 12 A
 WHEN AmountToCall > 0 AND QuadsOnBoard AND NOT HaveNuts AND AmountToCall <= (0.15 * (PotSize - AmountToCall)) Call FORCE
 WHEN AmountToCall > 0 AND QuadsOnBoard AND NOT HaveNuts Fold FORCE
 // Facing action. No texture may automatically fold the premium showdown classes.
-WHEN AmountToCall > 0 AND ((HaveStraightFlush AND f$DP_BeatsBoard) OR (HaveQuads AND NOT QuadsOnBoard)) AND StackSize > (2 * AmountToCall) RaisePot FORCE
-WHEN AmountToCall > 0 AND f$DP_Premium AND f$DP_HeadsUp AND NOT f$DP_Dangerous AND AmountToCall <= (0.50 * (PotSize - AmountToCall)) RaiseHalfPot FORCE
+WHEN AmountToCall > 0 AND ((HaveStraightFlush AND f$DP_BeatsBoard) OR (HaveQuads AND NOT QuadsOnBoard)) AND StackSize > (2 * AmountToCall) AND OpponentsLeft > NumberOfOpponentsAllin RaisePot FORCE
+WHEN AmountToCall > 0 AND f$DP_Premium AND f$DP_HeadsUp AND NOT f$DP_Dangerous AND AmountToCall <= (0.50 * (PotSize - AmountToCall)) AND OpponentsLeft > NumberOfOpponentsAllin RaiseHalfPot FORCE
 WHEN AmountToCall > 0 AND (HaveStraightFlush OR (HaveQuads AND NOT QuadsOnBoard)) Call FORCE
 WHEN AmountToCall > 0 AND f$DP_Premium AND AmountToCall <= (2.0 * (PotSize - AmountToCall)) Call FORCE
 WHEN AmountToCall > 0 AND f$DP_Premium Fold FORCE
@@ -418,6 +428,8 @@ WHEN AmountToCall = 0 Check FORCE
 WHEN Others Fold FORCE
 
 ##f$river##
+// No voluntary bets without an opponent able to put more chips in the pot.
+WHEN AmountToCall = 0 AND OpponentsLeft <= NumberOfOpponentsAllin Check FORCE
 // Reject incomplete/unscraped community cards before any value/range logic.
 WHEN ncommoncardsknown != 5 AND AmountToCall = 0 Check FORCE
 WHEN ncommoncardsknown != 5 Fold FORCE
@@ -430,8 +442,8 @@ WHEN AmountToCall > 0 AND NutsOnBoard Call FORCE
 // Strong made hands: board texture alone is NEVER a fold reason.
 // Absolute nuts (including non-board straight flush/quads) can raise for value.
 // True nuts can continue to any sized bet. Non-nut boats are NOT automatic calls.
-WHEN AmountToCall > 0 AND HaveNuts AND NOT NutsOnBoard AND (HaveStraightFlush OR (HaveQuads AND NOT QuadsOnBoard)) AND StackSize > (2 * AmountToCall) RaisePot FORCE
-WHEN AmountToCall > 0 AND HaveNuts AND NOT NutsOnBoard AND HaveFullHouse AND f$DP_HeadsUp AND AmountToCall <= (0.6 * (PotSize - AmountToCall)) RaiseHalfPot FORCE
+WHEN AmountToCall > 0 AND HaveNuts AND NOT NutsOnBoard AND (HaveStraightFlush OR (HaveQuads AND NOT QuadsOnBoard)) AND StackSize > (2 * AmountToCall) AND OpponentsLeft > NumberOfOpponentsAllin RaisePot FORCE
+WHEN AmountToCall > 0 AND HaveNuts AND NOT NutsOnBoard AND HaveFullHouse AND f$DP_HeadsUp AND AmountToCall <= (0.6 * (PotSize - AmountToCall)) AND OpponentsLeft > NumberOfOpponentsAllin RaiseHalfPot FORCE
 WHEN AmountToCall > 0 AND HaveNuts Call FORCE
 WHEN AmountToCall > 0 AND HaveStraightFlush AND f$DP_BeatsBoard AND AmountToCall <= (3.0 * (PotSize - AmountToCall)) Call FORCE
 WHEN AmountToCall > 0 AND HaveQuads AND f$DP_BeatsBoard AND AmountToCall <= (2.5 * (PotSize - AmountToCall)) Call FORCE
