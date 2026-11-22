@@ -10,7 +10,7 @@ A comparação correta de showdown no river usa a melhor mão de cinco cartas da
 
 A nova função DP_BeatsBoard usa comparação efetiva no river. Há um caso especial para straight flush: o C++ representa os valores num int, com bit 31 de categoria de straight flush, de modo que comparações assinadas entre categorias podem falhar. Quando Hero tem straight flush e board não, a categoria já determina melhoria; quando ambos têm SF a comparação de rank na mesma categoria permite decidir. Comparar Hero > board é necessário, mas **NÃO prova que Hero ganha do range adversário**.
 
-## 11 provas concretas independentes de showdown
+## 12 provas concretas independentes de showdown
 
 Estas foram conferidas com um avaliador de cinco cartas que enumera combinações de cinco entre as sete, sem solver estratégico nem OH executável.
 
@@ -27,12 +27,13 @@ Estas foram conferidas com um avaliador de cinco cartas que enumera combinaçõe
 | 5♥ 6♥ 7♥ 8♥ 9♥ | T♥ K♦ | **melhora:** straight flush até T |
 | Q♠ J♠ T♠ 9♠ Q♥ | Q♦ 9♦ | **melhora:** full house QQQ99 |
 | Q♣ Q♦ Q♥ 9♠ 9♦ | A♠ K♣ | empata full house do board |
+| Q♣ Q♦ Q♥ 9♠ 9♦ | A♠ A♥ | **melhora:** QQQAA vence QQQ99 do board; NÃO é quadra |
 
 ## Falhas adicionais identificadas diretamente no v0.1
 
 | Área | Erro original | Correção na v0.2 |
 |---|---|---|
-| Straight / flush / full house no river | Veto usando somente StraightOnBoard/FlushOnBoard/FullHouseOnBoard | DP_BeatsBoard; cartas e desempate, não veto de textura |
+| Straight / flush / full house no river | Veto usando somente StraightOnBoard/FlushOnBoard/FullHouseOnBoard | DP_BeatsBoard; cartas e desempate, incluindo pocket AA que melhora FH do board sem criar quads |
 | Quads / straight flush compartilhados | RaisePot baseado apenas na categoria, inclusive em quadro compartilhado | Comparação com board, nuts e kicker; ramo especial para quads no turn |
 | Preço | PotSize inclui aposta; limite de call de 0,8 vezes PotSize permitia overbets gigantes | **32 condições** passam a usar PotSize menos AmountToCall como proxy do preço pré-call |
 | Iniciativa | BotRaisedBeforeFlop permanece true mesmo quando Hero abre e paga 3-bet | BotIsLastRaiser para iniciativa da street anterior; origem RFI separada |
