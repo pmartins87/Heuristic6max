@@ -48,7 +48,7 @@ Fontes: **OpenPPL Manual.pdf**, seções *BettingAction Symbols* e *User-Defined
 | `DP_Hist_FacingRiverFirstPostflopBet` | Flop e turn sem apostas; primeira agressão aparece no river, HU desde flop | Não é sempre bluff: pode ser trap/value tardio |
 | `DP_Hist_FacingRiverAfterFlopBetTurnCheck` | Hero paga bet flop, turn checked-through, vilão aposta river | Não confundir com triplo barrel |
 | `DP_Hist_OurDoubleBarrelWasCalled` | Hero aposta flop+turn e vilão paga ambas; HU desde flop | Histórico relevante para seleção de triple barrel futuro |
-| `DP_Hist_VillainRaisedOurFlopBet` | Hero apostou/raiseou flop e o vilão deu raise, HU desde flop | Não garante ordem exata se houve múltiplos raises |
+| `DP_Hist_FlopMutualRaising` | Hero apostou/raiseou e vilão também deu raise na mesma street, HU desde flop | **Não informa quem iniciou nem ordem exata; não é prova de check-raise do vilão** |
 
 As classes são **não exaustivas** e algumas se sobrepõem quando há ações mais complexas. A ausência de uma classe **não** classifica automaticamente a mão como passiva.
 
