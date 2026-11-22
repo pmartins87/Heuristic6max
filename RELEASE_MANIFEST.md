@@ -1,3 +1,5 @@
+> **MANIFESTO V2 — ADR-049:** estratégia por famílias, com [Plano Vivo](v2/PLAN.md) e [Política geral](v2/GENERAL_POLICY.md). Nenhum módulo completo aprovado nem OpenHoldem runtime certificado. O piloto de duas mãos foi preservado apenas como engenharia estática; revisão transversal de R10d e estudo F1 não implicam release. Restante do manifesto é histórico V1.
+
 > **ATENÇÃO V2 — ADR-048:** [Plano Vivo](v2/PLAN.md), [gate OH offline](v2/pilot_01/OH_OFFLINE_EVIDENCE_GATE.md). Apenas 2 fixtures nativas OpenPPL, 20 testes estáticos; **F3 STATIC_SYMBOLIC_VERIFIED/OH_PENDING**, F4–F5 BLOCKED. Nenhum release V2, nenhuma ação aceita por OpenHoldem demonstrada. O manifesto abaixo é histórico V1 LEGACY_UNVALIDATED.
 
 # Manifesto de versões (20/11/2026)
