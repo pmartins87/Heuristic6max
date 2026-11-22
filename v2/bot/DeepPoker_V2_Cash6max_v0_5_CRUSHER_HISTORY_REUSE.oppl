@@ -209,7 +209,7 @@ WHEN Others RETURN FALSE FORCE
 // A raise without opposing raise could have ISOLATED limpers, not be an RFI.
 // Store intentional first-in only at the preflop decision; also require native
 // proof that Hero did actually raise and was not later reraised by villain.
-WHEN user_DP_PF_RFIIntent AND BotRaisedBeforeFlop AND NOT RaisesBeforeFlop RETURN TRUE FORCE
+WHEN f$DP_Origin_HeroRFI AND NOT RaisesBeforeFlop RETURN TRUE FORCE
 WHEN Others RETURN FALSE FORCE
 
 ##f$DP_LastRaiser##
