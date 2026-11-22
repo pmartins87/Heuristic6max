@@ -279,11 +279,15 @@ WHEN AmountToCall = 0 AND f$DP_Premium BetTwoThirdPot FORCE
 WHEN AmountToCall = 0 AND f$DP_StrongMade AND f$DP_Multiway AND f$DP_Dangerous Check FORCE
 WHEN AmountToCall = 0 AND f$DP_StrongMade AND f$DP_Multiway BetHalfPot FORCE
 WHEN AmountToCall = 0 AND f$DP_StrongMade AND f$DP_Dangerous BetThirdPot FORCE
+// Paired dry boards generally support smaller bets with a broad value range.
+WHEN AmountToCall = 0 AND f$DP_StrongMade AND PairOnFlop AND NOT f$DP_DynamicFlop BetThirdPot FORCE
 WHEN AmountToCall = 0 AND f$DP_StrongMade AND f$DP_DynamicFlop BetTwoThirdPot FORCE
 WHEN AmountToCall = 0 AND f$DP_StrongMade BetHalfPot FORCE
 
 WHEN AmountToCall = 0 AND f$DP_ReraisedPot AND f$DP_HeadsUp AND f$DP_QualityPair AND NOT f$DP_Dangerous BetThirdPot FORCE
 WHEN AmountToCall = 0 AND f$DP_GoodPair AND f$DP_Multiway AND f$DP_Dangerous Check FORCE
+// Weak Ax on dry A-high boards can realize value by checking back.
+WHEN AmountToCall = 0 AND f$DP_GoodPair AND AcePresentOnFlop AND NOT f$DP_QualityPair AND NOT f$DP_DynamicFlop Check FORCE
 WHEN AmountToCall = 0 AND f$DP_GoodPair AND f$DP_DynamicFlop AND NOT f$DP_QualityPair Check FORCE
 WHEN AmountToCall = 0 AND f$DP_GoodPair AND f$DP_PreflopAggressor AND f$DP_HeadsUp BetHalfPot FORCE
 WHEN AmountToCall = 0 AND f$DP_GoodPair AND f$DP_HeadsUp AND f$DP_IP BetThirdPot FORCE
